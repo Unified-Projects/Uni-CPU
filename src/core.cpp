@@ -69,7 +69,7 @@ void Core::clock(){
 
         // Perfom Action
         cycles = CurOP.CycleCount;
-        cycles += (this->*(CurOP.AddressingMode1))() & (this->*(CurOP.AddressingMode2))() & (this->*(CurOP.InstructionFunction))();
+        cycles += (this->*(CurOP.AddressingMode1))() + (this->*(CurOP.AddressingMode2))() + (this->*(CurOP.InstructionFunction))();
     }
 
     cycles--;
@@ -92,40 +92,62 @@ uint64_t Core::MOV(){
     uint64_t ReadOperand = read(Regs.rip);
     Regs.rip += 8;
 
+    Cycles += 2;
+
     // Get the value
     if(CurOP.AddressingMode2 == &Core::REG){
         // Identify Reg Based on next data
+        uint64_t* Registers = (uint64_t*)&Regs;
+        if(ReadOperand >= sizeof(Regs) / 8){
+            std::cout << "MOV: Attempted to load data from a non register: " << ReadOperand << std::endl;
+        }
+        In = Registers[ReadOperand];
+
         // TODO + non-64Bit and must be same
     }
     else if(CurOP.AddressingMode2 == &Core::DIR){
-        // TODO
+        In = read(ReadOperand);
     }
     else if(CurOP.AddressingMode2 == &Core::IMM){
         In = ReadOperand;
-        cycles+=1;
     }
     else if(CurOP.AddressingMode2 == &Core::RDI){
-        // TODO
+        // Identify Reg Based on next data
+        uint64_t* Registers = (uint64_t*)&Regs;
+        if(ReadOperand >= sizeof(Regs) / 8){
+            std::cout << "MOV: Attempted to load address from a non register: " << ReadOperand << std::endl;
+        }
+        In = Registers[ReadOperand];
+
+        // Read in new data
+        In = read(In);
     }
 
     // Where does it go
     if(CurOP.AddressingMode1 == &Core::REG){
         // Identify Reg Based on next data
+        uint64_t* Registers = (uint64_t*)&Regs;
+        if(WriteOperand >= sizeof(Regs) / 8){
+            std::cout << "MOV: Attempted to Write data from a non register: " << WriteOperand << std::endl;
+        }
+        Registers[WriteOperand] = In;
         // TODO + non-64Bit
     }
     else if(CurOP.AddressingMode1 == &Core::DIR){
         write(WriteOperand, In);
-        cycles+=2; // Find + Write
     }
     else if(CurOP.AddressingMode1 == &Core::IMM){
         std::cout << "MOV: Attempted to write to a immediate value" << std::endl;
-        HALT();
     }
     else if(CurOP.AddressingMode1 == &Core::RDI){
-        // TODO
+        // Identify Reg Based on next data
+        uint64_t* Registers = (uint64_t*)&Regs;
+        if(WriteOperand >= sizeof(Regs) / 8){
+            std::cout << "MOV: Attempted to write to address from a non register: " << WriteOperand << std::endl;
+        }
+        write(Registers[WriteOperand], In);
     }
 
-    // Out[0] = In[0];
     return Cycles;
 }
 

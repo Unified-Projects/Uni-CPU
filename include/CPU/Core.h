@@ -72,10 +72,10 @@ namespace UniCPUEmulator
         // Comparisons
 
     public: // Addressing Modes
-        uint64_t REG()STUB_FUNC; // Register
-        uint64_t DIR()STUB_FUNC; // Address
-        uint64_t IMM()STUB_FUNC; // Immediate
-        uint64_t RDI()STUB_FUNC; // Register as address
+        uint64_t REG() {return 0;}; // Register
+        uint64_t DIR() {return 1;}; // Address
+        uint64_t IMM() {return 0;}; // Immediate
+        uint64_t RDI() {return 1;}; // Register as address
         uint64_t XXX()STUB_FUNC; // None
 
     protected:
