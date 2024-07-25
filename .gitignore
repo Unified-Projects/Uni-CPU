@@ -2,3 +2,4 @@ build
 bin
 .vscode
 *.bytes
+.DS_Store

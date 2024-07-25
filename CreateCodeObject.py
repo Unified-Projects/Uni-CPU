@@ -7,7 +7,14 @@ def write_bytes_to_file(filename, byte_array):
 
 if __name__ == "__main__":
     # Example byte array (you can modify this as needed)
-    byte_array = [0x00]
+    """
+    MOV [100], #2
+    HALT
+    """
+    byte_array = [
+                  0x26, 0x00, 0x64, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, # MOV [100], #2
+                  0x10, 0x00, # HALT
+                ]
 
     # Write the byte array to machinecode.bytes
     write_bytes_to_file('machinecode.bytes', byte_array)

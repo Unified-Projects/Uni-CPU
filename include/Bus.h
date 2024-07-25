@@ -26,14 +26,14 @@ namespace UniCPUEmulator
         // TODO
 
         // Inputs
-        // TODO
+        // TODOzs
 
         // Clock Count
         uint64_t SystemClockCount = 0;
         uint64_t ClockSpeedCounter = 0;
         uint64_t ClockSpeed = 0;
-        std::chrono::_V2::system_clock::time_point LastTime = {};
-        std::chrono::_V2::system_clock::rep TotalTime = {};
+        std::chrono::time_point<std::chrono::high_resolution_clock> LastTime = std::chrono::high_resolution_clock::now();
+        std::chrono::system_clock::rep TotalTime = {};
 
     public: // Bus Read and Write
         void memWrite(uint64_t addr, uint64_t data);
