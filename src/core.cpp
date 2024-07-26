@@ -178,19 +178,19 @@ uint64_t Core::MOV(){
             Registers[static_cast<uint8_t>(WriteOperand)] = In;
         }
         else if(SizeFlag == 1){ // 32-Bit
-            uint64_t CurrentData = Registers[static_cast<uint8_t>(WriteOperand)] & 0xFFFFFFFF;
+            uint64_t CurrentData = Registers[static_cast<uint8_t>(WriteOperand)];
             ((uint32_t*)(&CurrentData))[0] = In;
             Registers[static_cast<uint8_t>(WriteOperand)] = CurrentData;
             Cycles++;
         }
         else if(SizeFlag == 2){ // 16-Bit
-            uint64_t CurrentData = Registers[static_cast<uint8_t>(WriteOperand)] & 0xFFFFFFFFFFFF;
+            uint64_t CurrentData = Registers[static_cast<uint8_t>(WriteOperand)];
             ((uint16_t*)(&CurrentData))[0] = In;
             Registers[static_cast<uint8_t>(WriteOperand)] = CurrentData;
             Cycles++;
         }
         else if(SizeFlag == 3){ // 8-Bit
-            uint64_t CurrentData = Registers[static_cast<uint8_t>(WriteOperand)] & 0xFFFFFFFFFFFFFF;
+            uint64_t CurrentData = Registers[static_cast<uint8_t>(WriteOperand)];
             ((uint8_t*)(&CurrentData))[0] = In;
             Registers[static_cast<uint8_t>(WriteOperand)] = CurrentData;
             Cycles++;
@@ -234,19 +234,19 @@ uint64_t Core::MOV(){
             write(Registers[static_cast<uint8_t>(WriteOperand)], In);
         }
         else if(SizeFlag == 1){ // 32-Bit
-            uint64_t CurrentData = read(Registers[static_cast<uint8_t>(WriteOperand)]) & 0xFFFFFFFF;
+            uint64_t CurrentData = read(Registers[static_cast<uint8_t>(WriteOperand)]);
             ((uint32_t*)(&CurrentData))[0] = In;
             write(Registers[static_cast<uint8_t>(WriteOperand)], CurrentData);
             Cycles++;
         }
         else if(SizeFlag == 2){ // 16-Bit
-            uint64_t CurrentData = read(Registers[static_cast<uint8_t>(WriteOperand)]) & 0xFFFFFFFFFFFF;
+            uint64_t CurrentData = read(Registers[static_cast<uint8_t>(WriteOperand)]);
             ((uint16_t*)(&CurrentData))[0] = In;
             write(Registers[static_cast<uint8_t>(WriteOperand)], CurrentData);
             Cycles++;
         }
         else if(SizeFlag == 3){ // 8-Bit
-            uint64_t CurrentData = read(Registers[static_cast<uint8_t>(WriteOperand)]) & 0xFFFFFFFFFFFFFF;
+            uint64_t CurrentData = read(Registers[static_cast<uint8_t>(WriteOperand)]);
             ((uint8_t*)(&CurrentData))[0] = In;
             write(Registers[static_cast<uint8_t>(WriteOperand)], CurrentData);
             Cycles++;

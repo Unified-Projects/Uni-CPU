@@ -45,12 +45,12 @@ int main(int argc, char* argv[]) {
 
     auto LastPrintTime = high_resolution_clock::now();
     int Uptime = 0;
-    // constexpr auto ClockPeriod = 0; // No Limit
-    // constexpr auto ClockPeriod = 1000; // 1 MHz (Any higher wont do much)
-    // constexpr auto ClockPeriod = 1000*1000; // 1 KHz
-    // constexpr auto ClockPeriod = 1000*1000*1000; // 1 Hz
-    // constexpr auto ClockPeriod = 1000*1000*100; // 10 Hz
-    constexpr auto ClockPeriod = 1000*1000*1000*2; // 1/2 Hz (Manual)
+    auto ClockPeriod = 0; // No Limit
+    // ClockPeriod = 1000; // 1 MHz (Any higher wont do much)
+    // ClockPeriod = 1000*1000; // 1 KHz
+    ClockPeriod = 1000*1000*100; // 10 Hz
+    // ClockPeriod = 1000*1000*1000; // 1 Hz
+    // ClockPeriod = 1000*1000*1000*2; // 1/2 Hz (Manual)
 
     while (true)
     {
