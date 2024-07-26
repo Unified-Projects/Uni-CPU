@@ -5,10 +5,27 @@
 
 using namespace UniCPUEmulator;
 
+#define OpCodeMASK 0b1111111111001111
+
+#define REG_MODE_XXX 0b00
+#define REG_MODE_REG 0b00
+#define REG_MODE_DIR 0b01
+#define REG_MODE_IMM 0b10
+#define REG_MODE_RDI 0b11
+
+#define INSTRUCTION_HALT    0b0000000001
+#define INSTRUCTION_MOV     0b0000000010
+#define INSTRUCTION_JMP     0b0000000011
+#define INSTRUCTION_ADD     0b0000000100
+#define INSTRUCTION_PUSH    0b0000000101
+#define INSTRUCTION_POP     0b0000000110
+
+#define GenCode(inst, addr1, addr2) ((inst << 6) + (addr1 << 2) + addr2)
+
 Core::Core(){
-    // HALT
-    // MOV
-    // ADD
+    // HALT *
+    // MOV *
+    // ADD *
     // MUL
     // DIV
     // SUB
@@ -19,7 +36,7 @@ Core::Core(){
     // XOR
     // AND
     // NOT
-    // JMP
+    // JMP *
     // CALL
     // RET
     // JC
@@ -27,26 +44,41 @@ Core::Core(){
     // LSR
     // LSL
 
-    // 12 Bits for Instruction
-    // 4 Bits for Addressing Modes
-    // 64 Bits for data
+    // 10 bits for instruction
+    // 2 bits for Bitnumber (64, 32, 16, 8)
+    // 4 Bits for both addressing modes
+    // Data variable in size (Both because of bitnumber and actual size needed) 
 
     // 00 REG
     // 01 DIR
     // 10 IMM
     // 11 RDI
+
+    // 00 64-Bit
+    // 01 32-Bit // TODO
+    // 10 16-Bit // TODO
+    // 11 8-Bit // TODO
+
+    // TODO Convert all uints to ints so negatives will work correctly
     
     LookupTable = {
         // General Purpose
-        {(uint16_t)0b0000000000010000, {"HALT", &Core::HALT, &Core::XXX, &Core::XXX, 1}},
-
+        {GenCode(INSTRUCTION_HALT, REG_MODE_XXX, REG_MODE_XXX), {"HALT", &Core::HALT, &Core::XXX, &Core::XXX, 1}},
+        {GenCode(INSTRUCTION_JMP, REG_MODE_REG, REG_MODE_XXX), {"JMP", &Core::JMP, &Core::REG, &Core::XXX, 1}}, {GenCode(INSTRUCTION_JMP, REG_MODE_DIR, REG_MODE_XXX), {"JMP", &Core::JMP, &Core::DIR, &Core::XXX, 1}}, {GenCode(INSTRUCTION_JMP, REG_MODE_IMM, REG_MODE_XXX), {"JMP", &Core::JMP, &Core::IMM, &Core::XXX, 1}}, {GenCode(INSTRUCTION_JMP, REG_MODE_RDI, REG_MODE_XXX), {"JMP", &Core::JMP, &Core::RDI, &Core::XXX, 1}},
+        
         // Memory Interactions
-        {0b0000000000100000, {"MOV", &Core::MOV, &Core::REG, &Core::REG, 1}}, {0b0000000000100001, {"MOV", &Core::MOV, &Core::REG, &Core::DIR, 1}}, {0b0000000000100010, {"MOV", &Core::MOV, &Core::REG, &Core::IMM, 1}}, {0b0000000000100011, {"MOV", &Core::MOV, &Core::REG, &Core::RDI, 1}},
-        {0b0000000000100100, {"MOV", &Core::MOV, &Core::DIR, &Core::REG, 1}}, {0b0000000000100101, {"MOV", &Core::MOV, &Core::DIR, &Core::DIR, 1}}, {0b0000000000100110, {"MOV", &Core::MOV, &Core::DIR, &Core::IMM, 1}}, {0b0000000000100111, {"MOV", &Core::MOV, &Core::DIR, &Core::RDI, 1}},
-        {0b0000000000101000, {"MOV", &Core::MOV, &Core::IMM, &Core::REG, 1}}, {0b0000000000101001, {"MOV", &Core::MOV, &Core::IMM, &Core::DIR, 1}}, {0b0000000000101010, {"MOV", &Core::MOV, &Core::IMM, &Core::IMM, 1}}, {0b0000000000101011, {"MOV", &Core::MOV, &Core::IMM, &Core::RDI, 1}},
-        {0b0000000000101100, {"MOV", &Core::MOV, &Core::RDI, &Core::REG, 1}}, {0b0000000000101101, {"MOV", &Core::MOV, &Core::RDI, &Core::DIR, 1}}, {0b0000000000101110, {"MOV", &Core::MOV, &Core::RDI, &Core::IMM, 1}}, {0b0000000000101111, {"MOV", &Core::MOV, &Core::RDI, &Core::RDI, 1}},
+        {GenCode(INSTRUCTION_MOV, REG_MODE_REG, REG_MODE_REG), {"MOV", &Core::MOV, &Core::REG, &Core::REG, 1}}, {GenCode(INSTRUCTION_MOV, REG_MODE_REG, REG_MODE_DIR), {"MOV", &Core::MOV, &Core::REG, &Core::DIR, 1}}, {GenCode(INSTRUCTION_MOV, REG_MODE_REG, REG_MODE_IMM), {"MOV", &Core::MOV, &Core::REG, &Core::IMM, 1}}, {GenCode(INSTRUCTION_MOV, REG_MODE_REG, REG_MODE_RDI), {"MOV", &Core::MOV, &Core::REG, &Core::RDI, 1}},
+        {GenCode(INSTRUCTION_MOV, REG_MODE_DIR, REG_MODE_REG), {"MOV", &Core::MOV, &Core::DIR, &Core::REG, 1}}, {GenCode(INSTRUCTION_MOV, REG_MODE_DIR, REG_MODE_DIR), {"MOV", &Core::MOV, &Core::DIR, &Core::DIR, 1}}, {GenCode(INSTRUCTION_MOV, REG_MODE_DIR, REG_MODE_IMM), {"MOV", &Core::MOV, &Core::DIR, &Core::IMM, 1}}, {GenCode(INSTRUCTION_MOV, REG_MODE_DIR, REG_MODE_RDI), {"MOV", &Core::MOV, &Core::DIR, &Core::RDI, 1}},
+        {GenCode(INSTRUCTION_MOV, REG_MODE_IMM, REG_MODE_REG), {"MOV", &Core::MOV, &Core::IMM, &Core::REG, 1}}, {GenCode(INSTRUCTION_MOV, REG_MODE_IMM, REG_MODE_DIR), {"MOV", &Core::MOV, &Core::IMM, &Core::DIR, 1}}, {GenCode(INSTRUCTION_MOV, REG_MODE_IMM, REG_MODE_IMM), {"MOV", &Core::MOV, &Core::IMM, &Core::IMM, 1}}, {GenCode(INSTRUCTION_MOV, REG_MODE_IMM, REG_MODE_RDI), {"MOV", &Core::MOV, &Core::IMM, &Core::RDI, 1}},
+        {GenCode(INSTRUCTION_MOV, REG_MODE_RDI, REG_MODE_REG), {"MOV", &Core::MOV, &Core::RDI, &Core::REG, 1}}, {GenCode(INSTRUCTION_MOV, REG_MODE_RDI, REG_MODE_DIR), {"MOV", &Core::MOV, &Core::RDI, &Core::DIR, 1}}, {GenCode(INSTRUCTION_MOV, REG_MODE_RDI, REG_MODE_IMM), {"MOV", &Core::MOV, &Core::RDI, &Core::IMM, 1}}, {GenCode(INSTRUCTION_MOV, REG_MODE_RDI, REG_MODE_RDI), {"MOV", &Core::MOV, &Core::RDI, &Core::RDI, 1}},
+
+        {GenCode(INSTRUCTION_PUSH, REG_MODE_REG, REG_MODE_XXX), {"PUSH", &Core::PUSH, &Core::REG, &Core::XXX, 1}}, {GenCode(INSTRUCTION_POP, REG_MODE_REG, REG_MODE_XXX), {"POP", &Core::POP, &Core::REG, &Core::XXX, 1}},
 
         // Arithmetic
+        {GenCode(INSTRUCTION_ADD, REG_MODE_REG, REG_MODE_REG), {"ADD", &Core::ADD, &Core::REG, &Core::REG, 1}}, {GenCode(INSTRUCTION_ADD, REG_MODE_REG, REG_MODE_DIR), {"ADD", &Core::ADD, &Core::REG, &Core::DIR, 1}}, {GenCode(INSTRUCTION_ADD, REG_MODE_REG, REG_MODE_IMM), {"ADD", &Core::ADD, &Core::REG, &Core::IMM, 1}}, {GenCode(INSTRUCTION_ADD, REG_MODE_REG, REG_MODE_RDI), {"ADD", &Core::ADD, &Core::REG, &Core::RDI, 1}},
+        {GenCode(INSTRUCTION_ADD, REG_MODE_DIR, REG_MODE_REG), {"ADD", &Core::ADD, &Core::DIR, &Core::REG, 1}}, {GenCode(INSTRUCTION_ADD, REG_MODE_DIR, REG_MODE_DIR), {"ADD", &Core::ADD, &Core::DIR, &Core::DIR, 1}}, {GenCode(INSTRUCTION_ADD, REG_MODE_DIR, REG_MODE_IMM), {"ADD", &Core::ADD, &Core::DIR, &Core::IMM, 1}}, {GenCode(INSTRUCTION_ADD, REG_MODE_DIR, REG_MODE_RDI), {"ADD", &Core::ADD, &Core::DIR, &Core::RDI, 1}},
+        {GenCode(INSTRUCTION_ADD, REG_MODE_IMM, REG_MODE_REG), {"ADD", &Core::ADD, &Core::IMM, &Core::REG, 1}}, {GenCode(INSTRUCTION_ADD, REG_MODE_IMM, REG_MODE_DIR), {"ADD", &Core::ADD, &Core::IMM, &Core::DIR, 1}}, {GenCode(INSTRUCTION_ADD, REG_MODE_IMM, REG_MODE_IMM), {"ADD", &Core::ADD, &Core::IMM, &Core::IMM, 1}}, {GenCode(INSTRUCTION_ADD, REG_MODE_IMM, REG_MODE_RDI), {"ADD", &Core::ADD, &Core::IMM, &Core::RDI, 1}},
+        {GenCode(INSTRUCTION_ADD, REG_MODE_RDI, REG_MODE_REG), {"ADD", &Core::ADD, &Core::RDI, &Core::REG, 1}}, {GenCode(INSTRUCTION_ADD, REG_MODE_RDI, REG_MODE_DIR), {"ADD", &Core::ADD, &Core::RDI, &Core::DIR, 1}}, {GenCode(INSTRUCTION_ADD, REG_MODE_RDI, REG_MODE_IMM), {"ADD", &Core::ADD, &Core::RDI, &Core::IMM, 1}}, {GenCode(INSTRUCTION_ADD, REG_MODE_RDI, REG_MODE_RDI), {"ADD", &Core::ADD, &Core::RDI, &Core::RDI, 1}},
 
         // Comparisons
     };
@@ -55,9 +87,14 @@ Core::Core(){
 }
 
 void Core::clock(){
+    bool ResetStatus = false;
+    if(Regs.status){
+        ResetStatus = true;
+    }
+
     if(cycles <= 0){
-        uint16_t Opcode = static_cast<uint16_t>(read(Regs.rip));
-        CurOP = LookupTable[Opcode];
+        Opcode = static_cast<uint16_t>(read(Regs.rip));
+        CurOP = LookupTable[Opcode & OpCodeMASK];
         if(CurOP.InstructionFunction == nullptr){
             // TODO THROW NOOP ERR
             std::cout << "Invalid Opcode: " << std::hex << Opcode << std::dec << std::endl;
@@ -70,6 +107,10 @@ void Core::clock(){
         // Perfom Action
         cycles = CurOP.CycleCount;
         cycles += (this->*(CurOP.AddressingMode1))() + (this->*(CurOP.AddressingMode2))() + (this->*(CurOP.InstructionFunction))();
+    }
+
+    if(ResetStatus){
+        Regs.status = 0;
     }
 
     cycles--;
@@ -88,20 +129,22 @@ uint64_t Core::MOV(){
     int Cycles = 0;
 
     uint64_t WriteOperand = read(Regs.rip);
-    Regs.rip += 8;
+    Regs.rip += (CurOP.AddressingMode1 != &Core::REG && CurOP.AddressingMode1 != &Core::RDI) ? 8 : 1;
     uint64_t ReadOperand = read(Regs.rip);
-    Regs.rip += 8;
+    Regs.rip += (CurOP.AddressingMode2 != &Core::REG && CurOP.AddressingMode2 != &Core::RDI) ? 8 : 1;
 
     Cycles += 2;
+
+    uint64_t SizeFlag = (Opcode & 0b110000) >> 4;
 
     // Get the value
     if(CurOP.AddressingMode2 == &Core::REG){
         // Identify Reg Based on next data
         uint64_t* Registers = (uint64_t*)&Regs;
-        if(ReadOperand >= sizeof(Regs) / 8){
-            std::cout << "MOV: Attempted to load data from a non register: " << ReadOperand << std::endl;
+        if(static_cast<uint8_t>(ReadOperand) >= sizeof(Regs) / 8){
+            std::cout << "MOV: Attempted to load data from a non register: " << static_cast<uint8_t>(ReadOperand) << std::endl;
         }
-        In = Registers[ReadOperand];
+        In = Registers[static_cast<uint8_t>(ReadOperand)];
 
         // TODO + non-64Bit and must be same
     }
@@ -114,10 +157,10 @@ uint64_t Core::MOV(){
     else if(CurOP.AddressingMode2 == &Core::RDI){
         // Identify Reg Based on next data
         uint64_t* Registers = (uint64_t*)&Regs;
-        if(ReadOperand >= sizeof(Regs) / 8){
-            std::cout << "MOV: Attempted to load address from a non register: " << ReadOperand << std::endl;
+        if(static_cast<uint8_t>(ReadOperand) >= sizeof(Regs) / 8){
+            std::cout << "MOV: Attempted to load address from a non register: " << static_cast<uint8_t>(ReadOperand) << std::endl;
         }
-        In = Registers[ReadOperand];
+        In = Registers[static_cast<uint8_t>(ReadOperand)];
 
         // Read in new data
         In = read(In);
@@ -127,14 +170,55 @@ uint64_t Core::MOV(){
     if(CurOP.AddressingMode1 == &Core::REG){
         // Identify Reg Based on next data
         uint64_t* Registers = (uint64_t*)&Regs;
-        if(WriteOperand >= sizeof(Regs) / 8){
-            std::cout << "MOV: Attempted to Write data from a non register: " << WriteOperand << std::endl;
+        if(static_cast<uint8_t>(WriteOperand) >= sizeof(Regs) / 8){
+            std::cout << "MOV: Attempted to Write data from a non register: " << static_cast<uint8_t>(WriteOperand) << std::endl;
         }
-        Registers[WriteOperand] = In;
+
+        if(!SizeFlag){ // 64-Bit
+            Registers[static_cast<uint8_t>(WriteOperand)] = In;
+        }
+        else if(SizeFlag == 1){ // 32-Bit
+            uint64_t CurrentData = Registers[static_cast<uint8_t>(WriteOperand)] & 0xFFFFFFFF;
+            ((uint32_t*)(&CurrentData))[0] = In;
+            Registers[static_cast<uint8_t>(WriteOperand)] = CurrentData;
+            Cycles++;
+        }
+        else if(SizeFlag == 2){ // 16-Bit
+            uint64_t CurrentData = Registers[static_cast<uint8_t>(WriteOperand)] & 0xFFFFFFFFFFFF;
+            ((uint16_t*)(&CurrentData))[0] = In;
+            Registers[static_cast<uint8_t>(WriteOperand)] = CurrentData;
+            Cycles++;
+        }
+        else if(SizeFlag == 3){ // 8-Bit
+            uint64_t CurrentData = Registers[static_cast<uint8_t>(WriteOperand)] & 0xFFFFFFFFFFFFFF;
+            ((uint8_t*)(&CurrentData))[0] = In;
+            Registers[static_cast<uint8_t>(WriteOperand)] = CurrentData;
+            Cycles++;
+        }
         // TODO + non-64Bit
     }
     else if(CurOP.AddressingMode1 == &Core::DIR){
-        write(WriteOperand, In);
+        if(!SizeFlag){ // 64-Bit
+            write(WriteOperand, In);
+        }
+        else if(SizeFlag == 1){ // 32-Bit
+            uint64_t CurrentData = read(WriteOperand);
+            ((uint32_t*)(&CurrentData))[0] = In;
+            write(WriteOperand, CurrentData);
+            Cycles++;
+        }
+        else if(SizeFlag == 2){ // 16-Bit
+            uint64_t CurrentData = read(WriteOperand);
+            ((uint16_t*)(&CurrentData))[0] = In;
+            write(WriteOperand, CurrentData);
+            Cycles++;
+        }
+        else if(SizeFlag == 3){ // 8-Bit
+            uint64_t CurrentData = read(WriteOperand);
+            ((uint8_t*)(&CurrentData))[0] = In;
+            write(WriteOperand, CurrentData);
+            Cycles++;
+        }
     }
     else if(CurOP.AddressingMode1 == &Core::IMM){
         std::cout << "MOV: Attempted to write to a immediate value" << std::endl;
@@ -142,10 +226,31 @@ uint64_t Core::MOV(){
     else if(CurOP.AddressingMode1 == &Core::RDI){
         // Identify Reg Based on next data
         uint64_t* Registers = (uint64_t*)&Regs;
-        if(WriteOperand >= sizeof(Regs) / 8){
-            std::cout << "MOV: Attempted to write to address from a non register: " << WriteOperand << std::endl;
+        if(static_cast<uint8_t>(WriteOperand) >= sizeof(Regs) / 8){
+            std::cout << "MOV: Attempted to write to address from a non register: " << static_cast<uint8_t>(WriteOperand) << std::endl;
         }
-        write(Registers[WriteOperand], In);
+        
+        if(!SizeFlag){ // 64-Bit
+            write(Registers[static_cast<uint8_t>(WriteOperand)], In);
+        }
+        else if(SizeFlag == 1){ // 32-Bit
+            uint64_t CurrentData = read(Registers[static_cast<uint8_t>(WriteOperand)]) & 0xFFFFFFFF;
+            ((uint32_t*)(&CurrentData))[0] = In;
+            write(Registers[static_cast<uint8_t>(WriteOperand)], CurrentData);
+            Cycles++;
+        }
+        else if(SizeFlag == 2){ // 16-Bit
+            uint64_t CurrentData = read(Registers[static_cast<uint8_t>(WriteOperand)]) & 0xFFFFFFFFFFFF;
+            ((uint16_t*)(&CurrentData))[0] = In;
+            write(Registers[static_cast<uint8_t>(WriteOperand)], CurrentData);
+            Cycles++;
+        }
+        else if(SizeFlag == 3){ // 8-Bit
+            uint64_t CurrentData = read(Registers[static_cast<uint8_t>(WriteOperand)]) & 0xFFFFFFFFFFFFFF;
+            ((uint8_t*)(&CurrentData))[0] = In;
+            write(Registers[static_cast<uint8_t>(WriteOperand)], CurrentData);
+            Cycles++;
+        }
     }
 
     return Cycles;
@@ -159,4 +264,198 @@ uint64_t Core::HALT(){
         Regs.rip-=2;
     }
     return 0; // Loop execution
+}
+
+uint64_t Core::JMP(){
+    uint64_t JMPArg = read(Regs.rip);
+    Regs.rip += (CurOP.AddressingMode1 != &Core::REG && CurOP.AddressingMode1 != &Core::RDI) ? 8 : 1;
+    
+    // Get the value
+    if(CurOP.AddressingMode1 == &Core::REG){
+        // Identify Reg Based on next data
+        uint64_t* Registers = (uint64_t*)&Regs;
+        if(static_cast<uint8_t>(JMPArg) >= sizeof(Regs) / 8){
+            std::cout << "JMP: Attempted to load address from a non register: " << static_cast<uint8_t>(JMPArg) << std::endl;
+        }
+        Regs.rip = Registers[static_cast<uint8_t>(JMPArg)];
+
+        // TODO + non-64Bit and must be same
+    }
+    else if(CurOP.AddressingMode1 == &Core::DIR){
+        Regs.rip = read(JMPArg);
+    }
+    else if(CurOP.AddressingMode1 == &Core::IMM){
+        Regs.rip = JMPArg;
+    }
+    else if(CurOP.AddressingMode1 == &Core::RDI){
+        // Identify Reg Based on next data
+        uint64_t* Registers = (uint64_t*)&Regs;
+        if(static_cast<uint8_t>(JMPArg) >= sizeof(Regs) / 8){
+            std::cout << "JMP: Attempted to load addressData from a non register: " << static_cast<uint8_t>(JMPArg) << std::endl;
+        }
+        Regs.rip = Registers[static_cast<uint8_t>(JMPArg)];
+
+        // Read in new data
+        Regs.rip = read(Regs.rip);
+    }
+
+    return 1;
+}
+
+uint64_t Core::ADD(){
+    uint64_t* Registers = (uint64_t*)&Regs;
+
+    int Cycles = 1;
+
+    uint64_t Output = read(Regs.rip);
+    Regs.rip += 1;
+    uint64_t Input1 = read(Regs.rip);
+    Regs.rip += (CurOP.AddressingMode1 != &Core::REG && CurOP.AddressingMode1 != &Core::RDI) ? 8 : 1;
+    uint64_t Input2 = read(Regs.rip);
+    Regs.rip += (CurOP.AddressingMode2 != &Core::REG && CurOP.AddressingMode2 != &Core::RDI) ? 8 : 1;
+
+    uint64_t SizeFlag = (Opcode & 0b110000) >> 4;
+
+    // Input 1
+    if(CurOP.AddressingMode1 == &Core::REG){
+        // Identify Reg Based on next data
+        if(static_cast<uint8_t>(Input1) >= sizeof(Regs) / 8){
+            std::cout << "ADD: Attempted to load data from a non register: " << static_cast<uint8_t>(Input1) << std::endl;
+        }
+        Input1 = Registers[static_cast<uint8_t>(Input1)];
+
+        // TODO + non-64Bit and must be same
+    }
+    else if(CurOP.AddressingMode1 == &Core::DIR){
+        Input1 = read(Input1);
+    }
+    else if(CurOP.AddressingMode1 == &Core::IMM){
+        Input1 = Input1;
+    }
+    else if(CurOP.AddressingMode1 == &Core::RDI){
+        // Identify Reg Based on next data
+        if(static_cast<uint8_t>(Input1) >= sizeof(Regs) / 8){
+            std::cout << "ADD: Attempted to load address from a non register: " << static_cast<uint8_t>(Input1) << std::endl;
+        }
+        Input1 = Registers[static_cast<uint8_t>(Input1)];
+
+        // Read in new data
+        Input1 = read(Input1);
+    }
+
+    // Input 2
+    if(CurOP.AddressingMode2 == &Core::REG){
+        // Identify Reg Based on next data
+        if(static_cast<uint8_t>(Input2) >= sizeof(Regs) / 8){
+            std::cout << "ADD: Attempted to load data from a non register: " << static_cast<uint8_t>(Input2) << std::endl;
+        }
+        Input2 = Registers[static_cast<uint8_t>(Input2)];
+
+        // TODO + non-64Bit and must be same
+    }
+    else if(CurOP.AddressingMode2 == &Core::DIR){
+        Input2 = read(Input2);
+    }
+    else if(CurOP.AddressingMode2 == &Core::IMM){
+        Input2 = Input2;
+    }
+    else if(CurOP.AddressingMode2 == &Core::RDI){
+        // Identify Reg Based on next data
+        if(static_cast<uint8_t>(Input2) >= sizeof(Regs) / 8){
+            std::cout << "ADD: Attempted to load address from a non register: " << static_cast<uint8_t>(Input2) << std::endl;
+        }
+        Input2 = Registers[static_cast<uint8_t>(Input2)];
+
+        // Read in new data
+        Input2 = read(Input2);
+    }
+
+    if(static_cast<uint8_t>(Output) >= sizeof(Regs) / 8){
+        std::cout << "ADD: Attempted to Write to a non register: " << static_cast<uint8_t>(Output) << std::endl;
+    }
+
+    if(!SizeFlag){
+        Registers[static_cast<uint8_t>(Output)] = Input1 + Input2;
+
+        // TODO FLAG Checks here
+    }
+    else if(SizeFlag == 1) {
+        uint64_t Data = Input1 + Input2;
+        uint32_t AdaptedData = static_cast<uint32_t>(Data);
+        
+        if(Data > AdaptedData){
+            Regs.status |= CPU_STATUS_OVERFLOW; // Overflow error
+        }
+        if(Data == 0){
+            Regs.status |= CPU_STATUS_ZERO; // Zero Flag
+        }
+
+        // Save to register
+        ((uint32_t*)(&Registers[static_cast<uint8_t>(Output)]))[0] = AdaptedData;
+        Cycles++;
+    }
+    else if(SizeFlag == 2) {
+        uint64_t Data = Input1 + Input2;
+        uint16_t AdaptedData = static_cast<uint16_t>(Data);
+        
+        if(Data > AdaptedData){
+            Regs.status |= CPU_STATUS_OVERFLOW; // Overflow error
+        }
+        if(Data == 0){
+            Regs.status |= CPU_STATUS_ZERO; // Zero Flag
+        }
+
+        // Save to register
+        ((uint16_t*)(&Registers[static_cast<uint8_t>(Output)]))[0] = AdaptedData;
+        Cycles++;
+    }
+    else if(SizeFlag == 3) {
+        uint64_t Data = Input1 + Input2;
+        uint8_t AdaptedData = static_cast<uint8_t>(Data);
+        
+        if(Data > AdaptedData){
+            Regs.status |= CPU_STATUS_OVERFLOW; // Overflow error
+        }
+        if(Data == 0){
+            Regs.status |= CPU_STATUS_ZERO; // Zero Flag
+        }
+
+        // Save to register
+        ((uint8_t*)(&Registers[static_cast<uint8_t>(Output)]))[0] = AdaptedData;
+        Cycles++;
+    }
+
+    return Cycles;
+}
+
+uint64_t Core::PUSH(){
+    int Cycles = 1;
+    uint64_t Reg = read(Regs.rip);
+    Regs.rip += 1;
+    uint64_t* Registers = (uint64_t*)&Regs;
+    
+    if(static_cast<uint8_t>(Reg) >= sizeof(Regs) / 8){
+        std::cout << "PUSH: Attempted to PUSH a non register: " << static_cast<uint8_t>(Reg) << std::endl;
+    }
+
+    write(Regs.rsp, Registers[static_cast<uint8_t>(Reg)]);
+    Regs.rsp -= 8;
+
+    return Cycles;
+}
+
+uint64_t Core::POP(){
+    int Cycles = 1;
+    uint64_t Reg = read(Regs.rip);
+    Regs.rip += 1;
+    uint64_t* Registers = (uint64_t*)&Regs;
+    
+    if(static_cast<uint8_t>(Reg) >= sizeof(Regs) / 8){
+        std::cout << "POP: Attempted to POP to a non register: " << static_cast<uint8_t>(Reg) << std::endl;
+    }
+
+    Registers[static_cast<uint8_t>(Reg)] = read(Regs.rsp);
+    Regs.rsp += 8;
+
+    return Cycles;
 }

@@ -13,6 +13,7 @@
 #define CPU_STATUS_ZERO 1<<0
 #define CPU_STATUS_Interrupt 1<<1
 #define CPU_STATUS_CMP 1<<2
+#define CPU_STATUS_OVERFLOW 1<<3
 
 #define STUB_FUNC {return 0;}
 
@@ -63,11 +64,15 @@ namespace UniCPUEmulator
     public: // Instructions
         // General Purpose
         uint64_t HALT();
+        uint64_t JMP();
 
         // Memory Interactions
         uint64_t MOV();
+        uint64_t PUSH();
+        uint64_t POP();
 
         // Arithmetic
+        uint64_t ADD();
 
         // Comparisons
 
@@ -89,6 +94,7 @@ namespace UniCPUEmulator
 
         std::map<uint16_t, Instruction> LookupTable;
 
+        uint16_t Opcode;
         Instruction CurOP = {};
 
     };

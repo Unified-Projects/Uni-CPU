@@ -49,6 +49,7 @@ int main(int argc, char* argv[]) {
     // constexpr auto ClockPeriod = 1000; // 1 MHz (Any higher wont do much)
     // constexpr auto ClockPeriod = 1000*1000; // 1 KHz
     // constexpr auto ClockPeriod = 1000*1000*1000; // 1 Hz
+    // constexpr auto ClockPeriod = 1000*1000*100; // 10 Hz
     constexpr auto ClockPeriod = 1000*1000*1000*2; // 1/2 Hz (Manual)
 
     while (true)
@@ -75,7 +76,7 @@ int main(int argc, char* argv[]) {
 
             if (DurSinceLast >= 1) {
                 std::cout << "\rClockspeed: " << std::setw(10) << Emulator.ClockSpeed 
-                        << "       Uptime: " << std::setw(6) << Uptime++ << "        RIP: " << std::setw(8) << Emulator.cpu->GetCurrentRegisterStack().rip << "        " << std::flush;
+                        << "       Uptime: " << std::setw(6) << Uptime++ << "        RIP: " << std::setw(8) << Emulator.cpu->GetCurrentRegisterStack().rip << "       RAX: " << std::setw(8) << Emulator.cpu->GetCurrentRegisterStack().rax << "        " << std::flush;
                 LastPrintTime = CurrentTime;
             }
 
