@@ -39,3 +39,16 @@ message(STATUS "C++ Compiler Path: ${CMAKE_CXX_COMPILER}")
 message(STATUS "C++ Compiler Version: ${CMAKE_CXX_COMPILER_VERSION}")
 message(STATUS "Build Type: ${CMAKE_BUILD_TYPE}")
 message(STATUS "C++ Flags (Release): ${CMAKE_CXX_FLAGS_RELEASE}")
+
+# Find SDL2 using pkg-config
+find_package(SDL2 REQUIRED COMPONENTS SDL2)
+
+# Include the SDL2 include directory
+include_directories(${SDL2_INCLUDE_DIRS})
+
+# Link SDL2 libraries
+target_link_libraries(emulator PRIVATE ${SDL2_LIBRARIES})
+
+# Print SDL2 information
+message(STATUS "SDL2 CFLAGS: ${SDL2_CFLAGS}")
+message(STATUS "SDL2 LIBS: ${SDL2_LIBRARIES}")

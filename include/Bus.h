@@ -7,6 +7,19 @@
 
 namespace UniCPUEmulator
 {
+    struct IOMap{
+        uint64_t Address = 0;
+        uint64_t IOBuffer = 0;
+        uint64_t Size = 0;    
+    };
+
+    struct Framebuffer{
+        uint64_t Buffer;
+        uint64_t Size;
+        uint64_t Width;
+        uint64_t Height;
+    };
+
     class Bus{
     public:
         Bus();
@@ -20,13 +33,16 @@ namespace UniCPUEmulator
         RAM* ram;
 
         // IO Mapping
-        // TODO
+        std::vector<IOMap> Mappings = {};
 
         // Serial
         // TODO
 
         // Inputs
         // TODOzs
+
+        // Video
+        Framebuffer VideoOutput = {};
 
         // Clock Count
         uint64_t SystemClockCount = 0;

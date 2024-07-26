@@ -19,6 +19,11 @@ using namespace UniCPUEmulator;
 #define INSTRUCTION_ADD     0b0000000100
 #define INSTRUCTION_PUSH    0b0000000101
 #define INSTRUCTION_POP     0b0000000110
+#define INSTRUCTION_CMP     0b0000000111
+#define INSTRUCTION_JC      0b0000001000
+
+#define CMP_EQU 0
+#define CMP_NEQ 1
 
 #define GenCode(inst, addr1, addr2) ((inst << 6) + (addr1 << 2) + addr2)
 
@@ -65,6 +70,7 @@ Core::Core(){
         // General Purpose
         {GenCode(INSTRUCTION_HALT, REG_MODE_XXX, REG_MODE_XXX), {"HALT", &Core::HALT, &Core::XXX, &Core::XXX, 1}},
         {GenCode(INSTRUCTION_JMP, REG_MODE_REG, REG_MODE_XXX), {"JMP", &Core::JMP, &Core::REG, &Core::XXX, 1}}, {GenCode(INSTRUCTION_JMP, REG_MODE_DIR, REG_MODE_XXX), {"JMP", &Core::JMP, &Core::DIR, &Core::XXX, 1}}, {GenCode(INSTRUCTION_JMP, REG_MODE_IMM, REG_MODE_XXX), {"JMP", &Core::JMP, &Core::IMM, &Core::XXX, 1}}, {GenCode(INSTRUCTION_JMP, REG_MODE_RDI, REG_MODE_XXX), {"JMP", &Core::JMP, &Core::RDI, &Core::XXX, 1}},
+        {GenCode(INSTRUCTION_JC, REG_MODE_REG, REG_MODE_XXX), {"JC", &Core::JC, &Core::REG, &Core::XXX, 1}}, {GenCode(INSTRUCTION_JC, REG_MODE_DIR, REG_MODE_XXX), {"JC", &Core::JC, &Core::DIR, &Core::XXX, 1}}, {GenCode(INSTRUCTION_JC, REG_MODE_IMM, REG_MODE_XXX), {"JC", &Core::JC, &Core::IMM, &Core::XXX, 1}}, {GenCode(INSTRUCTION_JC, REG_MODE_RDI, REG_MODE_XXX), {"JC", &Core::JC, &Core::RDI, &Core::XXX, 1}},
         
         // Memory Interactions
         {GenCode(INSTRUCTION_MOV, REG_MODE_REG, REG_MODE_REG), {"MOV", &Core::MOV, &Core::REG, &Core::REG, 1}}, {GenCode(INSTRUCTION_MOV, REG_MODE_REG, REG_MODE_DIR), {"MOV", &Core::MOV, &Core::REG, &Core::DIR, 1}}, {GenCode(INSTRUCTION_MOV, REG_MODE_REG, REG_MODE_IMM), {"MOV", &Core::MOV, &Core::REG, &Core::IMM, 1}}, {GenCode(INSTRUCTION_MOV, REG_MODE_REG, REG_MODE_RDI), {"MOV", &Core::MOV, &Core::REG, &Core::RDI, 1}},
@@ -81,6 +87,10 @@ Core::Core(){
         {GenCode(INSTRUCTION_ADD, REG_MODE_RDI, REG_MODE_REG), {"ADD", &Core::ADD, &Core::RDI, &Core::REG, 1}}, {GenCode(INSTRUCTION_ADD, REG_MODE_RDI, REG_MODE_DIR), {"ADD", &Core::ADD, &Core::RDI, &Core::DIR, 1}}, {GenCode(INSTRUCTION_ADD, REG_MODE_RDI, REG_MODE_IMM), {"ADD", &Core::ADD, &Core::RDI, &Core::IMM, 1}}, {GenCode(INSTRUCTION_ADD, REG_MODE_RDI, REG_MODE_RDI), {"ADD", &Core::ADD, &Core::RDI, &Core::RDI, 1}},
 
         // Comparisons
+        {GenCode(INSTRUCTION_CMP, REG_MODE_REG, REG_MODE_REG), {"CMP", &Core::CMP, &Core::REG, &Core::REG, 1}}, {GenCode(INSTRUCTION_CMP, REG_MODE_REG, REG_MODE_DIR), {"CMP", &Core::CMP, &Core::REG, &Core::DIR, 1}}, {GenCode(INSTRUCTION_CMP, REG_MODE_REG, REG_MODE_IMM), {"CMP", &Core::CMP, &Core::REG, &Core::IMM, 1}}, {GenCode(INSTRUCTION_CMP, REG_MODE_REG, REG_MODE_RDI), {"CMP", &Core::CMP, &Core::REG, &Core::RDI, 1}},
+        {GenCode(INSTRUCTION_CMP, REG_MODE_DIR, REG_MODE_REG), {"CMP", &Core::CMP, &Core::DIR, &Core::REG, 1}}, {GenCode(INSTRUCTION_CMP, REG_MODE_DIR, REG_MODE_DIR), {"CMP", &Core::CMP, &Core::DIR, &Core::DIR, 1}}, {GenCode(INSTRUCTION_CMP, REG_MODE_DIR, REG_MODE_IMM), {"CMP", &Core::CMP, &Core::DIR, &Core::IMM, 1}}, {GenCode(INSTRUCTION_CMP, REG_MODE_DIR, REG_MODE_RDI), {"CMP", &Core::CMP, &Core::DIR, &Core::RDI, 1}},
+        {GenCode(INSTRUCTION_CMP, REG_MODE_IMM, REG_MODE_REG), {"CMP", &Core::CMP, &Core::IMM, &Core::REG, 1}}, {GenCode(INSTRUCTION_CMP, REG_MODE_IMM, REG_MODE_DIR), {"CMP", &Core::CMP, &Core::IMM, &Core::DIR, 1}}, {GenCode(INSTRUCTION_CMP, REG_MODE_IMM, REG_MODE_IMM), {"CMP", &Core::CMP, &Core::IMM, &Core::IMM, 1}}, {GenCode(INSTRUCTION_CMP, REG_MODE_IMM, REG_MODE_RDI), {"CMP", &Core::CMP, &Core::IMM, &Core::RDI, 1}},
+        {GenCode(INSTRUCTION_CMP, REG_MODE_RDI, REG_MODE_REG), {"CMP", &Core::CMP, &Core::RDI, &Core::REG, 1}}, {GenCode(INSTRUCTION_CMP, REG_MODE_RDI, REG_MODE_DIR), {"CMP", &Core::CMP, &Core::RDI, &Core::DIR, 1}}, {GenCode(INSTRUCTION_CMP, REG_MODE_RDI, REG_MODE_IMM), {"CMP", &Core::CMP, &Core::RDI, &Core::IMM, 1}}, {GenCode(INSTRUCTION_CMP, REG_MODE_RDI, REG_MODE_RDI), {"CMP", &Core::CMP, &Core::RDI, &Core::RDI, 1}},
     };
 
     cycles == 0;
@@ -88,7 +98,7 @@ Core::Core(){
 
 void Core::clock(){
     bool ResetStatus = false;
-    if(Regs.status){
+    if(!cycles && Regs.status){
         ResetStatus = true;
     }
 
@@ -97,7 +107,7 @@ void Core::clock(){
         CurOP = LookupTable[Opcode & OpCodeMASK];
         if(CurOP.InstructionFunction == nullptr){
             // TODO THROW NOOP ERR
-            std::cout << "Invalid Opcode: " << std::hex << Opcode << std::dec << std::endl;
+            std::cout << "Invalid Opcode: " << std::hex << Opcode << std::dec << " / " << Opcode << std::endl;
             return;
         }
 
@@ -195,7 +205,6 @@ uint64_t Core::MOV(){
             Registers[static_cast<uint8_t>(WriteOperand)] = CurrentData;
             Cycles++;
         }
-        // TODO + non-64Bit
     }
     else if(CurOP.AddressingMode1 == &Core::DIR){
         if(!SizeFlag){ // 64-Bit
@@ -309,9 +318,9 @@ uint64_t Core::ADD(){
 
     uint64_t Output = read(Regs.rip);
     Regs.rip += 1;
-    uint64_t Input1 = read(Regs.rip);
+    int64_t Input1 = read(Regs.rip);
     Regs.rip += (CurOP.AddressingMode1 != &Core::REG && CurOP.AddressingMode1 != &Core::RDI) ? 8 : 1;
-    uint64_t Input2 = read(Regs.rip);
+    int64_t Input2 = read(Regs.rip);
     Regs.rip += (CurOP.AddressingMode2 != &Core::REG && CurOP.AddressingMode2 != &Core::RDI) ? 8 : 1;
 
     uint64_t SizeFlag = (Opcode & 0b110000) >> 4;
@@ -458,4 +467,149 @@ uint64_t Core::POP(){
     Regs.rsp += 8;
 
     return Cycles;
+}
+    
+uint64_t Core::CMP(){
+    uint64_t* Registers = (uint64_t*)&Regs;
+
+    int Cycles = 1;
+
+    uint8_t CMP = static_cast<uint8_t>(read(Regs.rip));
+    Regs.rip += 1;
+    uint64_t Input1 = read(Regs.rip);
+    Regs.rip += (CurOP.AddressingMode1 != &Core::REG && CurOP.AddressingMode1 != &Core::RDI) ? 8 : 1;
+    uint64_t Input2 = read(Regs.rip);
+    Regs.rip += (CurOP.AddressingMode2 != &Core::REG && CurOP.AddressingMode2 != &Core::RDI) ? 8 : 1;
+
+    uint64_t SizeFlag = (Opcode & 0b110000) >> 4;
+
+    // Input 1
+    if(CurOP.AddressingMode1 == &Core::REG){
+        // Identify Reg Based on next data
+        if(static_cast<uint8_t>(Input1) >= sizeof(Regs) / 8){
+            std::cout << "CMP: Attempted to load data from a non register: " << static_cast<uint8_t>(Input1) << std::endl;
+        }
+        Input1 = Registers[static_cast<uint8_t>(Input1)];
+    }
+    else if(CurOP.AddressingMode1 == &Core::DIR){
+        Input1 = read(Input1);
+    }
+    else if(CurOP.AddressingMode1 == &Core::IMM){
+        Input1 = Input1;
+    }
+    else if(CurOP.AddressingMode1 == &Core::RDI){
+        // Identify Reg Based on next data
+        if(static_cast<uint8_t>(Input1) >= sizeof(Regs) / 8){
+            std::cout << "CMP: Attempted to load address from a non register: " << static_cast<uint8_t>(Input1) << std::endl;
+        }
+        Input1 = Registers[static_cast<uint8_t>(Input1)];
+
+        // Read in new data
+        Input1 = read(Input1);
+    }
+
+    // Input 2
+    if(CurOP.AddressingMode2 == &Core::REG){
+        // Identify Reg Based on next data
+        if(static_cast<uint8_t>(Input2) >= sizeof(Regs) / 8){
+            std::cout << "CMP: Attempted to load data from a non register: " << static_cast<uint8_t>(Input2) << std::endl;
+        }
+        Input2 = Registers[static_cast<uint8_t>(Input2)];
+    }
+    else if(CurOP.AddressingMode2 == &Core::DIR){
+        Input2 = read(Input2);
+    }
+    else if(CurOP.AddressingMode2 == &Core::IMM){
+        Input2 = Input2;
+    }
+    else if(CurOP.AddressingMode2 == &Core::RDI){
+        // Identify Reg Based on next data
+        if(static_cast<uint8_t>(Input2) >= sizeof(Regs) / 8){
+            std::cout << "CMP: Attempted to load address from a non register: " << static_cast<uint8_t>(Input2) << std::endl;
+        }
+        Input2 = Registers[static_cast<uint8_t>(Input2)];
+
+        // Read in new data
+        Input2 = read(Input2);
+    }
+
+    if(CMP > 1){
+        std::cout << "CMP: Failed to find valid comparison" << std::endl;
+    }
+
+    uint64_t Data1 = 0;
+    uint64_t Data2 = 0;
+
+    if(!SizeFlag){
+        Data1 = Input1;
+        Data2 = Input2;
+    }
+    else if(SizeFlag == 1) {
+        Data1 = static_cast<uint32_t>(Data1);
+        Data2 = static_cast<uint32_t>(Data2);
+    }
+    else if(SizeFlag == 2) {
+        Data1 = static_cast<uint16_t>(Data1);
+        Data2 = static_cast<uint16_t>(Data2);
+    }
+    else if(SizeFlag == 3) {
+        Data1 = static_cast<uint8_t>(Data1);
+        Data2 = static_cast<uint8_t>(Data2);
+    }
+
+    // Compare
+    if(CMP == CMP_EQU){
+        if(Data1 == Data2){
+            Regs.status |= CPU_STATUS_CMP;
+        }
+    }
+    else if(CMP == CMP_NEQ){
+        if(Data1 != Data2){
+            Regs.status |= CPU_STATUS_CMP;
+        }
+    }
+    else{
+        std::cout << "CMP: Invalid cmp" << std::endl;
+    }
+
+    return Cycles;
+}
+
+uint64_t Core::JC(){
+    if(!(Regs.status & CPU_STATUS_CMP)){
+        Regs.rip += 8;
+        return 0;
+    }
+
+    uint64_t JMPArg = read(Regs.rip);
+    Regs.rip += (CurOP.AddressingMode1 != &Core::REG && CurOP.AddressingMode1 != &Core::RDI) ? 8 : 1;
+    
+    // Get the value
+    if(CurOP.AddressingMode1 == &Core::REG){
+        // Identify Reg Based on next data
+        uint64_t* Registers = (uint64_t*)&Regs;
+        if(static_cast<uint8_t>(JMPArg) >= sizeof(Regs) / 8){
+            std::cout << "JC: Attempted to load address from a non register: " << static_cast<uint8_t>(JMPArg) << std::endl;
+        }
+        Regs.rip = Registers[static_cast<uint8_t>(JMPArg)];
+    }
+    else if(CurOP.AddressingMode1 == &Core::DIR){
+        Regs.rip = read(JMPArg);
+    }
+    else if(CurOP.AddressingMode1 == &Core::IMM){
+        Regs.rip = JMPArg;
+    }
+    else if(CurOP.AddressingMode1 == &Core::RDI){
+        // Identify Reg Based on next data
+        uint64_t* Registers = (uint64_t*)&Regs;
+        if(static_cast<uint8_t>(JMPArg) >= sizeof(Regs) / 8){
+            std::cout << "JC: Attempted to load addressData from a non register: " << static_cast<uint8_t>(JMPArg) << std::endl;
+        }
+        Regs.rip = Registers[static_cast<uint8_t>(JMPArg)];
+
+        // Read in new data
+        Regs.rip = read(Regs.rip);
+    }
+
+    return 1;
 }

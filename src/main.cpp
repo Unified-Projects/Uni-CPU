@@ -9,6 +9,125 @@
 
 using namespace std::chrono;
 
+#include <SDL2/SDL.h>
+
+std::atomic<bool> running(true);
+
+
+void RenderFramebuffer(const UniCPUEmulator::Framebuffer* framebuffer) {
+    if (SDL_Init(SDL_INIT_VIDEO) != 0) {
+        std::cerr << "SDL_Init Error: " << SDL_GetError() << std::endl;
+        return;
+    }
+
+    SDL_Window* window = SDL_CreateWindow("Framebuffer Renderer", 
+                                          SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 
+                                          framebuffer->Width, framebuffer->Height, 
+                                          SDL_WINDOW_SHOWN);
+    if (window == nullptr) {
+        std::cerr << "SDL_CreateWindow Error: " << SDL_GetError() << std::endl;
+        SDL_Quit();
+        return;
+    }
+
+    SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+    if (renderer == nullptr) {
+        std::cerr << "SDL_CreateRenderer Error: " << SDL_GetError() << std::endl;
+        SDL_DestroyWindow(window);
+        SDL_Quit();
+        return;
+    }
+
+    SDL_Texture* texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STATIC, framebuffer->Width, framebuffer->Height);
+    if (texture == nullptr) {
+        std::cerr << "SDL_CreateTexture Error: " << SDL_GetError() << std::endl;
+        SDL_DestroyRenderer(renderer);
+        SDL_DestroyWindow(window);
+        SDL_Quit();
+        return;
+    }
+
+    bool running = true;
+    while (running) {
+        SDL_Event event;
+        while (SDL_PollEvent(&event)) {
+            if (event.type == SDL_QUIT) {
+                running = false;
+            }
+        }
+
+        // Update the texture with the current framebuffer content
+        SDL_UpdateTexture(texture, NULL, (void*)framebuffer->Buffer, framebuffer->Width * sizeof(uint32_t));
+
+        SDL_RenderClear(renderer);
+        SDL_RenderCopy(renderer, texture, NULL, NULL);
+        SDL_RenderPresent(renderer);
+        SDL_Delay(16); // ~60 FPS
+    }
+
+    SDL_DestroyTexture(texture);
+    SDL_DestroyRenderer(renderer);
+    SDL_DestroyWindow(window);
+    SDL_Quit();
+}
+
+void EmuClock(UniCPUEmulator::Bus* Emulator){
+    auto LastPrintTime = high_resolution_clock::now();
+    int Uptime = 0;
+    auto ClockPeriod = 0; // No Limit
+    // ClockPeriod = 1000; // 1 MHz (Any higher wont do much)
+    // ClockPeriod = 1000*1000; // 1 KHz
+    // ClockPeriod = 1000*1000*100; // 10 Hz
+    // ClockPeriod = 1000*1000*1000; // 1 Hz
+    // ClockPeriod = 1000*1000*1000*2; // 1/2 Hz (Manual)
+
+    while (true)
+    {
+        if(ClockPeriod > 1000*1000*1000){
+            // Manual clocking
+            int clockCount = 0;
+            std::cin >> clockCount;
+            for(int i = 0; i < clockCount; i++){
+                Emulator->clock();
+            }
+            for(int i = 0; i < 512; i++){
+                std::cout << std::hex << std::setw(2) << (0xFF & ((uint8_t*)Emulator->ram->GetDataBuffer())[i]) << " ";
+            }
+            std::cout << std::dec << std::endl;
+        }
+        else{
+            auto CycleStartTime = high_resolution_clock::now();
+
+            Emulator->clock();
+
+            auto CurrentTime = high_resolution_clock::now();
+            auto DurSinceLast = duration_cast<seconds>(CurrentTime - LastPrintTime).count();
+
+            if (DurSinceLast >= 1) {
+                std::cout << "\rClockspeed: " << std::setw(10) << Emulator->ClockSpeed 
+                        << "       Uptime: " << std::setw(6) << Uptime++ << "        RIP: " << std::setw(8) << Emulator->cpu->GetCurrentRegisterStack().rip << "       RAX: " << std::setw(8) << Emulator->cpu->GetCurrentRegisterStack().rax << "        " << std::flush;
+                LastPrintTime = CurrentTime;
+            }
+
+            // Calculate the time taken for the cycle and sleep if needed
+            auto CycleEndTime = high_resolution_clock::now();
+            auto CycleDurationNano = duration_cast<nanoseconds>(CycleEndTime - CycleStartTime).count();
+            if (CycleDurationNano < ClockPeriod) {
+                // std::this_thread::sleep_for(nanoseconds(ClockPeriod - CycleDurationNano));
+
+                auto RemainingTime = ClockPeriod - CycleDurationNano;
+
+                // Busy-wait for the remaining time
+                auto WaitEnd = high_resolution_clock::now() + nanoseconds(RemainingTime);
+                while (high_resolution_clock::now() < WaitEnd) {
+                    // Do nothing, just wait
+                }
+            }
+        }
+    }
+    std::cout << std::endl;
+}
+
 int main(int argc, char* argv[]) {
     if (argc != 2) {
         std::cerr << "Usage: " << argv[0] << " <filename>" << std::endl;
@@ -41,63 +160,14 @@ int main(int argc, char* argv[]) {
     // Load it into ram
     memcpy(Emulator.ram->GetDataBuffer(), buffer.data(), buffer.size());
 
-    std::cout << std::endl;
+    // Start the clokcing
+    std::thread runThread(EmuClock, &Emulator);
 
-    auto LastPrintTime = high_resolution_clock::now();
-    int Uptime = 0;
-    auto ClockPeriod = 0; // No Limit
-    // ClockPeriod = 1000; // 1 MHz (Any higher wont do much)
-    // ClockPeriod = 1000*1000; // 1 KHz
-    ClockPeriod = 1000*1000*100; // 10 Hz
-    // ClockPeriod = 1000*1000*1000; // 1 Hz
-    // ClockPeriod = 1000*1000*1000*2; // 1/2 Hz (Manual)
+    // Main thread can perform other tasks
 
-    while (true)
-    {
-        if(ClockPeriod > 1000*1000*1000){
-            // Manual clocking
-            int clockCount = 0;
-            std::cin >> clockCount;
-            for(int i = 0; i < clockCount; i++){
-                Emulator.clock();
-            }
-            for(int i = 0; i < 512; i++){
-                std::cout << std::hex << std::setw(2) << (0xFF & ((uint8_t*)Emulator.ram->GetDataBuffer())[i]) << " ";
-            }
-            std::cout << std::dec << std::endl;
-        }
-        else{
-            auto CycleStartTime = high_resolution_clock::now();
+    runThread.detach();
+    // runThread.join();
 
-            Emulator.clock();
-
-            auto CurrentTime = high_resolution_clock::now();
-            auto DurSinceLast = duration_cast<seconds>(CurrentTime - LastPrintTime).count();
-
-            if (DurSinceLast >= 1) {
-                std::cout << "\rClockspeed: " << std::setw(10) << Emulator.ClockSpeed 
-                        << "       Uptime: " << std::setw(6) << Uptime++ << "        RIP: " << std::setw(8) << Emulator.cpu->GetCurrentRegisterStack().rip << "       RAX: " << std::setw(8) << Emulator.cpu->GetCurrentRegisterStack().rax << "        " << std::flush;
-                LastPrintTime = CurrentTime;
-            }
-
-            // Calculate the time taken for the cycle and sleep if needed
-            auto CycleEndTime = high_resolution_clock::now();
-            auto CycleDurationNano = duration_cast<nanoseconds>(CycleEndTime - CycleStartTime).count();
-            if (CycleDurationNano < ClockPeriod) {
-                // std::this_thread::sleep_for(nanoseconds(ClockPeriod - CycleDurationNano));
-
-                auto RemainingTime = ClockPeriod - CycleDurationNano;
-
-                // Busy-wait for the remaining time
-                auto WaitEnd = high_resolution_clock::now() + nanoseconds(RemainingTime);
-                while (high_resolution_clock::now() < WaitEnd) {
-                    // Do nothing, just wait
-                }
-            }
-        }
-
-    }
-    
-
+    RenderFramebuffer(&(Emulator.VideoOutput));
     return 0;
 }

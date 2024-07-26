@@ -15,6 +15,15 @@ Bus::Bus()
 
     cpu = new Core();
     cpu->LoadBus(this);
+
+    VideoOutput = {
+        (uint64_t)(new uint64_t[1280 * 720 * 4]),
+        1280 * 720 * 4,
+        1280,
+        720
+    };
+
+    Mappings.push_back({0x1000000000000, VideoOutput.Buffer, VideoOutput.Size});
 }
 
 Bus::~Bus() {
@@ -56,12 +65,22 @@ void Bus::reset() {
     cpu->LoadBus(this);
 }
 
-
 void Bus::memWrite(uint64_t addr, uint64_t data){
-    // TODO IO Mapping
+    for(auto x : Mappings){
+        if(addr >= x.Address && addr < x.Address + x.Size){
+            ((uint64_t*)x.IOBuffer)[addr - x.Address] = data;
+            return;
+        }
+    }
+
     ram->GetDataBuffer(addr)[0] = data;
 }
 uint64_t Bus::memRead(uint64_t addr, bool bReadOnly){
-    // TODO IO Mapping
+    for(auto x : Mappings){
+        if(addr > x.Address && addr < x.Address + x.Size){
+            return ((uint64_t*)x.IOBuffer)[addr - x.Address];
+        }
+    }
+
     return (ram->GetDataBuffer(addr))[0];
 }

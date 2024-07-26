@@ -65,6 +65,7 @@ namespace UniCPUEmulator
         // General Purpose
         uint64_t HALT();
         uint64_t JMP();
+        uint64_t JC();
 
         // Memory Interactions
         uint64_t MOV();
@@ -75,6 +76,7 @@ namespace UniCPUEmulator
         uint64_t ADD();
 
         // Comparisons
+        uint64_t CMP();
 
     public: // Addressing Modes
         uint64_t REG() {return 0;}; // Register
