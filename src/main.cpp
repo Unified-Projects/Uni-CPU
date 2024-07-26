@@ -104,6 +104,7 @@ int main(int argc, char* argv[]) {
             uint8_t AddrMode2 = 0;
 
             uint8_t BitMode = 0;
+            bool BitOpAllowed = false;
 
             uint16_t Instruction = 0;
 
@@ -116,6 +117,7 @@ int main(int argc, char* argv[]) {
                 Instruction = INSTRUCTION_MOV;
                 OperandCount = 2;
                 LineOffset = 8;
+                BitOpAllowed = true;
             }
             else if(l.content.find("jmp") == 4){
                 Instruction = INSTRUCTION_JMP;
@@ -126,6 +128,7 @@ int main(int argc, char* argv[]) {
                 Instruction = INSTRUCTION_ADD;
                 OperandCount = 3;
                 LineOffset = 8;
+                BitOpAllowed = true;
             }
             else if(l.content.find("push") == 4){
                 Instruction = INSTRUCTION_PUSH;
@@ -173,6 +176,31 @@ int main(int argc, char* argv[]) {
             else{
                 std::cout << "Invalid Operation :: " << l.lineNumber << std::endl;
                 return 0;
+            }
+
+            // Is there a bitOp
+            if(BitOpAllowed){
+                if(l.content.substr(LineOffset).size() <= 2){
+                    std::cout << "Failed to load bitop :: " << l.lineNumber << std::endl;
+                    return -1;
+                }
+
+                std::string Bitop = l.content.substr(LineOffset, 1);
+
+                if(Bitop.data()[0] == 'q'){
+                    BitMode = 0b00;
+                }
+                else if(Bitop.data()[0] == 'd'){
+                    BitMode = 0b01;
+                }
+                else if(Bitop.data()[0] == 'w'){
+                    BitMode = 0b10;
+                }
+                else if(Bitop.data()[0] == 'b'){
+                    BitMode = 0b11;
+                }
+
+                LineOffset += 2;
             }
 
             for(int i = 0; i < OperandCount; i++){
