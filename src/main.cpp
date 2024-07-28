@@ -190,7 +190,7 @@ void EmuClock(UniCPUEmulator::Bus* Emulator){
 
             if (DurSinceLast >= 1) {
                 std::cout << "\rClockspeed: " << std::setw(10) << Emulator->ClockSpeed 
-                        << "       Uptime: " << std::setw(6) << Uptime++ << "        RIP: " << std::setw(8) << Emulator->cpu->GetCurrentRegisterStack().rip << "       RAX: " << std::setw(8) << Emulator->cpu->GetCurrentRegisterStack().rax << "        " << std::flush;
+                        << "       Uptime: " << std::setw(6) << Uptime++ << "        RIP: " << std::setw(8) << Emulator->cpu->GetCurrentRegisterStack().rip << "       RAX: " << std::setw(8) << Emulator->cpu->GetCurrentRegisterStack().rax << "        " << "RBX: " << std::setw(8) << Emulator->cpu->GetCurrentRegisterStack().rbx << "        " << "RCX: " << std::setw(8) << Emulator->cpu->GetCurrentRegisterStack().rcx << std::flush;
                 LastPrintTime = CurrentTime;
             }
 

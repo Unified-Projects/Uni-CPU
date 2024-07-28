@@ -45,6 +45,7 @@ using namespace UniCPUEmulator;
 #define CMP_EQU 0
 #define CMP_NEQ 1
 #define CMP_LEQ 2
+#define CMP_GEQ 3
 
 #define GenCode(inst, addr1, addr2) ((inst << 6) + (addr1 << 2) + addr2)
 
@@ -881,8 +882,8 @@ uint64_t Core::POP(){
         std::cout << "POP: Attempted to POP to a non register: " << static_cast<uint8_t>(Reg) << std::endl;
     }
 
-    Registers[static_cast<uint8_t>(Reg)] = read(Regs.rsp);
     Regs.rsp += 8;
+    Registers[static_cast<uint8_t>(Reg)] = read(Regs.rsp);
 
     return Cycles;
 }
@@ -984,7 +985,11 @@ uint64_t Core::CMP(){
     }
     else if(CMP == CMP_LEQ){
         if(Data1 <= Data2){
-            std::cout << "CMPARED: " << Data1 << " " << Data2 << std::endl;
+            Regs.status |= CPU_STATUS_CMP;
+        }
+    }
+    else if(CMP == CMP_GEQ){
+        if(Data1 >= Data2){
             Regs.status |= CPU_STATUS_CMP;
         }
     }
@@ -1083,8 +1088,8 @@ uint64_t Core::RET(){
     int Cycles = 1;
 
     // Push old rip
-    uint64_t oldRIP = read(Regs.rsp);
     Regs.rsp += 8;
+    uint64_t oldRIP = read(Regs.rsp);
 
     // Move to instruction
     Regs.rip = oldRIP;

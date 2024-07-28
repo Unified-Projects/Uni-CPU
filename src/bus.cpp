@@ -75,6 +75,7 @@ void Bus::memWrite(uint64_t addr, uint64_t data){
 
     ram->GetDataBuffer(addr)[0] = data;
 }
+
 uint64_t Bus::memRead(uint64_t addr, bool bReadOnly){
     for(auto x : Mappings){
         if(addr > x.Address && addr < x.Address + x.Size){
