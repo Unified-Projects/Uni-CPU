@@ -74,10 +74,15 @@ bool hasWhitespaceBeforeSemicolon(const std::string& line) {
     return true;
 }
 
+bool DebugMode = false;
+
 int main(int argc, char* argv[]) {
-    if (argc != 2) {
+    if (argc > 3) {
         std::cerr << "Usage: " << argv[0] << " <filename>" << std::endl;
         return 1;
+    }
+    if(argc == 3){
+        DebugMode = true;
     }
 
     std::string filename = argv[1];
@@ -196,7 +201,7 @@ int main(int argc, char* argv[]) {
             else if(l.content.find("call") == 4){
                 Instruction = INSTRUCTION_CALL;
                 OperandCount = 1;
-                LineOffset = 8;
+                LineOffset = 9;
             }
             else if(l.content.find("mul") == 4){
                 Instruction = INSTRUCTION_MUL;
@@ -234,7 +239,7 @@ int main(int argc, char* argv[]) {
                 LineOffset = 8;
                 BitOpAllowed = true;
             }
-            else if(l.content.find("NOT") == 4){
+            else if(l.content.find("not") == 4){
                 Instruction = INSTRUCTION_NOT;
                 OperandCount = 3;
                 LineOffset = 8;
@@ -289,6 +294,9 @@ int main(int argc, char* argv[]) {
                 std::cout << "Invalid Operation :: " << l.lineNumber << std::endl;
                 return 0;
             }
+            
+            if (DebugMode)
+                std::cout << "Reading Line: " << l.content << " of Type: " << Instruction << std::endl;
 
             // Is there a bitOp
             if(BitOpAllowed){
@@ -313,6 +321,9 @@ int main(int argc, char* argv[]) {
                 }
 
                 LineOffset += 2;
+
+                if (DebugMode)
+                    std::cout << "    BitOp: " << Bitop << std::endl;
             }
 
             for(int i = 0; i < OperandCount; i++){
@@ -333,6 +344,8 @@ int main(int argc, char* argv[]) {
                     bool Found = false;
                     for (auto x : RegisterMap){
                         if(x.first == Register){
+                            if (DebugMode)
+                                std::cout << "    Arg::Special: " << Register << std::endl;
                             Found = true;
                             ArgBytes.push_back(x.second);
                         }
@@ -341,6 +354,9 @@ int main(int argc, char* argv[]) {
                         if(NonReg3){
                             // Will be a number
                             uint8_t Num = std::atoi(Register.data());
+
+                            if (DebugMode)
+                                std::cout << "    Arg::Special: " << (uint16_t)Num << std::endl;
                             
                             ArgBytes.push_back(Num);
                             LineOffset += NextPos + 2;
@@ -375,6 +391,8 @@ int main(int argc, char* argv[]) {
                             for (auto x : RegisterMap){
                                 if(x.first == extractedValue){
                                     Found = true;
+                                    if (DebugMode)
+                                        std::cout << "    Arg::" << i << ":: RDI::" << Arg << std::endl;
                                     ArgBytes.push_back(x.second);
                                     if((OperandCount == 3 && i == 1) || (OperandCount == 2 && i == 0) || (OperandCount == 1 && i == 0)){
                                         AddrMode1 = REG_MODE_RDI;
@@ -387,6 +405,8 @@ int main(int argc, char* argv[]) {
                             if(!Found){
                                 // Must be a label
                                 LabelsNeeded.push_back({BytesOut.size() + 2 + ArgBytes.size(), extractedValue});
+                                if (DebugMode)
+                                    std::cout << "    Arg::" << i << ":: DIR::Label::" << extractedValue << std::endl;
                                 if((OperandCount == 3 && i == 1) || (OperandCount == 2 && i == 0) || (OperandCount == 1 && i == 0)){
                                     AddrMode1 = REG_MODE_DIR;
                                 }
@@ -419,6 +439,9 @@ int main(int argc, char* argv[]) {
                             for(int i = 0; i < 8; i++){
                                 ArgBytes.push_back(((uint8_t*)&val)[i]);
                             }
+                            
+                            if (DebugMode)
+                                std::cout << "    Arg::" << i << ":: DIR::" << val << std::endl;
 
                             if((OperandCount == 3 && i == 1) || (OperandCount == 2 && i == 0) || (OperandCount == 1 && i == 0)){
                                 AddrMode1 = REG_MODE_DIR;
@@ -433,6 +456,10 @@ int main(int argc, char* argv[]) {
                         else{
                             // Must be a label
                             LabelsNeeded.push_back({BytesOut.size() + 2 + ArgBytes.size(), content});
+
+                            if (DebugMode)
+                                std::cout << "    Arg::" << i << ":: DIR::Label::" << content << std::endl;
+
                             if((OperandCount == 3 && i == 1) || (OperandCount == 2 && i == 0) || (OperandCount == 1 && i == 0)){
                                 AddrMode1 = REG_MODE_DIR;
                             }
@@ -471,6 +498,9 @@ int main(int argc, char* argv[]) {
                             ArgBytes.push_back(((uint8_t*)&val)[i]);
                         }
 
+                        if (DebugMode)
+                            std::cout << "    Arg::" << i << ":: IMM::" << val << std::endl;
+
                         if((OperandCount == 3 && i == 1) || (OperandCount == 2 && i == 0) || (OperandCount == 1 && i == 0)){
                             AddrMode1 = REG_MODE_IMM;
                         }
@@ -490,6 +520,8 @@ int main(int argc, char* argv[]) {
                         for (auto x : RegisterMap){
                             if(x.first == extractedValue){
                                 Found = true;
+                                if (DebugMode)
+                                    std::cout << "    Arg::" << Arg << ":: REG::"<< extractedValue << std::endl;
                                 ArgBytes.push_back(x.second);
                                 if((OperandCount == 3 && i == 1) || (OperandCount == 2 && i == 0) || (OperandCount == 1 && i == 0)){
                                     AddrMode1 = REG_MODE_REG;
@@ -509,6 +541,8 @@ int main(int argc, char* argv[]) {
 
                     // Must be a label
                     LabelsNeeded.push_back({BytesOut.size() + 2 + ArgBytes.size(), extractedValue});
+                    if (DebugMode)
+                        std::cout << "    Arg::" << i << ":: IMM::Label::" << extractedValue << std::endl;
                     if((OperandCount == 3 && i == 1) || (OperandCount == 2 && i == 0) || (OperandCount == 1 && i == 0)){
                         AddrMode1 = REG_MODE_IMM;
                     }
@@ -551,6 +585,9 @@ int main(int argc, char* argv[]) {
                 for(int i = 0; i < 8; i++){
                     BytesOut.data()[x.Offset + i] = ((uint8_t*)(&(y.Offset)))[i];
                 }
+
+                if (DebugMode)
+                    std::cout << "Replacing::Label::" << x.Label << " with " << y.Offset << std::endl;
             }
         }
     }
