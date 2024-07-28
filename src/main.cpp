@@ -62,11 +62,16 @@ bool hasWhitespaceBeforeSemicolon(const std::string& line) {
     }
     
     // Check for whitespace immediately before the semicolon
-    if (semicolonPos > 0 && std::isspace(static_cast<unsigned char>(line[semicolonPos - 1]))) {
-        return true;
+    // if (semicolonPos > 0 && std::isspace(static_cast<unsigned char>(line[semicolonPos - 1]))) {
+    //     return true;
+    // }
+    for (int i = 0; i < semicolonPos; i++){
+        if(!std::isspace(line[i])){
+            return false;
+        }
     }
     
-    return false;
+    return true;
 }
 
 int main(int argc, char* argv[]) {
@@ -168,9 +173,9 @@ int main(int argc, char* argv[]) {
             }
             else if(l.content.find("cmp") == 4){
                 Instruction = INSTRUCTION_CMP;
-                NonReg3 = true;
                 OperandCount = 3;
                 LineOffset = 8;
+                NonReg3 = true;
                 BitOpAllowed = true;
             }
             else if(l.content.find("jc") == 4){
@@ -178,52 +183,52 @@ int main(int argc, char* argv[]) {
                 OperandCount = 1;
                 LineOffset = 7;
             }
-            else if(l.content.find("RET") == 4){
+            else if(l.content.find("ret") == 4){
                 Instruction = INSTRUCTION_RET;
                 OperandCount = 0;
                 LineOffset = 8;
             }
-            else if(l.content.find("INT") == 4){
+            else if(l.content.find("int") == 4){
                 Instruction = INSTRUCTION_INT;
                 OperandCount = 1;
                 LineOffset = 8;
             }
-            else if(l.content.find("CALL") == 4){
+            else if(l.content.find("call") == 4){
                 Instruction = INSTRUCTION_CALL;
                 OperandCount = 1;
                 LineOffset = 8;
             }
-            else if(l.content.find("MUL") == 4){
+            else if(l.content.find("mul") == 4){
                 Instruction = INSTRUCTION_MUL;
                 OperandCount = 3;
                 LineOffset = 8;
                 BitOpAllowed = true;
             }
-            else if(l.content.find("DIV") == 4){
+            else if(l.content.find("div") == 4){
                 Instruction = INSTRUCTION_DIV;
                 OperandCount = 3;
                 LineOffset = 8;
                 BitOpAllowed = true;
             }
-            else if(l.content.find("SUB") == 4){
+            else if(l.content.find("sub") == 4){
                 Instruction = INSTRUCTION_SUB;
                 OperandCount = 3;
                 LineOffset = 8;
                 BitOpAllowed = true;
             }
-            else if(l.content.find("LSR") == 4){
+            else if(l.content.find("lsr") == 4){
                 Instruction = INSTRUCTION_LSR;
                 OperandCount = 3;
                 LineOffset = 8;
                 BitOpAllowed = true;
             }
-            else if(l.content.find("LSL") == 4){
+            else if(l.content.find("lsl") == 4){
                 Instruction = INSTRUCTION_LSL;
                 OperandCount = 3;
                 LineOffset = 8;
                 BitOpAllowed = true;
             }
-            else if(l.content.find("AND") == 4){
+            else if(l.content.find("and") == 4){
                 Instruction = INSTRUCTION_AND;
                 OperandCount = 3;
                 LineOffset = 8;
@@ -235,13 +240,13 @@ int main(int argc, char* argv[]) {
                 LineOffset = 8;
                 BitOpAllowed = true;
             }
-            else if(l.content.find("OR") == 4){
+            else if(l.content.find("or") == 4){
                 Instruction = INSTRUCTION_OR;
                 OperandCount = 3;
                 LineOffset = 7;
                 BitOpAllowed = true;
             }
-            else if(l.content.find("XOR") == 4){
+            else if(l.content.find("xor") == 4){
                 Instruction = INSTRUCTION_XOR;
                 OperandCount = 3;
                 LineOffset = 8;
@@ -336,13 +341,16 @@ int main(int argc, char* argv[]) {
                         if(NonReg3){
                             // Will be a number
                             uint8_t Num = std::atoi(Register.data());
+                            
                             ArgBytes.push_back(Num);
+                            LineOffset += NextPos + 2;
                             continue;
                         }
 
                         std::cout << "Invalid: Expected Register :: " << l.lineNumber << std::endl;
                         return -1;
                     }
+
 
                     LineOffset += NextPos + 2;
                 }
