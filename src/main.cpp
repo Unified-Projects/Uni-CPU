@@ -5,6 +5,7 @@
 #include <sstream>
 #include <map>
 #include <algorithm>
+#include <cctype>
 
 #include <stdint.h>
 
@@ -54,6 +55,20 @@ std::vector<uint8_t> BytesOut = {};
 std::vector<LabelToAdd> Labels = {};
 std::vector<LabelToAdd> LabelsNeeded = {};
 
+bool hasWhitespaceBeforeSemicolon(const std::string& line) {
+    size_t semicolonPos = line.find(';');
+    if (semicolonPos == std::string::npos) {
+        return false; // No semicolon found
+    }
+    
+    // Check for whitespace immediately before the semicolon
+    if (semicolonPos > 0 && std::isspace(static_cast<unsigned char>(line[semicolonPos - 1]))) {
+        return true;
+    }
+    
+    return false;
+}
+
 int main(int argc, char* argv[]) {
     if (argc != 2) {
         std::cerr << "Usage: " << argv[0] << " <filename>" << std::endl;
@@ -100,11 +115,17 @@ int main(int argc, char* argv[]) {
     // Example usage: print out the lines with their labels
     for (const auto& l : lines) {
         if(l.content.size() > 0){
+            if(hasWhitespaceBeforeSemicolon(l.content)){
+                continue;
+            }
+
             uint8_t AddrMode1 = 0;
             uint8_t AddrMode2 = 0;
 
             uint8_t BitMode = 0;
             bool BitOpAllowed = false;
+
+            bool NonReg3 = false;
 
             uint16_t Instruction = 0;
 
@@ -118,6 +139,11 @@ int main(int argc, char* argv[]) {
                 OperandCount = 2;
                 LineOffset = 8;
                 BitOpAllowed = true;
+            }
+            else if(l.content.find("halt") == 4){
+                Instruction = INSTRUCTION_HALT;
+                OperandCount = 0;
+                LineOffset = 9;
             }
             else if(l.content.find("jmp") == 4){
                 Instruction = INSTRUCTION_JMP;
@@ -142,8 +168,10 @@ int main(int argc, char* argv[]) {
             }
             else if(l.content.find("cmp") == 4){
                 Instruction = INSTRUCTION_CMP;
+                NonReg3 = true;
                 OperandCount = 3;
                 LineOffset = 8;
+                BitOpAllowed = true;
             }
             else if(l.content.find("jc") == 4){
                 Instruction = INSTRUCTION_JC;
@@ -305,6 +333,13 @@ int main(int argc, char* argv[]) {
                         }
                     }
                     if(!Found){
+                        if(NonReg3){
+                            // Will be a number
+                            uint8_t Num = std::atoi(Register.data());
+                            ArgBytes.push_back(Num);
+                            continue;
+                        }
+
                         std::cout << "Invalid: Expected Register :: " << l.lineNumber << std::endl;
                         return -1;
                     }
@@ -412,14 +447,14 @@ int main(int argc, char* argv[]) {
 
                     // Check for signed numbers
                     bool hasSign = (Arg[0] == '+' || Arg[0] == '-');
-                    size_t i = hasSign ? 1 : 0;
+                    size_t j = (hasSign) ? 1 : 0;
                     bool isNumber = true;
 
-                    while (i < length && (isdigit(Arg[i]) || Arg[i] == '.')) {
-                        ++i;
+                    while (j < length && (isdigit(Arg[j]) || Arg[j] == '.')) {
+                        ++j;
                     }
 
-                    if (i == length) {
+                    if (j == length) {
                         extractedValue = Arg;
 
                         int64_t val = std::atoll(extractedValue.data());
@@ -494,6 +529,10 @@ int main(int argc, char* argv[]) {
             }
         }
         else if(l.label.size() > 0){
+            if(hasWhitespaceBeforeSemicolon(l.label)){
+                continue;
+            }
+
             Labels.push_back({BytesOut.size(), l.label});
         }
     }
