@@ -140,6 +140,85 @@ int main(int argc, char* argv[]) {
                 OperandCount = 1;
                 LineOffset = 8;
             }
+            else if(l.content.find("cmp") == 4){
+                Instruction = INSTRUCTION_CMP;
+                OperandCount = 3;
+                LineOffset = 8;
+            }
+            else if(l.content.find("jc") == 4){
+                Instruction = INSTRUCTION_JC;
+                OperandCount = 1;
+                LineOffset = 7;
+            }
+            else if(l.content.find("RET") == 4){
+                Instruction = INSTRUCTION_RET;
+                OperandCount = 0;
+                LineOffset = 8;
+            }
+            else if(l.content.find("INT") == 4){
+                Instruction = INSTRUCTION_INT;
+                OperandCount = 1;
+                LineOffset = 8;
+            }
+            else if(l.content.find("CALL") == 4){
+                Instruction = INSTRUCTION_CALL;
+                OperandCount = 1;
+                LineOffset = 8;
+            }
+            else if(l.content.find("MUL") == 4){
+                Instruction = INSTRUCTION_MUL;
+                OperandCount = 3;
+                LineOffset = 8;
+                BitOpAllowed = true;
+            }
+            else if(l.content.find("DIV") == 4){
+                Instruction = INSTRUCTION_DIV;
+                OperandCount = 3;
+                LineOffset = 8;
+                BitOpAllowed = true;
+            }
+            else if(l.content.find("SUB") == 4){
+                Instruction = INSTRUCTION_SUB;
+                OperandCount = 3;
+                LineOffset = 8;
+                BitOpAllowed = true;
+            }
+            else if(l.content.find("LSR") == 4){
+                Instruction = INSTRUCTION_LSR;
+                OperandCount = 3;
+                LineOffset = 8;
+                BitOpAllowed = true;
+            }
+            else if(l.content.find("LSL") == 4){
+                Instruction = INSTRUCTION_LSL;
+                OperandCount = 3;
+                LineOffset = 8;
+                BitOpAllowed = true;
+            }
+            else if(l.content.find("AND") == 4){
+                Instruction = INSTRUCTION_AND;
+                OperandCount = 3;
+                LineOffset = 8;
+                BitOpAllowed = true;
+            }
+            else if(l.content.find("NOT") == 4){
+                Instruction = INSTRUCTION_NOT;
+                OperandCount = 3;
+                LineOffset = 8;
+                BitOpAllowed = true;
+            }
+            else if(l.content.find("OR") == 4){
+                Instruction = INSTRUCTION_OR;
+                OperandCount = 3;
+                LineOffset = 7;
+                BitOpAllowed = true;
+            }
+            else if(l.content.find("XOR") == 4){
+                Instruction = INSTRUCTION_XOR;
+                OperandCount = 3;
+                LineOffset = 8;
+                BitOpAllowed = true;
+            }
             else if (l.content.find("db") == 4) {
                 std::string valueStr = l.content.substr(7);
                 int value = std::atoi(valueStr.c_str());
