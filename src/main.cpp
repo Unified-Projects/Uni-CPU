@@ -9,67 +9,152 @@
 
 using namespace std::chrono;
 
-#include <SDL2/SDL.h>
+#ifdef __APPLE__
+    #include <SDL2/SDL.h>
 
-std::atomic<bool> running(true);
+    std::atomic<bool> running(true);
 
 
-void RenderFramebuffer(const UniCPUEmulator::Framebuffer* framebuffer) {
-    if (SDL_Init(SDL_INIT_VIDEO) != 0) {
-        std::cerr << "SDL_Init Error: " << SDL_GetError() << std::endl;
-        return;
-    }
+    void RenderFramebuffer(const UniCPUEmulator::Framebuffer* framebuffer) {
+        if (SDL_Init(SDL_INIT_VIDEO) != 0) {
+            std::cerr << "SDL_Init Error: " << SDL_GetError() << std::endl;
+            return;
+        }
 
-    SDL_Window* window = SDL_CreateWindow("Framebuffer Renderer", 
-                                          SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 
-                                          framebuffer->Width, framebuffer->Height, 
-                                          SDL_WINDOW_SHOWN);
-    if (window == nullptr) {
-        std::cerr << "SDL_CreateWindow Error: " << SDL_GetError() << std::endl;
-        SDL_Quit();
-        return;
-    }
+        SDL_Window* window = SDL_CreateWindow("Framebuffer Renderer", 
+                                            SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 
+                                            framebuffer->Width, framebuffer->Height, 
+                                            SDL_WINDOW_SHOWN);
+        if (window == nullptr) {
+            std::cerr << "SDL_CreateWindow Error: " << SDL_GetError() << std::endl;
+            SDL_Quit();
+            return;
+        }
 
-    SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-    if (renderer == nullptr) {
-        std::cerr << "SDL_CreateRenderer Error: " << SDL_GetError() << std::endl;
-        SDL_DestroyWindow(window);
-        SDL_Quit();
-        return;
-    }
+        SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+        if (renderer == nullptr) {
+            std::cerr << "SDL_CreateRenderer Error: " << SDL_GetError() << std::endl;
+            SDL_DestroyWindow(window);
+            SDL_Quit();
+            return;
+        }
 
-    SDL_Texture* texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STATIC, framebuffer->Width, framebuffer->Height);
-    if (texture == nullptr) {
-        std::cerr << "SDL_CreateTexture Error: " << SDL_GetError() << std::endl;
+        SDL_Texture* texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STATIC, framebuffer->Width, framebuffer->Height);
+        if (texture == nullptr) {
+            std::cerr << "SDL_CreateTexture Error: " << SDL_GetError() << std::endl;
+            SDL_DestroyRenderer(renderer);
+            SDL_DestroyWindow(window);
+            SDL_Quit();
+            return;
+        }
+
+        bool running = true;
+        while (running) {
+            SDL_Event event;
+            while (SDL_PollEvent(&event)) {
+                if (event.type == SDL_QUIT) {
+                    running = false;
+                }
+            }
+
+            // Update the texture with the current framebuffer content
+            SDL_UpdateTexture(texture, NULL, (void*)framebuffer->Buffer, framebuffer->Width * sizeof(uint32_t));
+
+            SDL_RenderClear(renderer);
+            SDL_RenderCopy(renderer, texture, NULL, NULL);
+            SDL_RenderPresent(renderer);
+            SDL_Delay(16); // ~60 FPS
+        }
+
+        SDL_DestroyTexture(texture);
         SDL_DestroyRenderer(renderer);
         SDL_DestroyWindow(window);
         SDL_Quit();
-        return;
     }
+#elif defined _WIN32 || defined _WIN64
+    std::atomic<bool> running(true);
 
-    bool running = true;
-    while (running) {
-        SDL_Event event;
-        while (SDL_PollEvent(&event)) {
-            if (event.type == SDL_QUIT) {
-                running = false;
-            }
+    // Forward declaration of the window procedure function
+    LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+
+    void RenderFramebuffer(const UniCPUEmulator::Framebuffer* framebuffer) {
+        const char* CLASS_NAME = "Framebuffer Renderer";
+
+        WNDCLASS wc = {};
+        wc.lpfnWndProc = WindowProc;
+        wc.hInstance = GetModuleHandle(NULL);
+        wc.lpszClassName = CLASS_NAME;
+
+        if (!RegisterClass(&wc)) {
+            std::cerr << "RegisterClass Error: " << GetLastError() << std::endl;
+            return;
         }
 
-        // Update the texture with the current framebuffer content
-        SDL_UpdateTexture(texture, NULL, (void*)framebuffer->Buffer, framebuffer->Width * sizeof(uint32_t));
+        HWND hwnd = CreateWindowEx(
+            0,
+            CLASS_NAME,
+            "Framebuffer Renderer",
+            WS_OVERLAPPEDWINDOW,
+            CW_USEDEFAULT, CW_USEDEFAULT, framebuffer->Width, framebuffer->Height,
+            NULL,
+            NULL,
+            GetModuleHandle(NULL),
+            NULL
+        );
 
-        SDL_RenderClear(renderer);
-        SDL_RenderCopy(renderer, texture, NULL, NULL);
-        SDL_RenderPresent(renderer);
-        SDL_Delay(16); // ~60 FPS
+        if (hwnd == NULL) {
+            std::cerr << "CreateWindowEx Error: " << GetLastError() << std::endl;
+            return;
+        }
+
+        ShowWindow(hwnd, SW_SHOW);
+
+        HDC hdc = GetDC(hwnd);
+        HBITMAP hbm = CreateCompatibleBitmap(hdc, framebuffer->Width, framebuffer->Height);
+        HDC hdcMem = CreateCompatibleDC(hdc);
+        HGDIOBJ oldBitmap = SelectObject(hdcMem, hbm);
+
+        while (running) {
+            MSG msg;
+            while (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE)) {
+                if (msg.message == WM_QUIT) {
+                    running = false;
+                }
+                TranslateMessage(&msg);
+                DispatchMessage(&msg);
+            }
+
+            // Update the bitmap with the framebuffer content
+            SetDIBits(hdcMem, hbm, 0, framebuffer->Height, framebuffer->Buffer, (BITMAPINFO*)&framebuffer->Width, DIB_RGB_COLORS);
+
+            BitBlt(hdc, 0, 0, framebuffer->Width, framebuffer->Height, hdcMem, 0, 0, SRCCOPY);
+
+            Sleep(16); // ~60 FPS
+        }
+
+        SelectObject(hdcMem, oldBitmap);
+        DeleteDC(hdcMem);
+        DeleteObject(hbm);
+        ReleaseDC(hwnd, hdc);
+        DestroyWindow(hwnd);
     }
 
-    SDL_DestroyTexture(texture);
-    SDL_DestroyRenderer(renderer);
-    SDL_DestroyWindow(window);
-    SDL_Quit();
-}
+    LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
+        switch (uMsg) {
+        case WM_CLOSE:
+            running = false;
+            PostQuitMessage(0);
+            return 0;
+
+        case WM_DESTROY:
+            running = false;
+            PostQuitMessage(0);
+            return 0;
+        }
+
+        return DefWindowProc(hwnd, uMsg, wParam, lParam);
+    }
+#endif
 
 void EmuClock(UniCPUEmulator::Bus* Emulator){
     auto LastPrintTime = high_resolution_clock::now();
