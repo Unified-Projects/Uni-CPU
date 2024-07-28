@@ -66,6 +66,8 @@ namespace UniCPUEmulator
         uint64_t HALT();
         uint64_t JMP();
         uint64_t JC();
+        uint64_t CALL();
+        uint64_t RET();
 
         // Memory Interactions
         uint64_t MOV();
@@ -74,6 +76,9 @@ namespace UniCPUEmulator
 
         // Arithmetic
         uint64_t ADD();
+        uint64_t SUB();
+        uint64_t MUL();
+        uint64_t DIV();
 
         // Comparisons
         uint64_t CMP();
