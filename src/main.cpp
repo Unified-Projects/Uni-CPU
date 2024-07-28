@@ -245,7 +245,7 @@ int main(int argc, char* argv[]) {
     // Load it into ram
     memcpy(Emulator.ram->GetDataBuffer(), buffer.data(), buffer.size());
 
-    // Start the clokcing
+    // Start the clocking
     std::thread runThread(EmuClock, &Emulator);
 
     // Main thread can perform other tasks

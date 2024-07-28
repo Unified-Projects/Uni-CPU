@@ -25,7 +25,7 @@ using namespace UniCPUEmulator;
 #define INSTRUCTION_ADD     0b0000000100 // ADD B R, [X], [Y]
 #define INSTRUCTION_PUSH    0b0000000101 // PUSH R
 #define INSTRUCTION_POP     0b0000000110 // POP R
-#define INSTRUCTION_CMP     0b0000000111 // CMP T, [X], [Y]
+#define INSTRUCTION_CMP     0b0000000111 // CMP T, [X], [Y] 
 #define INSTRUCTION_JC      0b0000001000 // JC [X]
 #define INSTRUCTION_RET     0b0000001001 // RET
 #define INSTRUCTION_INT     0b0000001010 // INT [X]
@@ -42,6 +42,7 @@ using namespace UniCPUEmulator;
 
 #define CMP_EQU 0
 #define CMP_NEQ 1
+#define CMP_LEQ 2
 
 #define GenCode(inst, addr1, addr2) ((inst << 6) + (addr1 << 2) + addr2)
 
@@ -551,10 +552,6 @@ uint64_t Core::CMP(){
         Input2 = read(Input2);
     }
 
-    if(CMP > 1){
-        std::cout << "CMP: Failed to find valid comparison" << std::endl;
-    }
-
     uint64_t Data1 = 0;
     uint64_t Data2 = 0;
 
@@ -583,6 +580,12 @@ uint64_t Core::CMP(){
     }
     else if(CMP == CMP_NEQ){
         if(Data1 != Data2){
+            Regs.status |= CPU_STATUS_CMP;
+        }
+    }
+    else if(CMP == CMP_LEQ){
+        if(Data1 <= Data2){
+            std::cout << "CMPARED: " << Data1 << " " << Data2 << std::endl;
             Regs.status |= CPU_STATUS_CMP;
         }
     }
