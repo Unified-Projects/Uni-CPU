@@ -24,11 +24,11 @@ namespace UniCPUEmulator
     struct CompleteRegisterStack{
         uint64_t r0, r1, r2, r3, r4, r5, r6 = 0; // General Purpose
         uint64_t rax, rbx, rcx, rdx, rsi, rdi = 0; // (Ret), (Argument Registers)
-        uint64_t rsp, rip; // Stack and Instruction pointers
-        uint64_t status, err, interrupt; // Flags
+        uint64_t rsp, rip = 0; // Stack and Instruction pointers
+        uint64_t status, err, interrupt = 0; // Flags
 
-        uint64_t page; // Page Table Address
-        uint64_t conf; // Settings
+        uint64_t page = 0; // Page Table Address
+        uint64_t conf = 0; // Settings
 
         // IDT info
         uint64_t IDT_addr = 0;
