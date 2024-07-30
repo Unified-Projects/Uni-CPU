@@ -1,0 +1,6 @@
+.DS_store
+bin
+.vscode
+build
+*.asm
+*.bytes
