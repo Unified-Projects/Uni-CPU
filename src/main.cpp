@@ -106,6 +106,8 @@ int main(int argc, char* argv[]) {
     uint64_t lineNumber = 0;
 
     while (std::getline(ss, line)) {
+        line = line.substr(0, line.find('\r'));
+
         std::string label;
         std::string content;
         std::size_t colonPos = line.find(':');
@@ -124,6 +126,10 @@ int main(int argc, char* argv[]) {
 
     // Example usage: print out the lines with their labels
     for (const auto& l : lines) {
+        if(DebugMode){
+            std::cout << "LineContent: " << l.content << " Label: " << l.label << std::endl;
+        }
+
         if(l.content.size() > 0){
             if(hasWhitespaceBeforeSemicolon(l.content)){
                 continue;
