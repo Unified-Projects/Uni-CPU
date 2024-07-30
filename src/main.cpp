@@ -72,6 +72,9 @@ using namespace std::chrono;
         SDL_Quit();
     }
 #elif defined _WIN32 || defined _WIN64
+    #include <atomic>
+    #include <windows.h>
+
     std::atomic<bool> running(true);
 
     // Forward declaration of the window procedure function
@@ -125,7 +128,7 @@ using namespace std::chrono;
             }
 
             // Update the bitmap with the framebuffer content
-            SetDIBits(hdcMem, hbm, 0, framebuffer->Height, framebuffer->Buffer, (BITMAPINFO*)&framebuffer->Width, DIB_RGB_COLORS);
+            SetDIBits(hdcMem, hbm, 0, framebuffer->Height, (void*)framebuffer->Buffer, (BITMAPINFO*)&framebuffer->Width, DIB_RGB_COLORS);
 
             BitBlt(hdc, 0, 0, framebuffer->Width, framebuffer->Height, hdcMem, 0, 0, SRCCOPY);
 
