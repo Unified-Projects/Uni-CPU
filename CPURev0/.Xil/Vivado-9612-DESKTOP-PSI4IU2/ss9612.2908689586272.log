@@ -1,0 +1,26 @@
+srcscan starts
+INFO: analyzing module CU (VERI-9002)
+Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/CU.v(30): INFO: undeclared symbol 'DeviceSelect', assumed default net type 'wire' (VERI-2561)
+Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/CU.v(35): WARNING: data object 'CIR' is already declared (VERI-2170)
+Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/CU.v(32): INFO: previous declaration of 'CIR' is from here (VERI-1967)
+Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/CU.v(35): WARNING: second declaration of 'CIR' is ignored (VERI-1329)
+Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/CU.v(49): ERROR: procedural assignment to a non-register Control is not permitted, left-hand side should be reg/integer/time/genvar (VERI-9037)
+Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/CU.v(50): ERROR: procedural assignment to a non-register Data is not permitted, left-hand side should be reg/integer/time/genvar (VERI-9037)
+Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/CU.v(51): ERROR: procedural assignment to a non-register Address is not permitted, left-hand side should be reg/integer/time/genvar (VERI-9037)
+Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/CU.v(52): ERROR: procedural assignment to a non-register SendClock is not permitted, left-hand side should be reg/integer/time/genvar (VERI-9037)
+Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/CU.v(59): ERROR: procedural assignment to a non-register Control is not permitted, left-hand side should be reg/integer/time/genvar (VERI-9037)
+Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/CU.v(60): ERROR: procedural assignment to a non-register Data is not permitted, left-hand side should be reg/integer/time/genvar (VERI-9037)
+Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/CU.v(61): ERROR: procedural assignment to a non-register Address is not permitted, left-hand side should be reg/integer/time/genvar (VERI-9037)
+Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/CU.v(62): ERROR: procedural assignment to a non-register SendClock is not permitted, left-hand side should be reg/integer/time/genvar (VERI-9037)
+Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/CU.v(66): ERROR: procedural assignment to a non-register Address is not permitted, left-hand side should be reg/integer/time/genvar (VERI-9037)
+Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/CU.v(67): ERROR: procedural assignment to a non-register Control is not permitted, left-hand side should be reg/integer/time/genvar (VERI-9037)
+Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/CU.v(68): ERROR: procedural assignment to a non-register SendClock is not permitted, left-hand side should be reg/integer/time/genvar (VERI-9037)
+Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/CU.v(74): ERROR: procedural assignment to a non-register Data is not permitted, left-hand side should be reg/integer/time/genvar (VERI-9037)
+Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/CU.v(75): ERROR: procedural assignment to a non-register SendClock is not permitted, left-hand side should be reg/integer/time/genvar (VERI-9037)
+INFO: analyzing module ZYNQ_CU_0_1 (VERI-9002)
+Listing tops:
+VeriPriorityTop library:cpu mod:ZYNQ_CU_0_1
+VeriTop library:cpu mod:ZYNQ_CU_0_1
+END of tops
+y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ip/ZYNQ_CU_0_1/synth/ZYNQ_CU_0_1.v(58): INFO: compiling module 'ZYNQ_CU_0_1_default' (VERI-1018)
+srcscan exits with return value 0

@@ -1,0 +1,1 @@
+--incr --debug "typical" --relax --mt "2" -L "CPU" -L "xilinx_vip" -L "unisims_ver" -L "secureip" --snapshot "Setup_wrapper_func_impl" "CPU.Setup_wrapper" "CPU.glbl" -log "elaborate.log" 

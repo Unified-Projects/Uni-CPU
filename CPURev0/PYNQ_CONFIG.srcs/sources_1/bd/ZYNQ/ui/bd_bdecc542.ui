@@ -1,0 +1,107 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Addressing View_Layers":"/processing_system7_0_FCLK_CLK0:false|/DeviceSelector_Control_clk:false|/DeviceSelector_Address_clk:false|/processing_system7_0_FCLK_RESET0_N:false|/DeviceSelector_Data_clk:false|",
+   "Addressing View_ScaleFactor":"0.464722",
+   "Addressing View_TopLeft":"11,-357",
+   "Default View_Layers":"/processing_system7_0_FCLK_CLK0:true|/DeviceSelector_Control_clk:true|/DeviceSelector_Address_clk:true|/processing_system7_0_FCLK_RESET0_N:true|/DeviceSelector_Data_clk:true|",
+   "Default View_ScaleFactor":"0.419348",
+   "Default View_TopLeft":"10,-386",
+   "Display-PortTypeClock":"true",
+   "Display-PortTypeOthers":"true",
+   "Display-PortTypeReset":"true",
+   "ExpandedHierarchyInLayout":"",
+   "Interfaces View_ExpandedHierarchyInLayout":"",
+   "Interfaces View_Layers":"/processing_system7_0_FCLK_CLK0:false|/DeviceSelector_Control_clk:false|/DeviceSelector_Address_clk:false|/processing_system7_0_FCLK_RESET0_N:false|/DeviceSelector_Data_clk:false|",
+   "Interfaces View_Layout":"# # String gsaved with Nlview 7.7.1 2023-07-26 3bc4126617 VDI=43 GEI=38 GUI=JA:21.0
+#  -string -flagsOSRD
+preplace port MDIO_PHY_0 -pg 1 -lvl 3 -x 630 -y 80 -defaultsOSRD
+preplace port RGMII_0 -pg 1 -lvl 3 -x 630 -y 100 -defaultsOSRD
+preplace port DDR -pg 1 -lvl 3 -x 630 -y 20 -defaultsOSRD
+preplace port FIXED_IO -pg 1 -lvl 3 -x 630 -y 160 -defaultsOSRD
+preplace port UART_0_0 -pg 1 -lvl 3 -x 630 -y 180 -defaultsOSRD
+preplace inst gmii_to_rgmii_0 -pg 1 -lvl 2 -x 480 -y 90 -defaultsOSRD
+preplace inst processing_system7_0 -pg 1 -lvl 1 -x 170 -y 150 -defaultsOSRD
+preplace netloc gmii_to_rgmii_0_MDIO_PHY 1 2 1 NJ 80
+preplace netloc gmii_to_rgmii_0_RGMII 1 2 1 NJ 100
+preplace netloc processing_system7_0_DDR 1 1 2 340J 20 NJ
+preplace netloc processing_system7_0_FIXED_IO 1 1 2 NJ 160 NJ
+preplace netloc processing_system7_0_GMII_ETHERNET_0 1 1 1 N 100
+preplace netloc processing_system7_0_MDIO_ETHERNET_0 1 1 1 350 80n
+preplace netloc processing_system7_0_UART_0 1 1 2 NJ 180 NJ
+levelinfo -pg 1 0 170 480 630
+pagesize -pg 1 -db -bbox -sgen 0 0 770 260
+",
+   "Interfaces View_ScaleFactor":"1.0",
+   "Interfaces View_TopLeft":"-542,-310",
+   "guistr":"# # String gsaved with Nlview 7.7.1 2023-07-26 3bc4126617 VDI=43 GEI=38 GUI=JA:21.0 threadsafe
+#  -string -flagsOSRD
+preplace port DDR -pg 1 -lvl 14 -x 4340 -y 910 -defaultsOSRD
+preplace port FIXED_IO -pg 1 -lvl 14 -x 4340 -y 930 -defaultsOSRD
+preplace inst gmii_to_rgmii_0 -pg 1 -lvl 2 -x 690 -y 1090 -defaultsOSRD
+preplace inst processing_system7_0 -pg 1 -lvl 1 -x 240 -y 940 -defaultsOSRD
+preplace inst util_vector_logic_0 -pg 1 -lvl 1 -x 240 -y 1130 -defaultsOSRD
+preplace inst BUS_Control -pg 1 -lvl 9 -x 2920 -y 590 -defaultsOSRD
+preplace inst BUS_Data -pg 1 -lvl 5 -x 1640 -y 510 -defaultsOSRD
+preplace inst BUS_Address -pg 1 -lvl 13 -x 4150 -y 350 -defaultsOSRD
+preplace inst CU_0 -pg 1 -lvl 10 -x 3270 -y 110 -defaultsOSRD
+preplace inst ALU_0 -pg 1 -lvl 2 -x 690 -y 410 -defaultsOSRD
+preplace inst MM_0 -pg 1 -lvl 6 -x 2010 -y 780 -defaultsOSRD
+preplace inst BusMerger_Data -pg 1 -lvl 4 -x 1290 -y 380 -defaultsOSRD
+preplace inst DeviceSelector_Data -pg 1 -lvl 3 -x 1000 -y 760 -defaultsOSRD
+preplace inst BusMerger_Control -pg 1 -lvl 8 -x 2620 -y 550 -defaultsOSRD
+preplace inst BusMerger_Address -pg 1 -lvl 12 -x 3850 -y 370 -defaultsOSRD
+preplace inst DeviceSelector_Control -pg 1 -lvl 7 -x 2320 -y 590 -defaultsOSRD
+preplace inst DeviceSelector_Address -pg 1 -lvl 11 -x 3570 -y 440 -defaultsOSRD
+preplace inst IOController_0 -pg 1 -lvl 2 -x 690 -y 610 -defaultsOSRD
+preplace netloc ALU_0_ClockPulse 1 2 9 840 500 NJ 500 1440J 390 NJ 390 2180 390 NJ 390 NJ 390 NJ 390 3450J
+preplace netloc ALU_0_ResultAddr 1 2 10 880 480 1130J 490 1430J 320 NJ 320 NJ 320 NJ 320 NJ 320 NJ 320 NJ 320 3700J
+preplace netloc ALU_0_ResultCtrl 1 2 6 870J 490 1110J 570 1430J 610 1840J 490 NJ 490 2450
+preplace netloc ALU_0_ResultData 1 2 2 840 370 NJ
+preplace netloc BUS_Address_ALU 1 1 13 520 240 NJ 240 NJ 240 NJ 240 NJ 240 NJ 240 NJ 240 NJ 240 NJ 240 NJ 240 NJ 240 NJ 240 4290
+preplace netloc BUS_Address_CU 1 9 5 3120 220 NJ 220 NJ 220 NJ 220 4320
+preplace netloc BUS_Address_IO 1 1 13 490 210 NJ 210 NJ 210 NJ 210 NJ 210 NJ 210 NJ 210 NJ 210 3100J 230 NJ 230 NJ 230 NJ 230 4310
+preplace netloc BUS_Address_MM 1 5 9 1850 330 NJ 330 NJ 330 NJ 330 NJ 330 NJ 330 3680J 500 NJ 500 4300
+preplace netloc BUS_Control_ALU 1 1 9 470 200 NJ 200 NJ 200 NJ 200 NJ 200 NJ 200 NJ 200 NJ 200 3070
+preplace netloc BUS_Control_CU 1 9 1 3110 100n
+preplace netloc BUS_Control_ClockOut 1 1 9 500 220 NJ 220 NJ 220 NJ 220 1810 220 NJ 220 NJ 220 NJ 220 3090
+preplace netloc BUS_Control_IO 1 1 9 510 230 NJ 230 NJ 230 NJ 230 NJ 230 NJ 230 NJ 230 NJ 230 3080
+preplace netloc BUS_Control_MM 1 5 5 1860 400 NJ 400 NJ 400 NJ 400 3060
+preplace netloc BUS_Data_ALU 1 1 5 530 250 NJ 250 NJ 250 NJ 250 1780
+preplace netloc BUS_Data_CU 1 5 5 1800J 190 NJ 190 NJ 190 NJ 190 3100
+preplace netloc BUS_Data_IO 1 1 5 540 260 NJ 260 NJ 260 NJ 260 1790
+preplace netloc BUS_Data_MM 1 5 1 1800 510n
+preplace netloc BusMerger_Address_OutBus 1 12 1 3990 350n
+preplace netloc BusMerger_Control_OutBus 1 8 1 2760 550n
+preplace netloc BusMerger_Data_OutBus 1 4 1 1470 380n
+preplace netloc CU_0_Address 1 10 2 NJ 120 3710
+preplace netloc CU_0_Control 1 7 4 2480 250 NJ 250 NJ 250 3430
+preplace netloc CU_0_Data 1 3 8 1150 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 3420
+preplace netloc CU_0_SendClock 1 2 9 880 540 NJ 540 1480J 380 NJ 380 2210 380 NJ 380 NJ 380 NJ 380 3460
+preplace netloc DeviceSelector_Address_clk 1 11 2 3690 490 4000
+preplace netloc DeviceSelector_Address_dev 1 11 2 3710 480 4010
+preplace netloc DeviceSelector_Control_clk 1 7 2 2430 430 2780
+preplace netloc DeviceSelector_Control_dev 1 7 2 2470 440 2770
+preplace netloc DeviceSelector_Data_clk 1 3 2 1120 520 1490J
+preplace netloc DeviceSelector_Data_dev 1 3 2 1140 530 NJ
+preplace netloc IOController_0_ResultAddr 1 2 10 860 550 NJ 550 1450J 350 NJ 350 NJ 350 NJ 350 NJ 350 NJ 350 NJ 350 3690J
+preplace netloc IOController_0_ResultCtrl 1 2 6 NJ 620 NJ 620 NJ 620 1830J 480 NJ 480 2460
+preplace netloc IOController_0_ResultData 1 2 2 850J 470 1110
+preplace netloc IOController_0_SendClock 1 2 9 870 560 NJ 560 1500J 410 NJ 410 2160 410 NJ 410 NJ 410 NJ 410 3430J
+preplace netloc MM_0_ClockPulse 1 2 9 890 670 NJ 670 NJ 670 NJ 670 2190 420 NJ 420 NJ 420 NJ 420 3440
+preplace netloc MM_0_ResultAddr 1 6 6 2170J 340 NJ 340 NJ 340 NJ 340 NJ 340 N
+preplace netloc MM_0_ResultCtrl 1 6 2 2200J 500 2440
+preplace netloc MM_0_ResultData 1 3 4 1150 630 NJ 630 NJ 630 2160
+preplace netloc processing_system7_0_FCLK_CLK0 1 1 1 470 990n
+preplace netloc processing_system7_0_FCLK_RESET0_N 1 0 10 20 1070 480 510 NJ 510 NJ 510 1460J 400 1820 80 NJ 80 NJ 80 NJ 80 N
+preplace netloc util_vector_logic_0_Res 1 1 1 460 1090n
+preplace netloc processing_system7_0_GMII_ETHERNET_0 1 1 1 540 870n
+preplace netloc processing_system7_0_MDIO_ETHERNET_0 1 1 1 510 890n
+preplace netloc processing_system7_0_DDR 1 1 13 NJ 910 NJ 910 NJ 910 NJ 910 NJ 910 NJ 910 NJ 910 NJ 910 NJ 910 NJ 910 NJ 910 NJ 910 NJ
+preplace netloc processing_system7_0_FIXED_IO 1 1 13 NJ 930 NJ 930 NJ 930 NJ 930 NJ 930 NJ 930 NJ 930 NJ 930 NJ 930 NJ 930 NJ 930 NJ 930 NJ
+levelinfo -pg 1 0 240 690 1000 1290 1640 2010 2320 2620 2920 3270 3570 3850 4150 4340
+pagesize -pg 1 -db -bbox -sgen 0 0 4460 1250
+"
+}
+{
+   "da_ps7_cnt":"3"
+}

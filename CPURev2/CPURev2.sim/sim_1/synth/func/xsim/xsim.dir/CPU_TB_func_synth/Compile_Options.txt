@@ -1,0 +1,1 @@
+--incr --debug "typical" --relax --mt "2" -L "CPU" -L "xilinx_vip" -L "unisims_ver" -L "secureip" --snapshot "CPU_TB_func_synth" "CPU.CPU_TB" "CPU.glbl" -log "elaborate.log" 

@@ -1,0 +1,14 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.ip_user_files/bd/ZYNQ/ip/ZYNQ_gmii_to_rgmii_0_0/synth/ZYNQ_gmii_to_rgmii_0_0_clocking.vhd" into library cpu
+INFO: [VRFC 10-3107] analyzing entity 'ZYNQ_gmii_to_rgmii_0_0_clocking'
+INFO: [VRFC 10-163] Analyzing VHDL file "Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.ip_user_files/bd/ZYNQ/ip/ZYNQ_gmii_to_rgmii_0_0/synth/ZYNQ_gmii_to_rgmii_0_0_resets.vhd" into library cpu
+INFO: [VRFC 10-3107] analyzing entity 'ZYNQ_gmii_to_rgmii_0_0_resets'
+INFO: [VRFC 10-163] Analyzing VHDL file "Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.ip_user_files/bd/ZYNQ/ip/ZYNQ_gmii_to_rgmii_0_0/synth/ZYNQ_gmii_to_rgmii_0_0_support.vhd" into library cpu
+INFO: [VRFC 10-3107] analyzing entity 'ZYNQ_gmii_to_rgmii_0_0_support'
+INFO: [VRFC 10-163] Analyzing VHDL file "Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.ip_user_files/bd/ZYNQ/ip/ZYNQ_gmii_to_rgmii_0_0/synth/ZYNQ_gmii_to_rgmii_0_0_reset_sync.vhd" into library cpu
+INFO: [VRFC 10-3107] analyzing entity 'ZYNQ_gmii_to_rgmii_0_0_reset_sync'
+INFO: [VRFC 10-163] Analyzing VHDL file "Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.ip_user_files/bd/ZYNQ/ip/ZYNQ_gmii_to_rgmii_0_0/synth/ZYNQ_gmii_to_rgmii_0_0_block.vhd" into library cpu
+INFO: [VRFC 10-3107] analyzing entity 'ZYNQ_gmii_to_rgmii_0_0_block'
+INFO: [VRFC 10-163] Analyzing VHDL file "Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.ip_user_files/bd/ZYNQ/ip/ZYNQ_gmii_to_rgmii_0_0/ZYNQ_gmii_to_rgmii_0_0/simulation/demo_tb.vhd" into library cpu
+INFO: [VRFC 10-3107] analyzing entity 'demo_tb'
+INFO: [VRFC 10-163] Analyzing VHDL file "Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.ip_user_files/bd/ZYNQ/ip/ZYNQ_gmii_to_rgmii_0_0/synth/ZYNQ_gmii_to_rgmii_0_0.vhd" into library cpu
+INFO: [VRFC 10-3107] analyzing entity 'ZYNQ_gmii_to_rgmii_0_0'

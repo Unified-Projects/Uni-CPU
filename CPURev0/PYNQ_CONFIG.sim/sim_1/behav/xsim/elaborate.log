@@ -1,0 +1,186 @@
+Vivado Simulator v2024.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2024.1/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L CPU -L cpu -L gmii_to_rgmii_v4_1_14 -L axi_infrastructure_v1_1_0 -L axi_vip_v1_1_4 -L processing_system7_vip_v1_0_6 -L util_vector_logic_v2_0_4 -L uvm -L xilinx_vip -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot ZYNQ_wrapper_behav cpu.ZYNQ_wrapper cpu.glbl -log elaborate.log 
+Using 2 slave threads.
+WARNING: [XSIM 43-3431] One or more environment variables have been detected which affect the operation of the C compiler. These are typically not set in standard installations and are not tested by AMD, however they may be appropriate for your system, so the flow will attempt to continue.  If errors occur, try running xelab with the "-mt off -v 1" switches to see more information from the C compiler. The following environment variables have been detected:
+Starting static elaboration
+Pass Through NonSizing Optimizer
+WARNING: [VRFC 10-3091] actual bit length 128 differs from formal bit length 64 for port 'WR_DATA_STRB' [../../../../PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_6_axi_gp.v:208]
+WARNING: [VRFC 10-3091] actual bit length 12 differs from formal bit length 6 for port 'm_axi_bid' [Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_vl_rfs.sv:5463]
+WARNING: [VRFC 10-3091] actual bit length 12 differs from formal bit length 6 for port 'm_axi_rid' [Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_vl_rfs.sv:5481]
+WARNING: [VRFC 10-3091] actual bit length 128 differs from formal bit length 64 for port 'WR_DATA_STRB' [../../../../PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_6_axi_gp.v:292]
+WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 9 for port 'WR_BYTES' [../../../../PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_6_axi_hp.v:80]
+WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 9 for port 'RD_BYTES' [../../../../PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_6_axi_hp.v:89]
+WARNING: [VRFC 10-3091] actual bit length 12 differs from formal bit length 6 for port 'm_axi_bid' [Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_vl_rfs.sv:10170]
+WARNING: [VRFC 10-3091] actual bit length 12 differs from formal bit length 6 for port 'm_axi_rid' [Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_vl_rfs.sv:10188]
+WARNING: [VRFC 10-3091] actual bit length 32 differs from formal bit length 64 for port 'm_axi_rdata' [Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_vl_rfs.sv:10189]
+WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 9 for port 'WR_BYTES' [../../../../PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_6_axi_hp.v:165]
+WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 9 for port 'RD_BYTES' [../../../../PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_6_axi_hp.v:174]
+WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 9 for port 'WR_BYTES' [../../../../PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_6_axi_hp.v:251]
+WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 9 for port 'RD_BYTES' [../../../../PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_6_axi_hp.v:260]
+WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 9 for port 'WR_BYTES' [../../../../PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_6_axi_hp.v:337]
+WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 9 for port 'RD_BYTES' [../../../../PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_6_axi_hp.v:346]
+WARNING: [VRFC 10-3091] actual bit length 12 differs from formal bit length 3 for port 'm_axi_bid' [Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_vl_rfs.sv:7074]
+WARNING: [VRFC 10-3091] actual bit length 12 differs from formal bit length 3 for port 'm_axi_rid' [Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_vl_rfs.sv:7092]
+WARNING: [VRFC 10-3091] actual bit length 32 differs from formal bit length 64 for port 'm_axi_rdata' [Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_vl_rfs.sv:7093]
+WARNING: [VRFC 10-5021] port 'ref_clk_out' is not connected on this instance [Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.ip_user_files/bd/ZYNQ/sim/ZYNQ.v:302]
+WARNING: [VRFC 10-5021] port 'ENET0_GMII_RXD' is not connected on this instance [Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.ip_user_files/bd/ZYNQ/ip/ZYNQ_processing_system7_0_0/sim/ZYNQ_processing_system7_0_0.v:147]
+WARNING: [VRFC 10-3129] assignment to input 'wr_dv_ocm_gp0' [Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_vl_rfs.sv:4289]
+WARNING: [VRFC 10-3129] assignment to input 'wr_dv_ddr_gp0' [Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_vl_rfs.sv:4290]
+WARNING: [VRFC 10-3129] assignment to input 'wr_dv_ocm_gp1' [Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_vl_rfs.sv:4311]
+WARNING: [VRFC 10-3129] assignment to input 'wr_dv_ddr_gp1' [Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_vl_rfs.sv:4312]
+WARNING: [VRFC 10-3129] assignment to input 'wr_dv_ddr_hp0' [Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_vl_rfs.sv:4382]
+WARNING: [VRFC 10-3129] assignment to input 'wr_dv_ddr_hp1' [Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_vl_rfs.sv:4400]
+WARNING: [VRFC 10-3129] assignment to input 'wr_dv_ddr_hp2' [Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_vl_rfs.sv:4418]
+WARNING: [VRFC 10-3129] assignment to input 'wr_dv_ddr_hp3' [Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_vl_rfs.sv:4436]
+WARNING: [VRFC 10-3129] assignment to input 'ddr_wr_qos' [Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_vl_rfs.sv:1203]
+WARNING: [VRFC 10-3129] assignment to input 'ddr_rd_qos' [Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_vl_rfs.sv:1226]
+WARNING: [VRFC 10-3129] assignment to input 'ddr_wr_qos' [Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_vl_rfs.sv:1041]
+WARNING: [VRFC 10-3129] assignment to input 'ddr_rd_qos' [Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_vl_rfs.sv:1065]
+WARNING: [VRFC 10-3027] 'ocm_wr_strb_port0' was previously declared with a different range [Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_vl_rfs.sv:3726]
+WARNING: [VRFC 10-3705] select index 64 into 'wrp_strb' is out of bounds [Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_vl_rfs.sv:6051]
+WARNING: [VRFC 10-3705] select index 128 into 'wrp_strb' is out of bounds [Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_vl_rfs.sv:10811]
+WARNING: [VRFC 10-3705] select index 128 into 'wrp_strb' is out of bounds [Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_vl_rfs.sv:7689]
+WARNING: [VRFC 10-3705] select index 4 into 'wr_fifo_rd_ptr' is out of bounds [Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_vl_rfs.sv:7902]
+WARNING: [VRFC 10-3705] select index 4 into 'ar_cnt' is out of bounds [Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_vl_rfs.sv:8041]
+WARNING: [VRFC 10-3705] select index 4 into 'wr_rresp_cnt' is out of bounds [Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_vl_rfs.sv:8138]
+WARNING: [VRFC 10-3705] select index 4 into 'rd_fifo_wr_ptr' is out of bounds [Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_vl_rfs.sv:8157]
+WARNING: [VRFC 10-3705] select index 4 into 'rd_cnt' is out of bounds [Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_vl_rfs.sv:8298]
+WARNING: [VRFC 10-3705] select index 4 into 'rresp_time_cnt' is out of bounds [Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_vl_rfs.sv:8303]
+WARNING: [VRFC 10-3705] select index 4 into 'rd_fifo_rd_ptr' is out of bounds [Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_vl_rfs.sv:8308]
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling package unisim.vcomponents
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_signed
+Compiling package ieee.vital_timing
+Compiling package ieee.vital_primitives
+Compiling package unisim.vpkg
+Compiling package xilinx_vip.axi_vip_pkg
+Compiling package xilinx_vip.xil_common_vip_pkg
+Compiling package std.std
+Compiling module unisims_ver.IOBUF
+Compiling module cpu.ALU
+Compiling module cpu.ZYNQ_ALU_0_1
+Compiling module cpu.BUS
+Compiling module cpu.ZYNQ_BUS_2_0
+Compiling module cpu.ZYNQ_BUS_0_0
+Compiling module cpu.ZYNQ_BUS_1_0
+Compiling module cpu.BusMerger
+Compiling module xil_defaultlib.ZYNQ_BusMerger_2_0
+Compiling module xil_defaultlib.ZYNQ_BusMerger_1_0
+Compiling module xil_defaultlib.ZYNQ_BusMerger_0_0
+Compiling module cpu.CU
+Compiling module xil_defaultlib.ZYNQ_CU_0_1
+Compiling module cpu.DeviceSelector
+Compiling module xil_defaultlib.ZYNQ_DeviceSelector_0_1
+Compiling module xil_defaultlib.ZYNQ_DeviceSelector_1_0
+Compiling module xil_defaultlib.ZYNQ_DeviceSelector_0_0
+Compiling module cpu.Dummy
+Compiling module xil_defaultlib.ZYNQ_Dummy_0_0
+Compiling module cpu.IOController
+Compiling module xil_defaultlib.ZYNQ_IOController_0_0
+Compiling module cpu.InoutBusSplitter
+Compiling module xil_defaultlib.ZYNQ_InoutBusSplitter_0_0
+Compiling module cpu.MM
+Compiling module xil_defaultlib.ZYNQ_MM_0_1
+Compiling architecture bufg_v of entity unisim.BUFG [bufg_default]
+Compiling architecture mmcme2_adv_v of entity unisim.MMCME2_ADV [\MMCME2_ADV(clkin1_period=5.0,cl...]
+Compiling architecture bufr_v of entity unisim.BUFR [\BUFR(bufr_divide="4")(1,1)(1,7)...]
+Compiling architecture rtl of entity cpu.ZYNQ_gmii_to_rgmii_0_0_clocking [zynq_gmii_to_rgmii_0_0_clocking_...]
+Compiling architecture fdpe_v of entity unisim.FDPE [fdpe_default]
+Compiling architecture fdp_v of entity unisim.FDP [fdp_default]
+Compiling architecture rtl of entity cpu.ZYNQ_gmii_to_rgmii_0_0_reset_sync [zynq_gmii_to_rgmii_0_0_reset_syn...]
+Compiling architecture rtl of entity cpu.ZYNQ_gmii_to_rgmii_0_0_resets [zynq_gmii_to_rgmii_0_0_resets_de...]
+Compiling architecture idelayctrl_v of entity unisim.IDELAYCTRL [\IDELAYCTRL(1,7)\]
+Compiling architecture bufgctrl_v of entity unisim.BUFGCTRL [\BUFGCTRL(preselect_i0=true)(1,4...]
+Compiling architecture inv_v of entity unisim.INV [inv_default]
+Compiling architecture bufgmux_v of entity unisim.BUFGMUX [\BUFGMUX(1,4)\]
+Compiling architecture obuf_v of entity unisim.OBUF [\OBUF(1,9)(1,7)(1,4)\]
+Compiling architecture ibuf_v of entity unisim.IBUF [\IBUF(1,9)(1,1)(1,4)(1,7)\]
+Compiling architecture oddr_v of entity unisim.ODDR [\ODDR(ddr_clk_edge="SAME_EDGE")(...]
+Compiling architecture bufio_v of entity unisim.BUFIO [bufio_default]
+Compiling architecture idelaye2_v of entity unisim.IDELAYE2 [\IDELAYE2(idelay_value=16)(1,5)(...]
+Compiling architecture iodelaye1_v of entity unisim.IODELAYE1 [\IODELAYE1(idelay_type="FIXED",i...]
+Compiling architecture iddr_v of entity unisim.IDDR [\IDDR(ddr_clk_edge="SAME_EDGE_PI...]
+Compiling architecture rtl of entity gmii_to_rgmii_v4_1_14.gmii_to_rgmii_core [\gmii_to_rgmii_core(c_versal_sim...]
+Compiling architecture rtl of entity gmii_to_rgmii_v4_1_14.reset_sync [reset_sync_default]
+Compiling architecture fdre_v of entity unisim.FDRE [fdre_default]
+Compiling architecture fd_v of entity unisim.FD [fd_default]
+Compiling architecture structural of entity gmii_to_rgmii_v4_1_14.sync_block [sync_block_default]
+Compiling architecture rtl of entity gmii_to_rgmii_v4_1_14.MDIO_INTERFACE [mdio_interface_default]
+Compiling architecture rtl of entity gmii_to_rgmii_v4_1_14.MDIO_SPEED_DEC [mdio_speed_dec_default]
+Compiling architecture rtl of entity gmii_to_rgmii_v4_1_14.MANAGEMENT [management_default]
+Compiling architecture rtl of entity gmii_to_rgmii_v4_1_14.gmii_to_rgmii_gen [\gmii_to_rgmii_gen(c_rgmii_txc_o...]
+Compiling architecture xilinx of entity gmii_to_rgmii_v4_1_14.gmii_to_rgmii_v4_1_14 [\gmii_to_rgmii_v4_1_14(c_rgmii_t...]
+Compiling architecture block_level of entity cpu.ZYNQ_gmii_to_rgmii_0_0_block [zynq_gmii_to_rgmii_0_0_block_def...]
+Compiling architecture wrapper of entity cpu.ZYNQ_gmii_to_rgmii_0_0_support [zynq_gmii_to_rgmii_0_0_support_d...]
+Compiling architecture wrapper of entity cpu.ZYNQ_gmii_to_rgmii_0_0 [zynq_gmii_to_rgmii_0_0_default]
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_ge...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_ge...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_ar...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_ar...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_fm...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_ar...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_ar...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_ar...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_ar...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_ss...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_in...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_sp...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_dd...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_oc...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_oc...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_re...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_re...
+Compiling module xilinx_vip.axi_vip_axi4pc(WDATA_WIDTH=32,RD...
+Compiling module xilinx_vip.cb
+Compiling module xilinx_vip.axi_vip_if(C_AXI_PROTOCOL=1,C_AX...
+Compiling module axi_vip_v1_1_4.axi_vip_v1_1_4_top(C_AXI_PROTOCO...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_ax...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_ax...
+Compiling module xilinx_vip.axi_vip_axi4pc(WDATA_WIDTH=32,RD...
+Compiling module xilinx_vip.cb
+Compiling module xilinx_vip.axi_vip_if(C_AXI_PROTOCOL=1,C_AX...
+Compiling module axi_vip_v1_1_4.axi_vip_v1_1_4_top(C_AXI_PROTOCO...
+WARNING: [VRFC 10-3705] select index 64 into 'wrp_strb' is out of bounds [Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_vl_rfs.sv:6051]
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_ax...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_ax...
+Compiling module xilinx_vip.axi_vip_axi4pc(PROTOCOL=1,RID_WI...
+Compiling module xilinx_vip.cb
+Compiling module xilinx_vip.axi_vip_if(C_AXI_PROTOCOL=1,C_AX...
+Compiling module axi_vip_v1_1_4.axi_vip_v1_1_4_top(C_AXI_PROTOCO...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_in...
+WARNING: [VRFC 10-3705] select index 128 into 'wrp_strb' is out of bounds [Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_vl_rfs.sv:10811]
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_af...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_af...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_af...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_af...
+Compiling module xilinx_vip.axi_vip_axi4pc(PROTOCOL=1,RID_WI...
+Compiling module xilinx_vip.cb
+Compiling module xilinx_vip.axi_vip_if(C_AXI_PROTOCOL=1,C_AX...
+Compiling module axi_vip_v1_1_4.axi_vip_v1_1_4_top(C_AXI_PROTOCO...
+WARNING: [VRFC 10-3705] select index 128 into 'wrp_strb' is out of bounds [Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_vl_rfs.sv:7689]
+WARNING: [VRFC 10-3705] select index 4 into 'wr_fifo_rd_ptr' is out of bounds [Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_vl_rfs.sv:7902]
+WARNING: [VRFC 10-3705] select index 4 into 'ar_cnt' is out of bounds [Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_vl_rfs.sv:8041]
+WARNING: [VRFC 10-3705] select index 4 into 'wr_rresp_cnt' is out of bounds [Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_vl_rfs.sv:8138]
+WARNING: [VRFC 10-3705] select index 4 into 'rd_fifo_wr_ptr' is out of bounds [Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_vl_rfs.sv:8157]
+WARNING: [VRFC 10-3705] select index 4 into 'rd_cnt' is out of bounds [Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_vl_rfs.sv:8298]
+WARNING: [VRFC 10-3705] select index 4 into 'rresp_time_cnt' is out of bounds [Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_vl_rfs.sv:8303]
+WARNING: [VRFC 10-3705] select index 4 into 'rd_fifo_rd_ptr' is out of bounds [Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_vl_rfs.sv:8308]
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_ax...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6(C_...
+Compiling module cpu.ZYNQ_processing_system7_0_0
+Compiling module util_vector_logic_v2_0_4.util_vector_logic_v2_0_4_util_ve...
+Compiling module xil_defaultlib.ZYNQ_util_vector_logic_0_0
+Compiling module cpu.ZYNQ
+Compiling module cpu.ZYNQ_wrapper
+Compiling module cpu.glbl
+Built simulation snapshot ZYNQ_wrapper_behav

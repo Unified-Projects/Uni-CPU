@@ -1,0 +1,588 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0x816B51C5D5ADD343",
+      "device": "xc7z020clg484-1",
+      "gen_directory": "../../../../PYNQ_CONFIG.gen/sources_1/bd/Everything",
+      "name": "Everything",
+      "rev_ctrl_bd_flag": "RevCtrlBdOff",
+      "synth_flow_mode": "Hierarchical",
+      "tool_version": "2024.1",
+      "validated": "true"
+    },
+    "design_tree": {
+      "CPU_0": "",
+      "ZYNQ_wrapper_0": ""
+    },
+    "interface_ports": {
+      "TMDS_0_0": {
+        "mode": "Master",
+        "vlnv_bus_definition": "openedv.com:user:TMDS:1.0",
+        "vlnv": "openedv.com:user:TMDS_rtl:1.0"
+      }
+    },
+    "ports": {
+      "DDR_addr_0": {
+        "direction": "IO",
+        "left": "14",
+        "right": "0"
+      },
+      "DDR_ba_0": {
+        "direction": "IO",
+        "left": "2",
+        "right": "0"
+      },
+      "DDR_cas_n_0": {
+        "direction": "IO"
+      },
+      "DDR_ck_n_0": {
+        "direction": "IO"
+      },
+      "DDR_ck_p_0": {
+        "direction": "IO"
+      },
+      "DDR_cke_0": {
+        "direction": "IO"
+      },
+      "DDR_cs_n_0": {
+        "direction": "IO"
+      },
+      "DDR_dm_0": {
+        "direction": "IO",
+        "left": "3",
+        "right": "0"
+      },
+      "DDR_dq_0": {
+        "direction": "IO",
+        "left": "31",
+        "right": "0"
+      },
+      "DDR_dqs_n_0": {
+        "direction": "IO",
+        "left": "3",
+        "right": "0"
+      },
+      "DDR_dqs_p_0": {
+        "direction": "IO",
+        "left": "3",
+        "right": "0"
+      },
+      "DDR_odt_0": {
+        "direction": "IO"
+      },
+      "DDR_ras_n_0": {
+        "direction": "IO"
+      },
+      "DDR_reset_n_0": {
+        "direction": "IO"
+      },
+      "DDR_we_n_0": {
+        "direction": "IO"
+      },
+      "FIXED_IO_ddr_vrn_0": {
+        "direction": "IO"
+      },
+      "FIXED_IO_ddr_vrp_0": {
+        "direction": "IO"
+      },
+      "FIXED_IO_mio_0": {
+        "direction": "IO",
+        "left": "53",
+        "right": "0"
+      },
+      "FIXED_IO_ps_clk_0": {
+        "type": "clk",
+        "direction": "IO",
+        "parameters": {
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "FIXED_IO_ps_porb_0": {
+        "direction": "IO"
+      },
+      "FIXED_IO_ps_srstb_0": {
+        "direction": "IO"
+      },
+      "RGMII_0_rd_0": {
+        "direction": "I",
+        "left": "3",
+        "right": "0"
+      },
+      "RGMII_0_rx_ctl_0": {
+        "direction": "I"
+      },
+      "RGMII_0_rxc_0": {
+        "direction": "I"
+      },
+      "MDIO_PHY_0_mdio_io_0": {
+        "direction": "IO"
+      },
+      "TMDS_0_tmds_data_n_0": {
+        "direction": "O",
+        "left": "2",
+        "right": "0"
+      },
+      "TMDS_0_tmds_data_p_0": {
+        "direction": "O",
+        "left": "2",
+        "right": "0"
+      },
+      "TMDS_0_tmds_clk_p_0": {
+        "type": "clk",
+        "direction": "O",
+        "parameters": {
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "TMDS_0_tmds_clk_n_0": {
+        "type": "clk",
+        "direction": "O",
+        "parameters": {
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "CurrentStageDBG_0": {
+        "direction": "O",
+        "left": "5",
+        "right": "0"
+      }
+    },
+    "components": {
+      "CPU_0": {
+        "vlnv": "xilinx.com:module_ref:CPU:1.0",
+        "ip_revision": "1",
+        "xci_name": "Everything_CPU_0_0",
+        "xci_path": "ip\\Everything_CPU_0_0\\Everything_CPU_0_0.xci",
+        "inst_hier_path": "CPU_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "CPU",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I"
+          },
+          "rst_n": {
+            "type": "rst",
+            "direction": "I",
+            "parameters": {
+              "POLARITY": {
+                "value": "ACTIVE_LOW",
+                "value_src": "constant"
+              }
+            }
+          },
+          "CurrentStageDBG": {
+            "direction": "O",
+            "left": "5",
+            "right": "0"
+          }
+        }
+      },
+      "ZYNQ_wrapper_0": {
+        "vlnv": "xilinx.com:module_ref:ZYNQ_wrapper:1.0",
+        "ip_revision": "1",
+        "xci_name": "Everything_ZYNQ_wrapper_0_0",
+        "xci_path": "ip\\Everything_ZYNQ_wrapper_0_0\\Everything_ZYNQ_wrapper_0_0.xci",
+        "inst_hier_path": "ZYNQ_wrapper_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "ZYNQ_wrapper",
+          "boundary_crc": "0x0"
+        },
+        "interface_ports": {
+          "TMDS_0": {
+            "mode": "Master",
+            "vlnv_bus_definition": "openedv.com:user:TMDS:1.0",
+            "vlnv": "openedv.com:user:TMDS_rtl:1.0",
+            "port_maps": {
+              "TMDS_CLK_P": {
+                "physical_name": "TMDS_0_tmds_clk_p",
+                "direction": "O"
+              },
+              "TMDS_CLK_N": {
+                "physical_name": "TMDS_0_tmds_clk_n",
+                "direction": "O"
+              },
+              "TMDS_DATA_P": {
+                "physical_name": "TMDS_0_tmds_data_p",
+                "direction": "O",
+                "left": "2",
+                "right": "0"
+              },
+              "TMDS_DATA_N": {
+                "physical_name": "TMDS_0_tmds_data_n",
+                "direction": "O",
+                "left": "2",
+                "right": "0"
+              }
+            }
+          }
+        },
+        "ports": {
+          "DDR_addr": {
+            "direction": "IO",
+            "left": "14",
+            "right": "0"
+          },
+          "DDR_ba": {
+            "direction": "IO",
+            "left": "2",
+            "right": "0"
+          },
+          "DDR_cas_n": {
+            "direction": "IO"
+          },
+          "DDR_ck_n": {
+            "direction": "IO"
+          },
+          "DDR_ck_p": {
+            "direction": "IO"
+          },
+          "DDR_cke": {
+            "direction": "IO"
+          },
+          "DDR_cs_n": {
+            "direction": "IO"
+          },
+          "DDR_dm": {
+            "direction": "IO",
+            "left": "3",
+            "right": "0"
+          },
+          "DDR_dq": {
+            "direction": "IO",
+            "left": "31",
+            "right": "0"
+          },
+          "DDR_dqs_n": {
+            "direction": "IO",
+            "left": "3",
+            "right": "0"
+          },
+          "DDR_dqs_p": {
+            "direction": "IO",
+            "left": "3",
+            "right": "0"
+          },
+          "DDR_odt": {
+            "direction": "IO"
+          },
+          "DDR_ras_n": {
+            "direction": "IO"
+          },
+          "DDR_reset_n": {
+            "direction": "IO"
+          },
+          "DDR_we_n": {
+            "direction": "IO"
+          },
+          "FCLK_CLK0_0": {
+            "direction": "O"
+          },
+          "FCLK_RESET0_N_0": {
+            "direction": "O"
+          },
+          "FIXED_IO_ddr_vrn": {
+            "direction": "IO"
+          },
+          "FIXED_IO_ddr_vrp": {
+            "direction": "IO"
+          },
+          "FIXED_IO_mio": {
+            "direction": "IO",
+            "left": "53",
+            "right": "0"
+          },
+          "FIXED_IO_ps_clk": {
+            "type": "clk",
+            "direction": "IO"
+          },
+          "FIXED_IO_ps_porb": {
+            "direction": "IO"
+          },
+          "FIXED_IO_ps_srstb": {
+            "direction": "IO"
+          },
+          "MDIO_PHY_0_mdc": {
+            "direction": "O"
+          },
+          "MDIO_PHY_0_mdio_io": {
+            "direction": "IO"
+          },
+          "RGMII_0_rd": {
+            "direction": "I",
+            "left": "3",
+            "right": "0"
+          },
+          "RGMII_0_rx_ctl": {
+            "direction": "I"
+          },
+          "RGMII_0_rxc": {
+            "direction": "I"
+          },
+          "RGMII_0_td": {
+            "direction": "O",
+            "left": "3",
+            "right": "0"
+          },
+          "RGMII_0_tx_ctl": {
+            "direction": "O"
+          },
+          "RGMII_0_txc": {
+            "direction": "O"
+          }
+        }
+      }
+    },
+    "interface_nets": {
+      "ZYNQ_wrapper_0_TMDS_0": {
+        "interface_ports": [
+          "TMDS_0_0",
+          "ZYNQ_wrapper_0/TMDS_0"
+        ]
+      }
+    },
+    "nets": {
+      "CPU_0_CurrentStageDBG": {
+        "ports": [
+          "CPU_0/CurrentStageDBG",
+          "CurrentStageDBG_0"
+        ]
+      },
+      "Net": {
+        "ports": [
+          "DDR_addr_0",
+          "ZYNQ_wrapper_0/DDR_addr"
+        ]
+      },
+      "Net1": {
+        "ports": [
+          "DDR_ba_0",
+          "ZYNQ_wrapper_0/DDR_ba"
+        ]
+      },
+      "Net2": {
+        "ports": [
+          "DDR_cas_n_0",
+          "ZYNQ_wrapper_0/DDR_cas_n"
+        ]
+      },
+      "Net3": {
+        "ports": [
+          "DDR_ck_n_0",
+          "ZYNQ_wrapper_0/DDR_ck_n"
+        ]
+      },
+      "Net4": {
+        "ports": [
+          "DDR_ck_p_0",
+          "ZYNQ_wrapper_0/DDR_ck_p"
+        ]
+      },
+      "Net5": {
+        "ports": [
+          "DDR_cke_0",
+          "ZYNQ_wrapper_0/DDR_cke"
+        ]
+      },
+      "Net6": {
+        "ports": [
+          "DDR_cs_n_0",
+          "ZYNQ_wrapper_0/DDR_cs_n"
+        ]
+      },
+      "Net7": {
+        "ports": [
+          "DDR_dm_0",
+          "ZYNQ_wrapper_0/DDR_dm"
+        ]
+      },
+      "Net8": {
+        "ports": [
+          "DDR_dq_0",
+          "ZYNQ_wrapper_0/DDR_dq"
+        ]
+      },
+      "Net9": {
+        "ports": [
+          "DDR_dqs_n_0",
+          "ZYNQ_wrapper_0/DDR_dqs_n"
+        ]
+      },
+      "Net10": {
+        "ports": [
+          "DDR_dqs_p_0",
+          "ZYNQ_wrapper_0/DDR_dqs_p"
+        ]
+      },
+      "Net11": {
+        "ports": [
+          "DDR_odt_0",
+          "ZYNQ_wrapper_0/DDR_odt"
+        ]
+      },
+      "Net12": {
+        "ports": [
+          "DDR_ras_n_0",
+          "ZYNQ_wrapper_0/DDR_ras_n"
+        ]
+      },
+      "Net13": {
+        "ports": [
+          "DDR_reset_n_0",
+          "ZYNQ_wrapper_0/DDR_reset_n"
+        ]
+      },
+      "Net14": {
+        "ports": [
+          "DDR_we_n_0",
+          "ZYNQ_wrapper_0/DDR_we_n"
+        ]
+      },
+      "Net15": {
+        "ports": [
+          "FIXED_IO_ddr_vrn_0",
+          "ZYNQ_wrapper_0/FIXED_IO_ddr_vrn"
+        ]
+      },
+      "Net16": {
+        "ports": [
+          "FIXED_IO_ddr_vrp_0",
+          "ZYNQ_wrapper_0/FIXED_IO_ddr_vrp"
+        ]
+      },
+      "Net17": {
+        "ports": [
+          "FIXED_IO_mio_0",
+          "ZYNQ_wrapper_0/FIXED_IO_mio"
+        ]
+      },
+      "Net18": {
+        "ports": [
+          "FIXED_IO_ps_clk_0",
+          "ZYNQ_wrapper_0/FIXED_IO_ps_clk"
+        ]
+      },
+      "Net19": {
+        "ports": [
+          "FIXED_IO_ps_porb_0",
+          "ZYNQ_wrapper_0/FIXED_IO_ps_porb"
+        ]
+      },
+      "Net20": {
+        "ports": [
+          "FIXED_IO_ps_srstb_0",
+          "ZYNQ_wrapper_0/FIXED_IO_ps_srstb"
+        ]
+      },
+      "Net21": {
+        "ports": [
+          "MDIO_PHY_0_mdio_io_0",
+          "ZYNQ_wrapper_0/MDIO_PHY_0_mdio_io"
+        ]
+      },
+      "RGMII_0_rd_0_1": {
+        "ports": [
+          "RGMII_0_rd_0",
+          "ZYNQ_wrapper_0/RGMII_0_rd"
+        ]
+      },
+      "RGMII_0_rx_ctl_0_1": {
+        "ports": [
+          "RGMII_0_rx_ctl_0",
+          "ZYNQ_wrapper_0/RGMII_0_rx_ctl"
+        ]
+      },
+      "RGMII_0_rxc_0_1": {
+        "ports": [
+          "RGMII_0_rxc_0",
+          "ZYNQ_wrapper_0/RGMII_0_rxc"
+        ]
+      },
+      "ZYNQ_wrapper_0_FCLK_CLK0_0": {
+        "ports": [
+          "ZYNQ_wrapper_0/FCLK_CLK0_0",
+          "CPU_0/clk"
+        ]
+      },
+      "ZYNQ_wrapper_0_FCLK_RESET0_N_0": {
+        "ports": [
+          "ZYNQ_wrapper_0/FCLK_RESET0_N_0",
+          "CPU_0/rst_n"
+        ]
+      },
+      "ZYNQ_wrapper_0_TMDS_0_tmds_clk_n": {
+        "ports": [
+          "ZYNQ_wrapper_0/TMDS_0_tmds_clk_n",
+          "TMDS_0_tmds_clk_n_0"
+        ]
+      },
+      "ZYNQ_wrapper_0_TMDS_0_tmds_clk_p": {
+        "ports": [
+          "ZYNQ_wrapper_0/TMDS_0_tmds_clk_p",
+          "TMDS_0_tmds_clk_p_0"
+        ]
+      },
+      "ZYNQ_wrapper_0_TMDS_0_tmds_data_n": {
+        "ports": [
+          "ZYNQ_wrapper_0/TMDS_0_tmds_data_n",
+          "TMDS_0_tmds_data_n_0"
+        ]
+      },
+      "ZYNQ_wrapper_0_TMDS_0_tmds_data_p": {
+        "ports": [
+          "ZYNQ_wrapper_0/TMDS_0_tmds_data_p",
+          "TMDS_0_tmds_data_p_0"
+        ]
+      }
+    }
+  }
+}

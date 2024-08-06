@@ -1,0 +1,7 @@
+Running: xsim.dir/ZYNQ_wrapper_behav/xsimk.exe -simmode gui -wdb ZYNQ_wrapper_behav.wdb -simrunnum 0 -socket 50170
+Design successfully loaded
+Design Loading Memory Usage: 19536 KB (Peak: 19536 KB)
+Design Loading CPU Usage: 61 ms
+Simulation completed
+Simulation Memory Usage: 28824 KB (Peak: 28824 KB)
+Simulation CPU Usage: 124 ms

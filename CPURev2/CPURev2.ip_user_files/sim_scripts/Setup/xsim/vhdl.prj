@@ -1,0 +1,8 @@
+vhdl CPU  \
+"../../../bd/Setup/ip/Setup_rst_ps7_0_50M_0/sim/Setup_rst_ps7_0_50M_0.vhd" \
+"../../../bd/Setup/ip/Setup_CPU_0_2/sim/Setup_CPU_0_2.vhd" \
+"../../../bd/Setup/ip/Setup_AXI_Master_0_3/sim/Setup_AXI_Master_0_3.vhd" \
+"../../../bd/Setup/sim/Setup.vhd" \
+
+# Do not sort compile order
+nosort

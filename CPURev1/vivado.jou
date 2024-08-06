@@ -1,0 +1,682 @@
+#-----------------------------------------------------------
+# Vivado v2024.1 (64-bit)
+# SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
+# IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+# SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+# Start of session at: Wed Jul 31 17:04:01 2024
+# Process ID: 9612
+# Current directory: Y:/C++/Uni-CPU/CPURev1
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent14048 Y:\C++\Uni-CPU\CPURev1\PYNQ_CONFIG.xpr
+# Log file: Y:/C++/Uni-CPU/CPURev1/vivado.log
+# Journal file: Y:/C++/Uni-CPU/CPURev1\vivado.jou
+# Running On        :DESKTOP-PSI4IU2
+# Platform          :Windows Server 2016 or Windows 10
+# Operating System  :22631
+# Processor Detail  :13th Gen Intel(R) Core(TM) i7-13700K
+# CPU Frequency     :3418 MHz
+# CPU Physical cores:16
+# CPU Logical cores :16
+# Host memory       :34335 MB
+# Swap memory       :2281 MB
+# Total Virtual     :36617 MB
+# Available Virtual :31319 MB
+#-----------------------------------------------------------
+start_gui
+open_project Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.xpr
+update_compile_order -fileset sources_1
+open_bd_design {Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd}
+set_property location {3 885 617} [get_bd_cells CPU_0]
+update_module_reference ZYNQ_CPU_0_0
+close [ open Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/ALU.v w ]
+add_files Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/ALU.v
+set_property library CPU [get_files  Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/ALU.v]
+close [ open Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/MM.v w ]
+add_files Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/MM.v
+set_property library CPU [get_files  Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/MM.v]
+close [ open Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/CTRL-BUS.v w ]
+add_files Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/CTRL-BUS.v
+set_property library CPU [get_files  Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/CTRL-BUS.v]
+close [ open Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/CU.v w ]
+add_files Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/CU.v
+set_property library CPU [get_files  Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/CU.v]
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+open_bd_design {Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd}
+delete_bd_objs [get_bd_cells CPU_0]
+update_compile_order -fileset sources_1
+save_bd_design
+create_bd_cell -type module -reference CU CU_0
+export_ip_user_files -of_objects  [get_files Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/Types.sv] -no_script -reset -force -quiet
+remove_files  Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/Types.sv
+remove_files  Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/Types.sv
+file delete -force Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/Types.sv
+open_bd_design {Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd}
+create_bd_cell -type module -reference CU CU_0
+set_property location {3 647 812} [get_bd_cells CU_0]
+create_bd_cell -type module -reference BUS BUS_0
+set_property location {2 760 581} [get_bd_cells BUS_0]
+create_bd_cell -type module -reference BUS BUS_1
+save_bd_design
+update_compile_order -fileset sources_1
+set_property location {3 966 597} [get_bd_cells BUS_1]
+set_property location {3 976 592} [get_bd_cells BUS_1]
+set_property location {3 976 591} [get_bd_cells BUS_1]
+set_property location {2 761 819} [get_bd_cells CU_0]
+set_property location {2.5 773 792} [get_bd_cells CU_0]
+create_bd_cell -type module -reference BUS BUS_2
+set_property location {3 822 590} [get_bd_cells BUS_2]
+set_property location {2 565 762} [get_bd_cells CU_0]
+create_bd_cell -type module -reference ALU ALU_0
+set_property location {3 822 773} [get_bd_cells ALU_0]
+set_property location {3 827 762} [get_bd_cells ALU_0]
+create_bd_cell -type module -reference MM MM_0
+open_bd_design {Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd}
+create_bd_cell -type module -reference MM MM_0
+set_property location {4 1112 855} [get_bd_cells MM_0]
+set_property location {4 1096 758} [get_bd_cells MM_0]
+set_property location {2 546 581} [get_bd_cells BUS_0]
+set_property location {2 546 584} [get_bd_cells BUS_0]
+set_property location {2 543 578} [get_bd_cells BUS_0]
+set_property location {2 550 611} [get_bd_cells BUS_0]
+set_property name BUS_Control [get_bd_cells BUS_0]
+set_property name BUS_Address [get_bd_cells BUS_2]
+set_property name BUS_Data [get_bd_cells BUS_1]
+set_property location {3 828 603} [get_bd_cells BUS_Address]
+connect_bd_net [get_bd_pins processing_system7_0/FCLK_CLK0] [get_bd_pins CU_0/clk]
+connect_bd_net [get_bd_pins util_vector_logic_0/Res] [get_bd_pins CU_0/rst_n]
+connect_bd_net [get_bd_pins BUS_Control/ClockOut] [get_bd_pins ALU_0/clk]
+connect_bd_net [get_bd_pins util_vector_logic_0/Res] [get_bd_pins ALU_0/rst_n]
+connect_bd_net [get_bd_pins util_vector_logic_0/Res] [get_bd_pins MM_0/rst_n]
+connect_bd_net [get_bd_pins BUS_Control/ClockOut] [get_bd_pins MM_0/clk]
+set_property location {3 802 895} [get_bd_cells MM_0]
+regenerate_bd_layout
+save_bd_design
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_module_reference ZYNQ_ALU_0_0
+connect_bd_net [get_bd_pins BUS_Control/ALU] [get_bd_pins ALU_0/Control]
+connect_bd_net [get_bd_pins BUS_Address/ALU] [get_bd_pins ALU_0/Address]
+connect_bd_net [get_bd_pins BUS_Data/MM] [get_bd_pins ALU_0/Data]
+save_bd_design
+connect_bd_net [get_bd_pins ALU_0/Result] [get_bd_pins BUS_Data/data_in]
+save_bd_design
+update_module_reference ZYNQ_ALU_0_0
+open_bd_design {Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd}
+update_module_reference ZYNQ_ALU_0_0
+connect_bd_net [get_bd_pins ALU_0/DeviceSelect] [get_bd_pins BUS_Data/device_select]
+save_bd_design
+update_module_reference ZYNQ_ALU_0_0
+connect_bd_net [get_bd_pins ALU_0/ClockPulse] [get_bd_pins BUS_Data/ClockIn]
+update_module_reference ZYNQ_CU_0_0
+connect_bd_net [get_bd_pins BUS_Data/ClockOut] [get_bd_pins CU_0/clk_ret]
+save_bd_design
+regenerate_bd_layout
+set_property location {5 1519 360} [get_bd_cells CU_0]
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+set_property location {5 1536 374} [get_bd_cells CU_0]
+update_module_reference ZYNQ_CU_0_0
+set_property location {5 1535 410} [get_bd_cells CU_0]
+set_property location {5 1567 407} [get_bd_cells CU_0]
+delete_bd_objs [get_bd_nets BUS_Data_ClockOut]
+connect_bd_net [get_bd_pins BUS_Data/ClockOut] [get_bd_pins CU_0/clk_ret_data]
+set_property location {5.5 1622 405} [get_bd_cells CU_0]
+save_bd_design
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+set_property location {3 970 -187} [get_bd_cells BUS_Data]
+update_compile_order -fileset sources_1
+set_property location {3.5 1293 -359} [get_bd_cells BUS_Control]
+set_property location {5.5 1635 -495} [get_bd_cells BUS_Address]
+set_property location {4 1232 -343} [get_bd_cells BUS_Control]
+set_property location {4 1137 96} [get_bd_cells MM_0]
+set_property location {4.5 1476 45} [get_bd_cells CU_0]
+set_property location {1.5 302 -218} [get_bd_cells ALU_0]
+update_compile_order -fileset sources_1
+update_module_reference ZYNQ_CU_0_0
+update_module_reference ZYNQ_MM_0_0
+set_property location {5 1259 -99} [get_bd_cells CU_0]
+set_property location {5 1271 -104} [get_bd_cells CU_0]
+update_module_reference ZYNQ_CU_0_0
+update_module_reference ZYNQ_CU_0_0
+connect_bd_net [get_bd_pins CU_0/SendClock] [get_bd_pins BUS_Control/ClockIn]
+connect_bd_net [get_bd_pins CU_0/SendClock] [get_bd_pins BUS_Address/ClockIn]
+delete_bd_objs [get_bd_nets ALU_0_ClockPulse]
+connect_bd_net [get_bd_pins CU_0/SendClock] [get_bd_pins BUS_Data/ClockIn]
+set_property location {4 938 -377} [get_bd_cells BUS_Data]
+connect_bd_net [get_bd_pins CU_0/DeviceSelect] [get_bd_pins BUS_Control/device_select]
+delete_bd_objs [get_bd_nets CU_0_DeviceSelect]
+close [ open Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/Mergers.v w ]
+add_files Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/Mergers.v
+set_property library CPU [get_files  Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/Mergers.v]
+close [ open Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/Splitters.v w ]
+add_files Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/Splitters.v
+set_property library CPU [get_files  Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/Splitters.v]
+update_compile_order -fileset sources_1
+export_ip_user_files -of_objects  [get_files Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/Splitters.v] -no_script -reset -force -quiet
+remove_files  Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/Splitters.v
+file delete -force Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/Splitters.v
+close [ open Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/DeviceSelector.v w ]
+add_files Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/DeviceSelector.v
+set_property library CPU [get_files  Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/DeviceSelector.v]
+update_compile_order -fileset sources_1
+open_bd_design {Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd}
+delete_bd_objs [get_bd_cells MM_0]
+update_compile_order -fileset sources_1
+delete_bd_objs [get_bd_nets BUS_Data_ClockOut] [get_bd_cells CU_0]
+update_compile_order -fileset sources_1
+delete_bd_objs [get_bd_nets BUS_Address_ALU] [get_bd_nets BUS_Data_MM] [get_bd_nets ALU_0_DeviceSelect] [get_bd_nets BUS_Control_ALU] [get_bd_nets BUS_Control_ClockOut] [get_bd_nets ALU_0_Result] [get_bd_cells ALU_0]
+update_compile_order -fileset sources_1
+delete_bd_objs [get_bd_nets CU_0_SendClock]
+set_property location {5 1268 -363} [get_bd_cells BUS_Control]
+set_property location {4.5 1576 -364} [get_bd_cells BUS_Address]
+create_bd_cell -type module -reference CU CU_0
+set_property location {1.5 315 -299} [get_bd_cells CU_0]
+create_bd_cell -type module -reference ALU ALU_0
+create_bd_cell -type module -reference MM MM_0
+create_bd_cell -type module -reference BusMerger BusMerger_0
+set_property location {3 648 -180} [get_bd_cells BusMerger_0]
+set_property location {3 678 -495} [get_bd_cells BusMerger_0]
+set_property location {4 1043 -510} [get_bd_cells BUS_Data]
+create_bd_cell -type module -reference DeviceSelector DeviceSelector_0
+set_property location {4.5 1187 -500} [get_bd_cells BUS_Data]
+set_property location {4 920 -483} [get_bd_cells DeviceSelector_0]
+create_bd_cell -type module -reference BusMerger BusMerger_1
+create_bd_cell -type module -reference BusMerger BusMerger_2
+set_property location {3 646 -163} [get_bd_cells BusMerger_2]
+set_property name BusMerger_Control [get_bd_cells BusMerger_1]
+set_property name BusMerger_Data [get_bd_cells BusMerger_0]
+set_property name BusMerger_Address [get_bd_cells BusMerger_2]
+create_bd_cell -type module -reference DeviceSelector DeviceSelector_1
+set_property name DeviceSelector_Data [get_bd_cells DeviceSelector_0]
+set_property name DeviceSelector_Control [get_bd_cells DeviceSelector_1]
+create_bd_cell -type module -reference DeviceSelector DeviceSelector_0
+set_property location {4 940 -158} [get_bd_cells DeviceSelector_0]
+set_property name DeviceSelector_Address [get_bd_cells DeviceSelector_0]
+set_property location {3 671 -756} [get_bd_cells BusMerger_Address]
+set_property location {4 905 -761} [get_bd_cells DeviceSelector_Address]
+set_property location {5 1266 -511} [get_bd_cells BUS_Data]
+set_property location {5 1235 -335} [get_bd_cells BUS_Control]
+set_property location {5 1191 -781} [get_bd_cells BUS_Address]
+connect_bd_net [get_bd_pins DeviceSelector_Address/clk] [get_bd_pins BUS_Address/ClockIn]
+connect_bd_net [get_bd_pins DeviceSelector_Address/dev] [get_bd_pins BUS_Address/device_select]
+save_bd_design
+update_module_reference ZYNQ_BusMerger_2_0
+update_compile_order -fileset sources_1
+set_property location {3 543 -927} [get_bd_cells DeviceSelector_Address]
+set_property location {4 979 -804} [get_bd_cells BUS_Address]
+set_property location {3 590 -140} [get_bd_cells BusMerger_Control]
+set_property location {3 673 -392} [get_bd_cells DeviceSelector_Data]
+set_property location {4 1004 -551} [get_bd_cells BUS_Data]
+set_property location {3 587 49} [get_bd_cells DeviceSelector_Control]
+set_property location {4 959 -72} [get_bd_cells BUS_Control]
+connect_bd_net [get_bd_pins BusMerger_Address/Out] [get_bd_pins BUS_Address/data_in]
+update_module_reference ZYNQ_BusMerger_0_0
+update_module_reference ZYNQ_BusMerger_1_0
+connect_bd_net [get_bd_pins DeviceSelector_Data/clk] [get_bd_pins BUS_Data/ClockIn]
+connect_bd_net [get_bd_pins DeviceSelector_Data/dev] [get_bd_pins BUS_Data/device_select]
+connect_bd_net [get_bd_pins DeviceSelector_Data/dev] [get_bd_pins BusMerger_Data/select_in]
+set_property location {3 516 -949} [get_bd_cells DeviceSelector_Address]
+set_property location {3 624 -924} [get_bd_cells DeviceSelector_Address]
+set_property location {3 621 -898} [get_bd_cells DeviceSelector_Address]
+set_property location {3 639 -901} [get_bd_cells DeviceSelector_Address]
+connect_bd_net [get_bd_pins DeviceSelector_Address/dev] [get_bd_pins BusMerger_Address/select_in]
+connect_bd_net [get_bd_pins DeviceSelector_Address/clk] [get_bd_pins BusMerger_Address/clk]
+connect_bd_net [get_bd_pins DeviceSelector_Data/clk] [get_bd_pins BusMerger_Data/clk]
+connect_bd_net [get_bd_pins DeviceSelector_Control/clk] [get_bd_pins BusMerger_Control/clk]
+connect_bd_net [get_bd_pins DeviceSelector_Control/clk] [get_bd_pins BusMerger_Control/select_in]
+connect_bd_net [get_bd_pins BusMerger_Control/Out] [get_bd_pins BUS_Control/data_in]
+connect_bd_net [get_bd_pins DeviceSelector_Control/clk] [get_bd_pins BUS_Control/ClockIn]
+connect_bd_net [get_bd_pins DeviceSelector_Control/dev] [get_bd_pins BUS_Control/device_select]
+connect_bd_net [get_bd_pins BusMerger_Data/Out] [get_bd_pins BUS_Data/data_in]
+connect_bd_net [get_bd_pins BUS_Control/ClockOut] [get_bd_pins MM_0/clk]
+connect_bd_net [get_bd_pins BUS_Control/ClockOut] [get_bd_pins ALU_0/clk]
+connect_bd_net [get_bd_pins BUS_Control/ClockOut] [get_bd_pins CU_0/clk]
+delete_bd_objs [get_bd_nets DeviceSelector_Control_clk]
+connect_bd_net [get_bd_pins DeviceSelector_Control/clk] [get_bd_pins BusMerger_Control/clk]
+connect_bd_net [get_bd_pins MM_0/ClockPulse] [get_bd_pins DeviceSelector_Control/CU_clk]
+delete_bd_objs [get_bd_nets BUS_Control_ClockOut]
+connect_bd_net [get_bd_pins DeviceSelector_Control/clk] [get_bd_pins BUS_Control/ClockIn]
+connect_bd_net [get_bd_pins DeviceSelector_Control/dev] [get_bd_pins BusMerger_Control/select_in]
+connect_bd_net [get_bd_pins ALU_0/ClockPulse] [get_bd_pins DeviceSelector_Control/MM_clk]
+delete_bd_objs [get_bd_nets MM_0_ClockPulse]
+delete_bd_objs [get_bd_nets ALU_0_ClockPulse]
+set_property location {2 307 -121} [get_bd_cells MM_0]
+connect_bd_net [get_bd_pins BUS_Control/ClockOut] [get_bd_pins MM_0/clk]
+connect_bd_net [get_bd_pins BUS_Control/ClockOut] [get_bd_pins ALU_0/clk]
+connect_bd_net [get_bd_pins BUS_Control/ClockOut] [get_bd_pins CU_0/clk]
+delete_bd_objs [get_bd_nets DeviceSelector_Control_clk]
+connect_bd_net [get_bd_pins CU_0/SendClock] [get_bd_pins BUS_Control/ClockIn]
+connect_bd_net [get_bd_pins DeviceSelector_Control/clk] [get_bd_pins BusMerger_Control/clk]
+delete_bd_objs [get_bd_nets CU_0_SendClock]
+connect_bd_net [get_bd_pins CU_0/SendClock] [get_bd_pins DeviceSelector_Control/CU_clk]
+connect_bd_net [get_bd_pins DeviceSelector_Control/clk] [get_bd_pins BUS_Control/ClockIn]
+update_compile_order -fileset sources_1
+open_bd_design {Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd}
+generate_target all [get_files  Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd]
+connect_bd_net [get_bd_pins ALU_0/ClockPulse] [get_bd_pins DeviceSelector_Data/ALU_clk]
+connect_bd_net [get_bd_pins ALU_0/ClockPulse] [get_bd_pins BusMerger_Data/ALU_IN]
+undo
+connect_bd_net [get_bd_pins ALU_0/ClockPulse] [get_bd_pins DeviceSelector_Control/ALU_clk]
+connect_bd_net [get_bd_pins ALU_0/ClockPulse] [get_bd_pins DeviceSelector_Address/ALU_clk]
+connect_bd_net [get_bd_pins CU_0/SendClock] [get_bd_pins DeviceSelector_Address/CU_clk]
+connect_bd_net [get_bd_pins CU_0/SendClock] [get_bd_pins DeviceSelector_Data/CU_clk]
+update_module_reference ZYNQ_ALU_0_1
+update_module_reference ZYNQ_ALU_0_1
+update_module_reference ZYNQ_CU_0_1
+update_module_reference ZYNQ_MM_0_1
+update_compile_order -fileset sources_1
+connect_bd_net [get_bd_pins MM_0/ClockPulse] [get_bd_pins DeviceSelector_Control/MM_clk]
+connect_bd_net [get_bd_pins MM_0/ClockPulse] [get_bd_pins DeviceSelector_Data/MM_clk]
+connect_bd_net [get_bd_pins MM_0/ClockPulse] [get_bd_pins DeviceSelector_Address/MM_clk]
+close [ open Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/IOController.v w ]
+add_files Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/IOController.v
+set_property library CPU [get_files  Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/IOController.v]
+update_compile_order -fileset sources_1
+open_bd_design {Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd}
+create_bd_cell -type module -reference IOController IOController_0
+connect_bd_net [get_bd_pins IOController_0/SendClock] [get_bd_pins DeviceSelector_Control/IO_clk]
+connect_bd_net [get_bd_pins IOController_0/SendClock] [get_bd_pins DeviceSelector_Data/IO_clk]
+connect_bd_net [get_bd_pins IOController_0/SendClock] [get_bd_pins DeviceSelector_Address/IO_clk]
+save_bd_design
+update_compile_order -fileset sources_1
+connect_bd_net [get_bd_pins MM_0/Result] [get_bd_pins BusMerger_Control/MM_IN]
+connect_bd_net [get_bd_pins MM_0/Result] [get_bd_pins BusMerger_Data/MM_IN]
+delete_bd_objs [get_bd_nets MM_0_Result]
+update_module_reference ZYNQ_ALU_0_1
+update_module_reference ZYNQ_MM_0_1
+connect_bd_net [get_bd_pins MM_0/ResultData] [get_bd_pins BusMerger_Data/MM_IN]
+connect_bd_net [get_bd_pins MM_0/ResultAddr] [get_bd_pins BusMerger_Address/MM_IN]
+startgroup
+connect_bd_net [get_bd_pins MM_0/ResultCtrl] [get_bd_pins BusMerger_Control/MM_IN]
+endgroup
+connect_bd_net [get_bd_pins MM_0/ResultCtrl] [get_bd_pins BusMerger_Control/CU_IN]
+undo
+save_bd_design
+connect_bd_net [get_bd_pins ALU_0/ResultCtrl] [get_bd_pins BusMerger_Control/ALU_IN]
+save_bd_design
+connect_bd_net [get_bd_pins ALU_0/ResultData] [get_bd_pins BusMerger_Data/ALU_IN]
+connect_bd_net [get_bd_pins ALU_0/ResultAddr] [get_bd_pins BusMerger_Address/ALU_IN]
+save_bd_design
+close [ open Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/InoutBusSplitter.v w ]
+add_files Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/InoutBusSplitter.v
+set_property library CPU [get_files  Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/InoutBusSplitter.v]
+update_compile_order -fileset sources_1
+open_bd_design {Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd}
+create_bd_cell -type module -reference InoutBusSplitter InoutBusSplitter_0
+set_property location {3 586 -662} [get_bd_cells InoutBusSplitter_0]
+set_property location {2 314 -620} [get_bd_cells CU_0]
+set_property location {2 247 -652} [get_bd_cells CU_0]
+connect_bd_net [get_bd_pins CU_0/Control] [get_bd_pins InoutBusSplitter_0/Control]
+set_property location {3 527 -487} [get_bd_cells CU_0]
+connect_bd_net [get_bd_pins InoutBusSplitter_0/Data] [get_bd_pins CU_0/Data]
+connect_bd_net [get_bd_pins CU_0/Address] [get_bd_pins InoutBusSplitter_0/Address]
+update_module_reference ZYNQ_CU_0_1
+update_compile_order -fileset sources_1
+connect_bd_net [get_bd_pins BUS_Control/ClockOut] [get_bd_pins CU_0/CtrlClock]
+connect_bd_net [get_bd_pins InoutBusSplitter_0/OutData] [get_bd_pins BusMerger_Data/CU_IN]
+connect_bd_net [get_bd_pins InoutBusSplitter_0/OutAddress] [get_bd_pins BusMerger_Address/CU_IN]
+connect_bd_net [get_bd_pins InoutBusSplitter_0/OutControl] [get_bd_pins BusMerger_Control/CU_IN]
+connect_bd_net [get_bd_pins InoutBusSplitter_0/InData] [get_bd_pins BUS_Data/CU]
+connect_bd_net [get_bd_pins InoutBusSplitter_0/InAddress] [get_bd_pins BUS_Address/CU]
+connect_bd_net [get_bd_pins InoutBusSplitter_0/InControl] [get_bd_pins BUS_Control/CU]
+connect_bd_net [get_bd_pins BUS_Control/MM] [get_bd_pins MM_0/Control]
+connect_bd_net [get_bd_pins BUS_Data/MM] [get_bd_pins MM_0/Data]
+connect_bd_net [get_bd_pins BUS_Address/MM] [get_bd_pins MM_0/Address]
+startgroup
+connect_bd_net [get_bd_pins BUS_Address/ALU] [get_bd_pins ALU_0/Address]
+endgroup
+connect_bd_net [get_bd_pins BUS_Data/ALU] [get_bd_pins ALU_0/Data]
+connect_bd_net [get_bd_pins BUS_Control/ALU] [get_bd_pins ALU_0/Control]
+save_bd_design
+report_ip_status -name ip_status 
+update_module_reference [get_ips  {ZYNQ_DeviceSelector_0_0 ZYNQ_InoutBusSplitter_0_0 ZYNQ_DeviceSelector_0_1 ZYNQ_IOController_0_0 ZYNQ_BusMerger_1_0 ZYNQ_BusMerger_2_0 ZYNQ_BusMerger_0_0 ZYNQ_DeviceSelector_1_0}]
+generate_target all [get_files  Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd]
+export_ip_user_files -of_objects [get_files Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd] -no_script -sync -force -quiet
+create_ip_run [get_files -of_objects [get_fileset sources_1] Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd]
+launch_runs ZYNQ_ALU_0_1_synth_1 ZYNQ_BUS_0_0_synth_1 ZYNQ_BUS_1_0_synth_1 ZYNQ_BUS_2_0_synth_1 ZYNQ_BusMerger_0_0_synth_1 ZYNQ_BusMerger_1_0_synth_1 ZYNQ_BusMerger_2_0_synth_1 ZYNQ_CU_0_1_synth_1 ZYNQ_DeviceSelector_0_0_synth_1 ZYNQ_DeviceSelector_0_1_synth_1 ZYNQ_DeviceSelector_1_0_synth_1 ZYNQ_IOController_0_0_synth_1 ZYNQ_InoutBusSplitter_0_0_synth_1 ZYNQ_MM_0_1_synth_1 -jobs 16
+regenerate_bd_layout
+regenerate_bd_layout
+regenerate_bd_layout
+regenerate_bd_layout
+regenerate_bd_layout
+report_ip_status -name ip_status 
+update_module_reference [get_ips  {ZYNQ_BusMerger_1_0 ZYNQ_BusMerger_2_0 ZYNQ_BusMerger_0_0}]
+delete_bd_objs [get_bd_nets BusMerger_Data_Out]
+connect_bd_net [get_bd_pins BusMerger_Data/OutBus] [get_bd_pins BUS_Data/data_in]
+delete_bd_objs [get_bd_nets BusMerger_Control_Out]
+connect_bd_net [get_bd_pins BusMerger_Control/OutBus] [get_bd_pins BUS_Control/data_in]
+delete_bd_objs [get_bd_nets BusMerger_Address_Out]
+connect_bd_net [get_bd_pins BusMerger_Address/OutBus] [get_bd_pins BUS_Address/data_in]
+save_bd_design
+report_ip_status -name ip_status 
+generate_target all [get_files  Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd]
+export_ip_user_files -of_objects [get_files Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd] -no_script -sync -force -quiet
+create_ip_run [get_files -of_objects [get_fileset sources_1] Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd]
+launch_runs ZYNQ_ALU_0_1_synth_1 ZYNQ_BusMerger_0_0_synth_1 ZYNQ_BusMerger_1_0_synth_1 ZYNQ_BusMerger_2_0_synth_1 -jobs 16
+wait_on_run ZYNQ_ALU_0_1_synth_1
+wait_on_run ZYNQ_BusMerger_0_0_synth_1
+wait_on_run ZYNQ_BusMerger_1_0_synth_1
+wait_on_run ZYNQ_BusMerger_2_0_synth_1
+export_simulation -of_objects [get_files Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd] -directory Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.ip_user_files/sim_scripts -ip_user_files_dir Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.ip_user_files -ipstatic_source_dir Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.ip_user_files/ipstatic -lib_map_path [list {modelsim=Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.cache/compile_simlib/modelsim} {questa=Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.cache/compile_simlib/questa} {riviera=Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.cache/compile_simlib/riviera} {activehdl=Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+open_bd_design {Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd}
+report_ip_status -name ip_status 
+update_module_reference [get_ips  {ZYNQ_BUS_1_0 ZYNQ_BUS_0_0 ZYNQ_IOController_0_0 ZYNQ_BUS_2_0}]
+connect_bd_net [get_bd_pins IOController_0/clk] [get_bd_pins DeviceSelector_Data/IO_clk]
+delete_bd_objs [get_bd_nets IOController_0_SendClock]
+undo
+undo
+connect_bd_net [get_bd_pins IOController_0/ClockPulse] [get_bd_pins DeviceSelector_Data/IO_clk]
+connect_bd_net [get_bd_pins IOController_0/clk] [get_bd_pins BUS_Control/ClockOut]
+set_property location {11 3481 1053} [get_bd_cells util_vector_logic_0]
+connect_bd_net [get_bd_pins util_vector_logic_0/Res] [get_bd_pins ALU_0/rst_n]
+connect_bd_net [get_bd_pins util_vector_logic_0/Res] [get_bd_pins MM_0/rst_n]
+connect_bd_net [get_bd_pins util_vector_logic_0/Res] [get_bd_pins CU_0/rst_n]
+connect_bd_net [get_bd_pins util_vector_logic_0/Res] [get_bd_pins IOController_0/rst_n]
+update_module_reference ZYNQ_CU_0_1
+report_ip_status -name ip_status 
+update_module_reference [get_ips  ZYNQ_IOController_0_0]
+update_module_reference ZYNQ_IOController_0_0
+connect_bd_net [get_bd_pins BUS_Address/IO] [get_bd_pins IOController_0/Address]
+connect_bd_net [get_bd_pins IOController_0/ResultAddr] [get_bd_pins BusMerger_Address/IO_IN]
+connect_bd_net [get_bd_pins IOController_0/ResultCtrl] [get_bd_pins BusMerger_Data/IO_IN]
+connect_bd_net [get_bd_pins IOController_0/ResultData] [get_bd_pins BusMerger_Control/IO_IN]
+delete_bd_objs [get_bd_nets IOController_0_ResultData]
+delete_bd_objs [get_bd_nets IOController_0_ResultCtrl]
+connect_bd_net [get_bd_pins IOController_0/ResultCtrl] [get_bd_pins BusMerger_Control/IO_IN]
+connect_bd_net [get_bd_pins BUS_Control/IO] [get_bd_pins IOController_0/Control]
+connect_bd_net [get_bd_pins IOController_0/ResultData] [get_bd_pins BusMerger_Data/IO_IN]
+connect_bd_net [get_bd_pins BUS_Data/IO] [get_bd_pins IOController_0/Data]
+save_bd_design
+close [ open Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/Dummy.v w ]
+add_files Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/Dummy.v
+update_compile_order -fileset sources_1
+open_bd_design {Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd}
+create_bd_cell -type module -reference DeviceSelector DeviceSelector_0
+delete_bd_objs [get_bd_cells DeviceSelector_0]
+create_bd_cell -type module -reference Dummy Dummy_0
+set_property location {5 1517 -313} [get_bd_cells Dummy_0]
+connect_bd_net [get_bd_pins BUS_Address/ClockOut] [get_bd_pins Dummy_0/AddrBusClk]
+connect_bd_net [get_bd_pins Dummy_0/DataBusClk] [get_bd_pins BUS_Data/ClockOut]
+save_bd_design
+update_compile_order -fileset sources_1
+report_ip_status -name ip_status 
+generate_target all [get_files  Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd]
+save_bd_design
+open_run synth_1 -name synth_1
+reset_run ZYNQ_ALU_0_1_synth_1
+generate_target all [get_files Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd]
+generate_target all [get_files  Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd]
+save_bd_design
+report_ip_status -name ip_status 
+update_module_reference [get_ips  {ZYNQ_ALU_0_1 ZYNQ_IOController_0_0 ZYNQ_MM_0_1 ZYNQ_CU_0_1}]
+generate_target all [get_files  Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd]
+generate_target all [get_files  Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd]
+save_bd_design
+generate_target all [get_files  Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd]
+save_bd_design
+generate_target all [get_files  Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd]
+save_bd_design
+open_bd_design {Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd}
+delete_bd_objs [get_bd_nets util_vector_logic_0_Res]
+connect_bd_net [get_bd_pins IOController_0/rst_n] [get_bd_pins processing_system7_0/FCLK_RESET0_N]
+connect_bd_net [get_bd_pins util_vector_logic_0/Res] [get_bd_pins gmii_to_rgmii_0/rx_reset]
+connect_bd_net [get_bd_pins util_vector_logic_0/Res] [get_bd_pins gmii_to_rgmii_0/tx_reset]
+connect_bd_net [get_bd_pins ALU_0/rst_n] [get_bd_pins processing_system7_0/FCLK_RESET0_N]
+connect_bd_net [get_bd_pins processing_system7_0/FCLK_RESET0_N] [get_bd_pins MM_0/rst_n]
+connect_bd_net [get_bd_pins processing_system7_0/FCLK_RESET0_N] [get_bd_pins CU_0/rst_n]
+save_bd_design
+generate_target all [get_files  Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd]
+export_ip_user_files -of_objects [get_files Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd] -no_script -sync -force -quiet
+create_ip_run [get_files -of_objects [get_fileset sources_1] Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd]
+launch_runs ZYNQ_ALU_0_1_synth_1 ZYNQ_BUS_0_0_synth_1 ZYNQ_BUS_1_0_synth_1 ZYNQ_BUS_2_0_synth_1 ZYNQ_CU_0_1_synth_1 ZYNQ_Dummy_0_0_synth_1 ZYNQ_IOController_0_0_synth_1 ZYNQ_MM_0_1_synth_1 -jobs 16
+reset_run ZYNQ_ALU_0_1_synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 16
+wait_on_run synth_1
+set_property default_lib cpu [current_project]
+generate_target all [get_files  Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd]
+export_ip_user_files -of_objects [get_files Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd] -no_script -sync -force -quiet
+create_ip_run [get_files -of_objects [get_fileset sources_1] Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd]
+reset_run ZYNQ_BUS_0_0_synth_1
+reset_run ZYNQ_BUS_1_0_synth_1
+reset_run ZYNQ_BUS_2_0_synth_1
+reset_run ZYNQ_BusMerger_0_0_synth_1
+reset_run ZYNQ_BusMerger_1_0_synth_1
+reset_run ZYNQ_BusMerger_2_0_synth_1
+reset_run ZYNQ_CU_0_1_synth_1
+reset_run ZYNQ_DeviceSelector_0_0_synth_1
+reset_run ZYNQ_DeviceSelector_0_1_synth_1
+reset_run ZYNQ_DeviceSelector_1_0_synth_1
+reset_run ZYNQ_Dummy_0_0_synth_1
+reset_run ZYNQ_IOController_0_0_synth_1
+reset_run ZYNQ_InoutBusSplitter_0_0_synth_1
+reset_run ZYNQ_MM_0_1_synth_1
+launch_runs ZYNQ_ALU_0_1_synth_1 ZYNQ_BUS_0_0_synth_1 ZYNQ_BUS_1_0_synth_1 ZYNQ_BUS_2_0_synth_1 ZYNQ_BusMerger_0_0_synth_1 ZYNQ_BusMerger_1_0_synth_1 ZYNQ_BusMerger_2_0_synth_1 ZYNQ_CU_0_1_synth_1 ZYNQ_DeviceSelector_0_0_synth_1 ZYNQ_DeviceSelector_0_1_synth_1 ZYNQ_DeviceSelector_1_0_synth_1 ZYNQ_Dummy_0_0_synth_1 ZYNQ_IOController_0_0_synth_1 ZYNQ_InoutBusSplitter_0_0_synth_1 ZYNQ_MM_0_1_synth_1 -jobs 16
+wait_on_run ZYNQ_ALU_0_1_synth_1
+wait_on_run ZYNQ_BUS_0_0_synth_1
+wait_on_run ZYNQ_BUS_1_0_synth_1
+wait_on_run ZYNQ_BUS_2_0_synth_1
+wait_on_run ZYNQ_BusMerger_0_0_synth_1
+wait_on_run ZYNQ_BusMerger_1_0_synth_1
+wait_on_run ZYNQ_BusMerger_2_0_synth_1
+wait_on_run ZYNQ_CU_0_1_synth_1
+wait_on_run ZYNQ_DeviceSelector_0_0_synth_1
+wait_on_run ZYNQ_DeviceSelector_0_1_synth_1
+wait_on_run ZYNQ_DeviceSelector_1_0_synth_1
+wait_on_run ZYNQ_Dummy_0_0_synth_1
+wait_on_run ZYNQ_IOController_0_0_synth_1
+wait_on_run ZYNQ_InoutBusSplitter_0_0_synth_1
+wait_on_run ZYNQ_MM_0_1_synth_1
+export_simulation -of_objects [get_files Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd] -directory Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.ip_user_files/sim_scripts -ip_user_files_dir Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.ip_user_files -ipstatic_source_dir Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.ip_user_files/ipstatic -lib_map_path [list {modelsim=Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.cache/compile_simlib/modelsim} {questa=Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.cache/compile_simlib/questa} {riviera=Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.cache/compile_simlib/riviera} {activehdl=Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+reset_run ZYNQ_ALU_0_1_synth_1
+launch_runs ZYNQ_ALU_0_1_synth_1
+wait_on_run ZYNQ_ALU_0_1_synth_1
+update_module_reference ZYNQ_ALU_0_1
+report_ip_status -name ip_status 
+regenerate_bd_layout
+regenerate_bd_layout
+regenerate_bd_layout
+regenerate_bd_layout
+validate_bd_design
+generate_target all [get_files Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd]
+create_ip_run [get_files -of_objects [get_fileset sources_1] Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd]
+launch_runs ZYNQ_ALU_0_1_synth_1
+create_ip_run [get_files -of_objects [get_fileset sources_1] Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd]
+reset_run ZYNQ_ALU_0_1_synth_1
+launch_runs ZYNQ_ALU_0_1_synth_1 -jobs 16
+wait_on_run ZYNQ_ALU_0_1_synth_1
+wait_on_run ZYNQ_ALU_0_1_synth_1
+report_ip_status -name ip_status 
+update_module_reference [get_ips  {ZYNQ_BUS_1_0 ZYNQ_BUS_0_0 ZYNQ_BUS_2_0}]
+report_ip_status -name ip_status 
+update_module_reference [get_ips  ZYNQ_ALU_0_1]
+generate_target all [get_files  Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd]
+export_ip_user_files -of_objects [get_files Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd] -no_script -sync -force -quiet
+create_ip_run [get_files -of_objects [get_fileset sources_1] Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd]
+launch_runs ZYNQ_ALU_0_1_synth_1 ZYNQ_BUS_0_0_synth_1 ZYNQ_BUS_1_0_synth_1 ZYNQ_BUS_2_0_synth_1 -jobs 16
+reset_run synth_1
+launch_runs synth_1 -jobs 16
+wait_on_run synth_1
+close_design
+open_run synth_1 -name synth_1
+generate_target all [get_files  Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd]
+export_ip_user_files -of_objects [get_files Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd] -no_script -sync -force -quiet
+create_ip_run [get_files -of_objects [get_fileset sources_1] Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd]
+export_simulation -of_objects [get_files Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd] -directory Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.ip_user_files/sim_scripts -ip_user_files_dir Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.ip_user_files -ipstatic_source_dir Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.ip_user_files/ipstatic -lib_map_path [list {modelsim=Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.cache/compile_simlib/modelsim} {questa=Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.cache/compile_simlib/questa} {riviera=Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.cache/compile_simlib/riviera} {activehdl=Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+report_ip_status -name ip_status 
+launch_simulation
+source ZYNQ_wrapper.tcl
+run 5 ns
+run 5 ns
+run 5 ns
+run 5 ns
+run 5 ns
+run 5 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+close_sim
+export_ip_user_files -of_objects  [get_files Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/CPU.v] -no_script -reset -force -quiet
+remove_files  Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/CPU.v
+file delete -force Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/CPU.v
+report_ip_status -name ip_status 
+update_module_reference [get_ips  ZYNQ_CU_0_1]
+generate_target all [get_files  Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd]
+export_ip_user_files -of_objects [get_files Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd] -no_script -sync -force -quiet
+create_ip_run [get_files -of_objects [get_fileset sources_1] Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd]
+launch_runs ZYNQ_CU_0_1_synth_1 -jobs 16
+wait_on_run ZYNQ_CU_0_1_synth_1
+export_simulation -of_objects [get_files Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd] -directory Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.ip_user_files/sim_scripts -ip_user_files_dir Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.ip_user_files -ipstatic_source_dir Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.ip_user_files/ipstatic -lib_map_path [list {modelsim=Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.cache/compile_simlib/modelsim} {questa=Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.cache/compile_simlib/questa} {riviera=Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.cache/compile_simlib/riviera} {activehdl=Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+reset_run ZYNQ_CU_0_1_synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 16
+wait_on_run synth_1
+wait_on_run ZYNQ_CU_0_1_synth_1
+report_ip_status -name ip_status 
+report_ip_status -name ip_status 
+update_module_reference [get_ips  ZYNQ_CU_0_1]
+generate_target all [get_files  Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd]
+export_ip_user_files -of_objects [get_files Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd] -no_script -sync -force -quiet
+create_ip_run [get_files -of_objects [get_fileset sources_1] Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd]
+launch_runs ZYNQ_CU_0_1_synth_1 -jobs 16
+wait_on_run ZYNQ_CU_0_1_synth_1
+export_simulation -of_objects [get_files Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd] -directory Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.ip_user_files/sim_scripts -ip_user_files_dir Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.ip_user_files -ipstatic_source_dir Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.ip_user_files/ipstatic -lib_map_path [list {modelsim=Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.cache/compile_simlib/modelsim} {questa=Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.cache/compile_simlib/questa} {riviera=Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.cache/compile_simlib/riviera} {activehdl=Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+report_ip_status -name ip_status 
+synth_design -rtl -rtl_skip_mlo -name rtl_1
+report_ip_status -name ip_status 
+update_module_reference [get_ips  ZYNQ_Dummy_0_0]
+generate_target all [get_files  Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd]
+export_ip_user_files -of_objects [get_files Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd] -no_script -sync -force -quiet
+create_ip_run [get_files -of_objects [get_fileset sources_1] Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd]
+launch_runs ZYNQ_Dummy_0_0_synth_1 -jobs 16
+wait_on_run ZYNQ_Dummy_0_0_synth_1
+export_simulation -of_objects [get_files Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd] -directory Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.ip_user_files/sim_scripts -ip_user_files_dir Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.ip_user_files -ipstatic_source_dir Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.ip_user_files/ipstatic -lib_map_path [list {modelsim=Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.cache/compile_simlib/modelsim} {questa=Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.cache/compile_simlib/questa} {riviera=Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.cache/compile_simlib/riviera} {activehdl=Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+report_ip_status -name ip_status 
+update_module_reference [get_ips  ZYNQ_Dummy_0_0]
+generate_target all [get_files  Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd]
+export_ip_user_files -of_objects [get_files Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd] -no_script -sync -force -quiet
+create_ip_run [get_files -of_objects [get_fileset sources_1] Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd]
+launch_runs ZYNQ_Dummy_0_0_synth_1 -jobs 16
+wait_on_run ZYNQ_Dummy_0_0_synth_1
+export_simulation -of_objects [get_files Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd] -directory Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.ip_user_files/sim_scripts -ip_user_files_dir Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.ip_user_files -ipstatic_source_dir Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.ip_user_files/ipstatic -lib_map_path [list {modelsim=Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.cache/compile_simlib/modelsim} {questa=Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.cache/compile_simlib/questa} {riviera=Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.cache/compile_simlib/riviera} {activehdl=Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+report_ip_status -name ip_status 
+update_module_reference [get_ips  ZYNQ_Dummy_0_0]
+generate_target all [get_files  Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd]
+export_ip_user_files -of_objects [get_files Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd] -no_script -sync -force -quiet
+create_ip_run [get_files -of_objects [get_fileset sources_1] Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd]
+launch_runs ZYNQ_Dummy_0_0_synth_1 -jobs 16
+wait_on_run ZYNQ_Dummy_0_0_synth_1
+export_simulation -of_objects [get_files Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd] -directory Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.ip_user_files/sim_scripts -ip_user_files_dir Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.ip_user_files -ipstatic_source_dir Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.ip_user_files/ipstatic -lib_map_path [list {modelsim=Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.cache/compile_simlib/modelsim} {questa=Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.cache/compile_simlib/questa} {riviera=Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.cache/compile_simlib/riviera} {activehdl=Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+synth_design -rtl -rtl_skip_mlo -name rtl_1
+reset_run synth_1
+launch_runs synth_1 -jobs 16
+wait_on_run synth_1
+open_run synth_1 -name synth_1
+generate_target all [get_files  Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd]
+export_ip_user_files -of_objects [get_files Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd] -no_script -sync -force -quiet
+create_ip_run [get_files -of_objects [get_fileset sources_1] Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd]
+export_simulation -of_objects [get_files Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd] -directory Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.ip_user_files/sim_scripts -ip_user_files_dir Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.ip_user_files -ipstatic_source_dir Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.ip_user_files/ipstatic -lib_map_path [list {modelsim=Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.cache/compile_simlib/modelsim} {questa=Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.cache/compile_simlib/questa} {riviera=Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.cache/compile_simlib/riviera} {activehdl=Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+delete_bd_objs [get_bd_nets BUS_Data_ClockOut] [get_bd_nets BUS_Address_ClockOut] [get_bd_cells Dummy_0]
+update_compile_order -fileset sources_1
+export_ip_user_files -of_objects  [get_files Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/Dummy.v] -no_script -reset -force -quiet
+remove_files  Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/Dummy.v
+file delete -force Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/Dummy.v
+report_ip_status -name ip_status 
+open_bd_design {Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd}
+generate_target all [get_files  Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd]
+export_ip_user_files -of_objects [get_files Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd] -no_script -sync -force -quiet
+create_ip_run [get_files -of_objects [get_fileset sources_1] Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd]
+export_simulation -of_objects [get_files Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd] -directory Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.ip_user_files/sim_scripts -ip_user_files_dir Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.ip_user_files -ipstatic_source_dir Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.ip_user_files/ipstatic -lib_map_path [list {modelsim=Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.cache/compile_simlib/modelsim} {questa=Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.cache/compile_simlib/questa} {riviera=Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.cache/compile_simlib/riviera} {activehdl=Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+reset_run synth_1
+launch_runs synth_1 -jobs 16
+wait_on_run synth_1
+report_ip_status -name ip_status 
+report_ip_status -name ip_status 
+open_run synth_1 -name synth_1
+open_bd_design {Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd}
+delete_bd_objs [get_bd_intf_nets processing_system7_0_FIXED_IO]
+delete_bd_objs [get_bd_intf_nets processing_system7_0_UART_0]
+delete_bd_objs [get_bd_intf_ports UART_0_0]
+delete_bd_objs [get_bd_intf_ports FIXED_IO]
+delete_bd_objs [get_bd_intf_nets gmii_to_rgmii_0_MDIO_PHY]
+delete_bd_objs [get_bd_intf_nets gmii_to_rgmii_0_RGMII]
+delete_bd_objs [get_bd_intf_ports RGMII_0]
+delete_bd_objs [get_bd_intf_ports MDIO_PHY_0]
+delete_bd_objs [get_bd_intf_nets processing_system7_0_DDR]
+delete_bd_objs [get_bd_intf_ports DDR]
+save_bd_design
+reset_run synth_1
+launch_runs synth_1 -jobs 16
+wait_on_run synth_1
+launch_runs impl_1 -jobs 16
+wait_on_run impl_1
+reset_run synth_1
+launch_runs synth_1 -jobs 16
+wait_on_run synth_1
+launch_runs impl_1 -jobs 16
+wait_on_run impl_1
+generate_target all [get_files  Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd]
+export_ip_user_files -of_objects [get_files Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd] -no_script -sync -force -quiet
+create_ip_run [get_files -of_objects [get_fileset sources_1] Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd]
+export_simulation -of_objects [get_files Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd] -directory Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.ip_user_files/sim_scripts -ip_user_files_dir Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.ip_user_files -ipstatic_source_dir Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.ip_user_files/ipstatic -lib_map_path [list {modelsim=Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.cache/compile_simlib/modelsim} {questa=Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.cache/compile_simlib/questa} {riviera=Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.cache/compile_simlib/riviera} {activehdl=Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+reset_run synth_1
+launch_runs synth_1 -jobs 16
+wait_on_run synth_1
+launch_runs impl_1 -jobs 16
+wait_on_run impl_1
+reset_run synth_1
+update_module_reference ZYNQ_InoutBusSplitter_0_0
+launch_runs synth_1 -jobs 16
+wait_on_run synth_1
+reset_run ZYNQ_InoutBusSplitter_0_0_synth_1
+reset_run synth_1
+update_module_reference ZYNQ_InoutBusSplitter_0_0
+launch_runs synth_1 -jobs 16
+wait_on_run synth_1
+reset_run ZYNQ_InoutBusSplitter_0_0_synth_1
+reset_run synth_1
+update_module_reference ZYNQ_InoutBusSplitter_0_0
+launch_runs synth_1 -jobs 16
+launch_runs synth_1 -jobs 16
+wait_on_run synth_1
+export_ip_user_files -of_objects  [get_files Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/InoutBusSplitter.v] -no_script -reset -force -quiet
+remove_files  Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/InoutBusSplitter.v
+file delete -force Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/InoutBusSplitter.v
+open_bd_design {Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd}
+report_ip_status -name ip_status 
+update_module_reference [get_ips  ZYNQ_CU_0_1]
+delete_bd_objs [get_bd_nets InoutBusSplitter_0_OutData] [get_bd_nets Net2] [get_bd_nets BUS_Address_CU] [get_bd_nets InoutBusSplitter_0_OutAddress] [get_bd_nets BUS_Data_CU] [get_bd_nets Net] [get_bd_nets BUS_Control_CU] [get_bd_nets Net1] [get_bd_nets InoutBusSplitter_0_OutControl] [get_bd_cells InoutBusSplitter_0]
+connect_bd_net [get_bd_pins CU_0/Address] [get_bd_pins BusMerger_Address/CU_IN]
+connect_bd_net [get_bd_pins BUS_Address/CU] [get_bd_pins CU_0/InAddress]
+connect_bd_net [get_bd_pins CU_0/Data] [get_bd_pins BusMerger_Data/CU_IN]
+connect_bd_net [get_bd_pins BUS_Data/CU] [get_bd_pins CU_0/InData]
+connect_bd_net [get_bd_pins CU_0/Control] [get_bd_pins BusMerger_Control/CU_IN]
+connect_bd_net [get_bd_pins BUS_Control/CU] [get_bd_pins CU_0/InControl]
+save_bd_design
+regenerate_bd_layout
+report_ip_status -name ip_status 
+reset_run synth_1
+launch_runs synth_1 -jobs 16
+wait_on_run synth_1
+launch_runs impl_1 -jobs 16
+wait_on_run impl_1
+reset_run synth_1
+update_module_reference ZYNQ_IOController_0_0
+launch_runs synth_1 -jobs 16
+wait_on_run synth_1
+launch_runs impl_1 -jobs 16
+wait_on_run impl_1
+open_run impl_1
+current_design synth_1
+current_design impl_1
+open_bd_design {Y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd}

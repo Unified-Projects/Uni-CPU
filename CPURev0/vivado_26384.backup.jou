@@ -1,0 +1,40 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Sat Apr 29 18:13:51 2023
+# Process ID: 26384
+# Current directory: E:/Smart_ZYNQ_SP_SL/Petalinux/Petalinux_NET_USB_TEST/NET_TEST
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent20752 E:\Smart_ZYNQ_SP_SL\Petalinux\Petalinux_NET_USB_TEST\NET_TEST\NET_TEST.xpr
+# Log file: E:/Smart_ZYNQ_SP_SL/Petalinux/Petalinux_NET_USB_TEST/NET_TEST/vivado.log
+# Journal file: E:/Smart_ZYNQ_SP_SL/Petalinux/Petalinux_NET_USB_TEST/NET_TEST\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project E:/Smart_ZYNQ_SP_SL/Petalinux/Petalinux_NET_USB_TEST/NET_TEST/NET_TEST.xpr
+update_compile_order -fileset sources_1
+open_bd_design {E:/Smart_ZYNQ_SP_SL/Petalinux/Petalinux_NET_USB_TEST/NET_TEST/NET_TEST.srcs/sources_1/bd/ZYNQ/ZYNQ.bd}
+startgroup
+set_property -dict [list CONFIG.PCW_ENET_RESET_ENABLE {0} CONFIG.PCW_USB0_PERIPHERAL_ENABLE {1} CONFIG.PCW_USB0_RESET_ENABLE {1} CONFIG.PCW_USB0_RESET_IO {MIO 46} CONFIG.PCW_I2C_RESET_ENABLE {0} CONFIG.PCW_GPIO_MIO_GPIO_ENABLE {1}] [get_bd_cells processing_system7_0]
+endgroup
+reset_run ZYNQ_processing_system7_0_0_synth_1
+save_bd_design
+reset_run synth_1
+launch_runs synth_1 -jobs 32
+wait_on_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 32
+wait_on_run impl_1
+launch_sdk -workspace E:/Smart_ZYNQ_SP_SL/Petalinux/Petalinux_NET_USB_TEST/NET_TEST/NET_TEST.sdk -hwspec E:/Smart_ZYNQ_SP_SL/Petalinux/Petalinux_NET_USB_TEST/NET_TEST/NET_TEST.sdk/ZYNQ_wrapper.hdf
+launch_sdk -workspace E:/Smart_ZYNQ_SP_SL/Petalinux/Petalinux_NET_USB_TEST/NET_TEST/NET_TEST.sdk -hwspec E:/Smart_ZYNQ_SP_SL/Petalinux/Petalinux_NET_USB_TEST/NET_TEST/NET_TEST.sdk/ZYNQ_wrapper.hdf
+reset_run impl_1 -prev_step 
+launch_runs impl_1 -to_step write_bitstream -jobs 32
+wait_on_run impl_1
+file copy -force E:/Smart_ZYNQ_SP_SL/Petalinux/Petalinux_NET_USB_TEST/NET_TEST/NET_TEST.runs/impl_1/ZYNQ_wrapper.sysdef E:/Smart_ZYNQ_SP_SL/Petalinux/Petalinux_NET_USB_TEST/NET_TEST/NET_TEST.sdk/ZYNQ_wrapper.hdf
+
+launch_sdk -workspace E:/Smart_ZYNQ_SP_SL/Petalinux/Petalinux_NET_USB_TEST/NET_TEST/NET_TEST.sdk -hwspec E:/Smart_ZYNQ_SP_SL/Petalinux/Petalinux_NET_USB_TEST/NET_TEST/NET_TEST.sdk/ZYNQ_wrapper.hdf
+close_project
+open_project E:/Smart_ZYNQ_SP_SL/ALL_TEST/PL_HDMI_TEST/03_PL_HDMI_TEST.xpr
+update_compile_order -fileset sources_1
+launch_sdk -workspace E:/Smart_ZYNQ_SP_SL/ALL_TEST/PL_HDMI_TEST/03_PL_HDMI_TEST.sdk -hwspec E:/Smart_ZYNQ_SP_SL/ALL_TEST/PL_HDMI_TEST/03_PL_HDMI_TEST.sdk/top.hdf
+launch_sdk -workspace E:/Smart_ZYNQ_SP_SL/ALL_TEST/PL_HDMI_TEST/03_PL_HDMI_TEST.sdk -hwspec E:/Smart_ZYNQ_SP_SL/ALL_TEST/PL_HDMI_TEST/03_PL_HDMI_TEST.sdk/top.hdf
+launch_sdk -workspace E:/Smart_ZYNQ_SP_SL/ALL_TEST/PL_HDMI_TEST/03_PL_HDMI_TEST.sdk -hwspec E:/Smart_ZYNQ_SP_SL/ALL_TEST/PL_HDMI_TEST/03_PL_HDMI_TEST.sdk/top.hdf
+launch_sdk -workspace E:/Smart_ZYNQ_SP_SL/ALL_TEST/PL_HDMI_TEST/03_PL_HDMI_TEST.sdk -hwspec E:/Smart_ZYNQ_SP_SL/ALL_TEST/PL_HDMI_TEST/03_PL_HDMI_TEST.sdk/top.hdf

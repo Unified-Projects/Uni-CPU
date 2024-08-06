@@ -1,0 +1,1058 @@
+/*
+
+AMD Vivado v2024.1 (64-bit) [Major: 2024, Minor: 1]
+SW Build: 5076996 on Wed May 22 18:37:14 MDT 2024
+IP Build: 5075265 on Wed May 22 21:45:21 MDT 2024
+IP Build: 5075265 on Wed May 22 21:45:21 MDT 2024
+
+Process ID (PID): 12704
+License: Customer
+Mode: GUI Mode
+
+Current time: 	Wed Jul 31 15:15:29 BST 2024
+Time zone: 	Greenwich Mean Time (Europe/London)
+
+OS: Windows 11
+OS Version: 10.0
+OS Architecture: amd64
+Available processors (cores): 16
+
+Screen size: 2560x1440
+Local screen bounds: x = 0, y = 25, width = 2560, height = 1415
+Screen resolution (DPI): 100
+Available screens: 2
+Default font: family=Dialog,name=Dialog,style=plain,size=12
+Scale size: 12
+OS font scaling: 100%
+Anti-Alias Enabled: false
+
+Java version: 	21.0.1 64-bit
+JavaFX version: 21.0.1
+Java home: 	C:/Xilinx/Vivado/2024.1/tps/win64/jre21.0.1_12
+Java executable: 	C:/Xilinx/Vivado/2024.1/tps/win64/jre21.0.1_12/bin/java.exe
+Java arguments: 	[-Dsun.java2d.pmoffscreen=false, -Dhttps.protocols=TLSv1,TLSv1.1,TLSv1.2, -Dsun.java2d.xrender=false, -Dsun.java2d.d3d=false, -Dsun.awt.nopixfmt=true, -Dsun.java2d.dpiaware=true, -Dsun.java2d.uiScale.enabled=false, -Dswing.aatext=true, -XX:-UsePerfData, -Djdk.map.althashing.threshold=512, -XX:StringTableSize=4072, -XX:+UseStringDeduplication, -XX:MaxGCPauseMillis=200, -XX:+ParallelRefProcEnabled, --add-opens=java.desktop/javax.swing.plaf.synth=ALL-UNNAMED, --add-opens=java.base/java.nio=ALL-UNNAMED, --add-opens=java.desktop/sun.swing=ALL-UNNAMED, --add-opens=java.desktop/javax.swing=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.tree=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.plaf.synth=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED, --add-opens=java.desktop/javax.swing=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.tree=ALL-UNNAMED, --add-opens=java.desktop/java.awt.event=ALL-UNNAMED, --add-exports=java.desktop/javax.swing.plaf.synth=ALL-UNNAMED, --add-exports=java.base/java.nio=ALL-UNNAMED, --add-exports=java.desktop/sun.swing=ALL-UNNAMED, --add-exports=java.desktop/javax.swing=ALL-UNNAMED, --add-exports=java.desktop/javax.swing.tree=ALL-UNNAMED, --add-exports=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED, --add-exports=java.desktop/sun.swing=ALL-UNNAMED, --add-exports=java.desktop/sun.swing.table=ALL-UNNAMED, --add-exports=java.desktop/sun.swing.plaf.synth=ALL-UNNAMED, --add-exports=java.desktop/sun.awt.shell=ALL-UNNAMED, --add-exports=java.base/sun.security.action=ALL-UNNAMED, --add-exports=java.desktop/sun.font=ALL-UNNAMED, -XX:NewSize=80m, -XX:MaxNewSize=80m, -Xms512m, -Xmx4072m, -Xss10m]
+Java initial memory (-Xms): 	512 MB
+Java maximum memory (-Xmx):	 3 GB
+
+User name: 	zingy
+User home directory: C:/Users/zingy
+User working directory: X:/C++/Uni-CPU/CPURev1
+User country: 	GB
+User language: 	en
+User locale: 	en_GB
+
+RDI_BASEROOT: C:/Xilinx/Vivado
+HDI_APPROOT: C:/Xilinx/Vivado/2024.1
+RDI_DATADIR: C:/Xilinx/Vivado/2024.1/data
+RDI_BINDIR: C:/Xilinx/Vivado/2024.1/bin
+
+Vivado preferences file: C:/Users/zingy/AppData/Roaming/Xilinx/Vivado/2024.1/vivado.xml
+Vivado preferences directory: C:/Users/zingy/AppData/Roaming/Xilinx/Vivado/2024.1/
+Vivado layouts directory: C:/Users/zingy/AppData/Roaming/Xilinx/Vivado/2024.1/data/layouts
+PlanAhead jar file: 	C:/Xilinx/Vivado/2024.1/lib/classes/planAhead.jar
+Vivado log file: 	X:/C++/Uni-CPU/CPURev1/vivado.log
+Vivado journal file: 	X:/C++/Uni-CPU/CPURev1/vivado.jou
+Engine tmp dir: 	X:/C++/Uni-CPU/CPURev1/.Xil/Vivado-12704-DESKTOP-PSI4IU2
+Non-Default Parameters:	[]
+
+Xilinx & AMD Environment Variables
+--------------------------------------------------------------------------------------------
+RDI_APPROOT: C:/Xilinx/Vivado/2024.1
+RDI_ARGS:  -gui_launcher_event rodinguilauncherevent6068 "X:\C++\Uni-CPU\CPURev1\PYNQ_CONFIG.xpr"
+RDI_ARGS_FUNCTION: RDI_EXEC_DEFAULT
+RDI_BASEROOT: C:/Xilinx/Vivado
+RDI_BINDIR: C:/Xilinx/Vivado/2024.1/bin
+RDI_BINROOT: C:/Xilinx/Vivado/2024.1/bin
+RDI_BUILD: yes
+RDI_CHECK_PROG: True
+RDI_DATADIR: C:/Xilinx/Vivado/2024.1/data
+RDI_INSTALLROOT: C:/Xilinx
+RDI_INSTALLVER: 2024.1
+RDI_INSTALLVERSION: 2024.1
+RDI_ISE_PLATFORM: nt64
+RDI_JAVACEFROOT: C:/Xilinx/Vivado/2024.1/tps/win64/java-cef-95.0.4638.69
+RDI_JAVAFXROOT: C:/Xilinx/Vivado/2024.1/tps/win64/javafx-sdk-21.0.1
+RDI_JAVAROOT: C:/Xilinx/Vivado/2024.1/tps/win64/jre21.0.1_12
+RDI_JAVA_VERSION: 21.0.1_12
+RDI_LIBDIR: C:/Xilinx/Vivado/2024.1/lib/win64.o
+RDI_MINGW_LIB: C:/Xilinx/Vivado/2024.1\tps\mingw\6.2.0\win64.o\nt\bin;C:/Xilinx/Vivado/2024.1\tps\mingw\6.2.0\win64.o\nt\libexec\gcc\x86_64-w64-mingw32\6.2.0
+RDI_OPT_EXT: .o
+RDI_PLATFORM: win64
+RDI_PREPEND_PATH: C:/Xilinx/Vitis/2024.1/bin;C:/Xilinx/Vivado/2024.1/ids_lite/ISE/bin/nt64;C:/Xilinx/Vivado/2024.1/ids_lite/ISE/lib/nt64
+RDI_PROG: C:/Xilinx/Vivado/2024.1/bin/unwrapped/win64.o/vivado.exe
+RDI_PROGNAME: vivado.exe
+RDI_PYTHON3: C:/Xilinx/Vivado/2024.1\tps\win64\python-3.8.3
+RDI_PYTHON3_VERSION: 3.8.3
+RDI_PYTHONHOME: C:/Xilinx/Vivado/2024.1\tps\win64\python-3.8.3
+RDI_PYTHONPATH: C:/Xilinx/Vivado/2024.1\tps\win64\python-3.8.3;C:/Xilinx/Vivado/2024.1\tps\win64\python-3.8.3\bin;C:/Xilinx/Vivado/2024.1\tps\win64\python-3.8.3\lib;C:/Xilinx/Vivado/2024.1\tps\win64\python-3.8.3\lib\site-packages
+RDI_PYTHON_LD_LIBPATH: C:/Xilinx/Vivado/2024.1\tps\win64\python-3.8.3\lib
+RDI_SESSION_INFO: X:\C++\Uni-CPU\CPURev1:DESKTOP-PSI4IU2-31-07-2024_15-15-17.61
+RDI_SHARED_DATA: C:/Xilinx/SharedData/2024.1/data
+RDI_TPS_ROOT: C:/Xilinx/Vivado/2024.1/tps/win64
+RDI_USE_JDK21: True
+RDI_VERBOSE: False
+XILINX: C:/Xilinx/Vivado/2024.1/ids_lite/ISE
+XILINX_DSP: C:/Xilinx/Vivado/2024.1/ids_lite/ISE
+XILINX_HLS: C:/Xilinx/Vitis_HLS/2024.1
+XILINX_PLANAHEAD: C:/Xilinx/Vivado/2024.1
+XILINX_SDK: C:/Xilinx/Vitis/2024.1
+XILINX_VITIS: C:/Xilinx/Vitis/2024.1
+XILINX_VIVADO: C:/Xilinx/Vivado/2024.1
+XILINX_VIVADO_HLS: C:/Xilinx/Vivado/2024.1
+_RDI_BINROOT: C:\Xilinx\Vivado\2024.1\bin
+_RDI_CWD: X:\C++\Uni-CPU\CPURev1
+
+
+GUI allocated memory:	512 MB
+GUI max memory:		4,072 MB
+Engine allocated memory: 989 MB
+
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+*/
+
+// TclEventType: START_GUI
+// Tcl Message: start_gui 
+// TclEventType: PROJECT_OPEN_DIALOG
+selectButton(RDIResource.BaseDialog_OK, "OK", "Older Project Version"); // a (RDIResource.BaseDialog_OK)
+// Opening Vivado Project: X:\C++\Uni-CPU\CPURev1\PYNQ_CONFIG.xpr. Version: Vivado v2018.3 
+dismissDialog("Older Project Version"); // at (dialog0)
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// TclEventType: FLOW_ADDED
+// Tcl Message: open_project X:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.xpr 
+// HMemoryUtils.trashcanNow. Engine heap size: 1,021 MB. GUI used memory: 74 MB. Current time: 7/31/24, 3:15:30 PM BST
+// TclEventType: MSGMGR_MOVEMSG
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILESET_TARGET_UCF_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: FILESET_TARGET_UCF_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: FILESET_TARGET_UCF_CHANGE
+// TclEventType: RUN_CURRENT
+// TclEventType: PROJECT_DASHBOARD_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PROJECT_NEW
+// [GUI Memory]: 113 MB (+115749kb) [00:00:14]
+// [Engine Memory]: 1,155 MB (+1059256kb) [00:00:14]
+// [GUI Memory]: 129 MB (+11538kb) [00:00:15]
+// [Engine Memory]: 1,215 MB (+3093kb) [00:00:15]
+// WARNING: HEventQueue.dispatchEvent() is taking  2189 ms.
+// Tcl Message: open_project X:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.xpr 
+// Tcl Message: INFO: [Project 1-313] Project file moved from 'E:/PYNQ/Smart_ZYNQ_SP/PYNQ_CONFIG_02/PYNQ_CONFIG' since last save. 
+// Tcl Message: Scanning sources... Finished scanning sources 
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1704] No user IP repositories specified INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2024.1/data/ip'. 
+// Tcl Message: INFO: [Project 1-230] Project 'PYNQ_CONFIG.xpr' upgraded for this version of Vivado. 
+// Tcl Message: open_project: Time (s): cpu = 00:00:13 ; elapsed = 00:00:09 . Memory (MB): peak = 1583.758 ; gain = 368.227 
+// Project name: PYNQ_CONFIG; location: X:/C++/Uni-CPU/CPURev1; part: xc7z020clg484-1
+// Elapsed time: 27 seconds
+selectButton("OptionPane.button", "Yes", "Migrate Project Sources"); // JButton (OptionPane.button)
+// Tcl Command: 'upgrade_project -migrate_output_products'
+// Tcl Message: upgrade_project -migrate_output_products 
+// TclEventType: COMPOSITE_FILE_CHANGE
+// Tcl Message: INFO: [BD 41-2710] Migrated 'ZYNQ_processing_system7_0_0.xci'   Source files are located in 'x:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ip/ZYNQ_processing_system7_0_0'   Output files are located in 'x:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ip/ZYNQ_processing_system7_0_0'. 
+// Tcl Message: INFO: [BD 41-2710] Migrated 'ZYNQ_gmii_to_rgmii_0_0.xci'   Source files are located in 'x:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ip/ZYNQ_gmii_to_rgmii_0_0'   Output files are located in 'x:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ip/ZYNQ_gmii_to_rgmii_0_0'. 
+// Tcl Message: INFO: [BD 41-2710] Migrated 'ZYNQ_util_vector_logic_0_0.xci'   Source files are located in 'x:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ip/ZYNQ_util_vector_logic_0_0'   Output files are located in 'x:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ip/ZYNQ_util_vector_logic_0_0'. 
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILESET_TARGET_UCF_CHANGE
+dismissDialog("Migrate Project Sources"); // bj (Migrate Project Sources Progress)
+// Elapsed Time for: 'L.f': 22s
+// [GUI Memory]: 153 MB (+18294kb) [00:00:41]
+// Elapsed Time for: 'L.f': 26s
+// Tcl Message: update_compile_order -fileset sources_1 
+// HMemoryUtils.trashcanNow. Engine heap size: 1,407 MB. GUI used memory: 82 MB. Current time: 7/31/24, 3:16:05 PM BST
+// Elapsed time: 14 seconds
+selectButton(PAResourceQtoS.ReportIPStatusInfoDialog_REPORT_IP_STATUS, "Report IP Status", "Project Upgraded"); // a (PAResourceQtoS.ReportIPStatusInfoDialog_REPORT_IP_STATUS, RDIResource.BaseDialog_OK)
+// Run Command: PAResourceCommand.PACommandNames_REPORT_IP_STATUS
+// [Engine Memory]: 1,408 MB (+138318kb) [00:00:50]
+dismissDialog("Project Upgraded"); // U (dialog1)
+// Tcl Command: 'report_ip_status -name ip_status '
+// TclEventType: IP_SUMMARY_RESULTS
+// Tcl Message: report_ip_status -name ip_status  
+selectButton(PAResourceItoN.IPStatusSectionPanel_UPGRADE_SELECTED, "Upgrade Selected"); // a (PAResourceItoN.IPStatusSectionPanel_UPGRADE_SELECTED)
+// Run Command: PAResourceCommand.PACommandNames_UPGRADE_IP
+selectButton(RDIResource.BaseDialog_OK, "OK", "Upgrade IP"); // a (RDIResource.BaseDialog_OK)
+dismissDialog("Upgrade IP"); // P.b (dialog2)
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: LOAD_FEATURE
+// TclEventType: RSB_CHANGE_CURRENT_DIAGRAM
+// TclEventType: RSB_PROPERTY_CHANGE
+// TclEventType: LOAD_FEATURE
+// TclEventType: RSB_LOCK_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_OPEN_DIAGRAM
+// Tcl Message: upgrade_ip [get_ips  {ZYNQ_gmii_to_rgmii_0_0 ZYNQ_util_vector_logic_0_0}] -log ip_upgrade.log 
+// Tcl Message: Reading block design file <X:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd>... Adding component instance block -- xilinx.com:ip:gmii_to_rgmii:4.0 - gmii_to_rgmii_0 Adding component instance block -- xilinx.com:ip:processing_system7:5.5 - processing_system7_0 Adding component instance block -- xilinx.com:ip:util_vector_logic:2.0 - util_vector_logic_0 Successfully read diagram <ZYNQ> from block design file <X:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd> 
+// TclEventType: RSB_OPEN_DIAGRAM
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "unselect_objects"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+closeView(PAResourceOtoP.PAViews_PROJECT_SUMMARY, "Project Summary"); // u (PAResourceOtoP.PAViews_PROJECT_SUMMARY, PlanAheadTabProject Summary)
+// Tcl Message: Upgrading 'X:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd' 
+// TclEventType: RSB_OPEN_DIAGRAM
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_RESET
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_DELETE
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILE_SET_DELETE
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_RESET
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_DELETE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILE_SET_DELETE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: RSB_SAVE_DIAGRAM
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: RSB_SAVE_DIAGRAM
+// TclEventType: FILESET_UPDATE_IP
+// TclEventType: IP_UPGRADE_COMPLETE
+// Tcl Message: INFO: [IP_Flow 19-1972] Upgraded ZYNQ_gmii_to_rgmii_0_0 from Gmii to Rgmii 4.0 to Gmii to Rgmii 4.1 INFO: [IP_Flow 19-3422] Upgraded ZYNQ_util_vector_logic_0_0 (Utility Vector Logic 2.0) from revision 1 to revision 4 
+// Tcl Message: Wrote  : <X:\C++\Uni-CPU\CPURev1\PYNQ_CONFIG.srcs\sources_1\bd\ZYNQ\ZYNQ.bd>  Wrote  : <X:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ui/bd_bdecc542.ui>  
+// Tcl Message: INFO: [Coretcl 2-1525] Wrote upgrade log to 'X:/C++/Uni-CPU/CPURev1/ip_upgrade.log'. 
+// Tcl Message: export_ip_user_files -of_objects [get_ips {ZYNQ_gmii_to_rgmii_0_0 ZYNQ_util_vector_logic_0_0}] -no_script -sync -force -quiet 
+selectButton("OptionPane.button", "OK", "Upgrade IP"); // JButton (OptionPane.button)
+// Elapsed Time for: 'L.f': 44s
+// Elapsed Time for: 'L.f': 46s
+selectButton(PAResourceQtoS.SimpleOutputProductDialog_GENERATE_OUTPUT_PRODUCTS_IMMEDIATELY, "Generate", "Generate Output Products"); // a (PAResourceQtoS.SimpleOutputProductDialog_GENERATE_OUTPUT_PRODUCTS_IMMEDIATELY)
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_SAVE_DIAGRAM
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: RSB_SAVE_DIAGRAM
+// Tcl Message: generate_target all [get_files  X:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd] 
+// Tcl Message: Wrote  : <X:\C++\Uni-CPU\CPURev1\PYNQ_CONFIG.srcs\sources_1\bd\ZYNQ\ZYNQ.bd>  
+// HMemoryUtils.trashcanNow. Engine heap size: 1,507 MB. GUI used memory: 85 MB. Current time: 7/31/24, 3:16:25 PM BST
+// TclEventType: RSB_SAVE_DIAGRAM
+// TclEventType: RSB_SCRIPT_TASK
+// [Engine Memory]: 1,534 MB (+57985kb) [00:01:05]
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: COMPOSITE_FILE_CHANGE
+// Tcl Message: Verilog Output written to : x:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/synth/ZYNQ.v Verilog Output written to : x:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/sim/ZYNQ.v Verilog Output written to : x:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/hdl/ZYNQ_wrapper.v 
+// Tcl Message: INFO: [BD 41-1029] Generation completed for the IP Integrator block gmii_to_rgmii_0 . INFO: [BD 41-1029] Generation completed for the IP Integrator block util_vector_logic_0 . 
+// Tcl Message: Exporting to file x:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/hw_handoff/ZYNQ.hwh Generated Hardware Definition File x:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/synth/ZYNQ.hwdef 
+// Tcl Message: catch { config_ip_cache -export [get_ips -all ZYNQ_gmii_to_rgmii_0_0] } 
+// Tcl Message: INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: ZYNQ_gmii_to_rgmii_0_0 
+// Tcl Message: catch { config_ip_cache -export [get_ips -all ZYNQ_util_vector_logic_0_0] } 
+// Tcl Message: INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: ZYNQ_util_vector_logic_0_0 
+// Tcl Message: export_ip_user_files -of_objects [get_files X:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd] -no_script -sync -force -quiet 
+// TclEventType: FILE_SET_NEW
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_ADD
+// TclEventType: FILE_SET_NEW
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_ADD
+// Tcl Message: create_ip_run [get_files -of_objects [get_fileset sources_1] X:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd] 
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: RUN_LAUNCH
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: RUN_LAUNCH
+// Tcl Message: launch_runs ZYNQ_gmii_to_rgmii_0_0_synth_1 ZYNQ_util_vector_logic_0_0_synth_1 -jobs 16 
+// Tcl Message: INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: ZYNQ_gmii_to_rgmii_0_0 INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: ZYNQ_util_vector_logic_0_0 
+// TclEventType: RUN_MODIFY
+// Tcl Message: [Wed Jul 31 15:16:27 2024] Launched ZYNQ_gmii_to_rgmii_0_0_synth_1, ZYNQ_util_vector_logic_0_0_synth_1... Run output will be captured here: ZYNQ_gmii_to_rgmii_0_0_synth_1: X:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.runs/ZYNQ_gmii_to_rgmii_0_0_synth_1/runme.log ZYNQ_util_vector_logic_0_0_synth_1: X:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.runs/ZYNQ_util_vector_logic_0_0_synth_1/runme.log 
+// TclEventType: PROJECT_CHANGE
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: PROJECT_CHANGE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// Tcl Message: export_simulation -of_objects [get_files X:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd] -directory X:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.ip_user_files/sim_scripts -ip_user_files_dir X:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.ip_user_files -ipstatic_source_dir X:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.ip_user_files/ipstatic -lib_map_path [list {modelsim=X:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.cache/compile_simlib/modelsim} {questa=X:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.cache/compile_simlib/questa} {riviera=X:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.cache/compile_simlib/riviera} {activehdl=X:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet 
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: FILE_SET_CHANGE
+selectButton("OptionPane.button", "OK", "Generate Output Products"); // JButton (OptionPane.button)
+// Elapsed Time for: 'L.f': 58s
+// [GUI Memory]: 162 MB (+1420kb) [00:01:15]
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Project Manager]", 0, true); // g (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree) - Node
+// Run Command: PAResourceCommand.PACommandNames_GOTO_PROJECT_MANAGER
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, ZYNQ_wrapper (ZYNQ_wrapper.v)]", 1); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE)
+collapseTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, ZYNQ_wrapper (ZYNQ_wrapper.v)]", 1); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources]", 0, true); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE) - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources]", 0, true, false, false, false, true, false); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE) - Popup Trigger - Node
+selectMenu(PAResourceCommand.PACommandNames_AUTO_UPDATE_HIER, "Hierarchy Update"); // am (PAResourceCommand.PACommandNames_AUTO_UPDATE_HIER, Hierarchy Update)
+selectMenu(PAResourceQtoS.SrcMenu_IP_HIERARCHY, "IP Hierarchy"); // am (PAResourceQtoS.SrcMenu_IP_HIERARCHY, IP Hierarchy)
+selectMenuItem(PAResourceCommand.PACommandNames_ADD_SOURCES, "Add Sources..."); // ap (PAResourceCommand.PACommandNames_ADD_SOURCES, add_sources_menu)
+// Run Command: PAResourceCommand.PACommandNames_ADD_SOURCES
+selectButton("NEXT", "Next >", "Add Sources"); // JButton (NEXT)
+selectButton(PAResourceQtoS.SrcChooserPanel_CREATE_FILE, "Create File", "Add Sources"); // a (PAResourceQtoS.SrcChooserPanel_CREATE_FILE)
+setText(PAResourceAtoD.CreateSrcFileDialog_FILE_NAME, "Types"); // R (PAResourceAtoD.CreateSrcFileDialog_FILE_NAME)
+selectButton(RDIResource.BaseDialog_OK, "OK", "Create Source File"); // a (RDIResource.BaseDialog_OK)
+// Tcl Command: 'file mkdir X:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new'
+dismissDialog("Create Source File"); // k (dialog5)
+// Tcl Message: file mkdir X:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new 
+selectTable(PAResourceQtoS.SrcChooserTable_SRC_CHOOSER_TABLE, "VSourceFile ; 1 ; Types.v ; xil_defaultlib ; <Local to Project>", 0, "xil_defaultlib", 3); // aN (PAResourceQtoS.SrcChooserTable_SRC_CHOOSER_TABLE)
+editTable(PAResourceQtoS.SrcChooserTable_SRC_CHOOSER_TABLE, "Types", 0, "Library", 3); // aN (PAResourceQtoS.SrcChooserTable_SRC_CHOOSER_TABLE)
+selectButton("FINISH", "Finish", "Add Sources"); // JButton (FINISH)
+// 'f' command handler elapsed time: 11 seconds
+dismissDialog("Add Sources"); // c (dialog4)
+// Tcl Message: close [ open X:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/Types.v w ] 
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: add_files X:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/Types.v 
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: set_property library Types [get_files  X:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/Types.v] 
+selectButton(RDIResource.BaseDialog_OK, "OK", "Define Module"); // a (RDIResource.BaseDialog_OK)
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+selectButton("OptionPane.button", "Yes", "Define Module"); // JButton (OptionPane.button)
+dismissDialog("Define Module"); // n (dialog6)
+// TclEventType: FILE_SET_CHANGE
+// Elapsed Time for: 'L.f': 01m:20s
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// [Engine Memory]: 1,629 MB (+19604kb) [00:01:39]
+// Elapsed Time for: 'L.f': 01m:24s
+// Tcl Message: update_compile_order -fileset sources_1 
+// HMemoryUtils.trashcanNow. Engine heap size: 1,629 MB. GUI used memory: 107 MB. Current time: 7/31/24, 3:17:00 PM BST
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Types (Types.v)]", 2, false); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Types (Types.v)]", 2, false, false, false, false, false, true); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE) - Double Click
+// TclEventType: FILE_SET_CHANGE
+// [GUI Memory]: 183 MB (+13046kb) [00:01:41]
+// Elapsed Time for: 'L.f': 01m:26s
+selectCodeEditor("Types.v", 279, 539); // ac (Types.v)
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+selectCodeEditor("Types.v", 110, 448); // ac (Types.v)
+// Elapsed Time for: 'L.f': 01m:28s
+typeControlKey((HResource) null, "Types.v", 'v'); // ac (Types.v)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Elapsed Time for: 'L.f': 01m:30s
+// Elapsed Time for: 'L.f': 01m:32s
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Syntax Error Files]", 1); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE)
+collapseTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Syntax Error Files]", 1); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE)
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Syntax Error Files]", 1); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE)
+// Elapsed time: 118 seconds
+selectButton(PAResourceCommand.PACommandNames_ADD_SOURCES, "Sources_add_sources"); // B (PAResourceCommand.PACommandNames_ADD_SOURCES, Sources_add_sources)
+// Run Command: PAResourceCommand.PACommandNames_ADD_SOURCES
+selectButton("NEXT", "Next >", "Add Sources"); // JButton (NEXT)
+selectButton(PAResourceQtoS.SrcChooserPanel_CREATE_FILE, "Create File", "Add Sources"); // a (PAResourceQtoS.SrcChooserPanel_CREATE_FILE)
+selectComboBox(PAResourceAtoD.CreateSrcFileDialog_FILE_TYPE, "SystemVerilog", 2); // bc (PAResourceAtoD.CreateSrcFileDialog_FILE_TYPE)
+setText(PAResourceAtoD.CreateSrcFileDialog_FILE_NAME, "Types"); // R (PAResourceAtoD.CreateSrcFileDialog_FILE_NAME)
+selectButton(RDIResource.BaseDialog_OK, "OK", "Create Source File"); // a (RDIResource.BaseDialog_OK)
+dismissDialog("Create Source File"); // k (dialog8)
+selectTable(PAResourceQtoS.SrcChooserTable_SRC_CHOOSER_TABLE, "VSourceFile ; 1 ; Types.sv ; xil_defaultlib ; <Local to Project>", 0, "xil_defaultlib", 3); // aN (PAResourceQtoS.SrcChooserTable_SRC_CHOOSER_TABLE)
+editTable(PAResourceQtoS.SrcChooserTable_SRC_CHOOSER_TABLE, "Types", 0, "Library", 3); // aN (PAResourceQtoS.SrcChooserTable_SRC_CHOOSER_TABLE)
+selectButton("FINISH", "Finish", "Add Sources"); // JButton (FINISH)
+// 'f' command handler elapsed time: 10 seconds
+dismissDialog("Add Sources"); // c (dialog7)
+// Tcl Message: close [ open X:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/Types.sv w ] 
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: add_files X:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/Types.sv 
+selectButton(RDIResource.BaseDialog_OK, "OK", "Define Module"); // a (RDIResource.BaseDialog_OK)
+selectButton("OptionPane.button", "Yes", "Define Module"); // JButton (OptionPane.button)
+dismissDialog("Define Module"); // n (dialog9)
+// TclEventType: FILE_SET_CHANGE
+// Elapsed Time for: 'L.f': 03m:50s
+selectCodeEditor("Types.v", 311, 232); // ac (Types.v)
+typeControlKey((HResource) null, "Types.v", 'c'); // ac (Types.v)
+closeView(PAResourceOtoP.PAViews_CODE, "Code"); // J (PAResourceOtoP.PAViews_CODE, PlanAheadTabCode)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Elapsed Time for: 'L.f': 03m:52s
+// Tcl Message: update_compile_order -fileset sources_1 
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Syntax Error Files, Types.v]", 2, false); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Syntax Error Files, Types.v]", 2, false, false, false, false, true, false); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE) - Popup Trigger
+selectMenu(PAResourceCommand.PACommandNames_OPEN_FILE_WITH, "Open With"); // am (PAResourceCommand.PACommandNames_OPEN_FILE_WITH, Open With)
+selectMenu(PAResourceCommand.PACommandNames_AUTO_UPDATE_HIER, "Hierarchy Update"); // am (PAResourceCommand.PACommandNames_AUTO_UPDATE_HIER, Hierarchy Update)
+selectMenu(PAResourceQtoS.SrcMenu_IP_HIERARCHY, "IP Hierarchy"); // am (PAResourceQtoS.SrcMenu_IP_HIERARCHY, IP Hierarchy)
+selectMenu(PAResourceQtoS.SrcMenu_IP_HIERARCHY, "IP Hierarchy"); // am (PAResourceQtoS.SrcMenu_IP_HIERARCHY, IP Hierarchy)
+selectMenuItem(RDIResourceCommand.RDICommands_DELETE, "Remove File from Project..."); // ap (RDIResourceCommand.RDICommands_DELETE, global_delete_menu)
+// Run Command: RDIResourceCommand.RDICommands_DELETE
+selectButton(RDIResource.BaseDialog_OK, "OK", "Remove Sources"); // a (RDIResource.BaseDialog_OK)
+// [GUI Memory]: 201 MB (+9669kb) [00:04:11]
+dismissDialog("Remove Sources"); // V (dialog10)
+// Tcl Message: export_ip_user_files -of_objects  [get_files X:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/Types.v] -no_script -reset -force -quiet 
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: remove_files  X:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/Types.v 
+// Elapsed Time for: 'L.f': 03m:58s
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Types (Types.sv)]", 5, false); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Types (Types.sv)]", 5, false, false, false, false, false, true); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE) - Double Click
+selectCodeEditor("Types.sv", 389, 241); // ac (Types.sv)
+typeControlKey((HResource) null, "Types.sv", 'v'); // ac (Types.sv)
+// Elapsed Time for: 'L.f': 04m:00s
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+selectCodeEditor("Types.sv", 333, 261); // ac (Types.sv)
+// Elapsed Time for: 'L.f': 04m:02s
+// Elapsed Time for: 'L.f': 04m:04s
+// Elapsed time: 56 seconds
+selectCodeEditor("Types.sv", 59, 2); // ac (Types.sv)
+selectCodeEditor("Types.sv", 59, 2, false, false, false, false, true); // ac (Types.sv) - Double Click
+selectCodeEditor("Types.sv", 71, 4); // ac (Types.sv)
+selectCodeEditor("Types.sv", 71, 4, false, false, false, false, true); // ac (Types.sv) - Double Click
+typeControlKey((HResource) null, "Types.sv", 'c'); // ac (Types.sv)
+selectCodeEditor("Types.sv", 79, 110); // ac (Types.sv)
+selectCodeEditor("Types.sv", 79, 110, false, false, false, false, true); // ac (Types.sv) - Double Click
+typeControlKey((HResource) null, "Types.sv", 'v'); // ac (Types.sv)
+selectCodeEditor("Types.sv", 74, 140); // ac (Types.sv)
+selectCodeEditor("Types.sv", 74, 134); // ac (Types.sv)
+selectCodeEditor("Types.sv", 74, 134, false, false, false, false, true); // ac (Types.sv) - Double Click
+typeControlKey((HResource) null, "Types.sv", 'v'); // ac (Types.sv)
+selectCodeEditor("Types.sv", 76, 152); // ac (Types.sv)
+selectCodeEditor("Types.sv", 76, 152, false, false, false, false, true); // ac (Types.sv) - Double Click
+typeControlKey((HResource) null, "Types.sv", 'v'); // ac (Types.sv)
+selectCodeEditor("Types.sv", 73, 172); // ac (Types.sv)
+selectCodeEditor("Types.sv", 73, 172, false, false, false, false, true); // ac (Types.sv) - Double Click
+typeControlKey((HResource) null, "Types.sv", 'v'); // ac (Types.sv)
+selectCodeEditor("Types.sv", 81, 166); // ac (Types.sv)
+selectCodeEditor("Types.sv", 81, 166, false, false, false, false, true); // ac (Types.sv) - Double Click
+typeControlKey((HResource) null, "Types.sv", 'v'); // ac (Types.sv)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+selectCodeEditor("Types.sv", 268, 188); // ac (Types.sv)
+// Elapsed Time for: 'L.f': 05m:06s
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_GRAPH_STALE
+// Elapsed Time for: 'L.f': 05m:08s
+// Elapsed Time for: 'L.f': 05m:10s
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Non-module Files]", 1); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE)
+collapseTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Non-module Files]", 1); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, ZYNQ_wrapper (ZYNQ_wrapper.v)]", 2, true); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE) - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, ZYNQ_wrapper (ZYNQ_wrapper.v)]", 2, true, false, false, false, false, true); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE) - Double Click - Node
+selectCodeEditor("ZYNQ_wrapper.v", 231, 360); // ac (ZYNQ_wrapper.v)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "Project Summary", 0); // o (PlanAheadTabBaseWorkspace_JideTabbedPane)
+selectTab((HResource) null, "PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "Project Summary", 0, false, true); // o (PlanAheadTabBaseWorkspace_JideTabbedPane) - Double Click
+maximizeView(PAResourceOtoP.PAViews_BASE_WORKSPACE, "BaseWorkspace"); // L (PAResourceOtoP.PAViews_BASE_WORKSPACE, PlanAheadTabBaseWorkspace)
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, IP Integrator]", 5, true); // g (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree) - Node
+// Run Command: PAResourceCommand.PACommandNames_GOTO_IP_INTEGRATOR
+closeView(PAResourceOtoP.PAViews_PROJECT_SUMMARY, "Project Summary"); // u (PAResourceOtoP.PAViews_PROJECT_SUMMARY, PlanAheadTabProject Summary)
+// Tcl Command: 'set_property location {2 675 -213} [get_bd_cells gmii_to_rgmii_0]'
+// TclEventType: RSB_CANVAS_LOCATION
+// Tcl Message: set_property location {2 675 -213} [get_bd_cells gmii_to_rgmii_0] 
+// Elapsed time: 20 seconds
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "unselect_objects"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+// Tcl Command: 'set_property location {841 365} [get_bd_intf_ports UART_0_0]'
+// TclEventType: RSB_CANVAS_LOCATION
+// Tcl Message: set_property location {841 365} [get_bd_intf_ports UART_0_0] 
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_intf_nets /processing_system7_0_DDR]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+selectView(PAResourceOtoP.PAViews_SYSTEM, "System", 1249, 573, 1864, 913, false, false, false, true, false); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem) - Popup Trigger
+selectButton(PAResourceCommand.PACommandNames_SELECT_AREA, "System_select_area"); // v (PAResourceCommand.PACommandNames_SELECT_AREA, System_select_area): TRUE
+// Run Command: PAResourceCommand.PACommandNames_SELECT_AREA
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "unselect_objects"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_intf_nets /processing_system7_0_DDR]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+selectView(PAResourceOtoP.PAViews_SYSTEM, "System", 1016, 493, 1864, 913, false, false, false, true, false); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem) - Popup Trigger
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "unselect_objects"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+selectButton(PAResourceQtoS.SystemBuilderView_PIN_BLOCKS_AND_PORTS_TO_LOCATION, "System_Pin blocks and ports to location"); // B (PAResourceQtoS.SystemBuilderView_PIN_BLOCKS_AND_PORTS_TO_LOCATION, System_Pin blocks and ports to location)
+selectButton(PAResourceQtoS.SystemBuilderView_PIN_BLOCKS_AND_PORTS_TO_LOCATION, "System_Pin blocks and ports to location"); // B (PAResourceQtoS.SystemBuilderView_PIN_BLOCKS_AND_PORTS_TO_LOCATION, System_Pin blocks and ports to location)
+selectButton(PAResourceQtoS.SystemBuilderView_OPTIMIZE_ROUTING, "System_RSB_OPTIMIZE_LAYOUT"); // B (PAResourceQtoS.SystemBuilderView_OPTIMIZE_ROUTING, System_RSB_OPTIMIZE_LAYOUT)
+// Tcl Command: 'regenerate_bd_layout -routing'
+// TclEventType: RSB_LAYOUT_STATE
+// TclEventType: RSB_ROUTE_LAYOUT
+// Tcl Message: regenerate_bd_layout -routing 
+selectButton(PAResourceQtoS.SystemBuilderView_OPTIMIZE_ROUTING, "System_RSB_OPTIMIZE_LAYOUT"); // B (PAResourceQtoS.SystemBuilderView_OPTIMIZE_ROUTING, System_RSB_OPTIMIZE_LAYOUT)
+// Tcl Command: 'regenerate_bd_layout -routing'
+// TclEventType: RSB_LAYOUT_STATE
+// TclEventType: RSB_ROUTE_LAYOUT
+// Tcl Message: regenerate_bd_layout -routing 
+// Elapsed time: 100 seconds
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "unselect_objects"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "unselect_objects"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Non-module Files]", 1, true, false, false, false, true, false); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE) - Popup Trigger - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, ZYNQ_wrapper (ZYNQ_wrapper.v)]", 2, true, false, false, false, true, false); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE) - Popup Trigger - Node
+selectButton(PAResourceCommand.PACommandNames_ADD_SOURCES, "Sources_add_sources"); // B (PAResourceCommand.PACommandNames_ADD_SOURCES, Sources_add_sources)
+// Run Command: PAResourceCommand.PACommandNames_ADD_SOURCES
+selectButton("NEXT", "Next >", "Add Sources"); // JButton (NEXT)
+selectButton(PAResourceQtoS.SrcChooserPanel_CREATE_FILE, "Create File", "Add Sources"); // a (PAResourceQtoS.SrcChooserPanel_CREATE_FILE)
+// Elapsed time: 13 seconds
+setText(PAResourceAtoD.CreateSrcFileDialog_FILE_NAME, "CPU"); // R (PAResourceAtoD.CreateSrcFileDialog_FILE_NAME)
+// Elapsed time: 73 seconds
+selectButton(RDIResource.BaseDialog_OK, "OK", "Create Source File"); // a (RDIResource.BaseDialog_OK)
+dismissDialog("Create Source File"); // k (dialog12)
+selectTable(PAResourceQtoS.SrcChooserTable_SRC_CHOOSER_TABLE, "VSourceFile ; 1 ; CPU.v ; xil_defaultlib ; <Local to Project>", 0, "xil_defaultlib", 3); // aN (PAResourceQtoS.SrcChooserTable_SRC_CHOOSER_TABLE)
+editTable(PAResourceQtoS.SrcChooserTable_SRC_CHOOSER_TABLE, "CPU", 0, "Library", 3); // aN (PAResourceQtoS.SrcChooserTable_SRC_CHOOSER_TABLE)
+selectButton("FINISH", "Finish", "Add Sources"); // JButton (FINISH)
+// 'f' command handler elapsed time: 93 seconds
+dismissDialog("Add Sources"); // c (dialog11)
+// Tcl Message: close [ open X:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/CPU.v w ] 
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: add_files X:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/CPU.v 
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: set_property library CPU [get_files  X:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/CPU.v] 
+selectButton(RDIResource.BaseDialog_OK, "OK", "Define Module"); // a (RDIResource.BaseDialog_OK)
+selectButton("OptionPane.button", "Yes", "Define Module"); // JButton (OptionPane.button)
+dismissDialog("Define Module"); // n (dialog13)
+// TclEventType: FILE_SET_CHANGE
+// Elapsed Time for: 'L.f': 09m:28s
+// Tcl Message: ERROR: [Common 17-180] Spawn failed: No error 
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Elapsed Time for: 'L.f': 09m:30s
+// Tcl Message: update_compile_order -fileset sources_1 
+// Elapsed Time for: 'L.f': 09m:32s
+// Tcl Message: ERROR: [Common 17-180] Spawn failed: No error 
+// Elapsed Time for: 'L.f': 09m:34s
+// Elapsed time: 10 seconds
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, CPU (CPU.v)]", 5, false); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, CPU (CPU.v)]", 5, false, false, false, false, false, true); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE) - Double Click
+selectCodeEditor("CPU.v", 192, 442); // ac (CPU.v)
+selectCodeEditor("CPU.v", 177, 414); // ac (CPU.v)
+selectCodeEditor("CPU.v", 181, 403); // ac (CPU.v)
+typeControlKey((HResource) null, "CPU.v", 'v'); // ac (CPU.v)
+selectCodeEditor("CPU.v", 121, 518); // ac (CPU.v)
+selectCodeEditor("CPU.v", 482, 518); // ac (CPU.v)
+selectCodeEditor("CPU.v", 448, 518); // ac (CPU.v)
+selectCodeEditor("CPU.v", 337, 527); // ac (CPU.v)
+selectCodeEditor("CPU.v", 111, 538); // ac (CPU.v)
+selectCodeEditor("CPU.v", 85, 537); // ac (CPU.v)
+selectCodeEditor("CPU.v", 208, 519); // ac (CPU.v)
+selectCodeEditor("CPU.v", 461, 524); // ac (CPU.v)
+selectCodeEditor("CPU.v", 133, 501); // ac (CPU.v)
+selectCodeEditor("CPU.v", 133, 449); // ac (CPU.v)
+selectCodeEditor("CPU.v", 130, 499); // ac (CPU.v)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Elapsed Time for: 'L.f': 10m:08s
+// Elapsed Time for: 'L.f': 10m:10s
+selectCodeEditor("CPU.v", 194, 433); // ac (CPU.v)
+selectCodeEditor("CPU.v", 194, 433, false, false, false, false, true); // ac (CPU.v) - Double Click
+selectCodeEditor("CPU.v", 194, 451); // ac (CPU.v)
+selectCodeEditor("CPU.v", 194, 451, false, false, false, false, true); // ac (CPU.v) - Double Click
+selectCodeEditor("CPU.v", 157, 476); // ac (CPU.v)
+selectCodeEditor("CPU.v", 157, 476, false, false, false, false, true); // ac (CPU.v) - Double Click
+selectCodeEditor("CPU.v", 583, 497); // ac (CPU.v)
+selectCodeEditor("CPU.v", 583, 497, false, false, false, false, true); // ac (CPU.v) - Double Click
+selectCodeEditor("CPU.v", 580, 498); // ac (CPU.v)
+selectCodeEditor("CPU.v", 579, 500); // ac (CPU.v)
+selectCodeEditor("CPU.v", 579, 501); // ac (CPU.v)
+selectCodeEditor("CPU.v", 575, 506); // ac (CPU.v)
+selectCodeEditor("CPU.v", 527, 521); // ac (CPU.v)
+selectCodeEditor("CPU.v", 184, 515); // ac (CPU.v)
+selectCodeEditor("CPU.v", 184, 513, false, false, false, false, true); // ac (CPU.v) - Double Click
+typeControlKey((HResource) null, "CPU.v", 'v'); // ac (CPU.v)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Elapsed Time for: 'L.f': 10m:30s
+selectCodeEditor("CPU.v", 131, 773); // ac (CPU.v)
+// Elapsed Time for: 'L.f': 10m:32s
+selectCodeEditor("CPU.v", 152, 792); // ac (CPU.v)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Elapsed Time for: 'L.f': 10m:34s
+// Elapsed Time for: 'L.f': 10m:36s
+selectCodeEditor("CPU.v", 313, 664); // ac (CPU.v)
+selectCodeEditor("CPU.v", 298, 630); // ac (CPU.v)
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Syntax Error Files]", 1); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Syntax Error Files, CPU.v]", 2, false); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Syntax Error Files, CPU.v]", 2, false, false, false, false, false, true); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE) - Double Click
+collapseTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Vivado Commands, General Messages]", 1); // u.d (PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE)
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Analysis Results, sources_1, [HDL 9-1206] Syntax error near ')' [X:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/new/CPU.v:31]. ]", 4, false); // u.d (PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE)
+selectCodeEditor("CPU.v", 83, 274); // ac (CPU.v)
+selectCodeEditor("CPU.v", 218, 414); // ac (CPU.v)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Elapsed Time for: 'L.f': 11m:18s
+// Elapsed Time for: 'L.f': 11m:20s
+// Elapsed time: 10 seconds
+selectCodeEditor("CPU.v", 216, 625); // ac (CPU.v)
+selectCodeEditor("CPU.v", 84, 782); // ac (CPU.v)
+selectCodeEditor("CPU.v", 90, 795); // ac (CPU.v)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Elapsed Time for: 'L.f': 11m:34s
+// Elapsed Time for: 'L.f': 11m:36s
+// [GUI Memory]: 212 MB (+494kb) [00:11:52]
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "System", 0); // o (PlanAheadTabBaseWorkspace_JideTabbedPane)
+selectView(PAResourceOtoP.PAViews_SYSTEM, "System", 955, 621, 1864, 913, false, false, false, true, false); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem) - Popup Trigger
+selectMenu(PAResourceQtoS.SystemBuilderView_PINNING, "Pinning"); // am (PAResourceQtoS.SystemBuilderView_PINNING, Pinning)
+selectMenu(PAResourceQtoS.SystemBuilderView_PINNING, "Pinning"); // am (PAResourceQtoS.SystemBuilderView_PINNING, Pinning)
+selectMenuItem(PAResourceQtoS.SystemBuilderMenu_ADD_MODULE, "Add Module..."); // ap (PAResourceQtoS.SystemBuilderMenu_ADD_MODULE, Add Module...)
+selectList(PAResourceQtoS.RSBAddModuleDialog_MODULE_LIST, "CPU (CPU.v)", 0); // cf (PAResourceQtoS.RSBAddModuleDialog_MODULE_LIST)
+selectButton(RDIResource.BaseDialog_OK, "OK", "Add Module"); // a (RDIResource.BaseDialog_OK)
+dismissDialog("Add Module"); // cc (dialog14)
+// TclEventType: PACKAGER_OBJECT_ADD
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_ADD_OBJECT
+// Tcl Message: create_bd_cell -type module -reference CPU CPU_0 
+// Tcl Message: INFO: [IP_Flow 19-5107] Inferred bus interface 'rst_n' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository). INFO: [IP_Flow 19-5107] Inferred bus interface 'clk' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository). INFO: [IP_Flow 19-4728] Bus Interface 'rst_n': Added interface parameter 'POLARITY' with value 'ACTIVE_LOW'. 
+// Elapsed Time for: 'L.f': 11m:44s
+// HMemoryUtils.trashcanNow. Engine heap size: 1,669 MB. GUI used memory: 119 MB. Current time: 7/31/24, 3:27:20 PM BST
+// Tcl Command: 'set_property location {2.5 1255 448} [get_bd_cells CPU_0]'
+// TclEventType: RSB_CANVAS_LOCATION
+// Tcl Message: set_property location {2.5 1255 448} [get_bd_cells CPU_0] 
+// Elapsed Time for: 'L.f': 11m:46s
+// Tcl Command: 'set_property location {3 1232 453} [get_bd_cells CPU_0]'
+// TclEventType: RSB_CANVAS_LOCATION
+// Tcl Message: set_property location {3 1232 453} [get_bd_cells CPU_0] 
+// Tcl Command: 'set_property location {2.5 830 452} [get_bd_cells CPU_0]'
+// TclEventType: RSB_CANVAS_LOCATION
+// Tcl Message: set_property location {2.5 830 452} [get_bd_cells CPU_0] 
+// TclEventType: RSB_CONNECTION_CHANGE
+// Tcl Message: connect_bd_net [get_bd_pins processing_system7_0/FCLK_CLK0] [get_bd_pins CPU_0/clk] 
+// TclEventType: RSB_CONNECTION_CHANGE
+// Tcl Message: connect_bd_net [get_bd_pins processing_system7_0/FCLK_RESET0_N] [get_bd_pins CPU_0/rst_n] 
+// Tcl Command: 'set_property location {3 905 450} [get_bd_cells CPU_0]'
+// TclEventType: RSB_CANVAS_LOCATION
+// Tcl Message: set_property location {3 905 450} [get_bd_cells CPU_0] 
+// Tcl Command: 'set_property location {3 788 543} [get_bd_cells CPU_0]'
+// TclEventType: RSB_CANVAS_LOCATION
+// Tcl Message: set_property location {3 788 543} [get_bd_cells CPU_0] 
+// Elapsed time: 31 seconds
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_pins /processing_system7_0/DDR_DQ]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_pins /processing_system7_0/DDR_DQ]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_pins /processing_system7_0/DDR_DQ]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_pins /processing_system7_0/DDR_Addr]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+// Elapsed time: 18 seconds
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "unselect_objects"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "CPU.v", 3); // o (PlanAheadTabBaseWorkspace_JideTabbedPane)
+selectCodeEditor("CPU.v", 172, 436); // ac (CPU.v)
+selectCodeEditor("CPU.v", 173, 436, false, false, false, false, true); // ac (CPU.v) - Double Click
+selectCodeEditor("CPU.v", 178, 430); // ac (CPU.v)
+selectCodeEditor("CPU.v", 178, 430, false, false, false, false, true); // ac (CPU.v) - Double Click
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+selectCodeEditor("CPU.v", 235, 433); // ac (CPU.v)
+// Elapsed Time for: 'L.f': 12m:58s
+// Elapsed Time for: 'L.f': 13m:02s
+selectCodeEditor("CPU.v", 345, 384); // ac (CPU.v)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Elapsed Time for: 'L.f': 13m:30s
+// Elapsed Time for: 'L.f': 13m:32s
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Elapsed Time for: 'L.f': 13m:54s
+// Elapsed Time for: 'L.f': 13m:56s
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Elapsed Time for: 'L.f': 13m:58s
+// Elapsed Time for: 'L.f': 14m:00s
+// Elapsed time: 59 seconds
+selectCodeEditor("CPU.v", 217, 533); // ac (CPU.v)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Elapsed Time for: 'L.f': 14m:12s
+// Elapsed Time for: 'L.f': 14m:14s
+// Elapsed time: 10 seconds
+selectCodeEditor("CPU.v", 601, 330); // ac (CPU.v)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Elapsed Time for: 'L.f': 14m:20s
+// Elapsed Time for: 'L.f': 14m:22s
+// Elapsed time: 10 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Simulation, Run Simulation]", 10, false); // g (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree)
+selectCodeEditor("CPU.v", 291, 482); // ac (CPU.v)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "System", 0); // o (PlanAheadTabBaseWorkspace_JideTabbedPane)
+// Tcl Command: 'set_property location {3 847 584} [get_bd_cells CPU_0]'
+// TclEventType: RSB_CANVAS_LOCATION
+// Tcl Message: set_property location {3 847 584} [get_bd_cells CPU_0] 
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_cells /CPU_0]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+// Tcl Command: 'set_property location {3 838 582} [get_bd_cells CPU_0]'
+// TclEventType: RSB_CANVAS_LOCATION
+// Tcl Message: set_property location {3 838 582} [get_bd_cells CPU_0] 
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "unselect_objects"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_pins /CPU_0/ddr3_data_in]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "Types.sv", 1); // o (PlanAheadTabBaseWorkspace_JideTabbedPane)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "ZYNQ_wrapper.v", 2); // o (PlanAheadTabBaseWorkspace_JideTabbedPane)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "CPU.v", 3); // o (PlanAheadTabBaseWorkspace_JideTabbedPane)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "Types.sv", 1); // o (PlanAheadTabBaseWorkspace_JideTabbedPane)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "ZYNQ_wrapper.v", 2); // o (PlanAheadTabBaseWorkspace_JideTabbedPane)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "System", 0); // o (PlanAheadTabBaseWorkspace_JideTabbedPane)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "Types.sv", 1); // o (PlanAheadTabBaseWorkspace_JideTabbedPane)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "ZYNQ_wrapper.v", 2); // o (PlanAheadTabBaseWorkspace_JideTabbedPane)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "CPU.v", 3); // o (PlanAheadTabBaseWorkspace_JideTabbedPane)
+selectCodeEditor("CPU.v", 130, 154); // ac (CPU.v)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Elapsed Time for: 'L.f': 15m:04s
+// Tcl Message: ERROR: [Common 17-180] Spawn failed: No error 
+// Elapsed Time for: 'L.f': 15m:06s
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Elapsed Time for: 'L.f': 15m:08s
+// Elapsed time: 10 seconds
+selectCodeEditor("CPU.v", 466, 138); // ac (CPU.v)
+// Elapsed Time for: 'L.f': 15m:10s
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Elapsed Time for: 'L.f': 15m:22s
+// Elapsed time: 12 seconds
+selectCodeEditor("CPU.v", 164, 156); // ac (CPU.v)
+selectCodeEditor("CPU.v", 164, 156, false, false, false, false, true); // ac (CPU.v) - Double Click
+selectCodeEditor("CPU.v", 176, 157); // ac (CPU.v)
+// TclEventType: IP_LOCK_CHANGE
+selectCodeEditor("CPU.v", 176, 157, false, false, false, false, true); // ac (CPU.v) - Double Click
+// Elapsed Time for: 'L.f': 15m:24s
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+selectCodeEditor("CPU.v", 196, 162); // ac (CPU.v)
+selectCodeEditor("CPU.v", 196, 162, false, false, false, false, true); // ac (CPU.v) - Double Click
+selectCodeEditor("CPU.v", 180, 164); // ac (CPU.v)
+// Elapsed Time for: 'L.f': 15m:30s
+selectCodeEditor("CPU.v", 192, 162); // ac (CPU.v)
+typeControlKey((HResource) null, "CPU.v", 'c'); // ac (CPU.v)
+selectCodeEditor("CPU.v", 166, 173); // ac (CPU.v)
+selectCodeEditor("CPU.v", 162, 171, false, false, false, false, true); // ac (CPU.v) - Double Click
+// Elapsed Time for: 'L.f': 15m:32s
+selectCodeEditor("CPU.v", 164, 172); // ac (CPU.v)
+typeControlKey((HResource) null, "CPU.v", 'v'); // ac (CPU.v)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+selectCodeEditor("CPU.v", 388, 147); // ac (CPU.v)
+// Elapsed Time for: 'L.f': 15m:36s
+// Elapsed Time for: 'L.f': 15m:38s
+selectCodeEditor("CPU.v", 47, 180); // ac (CPU.v)
+selectCodeEditor("CPU.v", 48, 166); // ac (CPU.v)
+selectCodeEditor("CPU.v", 158, 162); // ac (CPU.v)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Elapsed Time for: 'L.f': 15m:44s
+selectCodeEditor("CPU.v", 252, 145); // ac (CPU.v)
+selectCodeEditor("CPU.v", 256, 150); // ac (CPU.v)
+selectCodeEditor("CPU.v", 259, 155); // ac (CPU.v)
+// Elapsed Time for: 'L.f': 15m:46s
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Elapsed Time for: 'L.f': 15m:48s
+// TclEventType: IP_LOCK_CHANGE
+// Elapsed Time for: 'L.f': 15m:50s
+// Elapsed time: 11 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "System", 0); // o (PlanAheadTabBaseWorkspace_JideTabbedPane)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_cells /CPU_0]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "Types.sv", 1); // o (PlanAheadTabBaseWorkspace_JideTabbedPane)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "ZYNQ_wrapper.v", 2); // o (PlanAheadTabBaseWorkspace_JideTabbedPane)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "CPU.v", 3); // o (PlanAheadTabBaseWorkspace_JideTabbedPane)
+selectCodeEditor("CPU.v", 128, 156); // ac (CPU.v)
+selectCodeEditor("CPU.v", 177, 157); // ac (CPU.v)
+selectCodeEditor("CPU.v", 177, 157, false, false, false, false, true); // ac (CPU.v) - Double Click
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Elapsed Time for: 'L.f': 16m:12s
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "System", 0); // o (PlanAheadTabBaseWorkspace_JideTabbedPane)
+// Elapsed Time for: 'L.f': 16m:14s
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "unselect_objects"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_cells /CPU_0]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+selectView(PAResourceOtoP.PAViews_SYSTEM, "System", 878, 551, 1864, 885, false, false, false, true, false); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem) - Popup Trigger
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_cells /CPU_0]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+selectMenu(PAResourceQtoS.SelectMenu_HIGHLIGHT, "Highlight"); // am (PAResourceQtoS.SelectMenu_HIGHLIGHT, Highlight)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "unselect_objects"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+// Elapsed time: 101 seconds
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_pins /CPU_0/ddr3_data_in]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_pins /CPU_0/ddr3_data_in]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+selectView(PAResourceOtoP.PAViews_SYSTEM, "System", 782, 600, 1864, 885, false, false, false, true, false); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem) - Popup Trigger
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_pins /CPU_0/ddr3_data_in]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "unselect_objects"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "CPU.v", 3); // o (PlanAheadTabBaseWorkspace_JideTabbedPane)
+selectCodeEditor("CPU.v", 130, 93); // ac (CPU.v)
+selectCodeEditor("CPU.v", 125, 93); // ac (CPU.v)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Elapsed Time for: 'L.f': 18m:26s
+// Elapsed time: 10 seconds
+selectCodeEditor("CPU.v", 557, 121); // ac (CPU.v)
+// Elapsed Time for: 'L.f': 18m:28s
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "System", 0); // o (PlanAheadTabBaseWorkspace_JideTabbedPane)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_cells /CPU_0]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+selectView(PAResourceOtoP.PAViews_SYSTEM, "System", 875, 565, 1864, 885, false, false, false, true, false); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem) - Popup Trigger
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_cells /CPU_0]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+selectMenu(PAResourceQtoS.SystemBuilderView_ORIENTATION, "Orientation"); // am (PAResourceQtoS.SystemBuilderView_ORIENTATION, Orientation)
+selectMenu(PAResourceQtoS.SystemBuilderView_PINNING, "Pinning"); // am (PAResourceQtoS.SystemBuilderView_PINNING, Pinning)
+selectMenu(PAResourceQtoS.SystemBuilderView_ORIENTATION, "Orientation"); // am (PAResourceQtoS.SystemBuilderView_ORIENTATION, Orientation)
+selectMenuItem(PAResourceCommand.PACommandNames_REFRESH_RSB_BLOCK, "Refresh Module"); // ap (PAResourceCommand.PACommandNames_REFRESH_RSB_BLOCK, refresh_rsb_block_menu)
+// Run Command: PAResourceCommand.PACommandNames_REFRESH_RSB_BLOCK
+// TclEventType: PACKAGER_OBJECT_ADD
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: BDCELL_LOCK_CHANGE
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: PACKAGER_OBJECT_ADD
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: BDCELL_LOCK_CHANGE
+// TclEventType: RSB_OPEN_DIAGRAM
+selectView(PAResourceOtoP.PAViews_SYSTEM, "System", 894, 818, 1864, 885, false, false, false, true, false); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem) - Popup Trigger
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: RSB_SAVE_DIAGRAM
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: RSB_SAVE_DIAGRAM
+// TclEventType: FILESET_UPDATE_IP
+// TclEventType: IP_UPGRADE_COMPLETE
+// Tcl Message: update_module_reference ZYNQ_CPU_0_0 
+// Tcl Message: INFO: [IP_Flow 19-5107] Inferred bus interface 'rst_n' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository). INFO: [IP_Flow 19-5107] Inferred bus interface 'clk' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository). INFO: [IP_Flow 19-4728] Bus Interface 'rst_n': Added interface parameter 'POLARITY' with value 'ACTIVE_LOW'. 
+// Tcl Message: Upgrading 'X:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ZYNQ.bd' 
+// Tcl Message: INFO: [IP_Flow 19-3420] Updated ZYNQ_CPU_0_0 to use current project options 
+// Tcl Message: Wrote  : <X:\C++\Uni-CPU\CPURev1\PYNQ_CONFIG.srcs\sources_1\bd\ZYNQ\ZYNQ.bd>  Wrote  : <X:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.srcs/sources_1/bd/ZYNQ/ui/bd_bdecc542.ui>  
+dismissDialog("Refresh Module"); // bj (Refresh Module Progress)
+selectButton(PAResourceAtoD.CmdMsgDialog_OK, "OK", "Critical Messages"); // f (PAResourceAtoD.CmdMsgDialog_OK)
+dismissDialog("Critical Messages"); // a (dialog15)
+// Elapsed Time for: 'L.f': 18m:36s
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Elapsed Time for: 'L.f': 18m:38s
+// Tcl Message: update_compile_order -fileset sources_1 
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_pins /CPU_0/ddr3_data_in]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+// Elapsed Time for: 'L.f': 18m:40s
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_pins /CPU_0/ddr3_data_in]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+// Elapsed Time for: 'L.f': 18m:42s
+selectView(PAResourceOtoP.PAViews_SYSTEM, "System", 627, 648, 1864, 913, false, false, false, true, false); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem) - Popup Trigger
+selectMenu(PAResourceQtoS.SelectMenu_HIGHLIGHT, "Highlight"); // am (PAResourceQtoS.SelectMenu_HIGHLIGHT, Highlight)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_pins /CPU_0/rst_n]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_pins /CPU_0/ddr3_data_in]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_cells /CPU_0]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_pins /CPU_0/ddr3_data_in]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "unselect_objects"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_pins /processing_system7_0/DDR_Addr]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_pins /processing_system7_0/DDR_Addr]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+// Elapsed time: 16 seconds
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_pins /processing_system7_0/DDR_Addr]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "unselect_objects"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "unselect_objects"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "unselect_objects"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "unselect_objects"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_pins /CPU_0/ddr3__address]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "unselect_objects"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_pins /CPU_0/ddr3__address]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_pins /CPU_0/ddr3__address]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_pins /processing_system7_0/DDR_DQ]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+selectView(PAResourceOtoP.PAViews_SYSTEM, "System", 712, 577, 1864, 913, false, false, false, true, false); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem) - Popup Trigger
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_pins /processing_system7_0/DDR_DQ]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+selectMenu(PAResourceQtoS.SystemBuilderView_PINNING, "Pinning"); // am (PAResourceQtoS.SystemBuilderView_PINNING, Pinning)
+selectMenu(PAResourceQtoS.SystemBuilderView_PINNING, "Pinning"); // am (PAResourceQtoS.SystemBuilderView_PINNING, Pinning)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_intf_pins /processing_system7_0/FIXED_IO]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "unselect_objects"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_intf_nets /processing_system7_0_DDR]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_intf_nets /processing_system7_0_DDR]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_intf_ports /DDR]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+// Tcl Command: 'set_property location {3 874 601} [get_bd_cells CPU_0]'
+// TclEventType: RSB_CANVAS_LOCATION
+// Tcl Message: set_property location {3 874 601} [get_bd_cells CPU_0] 
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "unselect_objects"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_intf_ports /DDR]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_intf_ports /DDR]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_pins /CPU_0/ddr3__address]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+selectView(PAResourceOtoP.PAViews_SYSTEM, "System", 1404, 648, 1864, 913, false, false, false, true, false); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem) - Popup Trigger
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_pins /CPU_0/ddr3__address]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+selectMenu(PAResourceQtoS.SystemBuilderView_PINNING, "Pinning"); // am (PAResourceQtoS.SystemBuilderView_PINNING, Pinning)
+selectMenu(PAResourceQtoS.SystemBuilderView_PINNING, "Pinning"); // am (PAResourceQtoS.SystemBuilderView_PINNING, Pinning)
+selectMenuItem(PAResourceCommand.PACommandNames_AUTO_CONNECT_PORTS, "Make External"); // ap (PAResourceCommand.PACommandNames_AUTO_CONNECT_PORTS, auto_connect_ports_menu)
+// Run Command: PAResourceCommand.PACommandNames_AUTO_CONNECT_PORTS
+// TclEventType: RSB_SCRIPT_TASK
+// Tcl Message: startgroup 
+// Tcl Message: make_bd_pins_external  [get_bd_pins CPU_0/ddr3__address] 
+// Tcl Message: endgroup 
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_ports /ddr3__address_0]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_ports /ddr3__address_0]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+// Run Command: RDIResourceCommand.RDICommands_DELETE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// Tcl Message: delete_bd_objs [get_bd_nets CPU_0_ddr3__address] [get_bd_ports ddr3__address_0] 
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_intf_nets /processing_system7_0_DDR]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+// Run Command: RDIResourceCommand.RDICommands_DELETE
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_REMOVE_OBJECT
+// Tcl Message: delete_bd_objs [get_bd_intf_nets processing_system7_0_DDR] 
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_intf_ports /DDR]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+selectView(PAResourceOtoP.PAViews_SYSTEM, "System", 1482, 323, 1864, 913, false, false, false, true, false); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem) - Popup Trigger
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_intf_ports /DDR]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+selectMenu(PAResourceQtoS.SelectMenu_HIGHLIGHT, "Highlight"); // am (PAResourceQtoS.SelectMenu_HIGHLIGHT, Highlight)
+selectMenu(PAResourceQtoS.SystemBuilderView_PINNING, "Pinning"); // am (PAResourceQtoS.SystemBuilderView_PINNING, Pinning)
+selectMenu(PAResourceQtoS.SystemBuilderView_PINNING, "Pinning"); // am (PAResourceQtoS.SystemBuilderView_PINNING, Pinning)
+selectMenuItem(RDIResourceCommand.RDICommands_DELETE, "Delete"); // ap (RDIResourceCommand.RDICommands_DELETE, global_delete_menu)
+// Run Command: RDIResourceCommand.RDICommands_DELETE
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_REMOVE_OBJECT
+// Tcl Message: delete_bd_objs [get_bd_intf_ports DDR] 
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_pins /CPU_0/ddr3__address]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "unselect_objects"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+selectView(PAResourceOtoP.PAViews_SYSTEM, "System", 881, 742, 1864, 913, false, false, false, true, false); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem) - Popup Trigger
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_intf_pins /processing_system7_0/DDR]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_pins /processing_system7_0/DDR_DQ]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_intf_pins /processing_system7_0/DDR]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_nets /processing_system7_0_FCLK_CLK0]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "unselect_objects"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_pins /processing_system7_0/DDR_DQ]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "unselect_objects"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+// Run Command: RDIResourceCommand.RDICommands_UNDO
+typeControlKey(null, null, 'z');
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_ADD_OBJECT
+// Tcl Message: undo 
+// Tcl Message: INFO: [Common 17-17] undo 'delete_bd_objs [get_bd_intf_ports DDR]' 
+// Run Command: RDIResourceCommand.RDICommands_UNDO
+typeControlKey(null, null, 'z');
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_ADD_OBJECT
+// Tcl Message: undo 
+// Tcl Message: INFO: [Common 17-17] undo 'delete_bd_objs [get_bd_intf_nets processing_system7_0_DDR]' 
+// Run Command: RDIResourceCommand.RDICommands_UNDO
+typeControlKey(null, null, 'z');
+// TclEventType: RSB_SCRIPT_TASK
+// Tcl Message: undo 
+// Tcl Message: INFO: [Common 17-17] undo 'delete_bd_objs [get_bd_nets CPU_0_ddr3__address] [get_bd_ports ddr3__address_0]' 
+// Tcl Message: ERROR: [BD 41-1365] The name 'ddr3__address_0' is illegal, it should not contain '__' 
+// Tcl Message: ERROR: [Common 17-39] 'undo' failed due to earlier errors. 
+// CommandFailedException: ERROR: [Common 17-69] Command failed: ERROR: [Common 17-39] 'undo' failed due to earlier errors.  
+// Run Command: RDIResourceCommand.RDICommands_UNDO
+typeControlKey(null, null, 'z');
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// Tcl Message: undo 
+// Tcl Message: INFO: [Common 17-17] undo 'endgroup' INFO: [Common 17-17] undo 'make_bd_pins_external  [get_bd_pins CPU_0/ddr3__address]' INFO: [Common 17-17] undo 'startgroup' 
+// Run Command: RDIResourceCommand.RDICommands_UNDO
+typeControlKey(null, null, 'z');
+// TclEventType: RSB_CANVAS_LOCATION
+// Tcl Message: undo 
+// Tcl Message: INFO: [Common 17-17] undo 'set_property location {3 874 601} [get_bd_cells CPU_0]' 
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+// Tcl Command: 'set_property location {1104 415} [get_bd_intf_ports DDR]'
+// TclEventType: RSB_CANVAS_LOCATION
+// Tcl Message: set_property location {1104 415} [get_bd_intf_ports DDR] 
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "unselect_objects"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+// Tcl Command: 'set_property location {1073 329} [get_bd_intf_ports DDR]'
+// TclEventType: RSB_CANVAS_LOCATION
+// Tcl Message: set_property location {1073 329} [get_bd_intf_ports DDR] 
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "unselect_objects"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_intf_ports /DDR]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "unselect_objects"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+// Tcl Command: 'set_property location {3 832 579} [get_bd_cells CPU_0]'
+// TclEventType: RSB_CANVAS_LOCATION
+// Tcl Message: set_property location {3 832 579} [get_bd_cells CPU_0] 
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "unselect_objects"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "unselect_objects"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_pins /CPU_0/ddr3_data_in]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints]", 9); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE)
+collapseTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints]", 9); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE)
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints]", 9); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints, constrs_1, ZYNQ.xdc]", 11, false); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints, constrs_1, ZYNQ.xdc]", 11, false, false, false, false, false, true); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE) - Double Click
+selectCodeEditor("ZYNQ.xdc", 478, 687); // ac (ZYNQ.xdc)
+selectCodeEditor("ZYNQ.xdc", 491, 544); // ac (ZYNQ.xdc)
+selectCodeEditor("ZYNQ.xdc", 499, 562); // ac (ZYNQ.xdc)
+selectCodeEditor("ZYNQ.xdc", 1432, 747); // ac (ZYNQ.xdc)
+selectCodeEditor("ZYNQ.xdc", 1477, 755); // ac (ZYNQ.xdc)
+// TclEventType: FILE_SET_CHANGE
+// Elapsed time: 191 seconds
+selectCodeEditor("ZYNQ.xdc", 458, 681); // ac (ZYNQ.xdc)
+selectCodeEditor("ZYNQ.xdc", 411, 740); // ac (ZYNQ.xdc)
+selectCodeEditor("ZYNQ.xdc", 420, 756); // ac (ZYNQ.xdc)
+typeControlKey((HResource) null, "ZYNQ.xdc", 'v'); // ac (ZYNQ.xdc)
+typeControlKey(null, null, 'z');
+// Elapsed time: 26 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "CPU.v", 3); // o (PlanAheadTabBaseWorkspace_JideTabbedPane)
+selectTab((HResource) null, "PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "CPU.v", 3, false, true); // o (PlanAheadTabBaseWorkspace_JideTabbedPane) - Double Click
+maximizeView(PAResourceOtoP.PAViews_BASE_WORKSPACE, "BaseWorkspace"); // O (PAResourceOtoP.PAViews_BASE_WORKSPACE, PlanAheadTabBaseWorkspace)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "CPU.v", 3); // o (PlanAheadTabBaseWorkspace_JideTabbedPane)
+selectTab((HResource) null, "PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "CPU.v", 3, false, true); // o (PlanAheadTabBaseWorkspace_JideTabbedPane) - Double Click
+unmaximizeView(PAResourceOtoP.PAViews_BASE_WORKSPACE, "BaseWorkspace"); // O (PAResourceOtoP.PAViews_BASE_WORKSPACE, PlanAheadTabBaseWorkspace)
+selectCodeEditor("CPU.v", 139, 133); // ac (CPU.v)
+selectCodeEditor("CPU.v", 180, 160); // ac (CPU.v)
+selectCodeEditor("CPU.v", 180, 159, false, false, false, false, true); // ac (CPU.v) - Double Click
+selectCodeEditor("CPU.v", 191, 186); // ac (CPU.v)
+selectCodeEditor("CPU.v", 194, 183, false, false, false, false, true); // ac (CPU.v) - Double Click
+selectCodeEditor("CPU.v", 194, 183); // ac (CPU.v)
+selectCodeEditor("CPU.v", 197, 180); // ac (CPU.v)
+selectCodeEditor("CPU.v", 197, 179, false, false, false, false, true); // ac (CPU.v) - Double Click
+typeControlKey((HResource) null, "CPU.v", 'c'); // ac (CPU.v)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "ZYNQ.xdc", 4); // o (PlanAheadTabBaseWorkspace_JideTabbedPane)
+typeControlKey((HResource) null, "ZYNQ.xdc", 'v'); // ac (ZYNQ.xdc)
+selectCodeEditor("ZYNQ.xdc", 155, 753); // ac (ZYNQ.xdc)
+selectCodeEditor("ZYNQ.xdc", 165, 751); // ac (ZYNQ.xdc)
+selectCodeEditor("ZYNQ.xdc", 161, 755); // ac (ZYNQ.xdc)
+selectCodeEditor("ZYNQ.xdc", 161, 755, false, false, false, false, true); // ac (ZYNQ.xdc) - Double Click
+selectCodeEditor("ZYNQ.xdc", 168, 752); // ac (ZYNQ.xdc)
+selectCodeEditor("ZYNQ.xdc", 163, 755); // ac (ZYNQ.xdc)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "System", 0); // o (PlanAheadTabBaseWorkspace_JideTabbedPane)
+selectTab((HResource) null, "PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "System", 0, false, true); // o (PlanAheadTabBaseWorkspace_JideTabbedPane) - Double Click
+maximizeView(PAResourceOtoP.PAViews_BASE_WORKSPACE, "BaseWorkspace"); // O (PAResourceOtoP.PAViews_BASE_WORKSPACE, PlanAheadTabBaseWorkspace)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_intf_ports /DDR]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "ZYNQ.xdc", 4); // o (PlanAheadTabBaseWorkspace_JideTabbedPane)
+selectCodeEditor("ZYNQ.xdc", 352, 842); // ac (ZYNQ.xdc)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "CPU.v", 3); // o (PlanAheadTabBaseWorkspace_JideTabbedPane)
+selectCodeEditor("CPU.v", 193, 184); // ac (CPU.v)
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Elapsed Time for: 'L.f': 25m:46s
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "ZYNQ.xdc", 4); // o (PlanAheadTabBaseWorkspace_JideTabbedPane)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "System", 0); // o (PlanAheadTabBaseWorkspace_JideTabbedPane)
+selectView(PAResourceOtoP.PAViews_SYSTEM, "System", 1091, 488, 2269, 1185, false, false, false, true, false); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem) - Popup Trigger
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_intf_nets /processing_system7_0_UART_0]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+selectMenu(PAResourceQtoS.SelectMenu_HIGHLIGHT, "Highlight"); // am (PAResourceQtoS.SelectMenu_HIGHLIGHT, Highlight)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_cells /CPU_0]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+// Elapsed Time for: 'L.f': 25m:50s
+selectView(PAResourceOtoP.PAViews_SYSTEM, "System", 1458, 709, 2269, 1185, false, false, false, true, false); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem) - Popup Trigger
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_cells /CPU_0]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+selectMenu(PAResourceQtoS.SelectMenu_HIGHLIGHT, "Highlight"); // am (PAResourceQtoS.SelectMenu_HIGHLIGHT, Highlight)
+selectMenu(PAResourceQtoS.SelectMenu_HIGHLIGHT, "Highlight"); // am (PAResourceQtoS.SelectMenu_HIGHLIGHT, Highlight)
+selectMenu(PAResourceQtoS.SystemBuilderView_ORIENTATION, "Orientation"); // am (PAResourceQtoS.SystemBuilderView_ORIENTATION, Orientation)
+selectMenu(PAResourceQtoS.SystemBuilderView_PINNING, "Pinning"); // am (PAResourceQtoS.SystemBuilderView_PINNING, Pinning)
+selectMenu(PAResourceQtoS.SystemBuilderView_PINNING, "Pinning"); // am (PAResourceQtoS.SystemBuilderView_PINNING, Pinning)
+selectMenu(PAResourceQtoS.SystemBuilderView_ORIENTATION, "Orientation"); // am (PAResourceQtoS.SystemBuilderView_ORIENTATION, Orientation)
+selectView(PAResourceOtoP.PAViews_SYSTEM, "System", 1401, 681, 2269, 1185, false, false, false, true, false); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem) - Popup Trigger
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_cells /CPU_0]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+selectMenu(PAResourceQtoS.SystemBuilderView_ORIENTATION, "Orientation"); // am (PAResourceQtoS.SystemBuilderView_ORIENTATION, Orientation)
+selectMenu(PAResourceQtoS.SystemBuilderView_PINNING, "Pinning"); // am (PAResourceQtoS.SystemBuilderView_PINNING, Pinning)
+selectMenu(PAResourceQtoS.SystemBuilderView_PINNING, "Pinning"); // am (PAResourceQtoS.SystemBuilderView_PINNING, Pinning)
+selectMenu(PAResourceQtoS.SystemBuilderView_ORIENTATION, "Orientation"); // am (PAResourceQtoS.SystemBuilderView_ORIENTATION, Orientation)

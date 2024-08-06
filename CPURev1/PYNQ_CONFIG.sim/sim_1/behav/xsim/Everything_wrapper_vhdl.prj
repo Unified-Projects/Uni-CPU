@@ -1,0 +1,16 @@
+# compile vhdl design source files
+vhdl cpu  \
+"../../../../PYNQ_CONFIG.ip_user_files/bd/ZYNQ/ip/ZYNQ_gmii_to_rgmii_0_0/synth/ZYNQ_gmii_to_rgmii_0_0_clocking.vhd" \
+"../../../../PYNQ_CONFIG.ip_user_files/bd/ZYNQ/ip/ZYNQ_gmii_to_rgmii_0_0/synth/ZYNQ_gmii_to_rgmii_0_0_resets.vhd" \
+"../../../../PYNQ_CONFIG.ip_user_files/bd/ZYNQ/ip/ZYNQ_gmii_to_rgmii_0_0/synth/ZYNQ_gmii_to_rgmii_0_0_support.vhd" \
+"../../../../PYNQ_CONFIG.ip_user_files/bd/ZYNQ/ip/ZYNQ_gmii_to_rgmii_0_0/synth/ZYNQ_gmii_to_rgmii_0_0_reset_sync.vhd" \
+"../../../../PYNQ_CONFIG.ip_user_files/bd/ZYNQ/ip/ZYNQ_gmii_to_rgmii_0_0/synth/ZYNQ_gmii_to_rgmii_0_0_block.vhd" \
+"../../../../PYNQ_CONFIG.ip_user_files/bd/ZYNQ/ip/ZYNQ_gmii_to_rgmii_0_0/ZYNQ_gmii_to_rgmii_0_0/simulation/demo_tb.vhd" \
+"../../../../PYNQ_CONFIG.ip_user_files/bd/ZYNQ/ip/ZYNQ_gmii_to_rgmii_0_0/synth/ZYNQ_gmii_to_rgmii_0_0.vhd" \
+"../../../../PYNQ_CONFIG.ip_user_files/bd/ZYNQ/ip/ZYNQ_axi_vdma_0_0/sim/ZYNQ_axi_vdma_0_0.vhd" \
+"../../../../PYNQ_CONFIG.ip_user_files/bd/ZYNQ/ip/ZYNQ_v_tc_0_0/sim/ZYNQ_v_tc_0_0.vhd" \
+"../../../../PYNQ_CONFIG.ip_user_files/bd/ZYNQ/ip/ZYNQ_rst_ps7_0_50M_0/sim/ZYNQ_rst_ps7_0_50M_0.vhd" \
+"../../../../PYNQ_CONFIG.ip_user_files/bd/ZYNQ/ip/ZYNQ_rst_ps7_0_200M_0/sim/ZYNQ_rst_ps7_0_200M_0.vhd" \
+
+# Do not sort compile order
+nosort

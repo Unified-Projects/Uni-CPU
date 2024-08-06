@@ -1,0 +1,115 @@
+
+*** Running vivado
+    with args -log Setup_wrapper.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source Setup_wrapper.tcl -notrace
+
+
+
+****** Vivado v2024.1 (64-bit)
+  **** SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
+  **** IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+  **** SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+  **** Start of session at: Tue Aug  6 14:52:11 2024
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source Setup_wrapper.tcl -notrace
+create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 532.277 ; gain = 200.902
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'y:/C++/Uni-CPU/ip_repo/PL_DDR_RW_1_0'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2024.1/data/ip'.
+Command: link_design -top Setup_wrapper -part xc7z020clg484-1
+Design is defaulting to srcset: sources_1
+Design is defaulting to constrset: constrs_1
+INFO: [Device 21-403] Loading part xc7z020clg484-1
+INFO: [Device 21-9227] Part: xc7z020clg484-1 does not have CEAM library.
+INFO: [Project 1-454] Reading design checkpoint 'y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_AXI_Master_0_3/Setup_AXI_Master_0_3.dcp' for cell 'Setup_i/AXI_Master_0'
+INFO: [Project 1-454] Reading design checkpoint 'y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_CPU_0_2/Setup_CPU_0_2.dcp' for cell 'Setup_i/CPU_0'
+INFO: [Project 1-454] Reading design checkpoint 'y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_blk_mem_gen_0_0/Setup_blk_mem_gen_0_0.dcp' for cell 'Setup_i/blk_mem_gen_0'
+INFO: [Project 1-454] Reading design checkpoint 'y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_processing_system7_0_0/Setup_processing_system7_0_0.dcp' for cell 'Setup_i/processing_system7_0'
+INFO: [Project 1-454] Reading design checkpoint 'y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_rst_ps7_0_50M_0/Setup_rst_ps7_0_50M_0.dcp' for cell 'Setup_i/rst_ps7_0_50M'
+INFO: [Project 1-454] Reading design checkpoint 'y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_util_vector_logic_0_0/Setup_util_vector_logic_0_0.dcp' for cell 'Setup_i/util_vector_logic_0'
+INFO: [Project 1-454] Reading design checkpoint 'y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_auto_pc_0/Setup_auto_pc_0.dcp' for cell 'Setup_i/axi_interconnect_0/s00_couplers/auto_pc'
+INFO: [Project 1-454] Reading design checkpoint 'y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_auto_us_0/Setup_auto_us_0.dcp' for cell 'Setup_i/axi_interconnect_0/s00_couplers/auto_us'
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.048 . Memory (MB): peak = 1011.824 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 39 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2024.1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Parsing XDC File [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_processing_system7_0_0/Setup_processing_system7_0_0.xdc] for cell 'Setup_i/processing_system7_0/inst'
+Finished Parsing XDC File [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_processing_system7_0_0/Setup_processing_system7_0_0.xdc] for cell 'Setup_i/processing_system7_0/inst'
+Parsing XDC File [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_rst_ps7_0_50M_0/Setup_rst_ps7_0_50M_0_board.xdc] for cell 'Setup_i/rst_ps7_0_50M/U0'
+Finished Parsing XDC File [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_rst_ps7_0_50M_0/Setup_rst_ps7_0_50M_0_board.xdc] for cell 'Setup_i/rst_ps7_0_50M/U0'
+Parsing XDC File [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_rst_ps7_0_50M_0/Setup_rst_ps7_0_50M_0.xdc] for cell 'Setup_i/rst_ps7_0_50M/U0'
+Finished Parsing XDC File [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_rst_ps7_0_50M_0/Setup_rst_ps7_0_50M_0.xdc] for cell 'Setup_i/rst_ps7_0_50M/U0'
+Parsing XDC File [Y:/C++/Uni-CPU/CPURev2/CPURev2.srcs/constrs_1/new/CPU.xdc]
+WARNING: [Vivado 12-584] No ports matched 'reset'. [Y:/C++/Uni-CPU/CPURev2/CPURev2.srcs/constrs_1/new/CPU.xdc:2]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [Y:/C++/Uni-CPU/CPURev2/CPURev2.srcs/constrs_1/new/CPU.xdc:2]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'reset'. [Y:/C++/Uni-CPU/CPURev2/CPURev2.srcs/constrs_1/new/CPU.xdc:3]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [Y:/C++/Uni-CPU/CPURev2/CPURev2.srcs/constrs_1/new/CPU.xdc:3]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'reset'. [Y:/C++/Uni-CPU/CPURev2/CPURev2.srcs/constrs_1/new/CPU.xdc:4]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [Y:/C++/Uni-CPU/CPURev2/CPURev2.srcs/constrs_1/new/CPU.xdc:4]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'reset'. [Y:/C++/Uni-CPU/CPURev2/CPURev2.srcs/constrs_1/new/CPU.xdc:5]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [Y:/C++/Uni-CPU/CPURev2/CPURev2.srcs/constrs_1/new/CPU.xdc:5]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+CRITICAL WARNING: [Common 17-69] Command failed: Site cannot be assigned to more than one port [Y:/C++/Uni-CPU/CPURev2/CPURev2.srcs/constrs_1/new/CPU.xdc:9]
+CRITICAL WARNING: [Vivado 12-3291] '...' is not an positive integer.  A drive strength must be a positive integer. [Y:/C++/Uni-CPU/CPURev2/CPURev2.srcs/constrs_1/new/CPU.xdc:10]
+CRITICAL WARNING: [Common 17-69] Command failed: Site cannot be assigned to more than one port [Y:/C++/Uni-CPU/CPURev2/CPURev2.srcs/constrs_1/new/CPU.xdc:15]
+CRITICAL WARNING: [Vivado 12-3291] '...' is not an positive integer.  A drive strength must be a positive integer. [Y:/C++/Uni-CPU/CPURev2/CPURev2.srcs/constrs_1/new/CPU.xdc:16]
+WARNING: [Vivado 12-584] No ports matched 'mem_read_0'. [Y:/C++/Uni-CPU/CPURev2/CPURev2.srcs/constrs_1/new/CPU.xdc:20]
+WARNING: [Vivado 12-584] No ports matched 'mem_write_0'. [Y:/C++/Uni-CPU/CPURev2/CPURev2.srcs/constrs_1/new/CPU.xdc:20]
+WARNING: [Vivado 12-584] No ports matched 'mem_read_0'. [Y:/C++/Uni-CPU/CPURev2/CPURev2.srcs/constrs_1/new/CPU.xdc:21]
+WARNING: [Vivado 12-584] No ports matched 'mem_write_0'. [Y:/C++/Uni-CPU/CPURev2/CPURev2.srcs/constrs_1/new/CPU.xdc:21]
+CRITICAL WARNING: [Common 17-69] Command failed: Site cannot be assigned to more than one port [Y:/C++/Uni-CPU/CPURev2/CPURev2.srcs/constrs_1/new/CPU.xdc:21]
+WARNING: [Vivado 12-584] No ports matched 'mem_read_0'. [Y:/C++/Uni-CPU/CPURev2/CPURev2.srcs/constrs_1/new/CPU.xdc:22]
+WARNING: [Vivado 12-584] No ports matched 'mem_write_0'. [Y:/C++/Uni-CPU/CPURev2/CPURev2.srcs/constrs_1/new/CPU.xdc:22]
+CRITICAL WARNING: [Vivado 12-3291] '...' is not an positive integer.  A drive strength must be a positive integer. [Y:/C++/Uni-CPU/CPURev2/CPURev2.srcs/constrs_1/new/CPU.xdc:22]
+Finished Parsing XDC File [Y:/C++/Uni-CPU/CPURev2/CPURev2.srcs/constrs_1/new/CPU.xdc]
+Parsing XDC File [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_auto_us_0/Setup_auto_us_0_clocks.xdc] for cell 'Setup_i/axi_interconnect_0/s00_couplers/auto_us/inst'
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_auto_us_0/Setup_auto_us_0_clocks.xdc:9]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_auto_us_0/Setup_auto_us_0_clocks.xdc:12]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_auto_us_0/Setup_auto_us_0_clocks.xdc:15]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_auto_us_0/Setup_auto_us_0_clocks.xdc:18]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_auto_us_0/Setup_auto_us_0_clocks.xdc:21]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_auto_us_0/Setup_auto_us_0_clocks.xdc:24]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_auto_us_0/Setup_auto_us_0_clocks.xdc:27]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_auto_us_0/Setup_auto_us_0_clocks.xdc:33]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_auto_us_0/Setup_auto_us_0_clocks.xdc:36]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-10' -to list should not be empty. [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_auto_us_0/Setup_auto_us_0_clocks.xdc:39]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-10' -to list should not be empty. [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_auto_us_0/Setup_auto_us_0_clocks.xdc:42]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-10' -to list should not be empty. [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_auto_us_0/Setup_auto_us_0_clocks.xdc:45]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-2' -to list should not be empty. [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_auto_us_0/Setup_auto_us_0_clocks.xdc:48]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-11' -to list should not be empty. [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_auto_us_0/Setup_auto_us_0_clocks.xdc:51]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-11' -to list should not be empty. [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_auto_us_0/Setup_auto_us_0_clocks.xdc:54]
+Finished Parsing XDC File [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_auto_us_0/Setup_auto_us_0_clocks.xdc] for cell 'Setup_i/axi_interconnect_0/s00_couplers/auto_us/inst'
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+CRITICAL WARNING: [Project 1-486] Could not resolve non-primitive black box cell 'Setup_sim_clk_gen_0_0' instantiated as 'Setup_i/sim_clk_gen_0' [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/synth/Setup.vhd:1344]
+INFO: [Project 1-1687] 15 scoped IP constraints or related sub-commands were skipped due to synthesis logic optimizations usually triggered by constant connectivity or unconnected output pins. To review the skipped constraints and messages, run the command 'set_param netlist.IPMsgFiltering false' before opening the design.
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1159.098 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+20 Infos, 25 Warnings, 11 Critical Warnings and 0 Errors encountered.
+link_design completed successfully
+link_design: Time (s): cpu = 00:00:05 ; elapsed = 00:00:09 . Memory (MB): peak = 1159.098 ; gain = 606.703
+Command: opt_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+Running DRC as a precondition to command opt_design
+
+Starting DRC Task
+INFO: [DRC 23-27] Running DRC with 2 threads
+ERROR: [DRC INBB-3] Black Box Instances: Cell 'Setup_i/sim_clk_gen_0' of type 'Setup_sim_clk_gen_0_0' has undefined contents and is considered a black box.  The contents of this cell must be defined for opt_design to complete successfully.
+INFO: [Project 1-461] DRC finished with 1 Errors
+INFO: [Project 1-462] Please refer to the DRC report (report_drc) for more information.
+ERROR: [Vivado_Tcl 4-78] Error(s) found during DRC. Opt_design not run.
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.539 . Memory (MB): peak = 1191.598 ; gain = 32.500
+INFO: [Common 17-83] Releasing license: Implementation
+25 Infos, 25 Warnings, 11 Critical Warnings and 2 Errors encountered.
+opt_design failed
+ERROR: [Common 17-39] 'opt_design' failed due to earlier errors.
+
+INFO: [Common 17-206] Exiting Vivado at Tue Aug  6 14:52:28 2024...

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="CPU_TB_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="CPU_TB" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="1,525.001 ns"></ZoomEndTime>
+      <Cursor1Time time="0.000 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="368"></NameColumnWidth>
+      <ValueColumnWidth column_width="140"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="13" />
+   <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/U0/clk_div" type="logic">
+      <obj_property name="ElementShortName">clk_div</obj_property>
+      <obj_property name="ObjectShortName">clk_div</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/reset" type="logic">
+      <obj_property name="ElementShortName">reset</obj_property>
+      <obj_property name="ObjectShortName">reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/interrupt" type="logic">
+      <obj_property name="ElementShortName">interrupt</obj_property>
+      <obj_property name="ObjectShortName">interrupt</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/U0/bram_addr" type="array">
+      <obj_property name="ElementShortName">bram_addr[12:0]</obj_property>
+      <obj_property name="ObjectShortName">bram_addr[12:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/U0/bram_din" type="array">
+      <obj_property name="ElementShortName">bram_din[63:0]</obj_property>
+      <obj_property name="ObjectShortName">bram_din[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/U0/bram_dout" type="array">
+      <obj_property name="ElementShortName">bram_dout[63:0]</obj_property>
+      <obj_property name="ObjectShortName">bram_dout[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/U0/bram_we" type="logic">
+      <obj_property name="ElementShortName">bram_we</obj_property>
+      <obj_property name="ObjectShortName">bram_we</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/U0/bram_en" type="logic">
+      <obj_property name="ElementShortName">bram_en</obj_property>
+      <obj_property name="ObjectShortName">bram_en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/U0/alu_a" type="array">
+      <obj_property name="ElementShortName">alu_a[63:0]</obj_property>
+      <obj_property name="ObjectShortName">alu_a[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/U0/alu_b" type="array">
+      <obj_property name="ElementShortName">alu_b[63:0]</obj_property>
+      <obj_property name="ObjectShortName">alu_b[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/U0/alu_op" type="array">
+      <obj_property name="ElementShortName">alu_op[2:0]</obj_property>
+      <obj_property name="ObjectShortName">alu_op[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/U0/alu_result" type="array">
+      <obj_property name="ElementShortName">alu_result[63:0]</obj_property>
+      <obj_property name="ObjectShortName">alu_result[63:0]</obj_property>
+   </wvobject>
+</wave_config>

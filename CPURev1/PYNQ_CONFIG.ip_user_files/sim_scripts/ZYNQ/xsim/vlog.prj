@@ -1,0 +1,21 @@
+verilog cpu --include "C:/Xilinx/Vivado/2024.1/data/xilinx_vip/include" --include "../../../../PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/ec67/hdl" --include "../../../../PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/b28c/hdl" --include "../../../../PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/a4a8/hdl" --include "../../../../PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/3242" \
+"../../../bd/ZYNQ/ip/ZYNQ_processing_system7_0_0/sim/ZYNQ_processing_system7_0_0.v" \
+"../../../bd/ZYNQ/ip/ZYNQ_util_vector_logic_0_0/sim/ZYNQ_util_vector_logic_0_0.v" \
+"../../../bd/ZYNQ/sim/ZYNQ.v" \
+"../../../bd/ZYNQ/ipshared/31a1/src/asyn_rst_syn.v" \
+"../../../bd/ZYNQ/ipshared/31a1/src/dvi_encoder.v" \
+"../../../bd/ZYNQ/ipshared/31a1/src/serializer_10_to_1.v" \
+"../../../bd/ZYNQ/ipshared/31a1/src/dvi_transmitter_top.v" \
+"../../../bd/ZYNQ/ip/ZYNQ_DVI_Transmitter_0_0/sim/ZYNQ_DVI_Transmitter_0_0.v" \
+"../../../bd/ZYNQ/ip/ZYNQ_clk_wiz_0_0/ZYNQ_clk_wiz_0_0_clk_wiz.v" \
+"../../../bd/ZYNQ/ip/ZYNQ_clk_wiz_0_0/ZYNQ_clk_wiz_0_0.v" \
+"../../../bd/ZYNQ/ip/ZYNQ_util_vector_logic_0_1/sim/ZYNQ_util_vector_logic_0_1.v" \
+"../../../bd/ZYNQ/ip/ZYNQ_v_axi4s_vid_out_0_0/sim/ZYNQ_v_axi4s_vid_out_0_0.v" \
+"../../../bd/ZYNQ/ip/ZYNQ_xbar_0/sim/ZYNQ_xbar_0.v" \
+"../../../bd/ZYNQ/ip/ZYNQ_auto_pc_0/sim/ZYNQ_auto_pc_0.v" \
+"../../../bd/ZYNQ/ip/ZYNQ_auto_pc_1/sim/ZYNQ_auto_pc_1.v" \
+
+verilog cpu "glbl.v"
+
+# Do not sort compile order
+nosort

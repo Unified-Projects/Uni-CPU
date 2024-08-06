@@ -1,0 +1,58 @@
+# compile verilog/system verilog design source files
+verilog CPU  --include "../../../../PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/ec67/hdl" --include "../../../../PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl" --include "C:/Xilinx/Vivado/2024.1/data/xilinx_vip/include" \
+"../../../../PYNQ_CONFIG.srcs/sources_1/new/CTRL-BUS.v" \
+"../../../../PYNQ_CONFIG.srcs/sources_1/new/CU.v" \
+"../../../../PYNQ_CONFIG.srcs/sources_1/new/ALU.v" \
+"../../../../PYNQ_CONFIG.srcs/sources_1/new/MM.v" \
+"../../../../PYNQ_CONFIG.srcs/sources_1/new/Mergers.v" \
+"../../../../PYNQ_CONFIG.srcs/sources_1/new/DeviceSelector.v" \
+"../../../../PYNQ_CONFIG.srcs/sources_1/new/IOController.v" \
+"../../../../PYNQ_CONFIG.srcs/sources_1/new/InoutBusSplitter.v" \
+
+verilog cpu  --include "../../../../PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/ec67/hdl" --include "../../../../PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl" --include "C:/Xilinx/Vivado/2024.1/data/xilinx_vip/include" \
+"../../../../PYNQ_CONFIG.srcs/sources_1/new/Dummy.v" \
+
+sv axi_vip_v1_1_4  --include "../../../../PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/ec67/hdl" --include "../../../../PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl" --include "C:/Xilinx/Vivado/2024.1/data/xilinx_vip/include" \
+"../../../../PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/98af/hdl/axi_vip_v1_1_vl_rfs.sv" \
+
+sv processing_system7_vip_v1_0_6  --include "../../../../PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/ec67/hdl" --include "../../../../PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl" --include "C:/Xilinx/Vivado/2024.1/data/xilinx_vip/include" \
+"../../../../PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl/processing_system7_vip_v1_0_vl_rfs.sv" \
+
+verilog cpu  --include "../../../../PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/ec67/hdl" --include "../../../../PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl" --include "C:/Xilinx/Vivado/2024.1/data/xilinx_vip/include" \
+"../../../../PYNQ_CONFIG.ip_user_files/bd/ZYNQ/ip/ZYNQ_processing_system7_0_0/sim/ZYNQ_processing_system7_0_0.v" \
+
+verilog xil_defaultlib  --include "../../../../PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/ec67/hdl" --include "../../../../PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl" --include "C:/Xilinx/Vivado/2024.1/data/xilinx_vip/include" \
+"../../../../PYNQ_CONFIG.ip_user_files/bd/ZYNQ/ip/ZYNQ_util_vector_logic_0_0/sim/ZYNQ_util_vector_logic_0_0.v" \
+
+verilog cpu  --include "../../../../PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/ec67/hdl" --include "../../../../PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl" --include "C:/Xilinx/Vivado/2024.1/data/xilinx_vip/include" \
+"../../../../PYNQ_CONFIG.ip_user_files/bd/ZYNQ/ip/ZYNQ_BUS_0_0/sim/ZYNQ_BUS_0_0.v" \
+"../../../../PYNQ_CONFIG.ip_user_files/bd/ZYNQ/ip/ZYNQ_BUS_1_0/sim/ZYNQ_BUS_1_0.v" \
+"../../../../PYNQ_CONFIG.ip_user_files/bd/ZYNQ/ip/ZYNQ_BUS_2_0/sim/ZYNQ_BUS_2_0.v" \
+
+verilog xil_defaultlib  --include "../../../../PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/ec67/hdl" --include "../../../../PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl" --include "C:/Xilinx/Vivado/2024.1/data/xilinx_vip/include" \
+"../../../../PYNQ_CONFIG.ip_user_files/bd/ZYNQ/ip/ZYNQ_CU_0_1/sim/ZYNQ_CU_0_1.v" \
+
+verilog cpu  --include "../../../../PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/ec67/hdl" --include "../../../../PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl" --include "C:/Xilinx/Vivado/2024.1/data/xilinx_vip/include" \
+"../../../../PYNQ_CONFIG.ip_user_files/bd/ZYNQ/ip/ZYNQ_ALU_0_1/sim/ZYNQ_ALU_0_1.v" \
+
+verilog xil_defaultlib  --include "../../../../PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/ec67/hdl" --include "../../../../PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl" --include "C:/Xilinx/Vivado/2024.1/data/xilinx_vip/include" \
+"../../../../PYNQ_CONFIG.ip_user_files/bd/ZYNQ/ip/ZYNQ_MM_0_1/sim/ZYNQ_MM_0_1.v" \
+"../../../../PYNQ_CONFIG.ip_user_files/bd/ZYNQ/ip/ZYNQ_BusMerger_0_0/sim/ZYNQ_BusMerger_0_0.v" \
+"../../../../PYNQ_CONFIG.ip_user_files/bd/ZYNQ/ip/ZYNQ_DeviceSelector_0_0/sim/ZYNQ_DeviceSelector_0_0.v" \
+"../../../../PYNQ_CONFIG.ip_user_files/bd/ZYNQ/ip/ZYNQ_BusMerger_1_0/sim/ZYNQ_BusMerger_1_0.v" \
+"../../../../PYNQ_CONFIG.ip_user_files/bd/ZYNQ/ip/ZYNQ_BusMerger_2_0/sim/ZYNQ_BusMerger_2_0.v" \
+"../../../../PYNQ_CONFIG.ip_user_files/bd/ZYNQ/ip/ZYNQ_DeviceSelector_1_0/sim/ZYNQ_DeviceSelector_1_0.v" \
+"../../../../PYNQ_CONFIG.ip_user_files/bd/ZYNQ/ip/ZYNQ_DeviceSelector_0_1/sim/ZYNQ_DeviceSelector_0_1.v" \
+"../../../../PYNQ_CONFIG.ip_user_files/bd/ZYNQ/ip/ZYNQ_IOController_0_0/sim/ZYNQ_IOController_0_0.v" \
+"../../../../PYNQ_CONFIG.ip_user_files/bd/ZYNQ/ip/ZYNQ_InoutBusSplitter_0_0/sim/ZYNQ_InoutBusSplitter_0_0.v" \
+"../../../../PYNQ_CONFIG.ip_user_files/bd/ZYNQ/ip/ZYNQ_Dummy_0_0/sim/ZYNQ_Dummy_0_0.v" \
+
+verilog cpu  --include "../../../../PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/ec67/hdl" --include "../../../../PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/ipshared/70cf/hdl" --include "C:/Xilinx/Vivado/2024.1/data/xilinx_vip/include" \
+"../../../../PYNQ_CONFIG.ip_user_files/bd/ZYNQ/sim/ZYNQ.v" \
+"../../../../PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/hdl/ZYNQ_wrapper.v" \
+
+# compile glbl module
+verilog cpu "glbl.v"
+
+# Do not sort compile order
+nosort

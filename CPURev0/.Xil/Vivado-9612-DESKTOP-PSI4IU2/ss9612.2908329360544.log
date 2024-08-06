@@ -1,0 +1,23 @@
+srcscan starts
+INFO: analyzing module ZYNQ (VERI-9002)
+Listing tops:
+VeriTop library:cpu mod:ZYNQ
+END of tops
+y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/sim/ZYNQ.v(14): INFO: compiling module 'ZYNQ_default' (VERI-1018)
+y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/sim/ZYNQ.v(73): WARNING: Module <ZYNQ_ALU_0_1> not found while processing module instance <ALU_0> (VERI-1063)
+y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/sim/ZYNQ.v(83): WARNING: Module <ZYNQ_BUS_2_0> not found while processing module instance <BUS_Address> (VERI-1063)
+y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/sim/ZYNQ.v(91): WARNING: Module <ZYNQ_BUS_0_0> not found while processing module instance <BUS_Control> (VERI-1063)
+y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/sim/ZYNQ.v(100): WARNING: Module <ZYNQ_BUS_1_0> not found while processing module instance <BUS_Data> (VERI-1063)
+y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/sim/ZYNQ.v(108): WARNING: Module <ZYNQ_BusMerger_2_0> not found while processing module instance <BusMerger_Address> (VERI-1063)
+y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/sim/ZYNQ.v(116): WARNING: Module <ZYNQ_BusMerger_1_0> not found while processing module instance <BusMerger_Control> (VERI-1063)
+y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/sim/ZYNQ.v(124): WARNING: Module <ZYNQ_BusMerger_0_0> not found while processing module instance <BusMerger_Data> (VERI-1063)
+y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/sim/ZYNQ.v(132): WARNING: Module <ZYNQ_CU_0_1> not found while processing module instance <CU_0> (VERI-1063)
+y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/sim/ZYNQ.v(143): WARNING: Module <ZYNQ_DeviceSelector_0_1> not found while processing module instance <DeviceSelector_Address> (VERI-1063)
+y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/sim/ZYNQ.v(150): WARNING: Module <ZYNQ_DeviceSelector_1_0> not found while processing module instance <DeviceSelector_Control> (VERI-1063)
+y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/sim/ZYNQ.v(157): WARNING: Module <ZYNQ_DeviceSelector_0_0> not found while processing module instance <DeviceSelector_Data> (VERI-1063)
+y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/sim/ZYNQ.v(164): WARNING: Module <ZYNQ_IOController_0_0> not found while processing module instance <IOController_0> (VERI-1063)
+y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/sim/ZYNQ.v(174): WARNING: Module <ZYNQ_MM_0_1> not found while processing module instance <MM_0> (VERI-1063)
+y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/sim/ZYNQ.v(184): WARNING: Module <ZYNQ_gmii_to_rgmii_0_0> not found while processing module instance <gmii_to_rgmii_0> (VERI-1063)
+y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/sim/ZYNQ.v(206): WARNING: Module <ZYNQ_processing_system7_0_0> not found while processing module instance <processing_system7_0> (VERI-1063)
+y:/C++/Uni-CPU/CPURev1/PYNQ_CONFIG.gen/sources_1/bd/ZYNQ/sim/ZYNQ.v(226): WARNING: Module <ZYNQ_util_vector_logic_0_0> not found while processing module instance <util_vector_logic_0> (VERI-1063)
+srcscan exits with return value 0
