@@ -72,7 +72,6 @@ Compiling module CPU.glbl
 Compiling architecture behavioral of entity cpu.AXI_Master [axi_master_default]
 Compiling architecture setup_axi_master_0_3_arch of entity cpu.Setup_AXI_Master_0_3 [setup_axi_master_0_3_default]
 Compiling architecture behavioral of entity cpu.ClockDivider [clockdivider_default]
-Compiling architecture behavioral of entity cpu.ALU [alu_default]
 Compiling architecture behavioral of entity cpu.CPU [cpu_default]
 Compiling architecture setup_cpu_0_2_arch of entity cpu.Setup_CPU_0_2 [setup_cpu_0_2_default]
 Compiling module axi_protocol_converter_v2_1_31.axi_protocol_converter_v2_1_31_a...
@@ -172,7 +171,7 @@ Compiling architecture imp of entity proc_sys_reset_v5_0_15.upcnt_n [\upcnt_n(c_
 Compiling architecture imp of entity proc_sys_reset_v5_0_15.sequence_psr [sequence_psr_default]
 Compiling architecture imp of entity proc_sys_reset_v5_0_15.proc_sys_reset [\proc_sys_reset(c_family="zynq",...]
 Compiling architecture setup_rst_ps7_0_50m_0_arch of entity cpu.Setup_rst_ps7_0_50M_0 [setup_rst_ps7_0_50m_0_default]
-Compiling module sim_clk_gen_v1_0_4.sim_clk_gen(CLOCK_PERIOD=4000.0,...
+Compiling module sim_clk_gen_v1_0_4.sim_clk_gen(CLOCK_PERIOD=4.0,INI...
 Compiling module cpu.Setup_sim_clk_gen_0_0
 Compiling module util_vector_logic_v2_0_4.util_vector_logic_v2_0_4_util_ve...
 Compiling module cpu.Setup_util_vector_logic_0_0

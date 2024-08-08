@@ -2,7 +2,7 @@
 --Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
---Date        : Tue Aug  6 22:46:20 2024
+--Date        : Thu Aug  8 20:59:49 2024
 --Host        : DESKTOP-PSI4IU2 running 64-bit major release  (build 9200)
 --Command     : generate_target Setup.bd
 --Design      : Setup
@@ -872,10 +872,10 @@ architecture STRUCTURE of Setup is
   port (
     clka : in STD_LOGIC;
     ena : in STD_LOGIC;
-    wea : in STD_LOGIC_VECTOR ( 0 to 0 );
+    wea : in STD_LOGIC_VECTOR ( 7 downto 0 );
     addra : in STD_LOGIC_VECTOR ( 12 downto 0 );
-    dina : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    douta : out STD_LOGIC_VECTOR ( 7 downto 0 )
+    dina : in STD_LOGIC_VECTOR ( 63 downto 0 );
+    douta : out STD_LOGIC_VECTOR ( 63 downto 0 )
   );
   end component Setup_blk_mem_gen_0_0;
   component Setup_CPU_0_2 is
@@ -890,10 +890,10 @@ architecture STRUCTURE of Setup is
     mem_read : out STD_LOGIC;
     mem_err : in STD_LOGIC;
     mem_done : in STD_LOGIC;
-    bram_we : out STD_LOGIC;
+    bram_we : out STD_LOGIC_VECTOR ( 7 downto 0 );
     bram_en : out STD_LOGIC;
-    bram_din : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    bram_dout : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    bram_din : in STD_LOGIC_VECTOR ( 63 downto 0 );
+    bram_dout : out STD_LOGIC_VECTOR ( 63 downto 0 );
     bram_addr : out STD_LOGIC_VECTOR ( 12 downto 0 )
   );
   end component Setup_CPU_0_2;
@@ -946,9 +946,9 @@ architecture STRUCTURE of Setup is
   signal AXI_Master_0_read_data : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal CPU_0_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal CPU_0_bram_addr : STD_LOGIC_VECTOR ( 12 downto 0 );
-  signal CPU_0_bram_dout : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal CPU_0_bram_dout : STD_LOGIC_VECTOR ( 63 downto 0 );
   signal CPU_0_bram_en : STD_LOGIC;
-  signal CPU_0_bram_we : STD_LOGIC;
+  signal CPU_0_bram_we : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal CPU_0_data_out : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal CPU_0_mem_read : STD_LOGIC;
   signal CPU_0_mem_write : STD_LOGIC;
@@ -1003,7 +1003,7 @@ architecture STRUCTURE of Setup is
   signal axi_interconnect_0_M00_AXI_WREADY : STD_LOGIC;
   signal axi_interconnect_0_M00_AXI_WSTRB : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal axi_interconnect_0_M00_AXI_WVALID : STD_LOGIC;
-  signal blk_mem_gen_0_douta : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal blk_mem_gen_0_douta : STD_LOGIC_VECTOR ( 63 downto 0 );
   signal data_in_0_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal processing_system7_0_DDR_ADDR : STD_LOGIC_VECTOR ( 14 downto 0 );
   signal processing_system7_0_DDR_BA : STD_LOGIC_VECTOR ( 2 downto 0 );
@@ -1136,10 +1136,10 @@ CPU_0: component Setup_CPU_0_2
      port map (
       addr(31 downto 0) => CPU_0_addr(31 downto 0),
       bram_addr(12 downto 0) => CPU_0_bram_addr(12 downto 0),
-      bram_din(7 downto 0) => blk_mem_gen_0_douta(7 downto 0),
-      bram_dout(7 downto 0) => CPU_0_bram_dout(7 downto 0),
+      bram_din(63 downto 0) => blk_mem_gen_0_douta(63 downto 0),
+      bram_dout(63 downto 0) => CPU_0_bram_dout(63 downto 0),
       bram_en => CPU_0_bram_en,
-      bram_we => CPU_0_bram_we,
+      bram_we(7 downto 0) => CPU_0_bram_we(7 downto 0),
       clk => processing_system7_0_FCLK_CLK0,
       data_in(31 downto 0) => data_in_0_1(31 downto 0),
       data_out(31 downto 0) => CPU_0_data_out(31 downto 0),
@@ -1213,10 +1213,10 @@ blk_mem_gen_0: component Setup_blk_mem_gen_0_0
      port map (
       addra(12 downto 0) => CPU_0_bram_addr(12 downto 0),
       clka => processing_system7_0_FCLK_CLK0,
-      dina(7 downto 0) => CPU_0_bram_dout(7 downto 0),
-      douta(7 downto 0) => blk_mem_gen_0_douta(7 downto 0),
+      dina(63 downto 0) => CPU_0_bram_dout(63 downto 0),
+      douta(63 downto 0) => blk_mem_gen_0_douta(63 downto 0),
       ena => CPU_0_bram_en,
-      wea(0) => CPU_0_bram_we
+      wea(7 downto 0) => CPU_0_bram_we(7 downto 0)
     );
 processing_system7_0: component Setup_processing_system7_0_0
      port map (

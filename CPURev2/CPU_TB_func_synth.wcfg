@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0.000000 us"></ZoomStartTime>
-      <ZoomEndTime time="15.711558 us"></ZoomEndTime>
-      <Cursor1Time time="298.000000 us"></Cursor1Time>
+      <ZoomStartTime time="672.137374 us"></ZoomStartTime>
+      <ZoomEndTime time="697.098556 us"></ZoomEndTime>
+      <Cursor1Time time="694.000000 us"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="368"></NameColumnWidth>
-      <ValueColumnWidth column_width="128"></ValueColumnWidth>
+      <NameColumnWidth column_width="201"></NameColumnWidth>
+      <ValueColumnWidth column_width="255"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="16" />
+   <WVObjectSize size="21" />
    <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/clk" type="logic">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -41,36 +41,20 @@
       <obj_property name="ObjectShortName">bram_addr[12:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/U0/bram_din" type="array">
-      <obj_property name="ElementShortName">bram_din[7:0]</obj_property>
-      <obj_property name="ObjectShortName">bram_din[7:0]</obj_property>
+      <obj_property name="ElementShortName">bram_din[63:0]</obj_property>
+      <obj_property name="ObjectShortName">bram_din[63:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/U0/bram_dout" type="array">
-      <obj_property name="ElementShortName">bram_dout[7:0]</obj_property>
-      <obj_property name="ObjectShortName">bram_dout[7:0]</obj_property>
+      <obj_property name="ElementShortName">bram_dout[63:0]</obj_property>
+      <obj_property name="ObjectShortName">bram_dout[63:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/U0/bram_we" type="logic">
-      <obj_property name="ElementShortName">bram_we</obj_property>
-      <obj_property name="ObjectShortName">bram_we</obj_property>
+   <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/U0/bram_we" type="array">
+      <obj_property name="ElementShortName">bram_we[7:0]</obj_property>
+      <obj_property name="ObjectShortName">bram_we[7:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/U0/bram_en" type="logic">
       <obj_property name="ElementShortName">bram_en</obj_property>
       <obj_property name="ObjectShortName">bram_en</obj_property>
-   </wvobject>
-   <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/U0/alu_a" type="array">
-      <obj_property name="ElementShortName">alu_a[63:0]</obj_property>
-      <obj_property name="ObjectShortName">alu_a[63:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/U0/alu_b" type="array">
-      <obj_property name="ElementShortName">alu_b[63:0]</obj_property>
-      <obj_property name="ObjectShortName">alu_b[63:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/U0/alu_op" type="array">
-      <obj_property name="ElementShortName">alu_op[2:0]</obj_property>
-      <obj_property name="ObjectShortName">alu_op[2:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/U0/alu_result" type="array">
-      <obj_property name="ElementShortName">alu_result[63:0]</obj_property>
-      <obj_property name="ObjectShortName">alu_result[63:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/data_out" type="array">
       <obj_property name="ElementShortName">data_out[31:0]</obj_property>
@@ -83,5 +67,41 @@
    <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/U0/Result" type="array">
       <obj_property name="ElementShortName">Result[63:0]</obj_property>
       <obj_property name="ObjectShortName">Result[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/U0/Argument1" type="array">
+      <obj_property name="ElementShortName">Argument1[63:0]</obj_property>
+      <obj_property name="ObjectShortName">Argument1[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/U0/Argument2" type="array">
+      <obj_property name="ElementShortName">Argument2[63:0]</obj_property>
+      <obj_property name="ObjectShortName">Argument2[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/U0/Argument3" type="array">
+      <obj_property name="ElementShortName">Argument3[63:0]</obj_property>
+      <obj_property name="ObjectShortName">Argument3[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/U0/LocalRIP" type="array">
+      <obj_property name="ElementShortName">LocalRIP[63:0]</obj_property>
+      <obj_property name="ObjectShortName">LocalRIP[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/U0/state" type="other">
+      <obj_property name="ElementShortName">state</obj_property>
+      <obj_property name="ObjectShortName">state</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/U0/nextState" type="other">
+      <obj_property name="ElementShortName">nextState</obj_property>
+      <obj_property name="ObjectShortName">nextState</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/U0/nextNextState" type="other">
+      <obj_property name="ElementShortName">nextNextState</obj_property>
+      <obj_property name="ObjectShortName">nextNextState</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/U0/stateIndexMain" type="other">
+      <obj_property name="ElementShortName">stateIndexMain</obj_property>
+      <obj_property name="ObjectShortName">stateIndexMain</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/U0/stateIndex" type="other">
+      <obj_property name="ElementShortName">stateIndex</obj_property>
+      <obj_property name="ObjectShortName">stateIndex</obj_property>
    </wvobject>
 </wave_config>

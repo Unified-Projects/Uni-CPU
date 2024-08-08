@@ -56,6 +56,7 @@ if {$::dispatch::connected} {
 }
 
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_msg_config -id {Common 17-41} -limit 10000000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7z020clg484-1
 
@@ -75,6 +76,7 @@ set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 add_files Y:/C++/Uni-CPU/CPURev2/BRAM.coe
+add_files Y:/C++/Uni-CPU/CPURev2/BRAM64.coe
 read_vhdl -library CPU Y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/hdl/Setup_wrapper.vhd
 add_files Y:/C++/Uni-CPU/CPURev2/CPURev2.srcs/sources_1/bd/Setup/Setup.bd
 set_property used_in_implementation false [get_files -all y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_processing_system7_0_0/Setup_processing_system7_0_0.xdc]

@@ -11,7 +11,7 @@ end ClockDivider;
 
 architecture Behavioral of ClockDivider is
     signal counter : INTEGER := 0;
-    constant DIVISOR : INTEGER := 2; -- Adjust as needed for desired frequency
+    constant DIVISOR : INTEGER := 1; -- Adjust as needed for desired frequency
 begin
     process(clk, reset)
     begin

@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
-| Date         : Tue Aug  6 22:13:50 2024
+| Date         : Thu Aug  8 12:45:10 2024
 | Host         : DESKTOP-PSI4IU2 running 64-bit major release  (build 9200)
 | Command      : report_utilization -file Setup_blk_mem_gen_0_0_utilization_synth.rpt -pb Setup_blk_mem_gen_0_0_utilization_synth.pb
 | Design       : Setup_blk_mem_gen_0_0
@@ -31,8 +31,8 @@ Table of Contents
 +-------------------------+------+-------+------------+-----------+-------+
 |        Site Type        | Used | Fixed | Prohibited | Available | Util% |
 +-------------------------+------+-------+------------+-----------+-------+
-| Slice LUTs*             |    7 |     0 |          0 |     53200 |  0.01 |
-|   LUT as Logic          |    7 |     0 |          0 |     53200 |  0.01 |
+| Slice LUTs*             |   34 |     0 |          0 |     53200 |  0.06 |
+|   LUT as Logic          |   34 |     0 |          0 |     53200 |  0.06 |
 |   LUT as Memory         |    0 |     0 |          0 |     17400 |  0.00 |
 | Slice Registers         |    2 |     0 |          0 |    106400 | <0.01 |
 |   Register as Flip Flop |    2 |     0 |          0 |    106400 | <0.01 |
@@ -70,9 +70,9 @@ Warning! For any ECO changes, please run place_design if there are unplaced inst
 +-------------------+------+-------+------------+-----------+-------+
 |     Site Type     | Used | Fixed | Prohibited | Available | Util% |
 +-------------------+------+-------+------------+-----------+-------+
-| Block RAM Tile    |    2 |     0 |          0 |       140 |  1.43 |
-|   RAMB36/FIFO*    |    2 |     0 |          0 |       140 |  1.43 |
-|     RAMB36E1 only |    2 |       |            |           |       |
+| Block RAM Tile    |   16 |     0 |          0 |       140 | 11.43 |
+|   RAMB36/FIFO*    |   16 |     0 |          0 |       140 | 11.43 |
+|     RAMB36E1 only |   16 |       |            |           |       |
 |   RAMB18          |    0 |     0 |          0 |       280 |  0.00 |
 +-------------------+------+-------+------------+-----------+-------+
 * Note: Each Block RAM Tile only has one FIFO logic available and therefore can accommodate only one FIFO36E1 or one FIFO18E1. However, if a FIFO18E1 occupies a Block RAM Tile, that tile can still accommodate a RAMB18E1
@@ -150,8 +150,8 @@ Warning! For any ECO changes, please run place_design if there are unplaced inst
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| LUT3     |   10 |                 LUT |
-| RAMB36E1 |    2 |        Block Memory |
+| LUT3     |   64 |                 LUT |
+| RAMB36E1 |   16 |        Block Memory |
 | LUT2     |    2 |                 LUT |
 | FDRE     |    2 |        Flop & Latch |
 +----------+------+---------------------+

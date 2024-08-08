@@ -6,8 +6,8 @@ set_property PULLUP true [get_ports reset]
 
 # DDR-related signals
 set_property IOSTANDARD LVCMOS18 [get_ports {DDR_*}]
-set_property PACKAGE_PIN ... [get_ports {DDR_*}]
-set_property DRIVE ... [get_ports {DDR_*}]
+#set_property PACKAGE_PIN ... [get_ports {DDR_*}]
+#set_property DRIVE ... [get_ports {DDR_*}]
 # Repeat for each DDR signal (DDR_addr, DDR_ba, ...)
 
 # Fixed I/O signals

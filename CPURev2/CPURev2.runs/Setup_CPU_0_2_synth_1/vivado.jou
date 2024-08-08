@@ -3,8 +3,8 @@
 # SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
 # IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
 # SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
-# Start of session at: Tue Aug  6 22:46:43 2024
-# Process ID: 6184
+# Start of session at: Thu Aug  8 20:51:41 2024
+# Process ID: 10760
 # Current directory: Y:/C++/Uni-CPU/CPURev2/CPURev2.runs/Setup_CPU_0_2_synth_1
 # Command line: vivado.exe -log Setup_CPU_0_2.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Setup_CPU_0_2.tcl
 # Log file: Y:/C++/Uni-CPU/CPURev2/CPURev2.runs/Setup_CPU_0_2_synth_1/Setup_CPU_0_2.vds
@@ -19,6 +19,6 @@
 # Host memory       :34335 MB
 # Swap memory       :2147 MB
 # Total Virtual     :36483 MB
-# Available Virtual :30054 MB
+# Available Virtual :28534 MB
 #-----------------------------------------------------------
 source Setup_CPU_0_2.tcl -notrace

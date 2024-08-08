@@ -56,6 +56,7 @@ if {$::dispatch::connected} {
 }
 
 OPTRACE "Setup_CPU_0_2_synth_1" START { ROLLUP_AUTO }
+set_msg_config -id {Common 17-41} -limit 10000000
 set_param project.vivado.isBlockSynthRun true
 OPTRACE "Creating in-memory project" START { }
 set_param ips.modRefOverrideMrefDirPath y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/mref
@@ -77,7 +78,6 @@ set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_vhdl -library CPU {
-  Y:/C++/Uni-CPU/CPURev2/CPURev2.srcs/sources_1/new/ALU.vhd
   {Y:/C++/Uni-CPU/CPURev2/CPURev2.srcs/sources_1/new/Clock Divider.vhd}
   Y:/C++/Uni-CPU/CPURev2/CPURev2.srcs/sources_1/new/CPU.vhd
 }

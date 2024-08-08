@@ -65,10 +65,10 @@ ENTITY Setup_CPU_0_2 IS
     mem_read : OUT STD_LOGIC;
     mem_err : IN STD_LOGIC;
     mem_done : IN STD_LOGIC;
-    bram_we : OUT STD_LOGIC;
+    bram_we : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
     bram_en : OUT STD_LOGIC;
-    bram_din : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
-    bram_dout : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+    bram_din : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
+    bram_dout : OUT STD_LOGIC_VECTOR(63 DOWNTO 0);
     bram_addr : OUT STD_LOGIC_VECTOR(12 DOWNTO 0)
   );
 END Setup_CPU_0_2;
@@ -88,10 +88,10 @@ ARCHITECTURE Setup_CPU_0_2_arch OF Setup_CPU_0_2 IS
       mem_read : OUT STD_LOGIC;
       mem_err : IN STD_LOGIC;
       mem_done : IN STD_LOGIC;
-      bram_we : OUT STD_LOGIC;
+      bram_we : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
       bram_en : OUT STD_LOGIC;
-      bram_din : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
-      bram_dout : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+      bram_din : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
+      bram_dout : OUT STD_LOGIC_VECTOR(63 DOWNTO 0);
       bram_addr : OUT STD_LOGIC_VECTOR(12 DOWNTO 0)
     );
   END COMPONENT CPU;

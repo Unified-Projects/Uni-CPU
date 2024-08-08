@@ -64,7 +64,7 @@ Setup_sim_clk_gen_0_0_sc::Setup_sim_clk_gen_0_0_sc(const sc_core::sc_module_name
     model_param_props.addLong("INITIAL_RESET_CLOCK_CYCLES", "5");
     model_param_props.addLong("CLOCK_CYCLES_BEFORE_SHUTDOWN", "0");
     model_param_props.addLong("RESET_POLARITY", "1");
-    model_param_props.addFloat("CLOCK_PERIOD", "4000.0");
+    model_param_props.addFloat("CLOCK_PERIOD", "4.0");
     model_param_props.addString("CLOCK_TYPE", "Single_Ended");
     model_param_props.addString("COMPONENT_NAME", "Setup_sim_clk_gen_0_0");
 
