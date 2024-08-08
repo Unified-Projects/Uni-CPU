@@ -56,7 +56,6 @@ if {$::dispatch::connected} {
 }
 
 OPTRACE "Setup_blk_mem_gen_0_0_synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 4
 set_param project.vivado.isBlockSynthRun true
 set_msg_config -msgmgr_mode ooc_run
 OPTRACE "Creating in-memory project" START { }
@@ -77,7 +76,7 @@ set_property ip_output_repo y:/C++/Uni-CPU/CPURev2/CPURev2.cache/ip [current_pro
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-read_ip -quiet y:/C++/Uni-CPU/CPURev2/CPURev2.srcs/sources_1/bd/Setup/ip/Setup_blk_mem_gen_0_0/Setup_blk_mem_gen_0_0.xci
+read_ip -quiet Y:/C++/Uni-CPU/CPURev2/CPURev2.srcs/sources_1/bd/Setup/ip/Setup_blk_mem_gen_0_0/Setup_blk_mem_gen_0_0.xci
 set_property used_in_implementation false [get_files -all y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_blk_mem_gen_0_0/Setup_blk_mem_gen_0_0_ooc.xdc]
 
 OPTRACE "Adding files" END { }

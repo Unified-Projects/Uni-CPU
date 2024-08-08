@@ -2,7 +2,11 @@
 vhdl CPU  \
 "../../../../CPURev2.srcs/sources_1/new/ALU.vhd" \
 "../../../../CPURev2.srcs/sources_1/new/Clock Divider.vhd" \
+
+vhdl2008 CPU  \
 "../../../../CPURev2.srcs/sources_1/new/CPU.vhd" \
+
+vhdl CPU  \
 "../../../../CPURev2.srcs/sources_1/new/DDRAXIInterface.vhd" \
 "../../../../CPURev2.ip_user_files/bd/Setup/ip/Setup_rst_ps7_0_50M_0/sim/Setup_rst_ps7_0_50M_0.vhd" \
 "../../../../CPURev2.ip_user_files/bd/Setup/ip/Setup_CPU_0_2/sim/Setup_CPU_0_2.vhd" \

@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
-      <ZoomEndTime time="1,525.001 ns"></ZoomEndTime>
-      <Cursor1Time time="0.000 ns"></Cursor1Time>
+      <ZoomStartTime time="0.000000 us"></ZoomStartTime>
+      <ZoomEndTime time="15.711558 us"></ZoomEndTime>
+      <Cursor1Time time="298.000000 us"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="368"></NameColumnWidth>
-      <ValueColumnWidth column_width="140"></ValueColumnWidth>
+      <ValueColumnWidth column_width="128"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="13" />
+   <WVObjectSize size="16" />
    <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/clk" type="logic">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -41,12 +41,12 @@
       <obj_property name="ObjectShortName">bram_addr[12:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/U0/bram_din" type="array">
-      <obj_property name="ElementShortName">bram_din[63:0]</obj_property>
-      <obj_property name="ObjectShortName">bram_din[63:0]</obj_property>
+      <obj_property name="ElementShortName">bram_din[7:0]</obj_property>
+      <obj_property name="ObjectShortName">bram_din[7:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/U0/bram_dout" type="array">
-      <obj_property name="ElementShortName">bram_dout[63:0]</obj_property>
-      <obj_property name="ObjectShortName">bram_dout[63:0]</obj_property>
+      <obj_property name="ElementShortName">bram_dout[7:0]</obj_property>
+      <obj_property name="ObjectShortName">bram_dout[7:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/U0/bram_we" type="logic">
       <obj_property name="ElementShortName">bram_we</obj_property>
@@ -71,5 +71,17 @@
    <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/U0/alu_result" type="array">
       <obj_property name="ElementShortName">alu_result[63:0]</obj_property>
       <obj_property name="ObjectShortName">alu_result[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/data_out" type="array">
+      <obj_property name="ElementShortName">data_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data_out[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/U0/CIR" type="array">
+      <obj_property name="ElementShortName">CIR[15:0]</obj_property>
+      <obj_property name="ObjectShortName">CIR[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/U0/Result" type="array">
+      <obj_property name="ElementShortName">Result[63:0]</obj_property>
+      <obj_property name="ObjectShortName">Result[63:0]</obj_property>
    </wvobject>
 </wave_config>

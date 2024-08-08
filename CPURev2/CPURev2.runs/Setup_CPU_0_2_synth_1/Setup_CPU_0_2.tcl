@@ -56,8 +56,6 @@ if {$::dispatch::connected} {
 }
 
 OPTRACE "Setup_CPU_0_2_synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 4
-set_msg_config -id {Common 17-41} -limit 10000000
 set_param project.vivado.isBlockSynthRun true
 OPTRACE "Creating in-memory project" START { }
 set_param ips.modRefOverrideMrefDirPath y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/mref
@@ -83,7 +81,7 @@ read_vhdl -library CPU {
   {Y:/C++/Uni-CPU/CPURev2/CPURev2.srcs/sources_1/new/Clock Divider.vhd}
   Y:/C++/Uni-CPU/CPURev2/CPURev2.srcs/sources_1/new/CPU.vhd
 }
-read_ip -quiet y:/C++/Uni-CPU/CPURev2/CPURev2.srcs/sources_1/bd/Setup/ip/Setup_CPU_0_2/Setup_CPU_0_2.xci
+read_ip -quiet Y:/C++/Uni-CPU/CPURev2/CPURev2.srcs/sources_1/bd/Setup/ip/Setup_CPU_0_2/Setup_CPU_0_2.xci
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being

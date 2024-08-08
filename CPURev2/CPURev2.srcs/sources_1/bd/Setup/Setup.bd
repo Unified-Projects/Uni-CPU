@@ -812,11 +812,20 @@
         "xci_path": "ip\\Setup_blk_mem_gen_0_0\\Setup_blk_mem_gen_0_0.xci",
         "inst_hier_path": "blk_mem_gen_0",
         "parameters": {
+          "Coe_File": {
+            "value": "../../../../../../BRAM.coe"
+          },
+          "Fill_Remaining_Memory_Locations": {
+            "value": "true"
+          },
+          "Load_Init_File": {
+            "value": "true"
+          },
           "Memory_Type": {
             "value": "Single_Port_RAM"
           },
           "Write_Width_A": {
-            "value": "64"
+            "value": "8"
           },
           "use_bram_block": {
             "value": "Stand_Alone"
@@ -844,7 +853,7 @@
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "50000",
+                "value": "250000",
                 "value_src": "user_prop"
               },
               "CLK_DOMAIN": {
@@ -908,12 +917,12 @@
           },
           "bram_din": {
             "direction": "I",
-            "left": "63",
+            "left": "7",
             "right": "0"
           },
           "bram_dout": {
             "direction": "O",
-            "left": "63",
+            "left": "7",
             "right": "0"
           },
           "bram_addr": {
@@ -949,7 +958,7 @@
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "50000",
+                "value": "250000",
                 "value_src": "user_prop"
               },
               "ID_WIDTH": {
@@ -1147,7 +1156,7 @@
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "50000",
+                "value": "250000",
                 "value_src": "user_prop"
               },
               "CLK_DOMAIN": {
@@ -1221,7 +1230,7 @@
         "inst_hier_path": "sim_clk_gen_0",
         "parameters": {
           "FREQ_HZ": {
-            "value": "50000"
+            "value": "250000"
           },
           "INITIAL_RESET_CLOCK_CYCLES": {
             "value": "5"

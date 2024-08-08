@@ -8,12 +8,12 @@
   **** SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
   **** IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
   **** SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
-  **** Start of session at: Tue Aug  6 14:51:36 2024
+  **** Start of session at: Tue Aug  6 22:47:14 2024
     ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
     ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 
 source Setup_wrapper.tcl -notrace
-create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 530.059 ; gain = 198.723
+create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 530.512 ; gain = 200.902
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1700] Loaded user IP repository 'y:/C++/Uni-CPU/ip_repo/PL_DDR_RW_1_0'.
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2024.1/data/ip'.
@@ -30,34 +30,34 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 2860
+INFO: [Synth 8-7075] Helper process launched with PID 11776
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1432.645 ; gain = 449.590
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1432.809 ; gain = 448.645
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'Setup_wrapper' [Y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/hdl/Setup_wrapper.vhd:47]
 INFO: [Synth 8-3491] module 'Setup' declared at 'y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/synth/Setup.vhd:709' bound to instance 'Setup_i' of component 'Setup' [Y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/hdl/Setup_wrapper.vhd:80]
 INFO: [Synth 8-638] synthesizing module 'Setup' [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/synth/Setup.vhd:745]
-INFO: [Synth 8-3491] module 'Setup_AXI_Master_0_3' declared at 'Y:/C++/Uni-CPU/CPURev2/CPURev2.runs/synth_1/.Xil/Vivado-13048-DESKTOP-PSI4IU2/realtime/Setup_AXI_Master_0_3_stub.vhdl:6' bound to instance 'AXI_Master_0' of component 'Setup_AXI_Master_0_3' [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/synth/Setup.vhd:1105]
-INFO: [Synth 8-638] synthesizing module 'Setup_AXI_Master_0_3' [Y:/C++/Uni-CPU/CPURev2/CPURev2.runs/synth_1/.Xil/Vivado-13048-DESKTOP-PSI4IU2/realtime/Setup_AXI_Master_0_3_stub.vhdl:39]
-INFO: [Synth 8-3491] module 'Setup_CPU_0_2' declared at 'Y:/C++/Uni-CPU/CPURev2/CPURev2.runs/synth_1/.Xil/Vivado-13048-DESKTOP-PSI4IU2/realtime/Setup_CPU_0_2_stub.vhdl:6' bound to instance 'CPU_0' of component 'Setup_CPU_0_2' [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/synth/Setup.vhd:1135]
-INFO: [Synth 8-638] synthesizing module 'Setup_CPU_0_2' [Y:/C++/Uni-CPU/CPURev2/CPURev2.runs/synth_1/.Xil/Vivado-13048-DESKTOP-PSI4IU2/realtime/Setup_CPU_0_2_stub.vhdl:27]
+INFO: [Synth 8-3491] module 'Setup_AXI_Master_0_3' declared at 'Y:/C++/Uni-CPU/CPURev2/CPURev2.runs/synth_1/.Xil/Vivado-10332-DESKTOP-PSI4IU2/realtime/Setup_AXI_Master_0_3_stub.vhdl:6' bound to instance 'AXI_Master_0' of component 'Setup_AXI_Master_0_3' [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/synth/Setup.vhd:1105]
+INFO: [Synth 8-638] synthesizing module 'Setup_AXI_Master_0_3' [Y:/C++/Uni-CPU/CPURev2/CPURev2.runs/synth_1/.Xil/Vivado-10332-DESKTOP-PSI4IU2/realtime/Setup_AXI_Master_0_3_stub.vhdl:39]
+INFO: [Synth 8-3491] module 'Setup_CPU_0_2' declared at 'Y:/C++/Uni-CPU/CPURev2/CPURev2.runs/synth_1/.Xil/Vivado-10332-DESKTOP-PSI4IU2/realtime/Setup_CPU_0_2_stub.vhdl:6' bound to instance 'CPU_0' of component 'Setup_CPU_0_2' [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/synth/Setup.vhd:1135]
+INFO: [Synth 8-638] synthesizing module 'Setup_CPU_0_2' [Y:/C++/Uni-CPU/CPURev2/CPURev2.runs/synth_1/.Xil/Vivado-10332-DESKTOP-PSI4IU2/realtime/Setup_CPU_0_2_stub.vhdl:27]
 INFO: [Synth 8-638] synthesizing module 'Setup_axi_interconnect_0_1' [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/synth/Setup.vhd:537]
 INFO: [Synth 8-638] synthesizing module 's00_couplers_imp_TK11N1' [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/synth/Setup.vhd:74]
-INFO: [Synth 8-3491] module 'Setup_auto_pc_0' declared at 'Y:/C++/Uni-CPU/CPURev2/CPURev2.runs/synth_1/.Xil/Vivado-13048-DESKTOP-PSI4IU2/realtime/Setup_auto_pc_0_stub.vhdl:6' bound to instance 'auto_pc' of component 'Setup_auto_pc_0' [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/synth/Setup.vhd:343]
-INFO: [Synth 8-638] synthesizing module 'Setup_auto_pc_0' [Y:/C++/Uni-CPU/CPURev2/CPURev2.runs/synth_1/.Xil/Vivado-13048-DESKTOP-PSI4IU2/realtime/Setup_auto_pc_0_stub.vhdl:66]
-INFO: [Synth 8-3491] module 'Setup_auto_us_0' declared at 'Y:/C++/Uni-CPU/CPURev2/CPURev2.runs/synth_1/.Xil/Vivado-13048-DESKTOP-PSI4IU2/realtime/Setup_auto_us_0_stub.vhdl:6' bound to instance 'auto_us' of component 'Setup_auto_us_0' [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/synth/Setup.vhd:400]
-INFO: [Synth 8-638] synthesizing module 'Setup_auto_us_0' [Y:/C++/Uni-CPU/CPURev2/CPURev2.runs/synth_1/.Xil/Vivado-13048-DESKTOP-PSI4IU2/realtime/Setup_auto_us_0_stub.vhdl:80]
+INFO: [Synth 8-3491] module 'Setup_auto_pc_0' declared at 'Y:/C++/Uni-CPU/CPURev2/CPURev2.runs/synth_1/.Xil/Vivado-10332-DESKTOP-PSI4IU2/realtime/Setup_auto_pc_0_stub.vhdl:6' bound to instance 'auto_pc' of component 'Setup_auto_pc_0' [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/synth/Setup.vhd:343]
+INFO: [Synth 8-638] synthesizing module 'Setup_auto_pc_0' [Y:/C++/Uni-CPU/CPURev2/CPURev2.runs/synth_1/.Xil/Vivado-10332-DESKTOP-PSI4IU2/realtime/Setup_auto_pc_0_stub.vhdl:66]
+INFO: [Synth 8-3491] module 'Setup_auto_us_0' declared at 'Y:/C++/Uni-CPU/CPURev2/CPURev2.runs/synth_1/.Xil/Vivado-10332-DESKTOP-PSI4IU2/realtime/Setup_auto_us_0_stub.vhdl:6' bound to instance 'auto_us' of component 'Setup_auto_us_0' [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/synth/Setup.vhd:400]
+INFO: [Synth 8-638] synthesizing module 'Setup_auto_us_0' [Y:/C++/Uni-CPU/CPURev2/CPURev2.runs/synth_1/.Xil/Vivado-10332-DESKTOP-PSI4IU2/realtime/Setup_auto_us_0_stub.vhdl:80]
 INFO: [Synth 8-256] done synthesizing module 's00_couplers_imp_TK11N1' (0#1) [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/synth/Setup.vhd:74]
 INFO: [Synth 8-256] done synthesizing module 'Setup_axi_interconnect_0_1' (0#1) [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/synth/Setup.vhd:537]
-INFO: [Synth 8-3491] module 'Setup_blk_mem_gen_0_0' declared at 'Y:/C++/Uni-CPU/CPURev2/CPURev2.runs/synth_1/.Xil/Vivado-13048-DESKTOP-PSI4IU2/realtime/Setup_blk_mem_gen_0_0_stub.vhdl:6' bound to instance 'blk_mem_gen_0' of component 'Setup_blk_mem_gen_0_0' [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/synth/Setup.vhd:1212]
-INFO: [Synth 8-638] synthesizing module 'Setup_blk_mem_gen_0_0' [Y:/C++/Uni-CPU/CPURev2/CPURev2.runs/synth_1/.Xil/Vivado-13048-DESKTOP-PSI4IU2/realtime/Setup_blk_mem_gen_0_0_stub.vhdl:18]
-INFO: [Synth 8-3491] module 'Setup_processing_system7_0_0' declared at 'Y:/C++/Uni-CPU/CPURev2/CPURev2.runs/synth_1/.Xil/Vivado-13048-DESKTOP-PSI4IU2/realtime/Setup_processing_system7_0_0_stub.vhdl:6' bound to instance 'processing_system7_0' of component 'Setup_processing_system7_0_0' [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/synth/Setup.vhd:1221]
-INFO: [Synth 8-638] synthesizing module 'Setup_processing_system7_0_0' [Y:/C++/Uni-CPU/CPURev2/CPURev2.runs/synth_1/.Xil/Vivado-13048-DESKTOP-PSI4IU2/realtime/Setup_processing_system7_0_0_stub.vhdl:119]
-INFO: [Synth 8-3491] module 'Setup_rst_ps7_0_50M_0' declared at 'Y:/C++/Uni-CPU/CPURev2/CPURev2.runs/synth_1/.Xil/Vivado-13048-DESKTOP-PSI4IU2/realtime/Setup_rst_ps7_0_50M_0_stub.vhdl:6' bound to instance 'rst_ps7_0_50M' of component 'Setup_rst_ps7_0_50M_0' [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/synth/Setup.vhd:1331]
-INFO: [Synth 8-638] synthesizing module 'Setup_rst_ps7_0_50M_0' [Y:/C++/Uni-CPU/CPURev2/CPURev2.runs/synth_1/.Xil/Vivado-13048-DESKTOP-PSI4IU2/realtime/Setup_rst_ps7_0_50M_0_stub.vhdl:22]
+INFO: [Synth 8-3491] module 'Setup_blk_mem_gen_0_0' declared at 'Y:/C++/Uni-CPU/CPURev2/CPURev2.runs/synth_1/.Xil/Vivado-10332-DESKTOP-PSI4IU2/realtime/Setup_blk_mem_gen_0_0_stub.vhdl:6' bound to instance 'blk_mem_gen_0' of component 'Setup_blk_mem_gen_0_0' [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/synth/Setup.vhd:1212]
+INFO: [Synth 8-638] synthesizing module 'Setup_blk_mem_gen_0_0' [Y:/C++/Uni-CPU/CPURev2/CPURev2.runs/synth_1/.Xil/Vivado-10332-DESKTOP-PSI4IU2/realtime/Setup_blk_mem_gen_0_0_stub.vhdl:18]
+INFO: [Synth 8-3491] module 'Setup_processing_system7_0_0' declared at 'Y:/C++/Uni-CPU/CPURev2/CPURev2.runs/synth_1/.Xil/Vivado-10332-DESKTOP-PSI4IU2/realtime/Setup_processing_system7_0_0_stub.vhdl:6' bound to instance 'processing_system7_0' of component 'Setup_processing_system7_0_0' [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/synth/Setup.vhd:1221]
+INFO: [Synth 8-638] synthesizing module 'Setup_processing_system7_0_0' [Y:/C++/Uni-CPU/CPURev2/CPURev2.runs/synth_1/.Xil/Vivado-10332-DESKTOP-PSI4IU2/realtime/Setup_processing_system7_0_0_stub.vhdl:119]
+INFO: [Synth 8-3491] module 'Setup_rst_ps7_0_50M_0' declared at 'Y:/C++/Uni-CPU/CPURev2/CPURev2.runs/synth_1/.Xil/Vivado-10332-DESKTOP-PSI4IU2/realtime/Setup_rst_ps7_0_50M_0_stub.vhdl:6' bound to instance 'rst_ps7_0_50M' of component 'Setup_rst_ps7_0_50M_0' [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/synth/Setup.vhd:1331]
+INFO: [Synth 8-638] synthesizing module 'Setup_rst_ps7_0_50M_0' [Y:/C++/Uni-CPU/CPURev2/CPURev2.runs/synth_1/.Xil/Vivado-10332-DESKTOP-PSI4IU2/realtime/Setup_rst_ps7_0_50M_0_stub.vhdl:22]
 INFO: [Synth 8-637] synthesizing blackbox instance 'sim_clk_gen_0' of component 'Setup_sim_clk_gen_0_0' [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/synth/Setup.vhd:1344]
-INFO: [Synth 8-3491] module 'Setup_util_vector_logic_0_0' declared at 'Y:/C++/Uni-CPU/CPURev2/CPURev2.runs/synth_1/.Xil/Vivado-13048-DESKTOP-PSI4IU2/realtime/Setup_util_vector_logic_0_0_stub.vhdl:6' bound to instance 'util_vector_logic_0' of component 'Setup_util_vector_logic_0_0' [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/synth/Setup.vhd:1349]
-INFO: [Synth 8-638] synthesizing module 'Setup_util_vector_logic_0_0' [Y:/C++/Uni-CPU/CPURev2/CPURev2.runs/synth_1/.Xil/Vivado-13048-DESKTOP-PSI4IU2/realtime/Setup_util_vector_logic_0_0_stub.vhdl:14]
+INFO: [Synth 8-3491] module 'Setup_util_vector_logic_0_0' declared at 'Y:/C++/Uni-CPU/CPURev2/CPURev2.runs/synth_1/.Xil/Vivado-10332-DESKTOP-PSI4IU2/realtime/Setup_util_vector_logic_0_0_stub.vhdl:6' bound to instance 'util_vector_logic_0' of component 'Setup_util_vector_logic_0_0' [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/synth/Setup.vhd:1349]
+INFO: [Synth 8-638] synthesizing module 'Setup_util_vector_logic_0_0' [Y:/C++/Uni-CPU/CPURev2/CPURev2.runs/synth_1/.Xil/Vivado-10332-DESKTOP-PSI4IU2/realtime/Setup_util_vector_logic_0_0_stub.vhdl:14]
 INFO: [Synth 8-256] done synthesizing module 'Setup' (0#1) [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/synth/Setup.vhd:745]
 INFO: [Synth 8-256] done synthesizing module 'Setup_wrapper' (0#1) [Y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/hdl/Setup_wrapper.vhd:47]
 WARNING: [Synth 8-7129] Port M_ACLK in module s00_couplers_imp_TK11N1 is either unconnected or has no load
@@ -65,18 +65,18 @@ WARNING: [Synth 8-7129] Port M_ARESETN in module s00_couplers_imp_TK11N1 is eith
 WARNING: [Synth 8-7129] Port ACLK in module Setup_axi_interconnect_0_1 is either unconnected or has no load
 WARNING: [Synth 8-7129] Port ARESETN in module Setup_axi_interconnect_0_1 is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1550.582 ; gain = 567.527
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1550.148 ; gain = 565.984
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1550.582 ; gain = 567.527
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1550.148 ; gain = 565.984
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1550.582 ; gain = 567.527
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1550.148 ; gain = 565.984
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.012 . Memory (MB): peak = 1550.582 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.012 . Memory (MB): peak = 1550.148 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -119,22 +119,22 @@ Parsing XDC File [Y:/C++/Uni-CPU/CPURev2/CPURev2.runs/synth_1/dont_touch.xdc]
 Finished Parsing XDC File [Y:/C++/Uni-CPU/CPURev2/CPURev2.runs/synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1567.793 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1550.148 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 1567.793 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.006 . Memory (MB): peak = 1550.148 ; gain = 0.000
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 1567.793 ; gain = 584.738
+Finished Constraint Validation : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 1550.148 ; gain = 565.984
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z020clg484-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 1567.793 ; gain = 584.738
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 1550.148 ; gain = 565.984
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -411,10 +411,10 @@ Applied set_property KEEP_HIERARCHY = SOFT for Setup_i/AXI_Master_0. (constraint
 Applied set_property KEEP_HIERARCHY = SOFT for Setup_i/sim_clk_gen_0. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for Setup_i/util_vector_logic_0. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 1567.793 ; gain = 584.738
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 1550.148 ; gain = 565.984
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 1567.793 ; gain = 584.738
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 1550.148 ; gain = 565.984
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -441,25 +441,25 @@ WARNING: [Synth 8-7129] Port ARESETN in module Setup_axi_interconnect_0_1 is eit
 WARNING: [Synth 8-7129] Port M00_ACLK in module Setup_axi_interconnect_0_1 is either unconnected or has no load
 WARNING: [Synth 8-7129] Port M00_ARESETN in module Setup_axi_interconnect_0_1 is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 1567.793 ; gain = 584.738
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1550.148 ; gain = 565.984
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 1567.793 ; gain = 584.738
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 1550.148 ; gain = 565.984
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 1567.793 ; gain = 584.738
+Finished Timing Optimization : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 1550.148 ; gain = 565.984
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 1567.793 ; gain = 584.738
+Finished Technology Mapping : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 1550.148 ; gain = 565.984
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -477,37 +477,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1567.793 ; gain = 584.738
+Finished IO Insertion : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1550.148 ; gain = 565.984
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1567.793 ; gain = 584.738
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1550.148 ; gain = 565.984
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1567.793 ; gain = 584.738
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1550.148 ; gain = 565.984
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1567.793 ; gain = 584.738
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1550.148 ; gain = 565.984
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1567.793 ; gain = 584.738
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1550.148 ; gain = 565.984
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1567.793 ; gain = 584.738
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1550.148 ; gain = 565.984
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -545,26 +545,26 @@ Report Cell Usage:
 |11    |OBUF                              |    96|
 +------+----------------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1567.793 ; gain = 584.738
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1550.148 ; gain = 565.984
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 5 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:11 ; elapsed = 00:00:15 . Memory (MB): peak = 1567.793 ; gain = 567.527
-Synthesis Optimization Complete : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1567.793 ; gain = 584.738
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:11 ; elapsed = 00:00:15 . Memory (MB): peak = 1550.148 ; gain = 565.984
+Synthesis Optimization Complete : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1550.148 ; gain = 565.984
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.013 . Memory (MB): peak = 1567.793 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.011 . Memory (MB): peak = 1550.148 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1567.793 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1550.148 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Synth Design complete | Checksum: 346faa7
+Synth Design complete | Checksum: c9519d55
 INFO: [Common 17-83] Releasing license: Synthesis
 49 Infos, 20 Warnings, 3 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 1567.793 ; gain = 1016.234
+synth_design: Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 1550.148 ; gain = 999.105
 INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1567.793 ; gain = 0.000
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1550.148 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'Y:/C++/Uni-CPU/CPURev2/CPURev2.runs/synth_1/Setup_wrapper.dcp' has been generated.
 INFO: [Vivado 12-24828] Executing command : report_utilization -file Setup_wrapper_utilization_synth.rpt -pb Setup_wrapper_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Tue Aug  6 14:52:04 2024...
+INFO: [Common 17-206] Exiting Vivado at Tue Aug  6 22:47:43 2024...

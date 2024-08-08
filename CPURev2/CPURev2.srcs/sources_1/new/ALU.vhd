@@ -11,8 +11,7 @@ entity ALU is
         b : in STD_LOGIC_VECTOR(63 downto 0);
         alu_op : in STD_LOGIC_VECTOR(2 downto 0);
         result : out STD_LOGIC_VECTOR(63 downto 0);
-        zero : out STD_LOGIC; -- Zero flag
-        alu_done : out STD_LOGIC
+        zero : out STD_LOGIC -- Zero flag
     );
 end ALU;
 
@@ -21,7 +20,6 @@ architecture Behavioral of ALU is
 begin
     process(clk, reset)
     begin
-        alu_done <= '0';
         if reset = '1' then
             resultBuf <= (others => '0');
             result <= resultBuf;
@@ -43,6 +41,5 @@ begin
             
             result <= resultBuf;
         end if;
-        alu_done <= '1';
     end process;
 end Behavioral;

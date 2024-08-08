@@ -1,4 +1,6 @@
 Time resolution is 1 ps
+ Block Memory Generator module loading initial data...
+ Block Memory Generator data initialization complete.
 Block Memory Generator module CPU_TB.uut.Setup_i.blk_mem_gen_0.inst.native_mem_module.blk_mem_gen_v8_4_8_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
 XilinxAXIVIP: Found at Path: CPU_TB.uut.Setup_i.processing_system7_0.inst.M_AXI_GP0.master
 [0] : *ZYNQ_VIP_INFO : M_AXI_GP0 : Port is ENABLED.
@@ -27,318 +29,318 @@ XilinxAXIVIP: Found at Path: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_
 XilinxAXIVIP: Found at Path: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_ACP.slave
 [0] : *ZYNQ_VIP_INFO : S_AXI_ACP : Port is DISABLED.
                    0 else checking line ......x
-WARNING: 10000 ns CPU_TB.uut.Setup_i.processing_system7_0.inst.M_AXI_GP0.master.IF : ARESET_N can't be X/Z after 1 cycle of clock. To downgrade, use <hierarchy_path to VIP>.IF.set_enable_xchecks_to_warn(), or filter using clr_enable_xchecks.
-               10000 else checking line ......1
+WARNING: 2000 ns CPU_TB.uut.Setup_i.processing_system7_0.inst.M_AXI_GP0.master.IF : ARESET_N can't be X/Z after 1 cycle of clock. To downgrade, use <hierarchy_path to VIP>.IF.set_enable_xchecks_to_warn(), or filter using clr_enable_xchecks.
+                2000 else checking line ......1
+
+Time: 6 us Started: 6 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 6 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 6 us
+
+Time: 10 us Started: 10 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 10 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 10 us
+
+Time: 14 us Started: 14 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 14 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 14 us
+
+Time: 18 us Started: 18 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 18 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 18 us
+
+Time: 22 us Started: 22 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 22 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 22 us
+
+Time: 26 us Started: 26 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 26 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 26 us
 
 Time: 30 us Started: 30 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
 Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
 Time: 30 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
 $finish called at time : 30 us
 
+Time: 34 us Started: 34 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 34 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 34 us
+
+Time: 38 us Started: 38 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 38 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 38 us
+
+Time: 42 us Started: 42 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 42 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 42 us
+
+Time: 46 us Started: 46 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 46 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 46 us
+
 Time: 50 us Started: 50 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
 Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
 Time: 50 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
 $finish called at time : 50 us
+
+Time: 54 us Started: 54 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 54 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 54 us
+
+Time: 58 us Started: 58 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 58 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 58 us
+
+Time: 62 us Started: 62 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 62 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 62 us
+
+Time: 66 us Started: 66 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 66 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 66 us
 
 Time: 70 us Started: 70 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
 Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
 Time: 70 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
 $finish called at time : 70 us
 
+Time: 74 us Started: 74 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 74 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 74 us
+
+Time: 78 us Started: 78 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 78 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 78 us
+
+Time: 82 us Started: 82 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 82 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 82 us
+
+Time: 86 us Started: 86 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 86 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 86 us
+
 Time: 90 us Started: 90 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
 Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
 Time: 90 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
 $finish called at time : 90 us
+
+Time: 94 us Started: 94 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 94 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 94 us
+
+Time: 98 us Started: 98 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 98 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 98 us
+
+Time: 102 us Started: 102 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 102 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 102 us
+
+Time: 106 us Started: 106 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 106 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 106 us
 
 Time: 110 us Started: 110 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
 Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
 Time: 110 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
 $finish called at time : 110 us
 
+Time: 114 us Started: 114 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 114 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 114 us
+
+Time: 118 us Started: 118 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 118 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 118 us
+
+Time: 122 us Started: 122 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 122 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 122 us
+
+Time: 126 us Started: 126 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 126 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 126 us
+
 Time: 130 us Started: 130 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
 Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
 Time: 130 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
 $finish called at time : 130 us
+
+Time: 134 us Started: 134 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 134 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 134 us
+
+Time: 138 us Started: 138 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 138 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 138 us
+
+Time: 142 us Started: 142 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 142 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 142 us
+
+Time: 146 us Started: 146 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 146 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 146 us
 
 Time: 150 us Started: 150 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
 Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
 Time: 150 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
 $finish called at time : 150 us
 
+Time: 154 us Started: 154 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 154 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 154 us
+
+Time: 158 us Started: 158 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 158 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 158 us
+
+Time: 162 us Started: 162 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 162 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 162 us
+
+Time: 166 us Started: 166 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 166 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 166 us
+
 Time: 170 us Started: 170 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
 Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
 Time: 170 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
 $finish called at time : 170 us
+
+Time: 174 us Started: 174 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 174 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 174 us
+
+Time: 178 us Started: 178 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 178 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 178 us
+
+Time: 182 us Started: 182 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 182 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 182 us
+
+Time: 186 us Started: 186 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 186 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 186 us
 
 Time: 190 us Started: 190 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
 Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
 Time: 190 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
 $finish called at time : 190 us
 
+Time: 194 us Started: 194 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 194 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 194 us
+
+Time: 198 us Started: 198 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 198 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 198 us
+
+Time: 202 us Started: 202 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 202 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 202 us
+
+Time: 206 us Started: 206 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 206 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 206 us
+
 Time: 210 us Started: 210 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
 Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
 Time: 210 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
 $finish called at time : 210 us
+
+Time: 214 us Started: 214 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 214 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 214 us
+
+Time: 218 us Started: 218 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 218 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 218 us
+
+Time: 222 us Started: 222 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 222 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 222 us
+
+Time: 226 us Started: 226 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 226 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 226 us
 
 Time: 230 us Started: 230 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
 Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
 Time: 230 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
 $finish called at time : 230 us
 
+Time: 234 us Started: 234 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 234 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 234 us
+
+Time: 238 us Started: 238 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 238 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 238 us
+
+Time: 242 us Started: 242 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 242 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 242 us
+
+Time: 246 us Started: 246 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
+Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
+Time: 246 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
+$finish called at time : 246 us
+
 Time: 250 us Started: 250 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
 Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
 Time: 250 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
 $finish called at time : 250 us
-
-Time: 270 us Started: 270 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 270 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 270 us
-
-Time: 290 us Started: 290 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 290 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 290 us
-
-Time: 310 us Started: 310 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 310 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 310 us
-
-Time: 330 us Started: 330 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 330 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 330 us
-
-Time: 350 us Started: 350 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 350 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 350 us
-
-Time: 370 us Started: 370 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 370 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 370 us
-
-Time: 390 us Started: 390 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 390 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 390 us
-
-Time: 410 us Started: 410 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 410 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 410 us
-
-Time: 430 us Started: 430 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 430 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 430 us
-
-Time: 450 us Started: 450 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 450 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 450 us
-
-Time: 470 us Started: 470 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 470 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 470 us
-
-Time: 490 us Started: 490 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 490 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 490 us
-
-Time: 510 us Started: 510 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 510 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 510 us
-
-Time: 530 us Started: 530 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 530 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 530 us
-
-Time: 550 us Started: 550 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 550 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 550 us
-
-Time: 570 us Started: 570 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 570 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 570 us
-
-Time: 590 us Started: 590 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 590 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 590 us
-
-Time: 610 us Started: 610 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 610 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 610 us
-
-Time: 630 us Started: 630 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 630 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 630 us
-
-Time: 650 us Started: 650 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 650 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 650 us
-
-Time: 670 us Started: 670 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 670 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 670 us
-
-Time: 690 us Started: 690 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 690 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 690 us
-
-Time: 710 us Started: 710 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 710 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 710 us
-
-Time: 730 us Started: 730 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 730 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 730 us
-
-Time: 750 us Started: 750 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 750 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 750 us
-
-Time: 770 us Started: 770 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 770 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 770 us
-
-Time: 790 us Started: 790 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 790 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 790 us
-
-Time: 810 us Started: 810 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 810 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 810 us
-
-Time: 830 us Started: 830 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 830 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 830 us
-
-Time: 850 us Started: 850 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 850 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 850 us
-
-Time: 870 us Started: 870 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 870 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 870 us
-
-Time: 890 us Started: 890 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 890 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 890 us
-
-Time: 910 us Started: 910 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 910 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 910 us
-
-Time: 930 us Started: 930 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 930 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 930 us
-
-Time: 950 us Started: 950 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 950 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 950 us
-
-Time: 970 us Started: 970 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 970 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 970 us
-
-Time: 990 us Started: 990 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 990 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 990 us
-
-Time: 1010 us Started: 1010 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 1010 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 1010 us
-
-Time: 1030 us Started: 1030 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 1030 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 1030 us
-
-Time: 1050 us Started: 1050 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 1050 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 1050 us
-
-Time: 1070 us Started: 1070 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 1070 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 1070 us
-
-Time: 1090 us Started: 1090 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 1090 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 1090 us
-
-Time: 1110 us Started: 1110 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 1110 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 1110 us
-
-Time: 1130 us Started: 1130 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 1130 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 1130 us
-
-Time: 1150 us Started: 1150 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 1150 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 1150 us
-
-Time: 1170 us Started: 1170 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 1170 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 1170 us
-
-Time: 1190 us Started: 1190 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 1190 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 1190 us
-
-Time: 1210 us Started: 1210 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 1210 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 1210 us
-
-Time: 1230 us Started: 1230 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 1230 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 1230 us
-
-Time: 1250 us Started: 1250 us Scope: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line:2078
-Fatal: AXI4_ERRM_BREADY_X: When not in reset, a value of X on BREADY is not permitted. Spec: section A3.1.2.
-Time: 1250 us  Iteration: 1  Process: /CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC//CPU_TB/uut/Setup_i/processing_system7_0/inst/S_AXI_HP0/slave/IF/PC  Scope: CPU_TB.uut.Setup_i.processing_system7_0.inst.S_AXI_HP0.slave.IF.PC.arm_amba4_pc_msg_err  File: /wrk/ci/prod/2024.1/sw/continuous/35389/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv Line: 727
-$finish called at time : 1250 us
 Executing Axi4 End Of Simulation checks
 Executing Axi4 End Of Simulation checks
 Executing Axi4 End Of Simulation checks
@@ -348,4 +350,3 @@ Executing Axi4 End Of Simulation checks
 Executing Axi4 End Of Simulation checks
 Executing Axi4 End Of Simulation checks
 Executing Axi4 End Of Simulation checks
-INFO: xsimkernel Simulation Memory Usage: 31588 KB (Peak: 31588 KB), Simulation CPU Usage: 10484 ms

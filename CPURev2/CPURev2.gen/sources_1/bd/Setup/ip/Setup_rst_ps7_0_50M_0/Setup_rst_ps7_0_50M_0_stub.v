@@ -2,7 +2,7 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
-// Date        : Tue Aug  6 15:00:53 2024
+// Date        : Tue Aug  6 16:00:35 2024
 // Host        : DESKTOP-PSI4IU2 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub
 //               y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_rst_ps7_0_50M_0/Setup_rst_ps7_0_50M_0_stub.v

@@ -3,8 +3,8 @@
 # SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
 # IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
 # SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
-# Start of session at: Tue Aug  6 14:51:36 2024
-# Process ID: 13048
+# Start of session at: Tue Aug  6 22:47:14 2024
+# Process ID: 10332
 # Current directory: Y:/C++/Uni-CPU/CPURev2/CPURev2.runs/synth_1
 # Command line: vivado.exe -log Setup_wrapper.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Setup_wrapper.tcl
 # Log file: Y:/C++/Uni-CPU/CPURev2/CPURev2.runs/synth_1/Setup_wrapper.vds
@@ -17,8 +17,8 @@
 # CPU Physical cores:16
 # CPU Logical cores :16
 # Host memory       :34335 MB
-# Swap memory       :2281 MB
-# Total Virtual     :36617 MB
-# Available Virtual :26933 MB
+# Swap memory       :2147 MB
+# Total Virtual     :36483 MB
+# Available Virtual :30058 MB
 #-----------------------------------------------------------
 source Setup_wrapper.tcl -notrace

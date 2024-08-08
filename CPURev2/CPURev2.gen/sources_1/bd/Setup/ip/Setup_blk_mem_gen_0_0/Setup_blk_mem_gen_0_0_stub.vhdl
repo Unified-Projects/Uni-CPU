@@ -2,7 +2,7 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
--- Date        : Tue Aug  6 11:48:10 2024
+-- Date        : Tue Aug  6 22:13:50 2024
 -- Host        : DESKTOP-PSI4IU2 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub
 --               y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_blk_mem_gen_0_0/Setup_blk_mem_gen_0_0_stub.vhdl
@@ -19,8 +19,8 @@ entity Setup_blk_mem_gen_0_0 is
     ena : in STD_LOGIC;
     wea : in STD_LOGIC_VECTOR ( 0 to 0 );
     addra : in STD_LOGIC_VECTOR ( 12 downto 0 );
-    dina : in STD_LOGIC_VECTOR ( 63 downto 0 );
-    douta : out STD_LOGIC_VECTOR ( 63 downto 0 )
+    dina : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    douta : out STD_LOGIC_VECTOR ( 7 downto 0 )
   );
 
 end Setup_blk_mem_gen_0_0;
@@ -29,7 +29,7 @@ architecture stub of Setup_blk_mem_gen_0_0 is
 attribute syn_black_box : boolean;
 attribute black_box_pad_pin : string;
 attribute syn_black_box of stub : architecture is true;
-attribute black_box_pad_pin of stub : architecture is "clka,ena,wea[0:0],addra[12:0],dina[63:0],douta[63:0]";
+attribute black_box_pad_pin of stub : architecture is "clka,ena,wea[0:0],addra[12:0],dina[7:0],douta[7:0]";
 attribute x_core_info : string;
 attribute x_core_info of stub : architecture is "blk_mem_gen_v8_4_8,Vivado 2024.1";
 begin
