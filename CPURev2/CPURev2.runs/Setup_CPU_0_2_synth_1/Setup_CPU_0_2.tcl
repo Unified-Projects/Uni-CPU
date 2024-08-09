@@ -56,6 +56,7 @@ if {$::dispatch::connected} {
 }
 
 OPTRACE "Setup_CPU_0_2_synth_1" START { ROLLUP_AUTO }
+set_param chipscope.maxJobs 4
 set_msg_config -id {Common 17-41} -limit 10000000
 set_param project.vivado.isBlockSynthRun true
 OPTRACE "Creating in-memory project" START { }

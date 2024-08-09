@@ -36,14 +36,6 @@ architecture Behavioral of CPU_TB is
     signal FIXED_IO_ps_clk : STD_LOGIC := '0';
     signal FIXED_IO_ps_porb : STD_LOGIC := '1';
     signal FIXED_IO_ps_srstb : STD_LOGIC := '1';
-    signal addr_0 : STD_LOGIC_VECTOR(31 downto 0);
-    signal address_0 : STD_LOGIC_VECTOR(31 downto 0) := (others => '0');
-    signal data_in_0 : STD_LOGIC_VECTOR(31 downto 0) := (others => '0');
-    signal data_out_0 : STD_LOGIC_VECTOR(31 downto 0);
-    signal mem_read_0 : STD_LOGIC := '0';
-    signal mem_write_0 : STD_LOGIC := '0';
-    signal read_data_0 : STD_LOGIC_VECTOR(31 downto 0);
-    signal write_data_0 : STD_LOGIC_VECTOR(31 downto 0) := (others => '0');
 
 begin
     -- Clock generation
@@ -72,24 +64,12 @@ begin
             FIXED_IO_mio => FIXED_IO_mio,
             FIXED_IO_ps_clk => FIXED_IO_ps_clk,
             FIXED_IO_ps_porb => FIXED_IO_ps_porb,
-            FIXED_IO_ps_srstb => FIXED_IO_ps_srstb,
-            addr_0 => addr_0,
-            address_0 => address_0,
-            data_in_0 => data_in_0,
-            data_out_0 => data_out_0,
-            read_data_0 => read_data_0,
-            write_data_0 => write_data_0
+            FIXED_IO_ps_srstb => FIXED_IO_ps_srstb
         );
 
     -- Test process
     process
     begin
-        -- Initialize
-        wait for 100 ns;
-        reset <= '1';
-        wait for 100 ns;
-        reset <= '0';
-
         -- Simulate normal operation
         -- Add your test stimulus here
         -- Example stimulus for read and write operations

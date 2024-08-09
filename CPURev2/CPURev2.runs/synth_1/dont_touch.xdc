@@ -24,9 +24,6 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==Setup_CPU_0
 # IP: bd/Setup/ip/Setup_AXI_Master_0_3/Setup_AXI_Master_0_3.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==Setup_AXI_Master_0_3 || ORIG_REF_NAME==Setup_AXI_Master_0_3} -quiet] -quiet
 
-# IP: bd/Setup/ip/Setup_sim_clk_gen_0_0/Setup_sim_clk_gen_0_0.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==Setup_sim_clk_gen_0_0 || ORIG_REF_NAME==Setup_sim_clk_gen_0_0} -quiet] -quiet
-
 # IP: bd/Setup/ip/Setup_util_vector_logic_0_0/Setup_util_vector_logic_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==Setup_util_vector_logic_0_0 || ORIG_REF_NAME==Setup_util_vector_logic_0_0} -quiet] -quiet
 

@@ -30,7 +30,7 @@ architecture Behavioral of CPU is
 --    signal write_enable : STD_LOGIC;
 --    signal reg_addr : STD_LOGIC_VECTOR(4 downto 0) := (others => '0'); -- Initialize to zero
     
-    type state_type is (IDLE, READ_REGISTER, STORE_REGISTER, BRAM_READ, BRAM_WRITE, FETCH_RIP, INC_RIP, FETCH_INSTRUCTION, DECODE_INSTRUCTION, GET_1_ARG, GET_2_ARG, GET_3_ARG, EXEC, EXEC_8, EXEC_16, EXEC_32, EXEC_64, STORE, SAVE_RIP, END_CYCLE, HALT);
+    type state_type is (IDLE, READ_REGISTER, STORE_REGISTER, BRAM_READ, BRAM_WRITE, DDR_READ, DDR_WRITE, FETCH_RIP, INC_RIP, FETCH_INSTRUCTION, DECODE_INSTRUCTION, GET_1_ARG, GET_1_ALT, GET_2_ARG, GET_3_ARG, EXEC, EXEC_8, EXEC_16, EXEC_32, EXEC_64, STORE, SAVE_RIP, END_CYCLE, HALT);
     signal stateIndex : INTEGER range 0 to 15 := 0;
     signal stateIndexMain : INTEGER range 0 to 15 := 0;
     signal state : state_type := IDLE;
@@ -39,13 +39,17 @@ architecture Behavioral of CPU is
     
     signal cycle_count : INTEGER range 0 to 15 := 0; -- 4-bit cycle counter
     
-    signal Result : STD_LOGIC_VECTOR(63 downto 0);
-    signal Argument1 : STD_LOGIC_VECTOR(63 downto 0);
-    signal Argument2 : STD_LOGIC_VECTOR(63 downto 0);
-    signal Argument3 : STD_LOGIC_VECTOR(63 downto 0);
+    signal Result : STD_LOGIC_VECTOR(63 downto 0) := (others => '0');
+    signal Argument1 : STD_LOGIC_VECTOR(63 downto 0) := (others => '0');
+    signal Argument2 : STD_LOGIC_VECTOR(63 downto 0) := (others => '0');
+    signal Argument3 : STD_LOGIC_VECTOR(63 downto 0) := (others => '0');
     
-    signal LocalRIP : STD_LOGIC_VECTOR(63 downto 0);
-    signal CIR : STD_LOGIC_VECTOR(15 downto 0);
+    signal LocalRIP : STD_LOGIC_VECTOR(63 downto 0) := (others => '0');
+    signal LocalRSP : STD_LOGIC_VECTOR(63 downto 0) := (others => '0');
+    signal LocalStatus : STD_LOGIC_VECTOR(63 downto 0) := (others => '0');
+    signal LocalInterrupt : STD_LOGIC_VECTOR(63 downto 0) := (others => '0');
+    signal LocalErr : STD_LOGIC_VECTOR(63 downto 0) := (others => '0');
+    signal CIR : STD_LOGIC_VECTOR(15 downto 0) := (others => '0');
     
     function reverse_bytes(data_in: std_logic_vector(63 downto 0)) return std_logic_vector is
         variable data_out: std_logic_vector(63 downto 0);
@@ -90,10 +94,15 @@ begin
     process(clk_div)
         -- Variable declarations
         variable aligned_address : std_logic_vector(12 downto 0);
+        variable alignedDDR_address : std_logic_vector(31 downto 0);
         variable byte_offset     : std_logic_vector(2 downto 0); -- 3-bit offset within 64-bit word
+        variable byteDDR_offset     : std_logic_vector(1 downto 0); -- 2-bit offset within 32-bit word
         variable temp_data1      : std_logic_vector(63 downto 0);
         variable temp_data2      : std_logic_vector(63 downto 0);
         variable write_data      : std_logic_vector(63 downto 0);
+        
+        variable interruptTemp      : std_logic_vector(63 downto 0);
+        variable workingStatus : std_logic_vector(63 downto 0);
     begin
         if reset = '1' then
             bram_we <= "00000000";
@@ -115,7 +124,13 @@ begin
             nextState <= IDLE;
             nextNextState <= IDLE;
             CIR <= (others => '0');
-            LocalRIP <= (others => '0');
+            interruptTemp := (others => '0');
+
+            LocalRIP <= x"00000000000000A0";
+            LocalRSP <= (others => '0');
+            LocalStatus <= (others => '0');
+            LocalInterrupt <= (others => '0');
+            LocalErr <= (others => '0');
         elsif rising_edge(clk_div) then
             if cycle_count > 0 then
                 -- Decrement cycle_count and skip processing
@@ -123,28 +138,60 @@ begin
             else
                 bram_en <= '0';
                 bram_we <= "00000000";
+                mem_read <= '0';
+                mem_write <= '0';
+
+                workingStatus := LocalStatus;
+                -- LocalStatus <= (others => '0');
                        
                 case state is
                     when IDLE =>
                         if interrupt = '1' then
                             -- Handle interrupt
                             state <= IDLE;
+                        elsif workingStatus(1 downto 1) = "1" then
+                            state <= IDLE;
+                            -- HANDLE INTERNAL INTERRUPT
                         else
-                            state <= FETCH_RIP;
+                            -- state <= FETCH_RIP;
+                            state <= FETCH_INSTRUCTION;
                         end if;
 
                     when READ_REGISTER =>
                            
                         case stateIndex is
                             when 0 =>
-                                bram_addr <= Argument1 (12 downto 0);
-                                bram_we <= "00000000"; -- Read
-                                bram_en <= '1'; -- Enable
+                                case Argument1 is
+                                    when x"000000000000000D" =>
+                                        Result <= LocalRSP;
+                                        stateIndexMain <= 0;
+                                        state <= nextNextState;
+                                    when x"000000000000000E" =>
+                                        Result <= LocalRIP;
+                                        stateIndexMain <= 0;
+                                        state <= nextNextState;
+                                    when x"000000000000000F" =>
+                                        Result <= LocalStatus;
+                                        stateIndexMain <= 0;
+                                        state <= nextNextState;
+                                    when x"0000000000000010" =>
+                                        Result <= LocalErr;
+                                        stateIndexMain <= 0;
+                                        state <= nextNextState;
+                                    when x"0000000000000011" =>
+                                        Result <= LocalInterrupt;
+                                        stateIndexMain <= 0;
+                                        state <= nextNextState;
+                                    when others =>
+                                        bram_addr <= Argument1 (12 downto 0);
+                                        bram_we <= "00000000"; -- Read
+                                        bram_en <= '1'; -- Enable
+        
+                                        cycle_count <= 1;
+                                        
+                                        stateIndex <= 1;
+                                end case;
 
-                                cycle_count <= 1;
-                                
-                                stateIndex <= 1;
-                             
                             when 1 =>
                                 Result <= bram_din;
                                 
@@ -158,14 +205,36 @@ begin
                     when STORE_REGISTER =>
                         case stateIndex is
                             when 0 =>
-                                bram_dout <= Argument2;
-                                bram_addr <= Argument1 (12 downto 0); 
-                                bram_we <= "11111111"; -- Write
-                                bram_en <= '1'; -- Enable
-                    
-                                stateIndex <= 0;
-                                state <= nextState;                         
-
+                                case Argument1 is
+                                    when x"000000000000000D" =>
+                                        LocalRSP <= Argument2;
+                                        stateIndexMain <= 0;
+                                        state <= nextNextState;
+                                    when x"000000000000000E" =>
+                                        LocalRIP <= Argument2;
+                                        stateIndexMain <= 0;
+                                        state <= nextNextState;
+                                    when x"000000000000000F" =>
+                                        LocalStatus <= Argument2;
+                                        stateIndexMain <= 0;
+                                        state <= nextNextState;
+                                    when x"0000000000000010" =>
+                                        LocalErr <= Argument2;
+                                        stateIndexMain <= 0;
+                                        state <= nextNextState;
+                                    when x"0000000000000011" =>
+                                        LocalInterrupt <= Argument2;
+                                        stateIndexMain <= 0;
+                                        state <= nextNextState;
+                                    when others =>
+                                        bram_dout <= Argument2;
+                                        bram_addr <= Argument1 (12 downto 0); 
+                                        bram_we <= "11111111"; -- Write
+                                        bram_en <= '1'; -- Enable
+                            
+                                        stateIndex <= 0;
+                                        state <= nextState;    
+                                end case;
                             when others =>
                                 stateIndex <= 0;
                         end case;
@@ -369,13 +438,107 @@ begin
                              when others =>
                                     stateIndex <= 0;
                             end case;
+
+                        when DDR_READ =>
+                            case stateIndex is
+                                when 0 =>
+                                    -- Calculate the aligned address and byte offset within the 64-bit block
+                                    alignedDDR_address := Argument1(33 downto 2); -- 32-bit aligned address
+                                    byteDDR_offset := Argument1(1 downto 0);      -- Extract the 2 LSBs for the offset
+                        
+                                    -- Initiate read from the aligned address
+                                    addr <= alignedDDR_address;
+                                    mem_read <= '1';
+                                    
+                                    cycle_count <= 1;
+                                    stateIndex <= 1; -- Move to the next state
+                                    state <= DDR_READ;
+                        
+                                when 1 =>
+                                    if mem_done = '1' then
+                                        -- Store the first 32-bit read in a temporary variable
+                                        temp_data1(31 downto 0) := data_in;
+                        
+                                        if byteDDR_offset = "00" then
+                                            -- If aligned, this was the first half of the 64-bit data
+                                            Result(31 downto 0) <= data_in;
+                                            addr <= alignedDDR_address + 1; -- Prepare for the upper 32 bits
+                                            mem_read <= '1';
+                        
+                                            stateIndex <= 2;
+                                        else
+                                            -- Prepare to read the next 32-bit block
+                                            addr <= alignedDDR_address + 1;
+                                            mem_read <= '1';
+                        
+                                            cycle_count <= 1;
+                                            stateIndex <= 2; -- Move to the next state
+                                            state <= DDR_READ;
+                                        end if;
+                                    end if;
+                        
+                                when 2 =>
+                                    if mem_done = '1' then
+                                        -- Store the second 32-bit read in a temporary variable
+                                        temp_data2(31 downto 0) := data_in;
+                        
+                                        -- Check if an additional read is necessary
+                                        if byteDDR_offset = "00" then
+                                            Result(63 downto 32) <= data_in;
+                                            stateIndex <= 3;
+                                        elsif byteDDR_offset = "01" then
+                                            Result(55 downto 0) <= temp_data1(31 downto 0) & temp_data2(31 downto 8);
+                                            addr <= alignedDDR_address + 2; -- Prepare for the final 8 bits
+                                            mem_read <= '1';
+                        
+                                            stateIndex <= 3;
+                                        elsif byteDDR_offset = "10" then
+                                            Result(47 downto 0) <= temp_data1(31 downto 0) & temp_data2(31 downto 16);
+                                            addr <= alignedDDR_address + 2; -- Prepare for the final 16 bits
+                                            mem_read <= '1';
+                        
+                                            stateIndex <= 3;
+                                        elsif byteDDR_offset = "11" then
+                                            Result(39 downto 0) <= temp_data1(31 downto 0) & temp_data2(31 downto 24);
+                                            addr <= alignedDDR_address + 2; -- Prepare for the final 24 bits
+                                            mem_read <= '1';
+                        
+                                            stateIndex <= 3;
+                                        end if;
+                                    end if;
+                        
+                                when 3 =>
+                                    if mem_done = '1' then
+                                        -- Store the final 32-bit read and combine based on byte offset
+                                        case byteDDR_offset is
+                                            when "01" =>
+                                                Result(63 downto 56) <= data_in(7 downto 0);
+                                            when "10" =>
+                                                Result(63 downto 48) <= data_in(15 downto 0);
+                                            when "11" =>
+                                                Result(63 downto 40) <= data_in(23 downto 0);
+                                            when others =>
+                                                -- Default case (should not occur)
+                                                Result <= Result; 
+                                        end case;
+                        
+                                        -- Reverse bytes if needed and proceed to the next state
+                                        Result <= reverse_bytes(Result);
+                                        state <= nextState;
+                                        stateIndex <= 0;
+                                    end if;
+                        
+                                when others =>
+                                    stateIndex <= 0;
+                            end case;
+                        
                     
                     when GET_1_ARG =>
                         case stateIndexMain is 
                             when 0 =>
                                 -- GET Store Location
                                 Argument1 <= LocalRIP;
-                                nextState <= DECODE_INSTRUCTION;
+                                nextState <= GET_1_ARG;
                                 state <= BRAM_READ;
                                 stateIndexMain <= 1;
                             
@@ -387,7 +550,7 @@ begin
                                         
                                         Argument1 <= x"00000000000000" & Result(7 downto 0);
                                         state <= READ_REGISTER;
-                                        nextState <= DECODE_INSTRUCTION;
+                                        nextState <= GET_1_ARG;
                                         stateIndexMain <= 2;
                                         
                                     when "01" =>
@@ -396,7 +559,7 @@ begin
                                         
                                         Argument1 <= Result;
                                         state <= READ_REGISTER;
-                                        nextState <= DECODE_INSTRUCTION;
+                                        nextState <= GET_1_ARG;
                                         stateIndexMain <= 2;
                                         
                                     when "10" =>
@@ -405,7 +568,7 @@ begin
                                         
                                         Argument1 <= Result;
                                         stateIndexMain <= 0;
-                                        state <= Exec;
+                                        state <= nextNextState;
                                                                                         
                                     when "11" =>
                                         -- RDI
@@ -413,7 +576,7 @@ begin
                                         
                                         Argument1 <= x"00000000000000" & Result(7 downto 0);
                                         state <= READ_REGISTER;
-                                        nextState <= DECODE_INSTRUCTION;
+                                        nextState <= GET_1_ARG;
                                         stateIndexMain <= 2;
                                         
                                                                                     
@@ -425,13 +588,13 @@ begin
                                     when "00" =>
                                         -- REG
                                         Argument1 <= Result;
-                                        state <= Exec;
+                                        state <= nextNextState;
                                         stateIndexMain <= 0;
                                         
                                     when "01" =>
                                         -- DIR
                                         Argument1 <= Result;
-                                        state <= Exec;
+                                        state <= nextNextState;
                                         stateIndexMain <= 0;
                                         
                                     when "10" =>
@@ -442,7 +605,7 @@ begin
                                        -- RDI
                                         Argument1 <= Result;
                                         state <= BRAM_READ;
-                                        nextState <= DECODE_INSTRUCTION;
+                                        nextState <= GET_1_ARG;
                                         stateIndexMain <= 3;
        
                                     when others =>
@@ -474,13 +637,34 @@ begin
                             when others =>
                                 stateIndexMain <= 0;
                         end case;
+
+                    when GET_1_ALT =>
+                        case stateIndexMain is 
+                            when 0 =>
+                                -- GET Store Location
+                                Argument1 <= LocalRIP;
+                                nextState <= GET_1_ALT;
+                                state <= BRAM_READ;
+                                stateIndexMain <= 1;
+                            
+                            when 1 =>
+                                -- REG
+                                LocalRIP <= LocalRIP + 1;
+                                    
+                                Argument1 <= x"00000000000000" & Result(7 downto 0);
+                                stateIndexMain <= 0;
+                                state <= nextNextState;
+                            
+                            when others =>
+                                stateIndexMain <= 0;
+                        end case;
                     
                     when GET_2_ARG =>
                         case stateIndexMain is
                             when 0 =>
                                 -- GET Store Location
                                 Argument1 <= LocalRIP;
-                                nextState <= DECODE_INSTRUCTION;
+                                nextState <= GET_2_ARG;
                                 state <= BRAM_READ;
                                 stateIndexMain <= 1;
                             
@@ -508,7 +692,7 @@ begin
                                         
                                         Argument1 <= x"00000000000000" & Result(7 downto 0);
                                         state <= READ_REGISTER;
-                                        nextState <= DECODE_INSTRUCTION;
+                                        nextState <= GET_2_ARG;
                                         stateIndexMain <= 2;
                                         
                                                                                     
@@ -540,7 +724,7 @@ begin
                             when 3 =>
                                 -- GET Store Location
                                 Argument1 <= LocalRIP;
-                                nextState <= DECODE_INSTRUCTION;
+                                nextState <= GET_2_ARG;
                                 state <= BRAM_READ;
                                 stateIndexMain <= 4;
                             
@@ -552,7 +736,7 @@ begin
                                         
                                         Argument1 <= x"00000000000000" & Result(7 downto 0);
                                         state <= READ_REGISTER;
-                                        nextState <= DECODE_INSTRUCTION;
+                                        nextState <= GET_2_ARG;
                                         stateIndexMain <= 5;
                                         
                                     when "01" =>
@@ -561,7 +745,7 @@ begin
                                         
                                         Argument1 <= Result;
                                         state <= READ_REGISTER;
-                                        nextState <= DECODE_INSTRUCTION;
+                                        nextState <= GET_2_ARG;
                                         stateIndexMain <= 5;
                                         
                                     when "10" =>
@@ -570,7 +754,7 @@ begin
                                         
                                         Argument2 <= Result;
                                         stateIndexMain <= 0;
-                                        state <= Exec;
+                                        state <= nextNextState;
                                                                                         
                                     when "11" =>
                                         -- RDI
@@ -578,7 +762,7 @@ begin
                                         
                                         Argument1 <= x"00000000000000" & Result(7 downto 0);
                                         state <= READ_REGISTER;
-                                        nextState <= DECODE_INSTRUCTION;
+                                        nextState <= GET_2_ARG;
                                         stateIndexMain <= 5;
                                         
                                                                                     
@@ -590,13 +774,13 @@ begin
                                     when "00" =>
                                         -- REG
                                         Argument2 <= Result;
-                                        state <= Exec;
+                                        state <= nextNextState;
                                         stateIndexMain <= 0;
                                         
                                     when "01" =>
                                         -- DIR
                                         Argument2 <= Result;
-                                        state <= Exec;
+                                        state <= nextNextState;
                                         stateIndexMain <= 0;
                                         
                                     when "10" =>
@@ -607,7 +791,7 @@ begin
                                        -- RDI
                                         Argument1 <= Result;
                                         state <= BRAM_READ;
-                                        nextState <= DECODE_INSTRUCTION;
+                                        nextState <= GET_2_ARG;
                                         stateIndexMain <= 6;
        
                                     when others =>
@@ -645,7 +829,7 @@ begin
                             when 0 =>
                                 -- GET Store Location
                                 Argument1 <= LocalRIP;
-                                nextState <= DECODE_INSTRUCTION;
+                                nextState <= GET_3_ARG;
                                 state <= BRAM_READ;
                                 stateIndexMain <= 1;
                             
@@ -659,7 +843,7 @@ begin
                             when 2 =>
                                 -- GET Store Location
                                 Argument1 <= LocalRIP;
-                                nextState <= DECODE_INSTRUCTION;
+                                nextState <= GET_3_ARG;
                                 state <= BRAM_READ;
                                 stateIndexMain <= 3;
                             
@@ -671,7 +855,7 @@ begin
                                         
                                         Argument1 <= x"00000000000000" & Result(7 downto 0);
                                         state <= READ_REGISTER;
-                                        nextState <= DECODE_INSTRUCTION;
+                                        nextState <= GET_3_ARG;
                                         stateIndexMain <= 4;
                                         
                                     when "01" =>
@@ -680,7 +864,7 @@ begin
                                         
                                         Argument1 <= Result;
                                         state <= READ_REGISTER;
-                                        nextState <= DECODE_INSTRUCTION;
+                                        nextState <= GET_3_ARG;
                                         stateIndexMain <= 4;
                                         
                                     when "10" =>
@@ -696,7 +880,7 @@ begin
                                         
                                         Argument1 <= x"00000000000000" & Result(7 downto 0);
                                         state <= READ_REGISTER;
-                                        nextState <= DECODE_INSTRUCTION;
+                                        nextState <= GET_3_ARG;
                                         stateIndexMain <= 4;
                                         
                                                                                     
@@ -723,7 +907,7 @@ begin
                                        -- RDI
                                         Argument2 <= Result;
                                         state <= BRAM_READ;
-                                        nextState <= DECODE_INSTRUCTION;
+                                        nextState <= GET_3_ARG;
                                         stateIndexMain <= 5;
        
                                     when others =>
@@ -754,7 +938,7 @@ begin
                             when 6 =>
                                 -- GET Store Location
                                 Argument1 <= LocalRIP;
-                                nextState <= DECODE_INSTRUCTION;
+                                nextState <= GET_3_ARG;
                                 state <= BRAM_READ;
                                 stateIndexMain <= 7;
                             
@@ -766,7 +950,7 @@ begin
                                         
                                         Argument1 <= x"00000000000000" & Result(7 downto 0);
                                         state <= READ_REGISTER;
-                                        nextState <= DECODE_INSTRUCTION;
+                                        nextState <= GET_3_ARG;
                                         stateIndexMain <= 8;
                                         
                                     when "01" =>
@@ -775,7 +959,7 @@ begin
                                         
                                         Argument1 <= Result;
                                         state <= READ_REGISTER;
-                                        nextState <= DECODE_INSTRUCTION;
+                                        nextState <= GET_3_ARG;
                                         stateIndexMain <= 8;
                                         
                                     when "10" =>
@@ -784,7 +968,7 @@ begin
                                         
                                         Argument1 <= Result;
                                         stateIndexMain <= 0;
-                                        state <= Exec;
+                                        state <= nextNextState;
                                                                                         
                                     when "11" =>
                                         -- RDI
@@ -792,7 +976,7 @@ begin
                                         
                                         Argument1 <= x"00000000000000" & Result(7 downto 0);
                                         state <= READ_REGISTER;
-                                        nextState <= DECODE_INSTRUCTION;
+                                        nextState <= GET_3_ARG;
                                         stateIndexMain <= 8;
                                         
                                                                                     
@@ -804,13 +988,13 @@ begin
                                     when "00" =>
                                         -- REG
                                         Argument1 <= Result;
-                                        state <= Exec;
+                                        state <= nextNextState;
                                         stateIndexMain <= 0;
                                         
                                     when "01" =>
                                         -- DIR
                                         Argument1 <= Result;
-                                        state <= Exec;
+                                        state <= nextNextState;
                                         stateIndexMain <= 0;
                                         
                                     when "10" =>
@@ -821,7 +1005,7 @@ begin
                                        -- RDI
                                         Argument1 <= Result;
                                         state <= BRAM_READ;
-                                        nextState <= DECODE_INSTRUCTION;
+                                        nextState <= GET_3_ARG;
                                         stateIndexMain <= 9;
        
                                     when others =>
@@ -854,18 +1038,18 @@ begin
                                 stateIndexMain <= 0;
                         end case;
 
-                    when FETCH_RIP =>
-                        nextState <= FETCH_INSTRUCTION;
-                        state <= READ_REGISTER;
-                        Argument1 <= x"000000000000000E";
+                    -- when FETCH_RIP =>
+                    --     nextState <= FETCH_INSTRUCTION;
+                    --     state <= READ_REGISTER;
+                    --     Argument1 <= x"000000000000000E";
                         
                     when FETCH_INSTRUCTION =>
-                        -- Save RIP First
-                        LocalRIP <= Result;
+                        -- -- Save RIP First
+                        -- LocalRIP <= Result;
                     
                         nextState <= INC_RIP;
                         state <= BRAM_READ;
-                        Argument1 <= Result;
+                        Argument1 <= LocalRIP;
                         
                     when INC_RIP =>
                         -- Increment RIP
@@ -886,16 +1070,42 @@ begin
                             when "0000000010" =>
                                 -- MOV Instruction
                                 state <= GET_2_ARG;
+                                nextState <= GET_2_ARG;
                                 nextNextState <= EXEC;
                                 
                             when "0000000011" =>
                                 -- JMP Instruction
                                 state <= GET_1_ARG;
+                                nextState <= GET_1_ARG;
                                 nextNextState <= EXEC;
                                 
                             when "0000000100" =>
                                 -- ADD Instruction
                                 state <= GET_3_ARG;
+                                nextState <= GET_3_ARG;
+                                nextNextState <= EXEC;
+
+                            when "0000000101" =>
+                                -- PUSH Instruction
+                                state <= GET_1_ALT;
+                                nextState <= GET_1_ALT;
+                                nextNextState <= EXEC;
+                            
+                            when "0000000110" =>
+                                -- POP Instruction
+                                state <= GET_1_ALT;
+                                nextState <= GET_1_ALT;
+                                nextNextState <= EXEC;
+                            
+                            when "0000000111" =>
+                                -- CMP Instruction
+                                state <= GET_3_ARG;
+                                nextState <= GET_3_ARG;
+                                nextNextState <= EXEC;
+                            
+                            when "0000001000" =>
+                                -- JC Instruction
+                                state <= GET_1_ARG;
                                 nextNextState <= EXEC;
                                 
                             when others =>
@@ -927,39 +1137,59 @@ begin
                                 case CIR(3 downto 2) is
                                     when "00" =>
                                         -- REG
-                                        case Argument2 is
+                                        case Argument3 is
                                             when x"000000000000000E" =>
-                                                LocalRIP <= Argument3;
-                                                state <= SAVE_RIP;
+                                                LocalRIP <= Argument2;
+                                                state <= IDLE; -- state <= SAVE_RIP;
+                                            when x"000000000000000D" =>
+                                                LocalRSP <= Argument2;
+                                                state <= IDLE; -- state <= SAVE_RIP;
+                                            when x"000000000000000F" =>
+                                                LocalStatus <= Argument2;
+                                                state <= IDLE; -- state <= SAVE_RIP;
+                                            when x"0000000000000010" =>
+                                                LocalErr <= Argument2;
+                                                state <= IDLE; -- state <= SAVE_RIP;
+                                            when x"0000000000000011" =>
+                                                LocalInterrupt <= Argument2;
+                                                state <= IDLE; -- state <= SAVE_RIP;
                                             when others =>
-                                                Argument1 <= Argument3;
-                                                state <= STORE_REGISTER;
-                                                nextState <= SAVE_RIP;
+                                                case stateIndexMain is
+                                                    when 0 =>
+                                                        Argument1 <= Argument3;
+                                                        stateIndexMain <= 1;
+                                                        
+                                                    when 1 =>
+                                                        -- REG
+                                                        state <= STORE_REGISTER;
+                                                        nextState <= IDLE; -- nextState <= SAVE_RIP;
+                                                        
+                                                        stateIndexMain <= 0;
+                                                    
+                                                    when others =>
+                                                end case;
                                         end case;
                                         
                                     when "01" =>
                                         -- DIR
                                         Argument1 <= Argument3;
                                         state <= BRAM_WRITE;
-                                        nextState <= SAVE_RIP;
-                                        
-                                    when "10" =>
-                                        -- IMM
-                                        -- THROW ERRR
+                                        nextState <= IDLE; -- nextState <= SAVE_RIP;
                                         
                                     when "11" =>
                                         -- RDI
                                         Argument1 <= Argument3;
                                         state <= BRAM_WRITE;
-                                        nextState <= SAVE_RIP;
+                                        nextState <= IDLE; -- nextState <= SAVE_RIP;
        
                                     when others =>
+                                        -- THROW ERR
                                 end case;
                         
                             when "0000000011" =>
                                 -- JMP Instruction
                                 LocalRIP <= Argument1;
-                                state <= SAVE_RIP; -- Get 1 args
+                                state <= IDLE; -- state <= SAVE_RIP; -- Get 1 args
                                 
                             when "0000000100" =>
                                 case stateIndexMain is
@@ -978,31 +1208,806 @@ begin
                                         case Argument1 is
                                             when x"000000000000000E" =>
                                                 LocalRIP <= Argument2;
-                                                state <= SAVE_RIP;
+                                                state <= IDLE; -- state <= SAVE_RIP;
+                                            when x"000000000000000D" =>
+                                                LocalRSP <= Argument2;
+                                                state <= IDLE; -- state <= SAVE_RIP;
+                                            when x"000000000000000F" =>
+                                                LocalStatus <= Argument2;
+                                                state <= IDLE; -- state <= SAVE_RIP;
+                                            when x"0000000000000010" =>
+                                                LocalErr <= Argument2;
+                                                state <= IDLE; -- state <= SAVE_RIP;
+                                            when x"0000000000000011" =>
+                                                LocalInterrupt <= Argument2;
+                                                state <= IDLE; -- state <= SAVE_RIP;
                                             when others =>
                                                 state <= STORE_REGISTER;
-                                                nextState <= SAVE_RIP;
+                                                nextState <= IDLE; -- nextState <= SAVE_RIP;
                                         end case;
                                         
                                         stateIndexMain <= 0;
                                     
                                     when others =>
                                 end case;
+
+                            when "0000000101" =>
+                                -- PUSH
+                                case stateIndexMain is
+                                    when 0 =>
+                                        Argument1 <= Argument3;
+                                        state <= READ_REGISTER;
+                                        nextState <= EXEC_64;
+                                        stateIndexMain <= 1;
+
+                                    when 1 =>
+                                        Argument2 <= Result;
+                                        stateIndexMain <= 2; 
+
+                                    when 2 =>
+                                        -- Write to RSP Position
+                                        Argument1 <= LocalRSP;
+                                        state <= BRAM_WRITE;
+                                        stateIndexMain <= 3;
+                                        nextState <= EXEC_64;
+                                    
+                                    when 3 =>
+                                        -- Increment RSP
+                                        LocalRSP <= LocalRSP + 8;
+                                        stateIndexMain <= 0;
+                                        state <= IDLE; -- state <= SAVE_RIP;
+                                    
+                                    when others =>
+                                        -- Throw ERR
+                                end case;
+
+                            when "0000000110" =>
+                                -- POP
+                                case stateIndexMain is
+                                    when 0 =>
+                                        Argument3 <= Argument1;
+
+                                        -- Decrement RSP
+                                        LocalRSP <= LocalRSP - 8;
+                                        stateIndexMain <= 0;
+                                        state <= EXEC_64;
+                                        
+                                        
+                                        when 2 =>
+                                        -- Read from RSP
+                                        Argument1 <= LocalRSP;
+                                        state <= BRAM_READ;
+                                        state <= EXEC_64;
+                                        stateIndexMain <= 3;
+                                        
+                                    when 3 =>
+                                        Argument1 <= Argument3;
+                                        Argument2 <= Result;
+
+                                        state <= STORE_REGISTER;
+                                
+                                        stateIndexMain <= 0;
+                                        nextState <= IDLE; -- nextState <= SAVE_RIP;
+                                    
+                                    when others =>
+                                        -- Throw ERR
+                                end case;  
+                            
+                            when "0000000111" =>
+                                -- CMP
+                                case Argument3(7 downto 0) is
+                                    when "00000000" =>
+                                        -- EQU
+                                        if Argument2 = Argument1 then
+                                            LocalStatus <= LocalStatus or x"0000000000000004"; -- ... 01000
+                                        end if;
+
+                                        state <= IDLE;
+                                    when "00000001" =>
+                                        -- NEQ
+                                        if Argument2 /= Argument1 then
+                                            LocalStatus <= LocalStatus or x"0000000000000004"; -- ... 01000
+                                        end if;
+
+                                        state <= IDLE;
+                                    when "00000010" =>
+                                        -- LEQ
+                                        if Argument2 <= Argument1 then
+                                            LocalStatus <= LocalStatus or x"0000000000000004"; -- ... 01000
+                                        end if;
+
+                                        state <= IDLE;
+                                    when "00000011" =>
+                                        -- GEQ
+                                        if Argument2 >= Argument1 then
+                                            LocalStatus <= LocalStatus or x"0000000000000004"; -- ... 01000
+                                        end if;
+
+                                        state <= IDLE;
+                                    when "00000100" =>
+                                        -- LT
+                                        if Argument2 < Argument1 then
+                                            LocalStatus <= LocalStatus or x"0000000000000004"; -- ... 01000
+                                        end if;
+
+                                        state <= IDLE;
+                                    when "00000101" =>
+                                        -- GT
+                                        if Argument2 > Argument1 then
+                                            LocalStatus <= LocalStatus or x"0000000000000004"; -- ... 01000
+                                        end if;
+
+                                        state <= IDLE;
+                                    when others =>
+                                        -- THROW ERR
+                                        Argument3 <= (others => '0');
+                                end case;
+                                
+                            when "0000001000" =>
+                                -- JC
+                                if LocalStatus(2 downto 2) = "1" then
+                                    LocalRIP <= Argument1;
+                                end if;
+
+                                state <= IDLE;
+
+                            when others =>
+                                state <= IDLE;
+                                -- THROW ERR
+                        end case;
+                    
+                    when EXEC_32 =>
+                        case CIR(15 downto 6) is
+                            when "0000000001" =>
+                                -- HALT Instruction
+                                state <= HALT;
+                                
+                            when "0000000010" =>
+                                -- MOV Instruction
+                                case CIR(3 downto 2) is
+                                    when "00" =>
+                                        -- REG
+                                        case Argument3 is
+                                            when x"000000000000000E" =>
+                                                LocalRIP(31 downto 0) <= Argument2(31 downto 0);
+                                                state <= IDLE; -- state <= SAVE_RIP;
+                                            when x"000000000000000D" =>
+                                                LocalRSP(31 downto 0) <= Argument2(31 downto 0);
+                                                state <= IDLE; -- state <= SAVE_RIP;
+                                            when x"000000000000000F" =>
+                                                LocalStatus(31 downto 0) <= Argument2(31 downto 0);
+                                                state <= IDLE; -- state <= SAVE_RIP;
+                                            when x"0000000000000010" =>
+                                                LocalErr(31 downto 0) <= Argument2(31 downto 0);
+                                                state <= IDLE; -- state <= SAVE_RIP;
+                                            when x"0000000000000011" =>
+                                                LocalInterrupt(31 downto 0) <= Argument2(31 downto 0);
+                                                state <= IDLE; -- state <= SAVE_RIP;
+                                            when others =>
+                                                case stateIndexMain is
+                                                    when 0 =>
+                                                        Argument1 <= Argument3;
+                                                        state <= READ_REGISTER;
+                                                        nextState <= EXEC_32;
+                                                        
+                                                        stateIndexMain <= 1;
+                                                        
+                                                    when 1 =>
+                                                        Argument2(63 downto 32) <= Result(63 downto 32);
+                                                        state <= STORE_REGISTER;
+                                                        nextState <= EXEC_32;
+                                                        
+                                                        stateIndexMain <= 2;
+                                                        
+                                                    when 2 =>
+                                                        stateIndexMain <= 0;
+                                                        nextState <= IDLE; -- nextState <= SAVE_RIP;
+                                                    when others =>
+                                                end case;
+                                        end case;
+                                        
+                                    when "01" =>
+                                        -- DIR
+                                        case stateIndexMain is
+                                            when 0 =>
+                                                Argument1 <= Argument3;
+                                                state <= BRAM_READ;
+                                                nextState <= EXEC_32;
+                                                
+                                                stateIndexMain <= 1;
+                                                
+                                            when 1 =>
+                                                Argument2(63 downto 32) <= Result(63 downto 32);
+                                                state <= BRAM_WRITE;
+                                                nextState <= EXEC_32;
+                                                
+                                                stateIndexMain <= 2;
+                                                
+                                            when 2 =>
+                                                stateIndexMain <= 0;
+                                                nextState <= IDLE; -- nextState <= SAVE_RIP;
+                                            when others =>
+                                        end case;
+                                        
+                                    when "10" =>
+                                        -- IMM
+                                        -- THROW ERRR
+                                        
+                                    when "11" =>
+                                        -- RDI
+                                        case stateIndexMain is
+                                            when 0 =>
+                                                Argument1 <= Argument3;
+                                                state <= BRAM_READ;
+                                                nextState <= EXEC_32;
+                                                
+                                                stateIndexMain <= 1;
+                                                
+                                            when 1 =>
+                                                Argument2(63 downto 32) <= Result(63 downto 32);
+                                                state <= BRAM_WRITE;
+                                                nextState <= EXEC_32;
+                                                
+                                                stateIndexMain <= 2;
+                                                
+                                            when 2 =>
+                                                stateIndexMain <= 0;
+                                                nextState <= IDLE; -- nextState <= SAVE_RIP;
+                                            when others =>
+                                        end case;
+       
+                                    when others =>
+                                end case;
+                                
+                            when "0000000100" =>
+                                case stateIndexMain is
+                                    when 0 =>
+                                        -- ADD Instruction
+                                        Argument2 <= Argument1 + Argument2;
+                                        
+                                        stateIndexMain <= 1;
+                                     
+                                    when 1 =>
+                                        Argument1 <= Argument3;
+                                        stateIndexMain <= 2;
+                                        
+                                    when 2 =>
+                                        -- REG
+                                        case Argument1 is
+                                            when x"000000000000000E" =>
+                                                LocalRIP(31 downto 0) <= Argument2(31 downto 0);
+                                                state <= IDLE; -- state <= SAVE_RIP;
+                                            when x"000000000000000D" =>
+                                                LocalRSP(31 downto 0) <= Argument2(31 downto 0);
+                                                state <= IDLE; -- state <= SAVE_RIP;
+                                            when x"000000000000000F" =>
+                                                LocalStatus(31 downto 0) <= Argument2(31 downto 0);
+                                                state <= IDLE; -- state <= SAVE_RIP;
+                                            when x"0000000000000010" =>
+                                                LocalErr(31 downto 0) <= Argument2(31 downto 0);
+                                                state <= IDLE; -- state <= SAVE_RIP;
+                                            when x"0000000000000011" =>
+                                                LocalInterrupt(31 downto 0) <= Argument2(31 downto 0);
+                                                state <= IDLE; -- state <= SAVE_RIP;
+                                            when others =>
+                                                case stateIndexMain is
+                                                    when 0 =>
+                                                        state <= READ_REGISTER;
+                                                        nextState <= EXEC_32;
+                                                        
+                                                        stateIndexMain <= 1;
+                                                        
+                                                    when 1 =>
+                                                        Argument2(63 downto 32) <= Result(63 downto 32);
+                                                        state <= STORE_REGISTER;
+                                                        nextState <= EXEC_32;
+                                                        
+                                                        stateIndexMain <= 2;
+                                                        
+                                                    when 2 =>
+                                                        stateIndexMain <= 0;
+                                                        nextState <= IDLE; -- nextState <= SAVE_RIP;
+                                                    when others =>
+                                                end case;
+                                        end case;
+                                        
+                                        stateIndexMain <= 0;
+                                    
+                                    when others =>
+                                end case;
+
+                            when "0000000111" =>
+                                -- CMP
+                                case Argument3(7 downto 0) is
+                                    when "00000000" =>
+                                        -- EQU
+                                        if Argument2(31 downto 0) = Argument1(31 downto 0) then
+                                            LocalStatus <= LocalStatus or x"0000000000000004"; -- ... 01000
+                                        end if;
+
+                                        state <= IDLE;
+                                    when "00000001" =>
+                                        -- NEQ
+                                        if Argument2(31 downto 0) /= Argument1(31 downto 0) then
+                                            LocalStatus <= LocalStatus or x"0000000000000004"; -- ... 01000
+                                        end if;
+
+                                        state <= IDLE;
+                                    when "00000010" =>
+                                        -- LEQ
+                                        if Argument2(31 downto 0) <= Argument1(31 downto 0) then
+                                            LocalStatus <= LocalStatus or x"0000000000000004"; -- ... 01000
+                                        end if;
+
+                                        state <= IDLE;
+                                    when "00000011" =>
+                                        -- GEQ
+                                        if Argument2(31 downto 0) >= Argument1(31 downto 0) then
+                                            LocalStatus <= LocalStatus or x"0000000000000004"; -- ... 01000
+                                        end if;
+
+                                        state <= IDLE;
+                                    when "00000100" =>
+                                        -- LT
+                                        if Argument2(31 downto 0) < Argument1(31 downto 0) then
+                                            LocalStatus <= LocalStatus or x"0000000000000004"; -- ... 01000
+                                        end if;
+
+                                        state <= IDLE;
+                                    when "00000101" =>
+                                        -- GT
+                                        if Argument2(31 downto 0) > Argument1(31 downto 0) then
+                                            LocalStatus <= LocalStatus or x"0000000000000004"; -- ... 01000
+                                        end if;
+
+                                        state <= IDLE;
+                                    when others =>
+                                        -- THROW ERR
+                                        Argument3 <= (others => '0');
+                                end case;
                                 
                             when others =>
                                 state <= IDLE;
                                 -- THROW ERR
                         end case;
-                        
-                    when SAVE_RIP =>
-                        Argument1 <= x"000000000000000E";
-                        Argument2 <= LocalRIP;
-                        state <= STORE_REGISTER;
-                        nextState <= END_CYCLE;
 
-                    when END_CYCLE =>
-                        -- 
-                        state <= IDLE;
+                    when EXEC_16 =>
+                        case CIR(15 downto 6) is
+                            when "0000000001" =>
+                                -- HALT Instruction
+                                state <= HALT;
+                                
+                            when "0000000010" =>
+                                -- MOV Instruction
+                                case CIR(3 downto 2) is
+                                    when "00" =>
+                                        -- REG
+                                        case Argument3 is
+                                            when x"000000000000000E" =>
+                                                LocalRIP(15 downto 0) <= Argument3(15 downto 0);
+                                                state <= IDLE; -- state <= SAVE_RIP;
+                                            when x"000000000000000D" =>
+                                                LocalRSP(15 downto 0) <= Argument3(15 downto 0);
+                                                state <= IDLE; -- state <= SAVE_RIP;
+                                            when x"000000000000000F" =>
+                                                LocalStatus(15 downto 0) <= Argument3(15 downto 0);
+                                                state <= IDLE; -- state <= SAVE_RIP;
+                                            when x"0000000000000010" =>
+                                                LocalErr(15 downto 0) <= Argument3(15 downto 0);
+                                                state <= IDLE; -- state <= SAVE_RIP;
+                                            when x"0000000000000011" =>
+                                                LocalInterrupt(15 downto 0) <= Argument3(15 downto 0);
+                                                state <= IDLE; -- state <= SAVE_RIP;
+                                            when others =>
+
+                                                case stateIndexMain is
+                                                    when 0 =>
+                                                        Argument1 <= Argument3;
+                                                        state <= READ_REGISTER;
+                                                        nextState <= EXEC_16;
+                                                        
+                                                        stateIndexMain <= 1;
+                                                        
+                                                    when 1 =>
+                                                        Argument2(63 downto 16) <= Result(63 downto 16);
+                                                        state <= STORE_REGISTER;
+                                                        nextState <= EXEC_16;
+                                                        
+                                                        stateIndexMain <= 2;
+                                                        
+                                                    when 2 =>
+                                                        stateIndexMain <= 0;
+                                                        nextState <= IDLE; -- nextState <= SAVE_RIP;
+                                                    when others =>
+                                                end case;
+                                        end case;
+                                        
+                                    when "01" =>
+                                        -- DIR
+                                        case stateIndexMain is
+                                            when 0 =>
+                                                Argument1 <= Argument3;
+                                                state <= BRAM_READ;
+                                                nextState <= EXEC_16;
+                                                
+                                                stateIndexMain <= 1;
+                                                
+                                            when 1 =>
+                                                Argument2(63 downto 16) <= Result(63 downto 16);
+                                                state <= BRAM_WRITE;
+                                                nextState <= EXEC_16;
+                                                
+                                                stateIndexMain <= 2;
+                                                
+                                            when 2 =>
+                                                stateIndexMain <= 0;
+                                                nextState <= IDLE; -- nextState <= SAVE_RIP;
+                                            when others =>
+                                        end case;
+                                        
+                                    when "11" =>
+                                        -- RDI
+                                        case stateIndexMain is
+                                            when 0 =>
+                                                Argument1 <= Argument3;
+                                                state <= BRAM_READ;
+                                                nextState <= EXEC_16;
+                                                
+                                                stateIndexMain <= 1;
+                                                
+                                            when 1 =>
+                                                Argument2(63 downto 16) <= Result(63 downto 16);
+                                                state <= BRAM_WRITE;
+                                                nextState <= EXEC_16;
+                                                
+                                                stateIndexMain <= 2;
+                                                
+                                            when 2 =>
+                                                stateIndexMain <= 0;
+                                                nextState <= IDLE; -- nextState <= SAVE_RIP;
+                                            when others =>
+                                        end case;
+       
+                                    when others =>
+                                        -- THROW ERR
+                                end case;
+                                
+                            when "0000000100" =>
+                                case stateIndexMain is
+                                    when 0 =>
+                                        -- ADD Instruction
+                                        Argument2 <= Argument1 + Argument2;
+                                        
+                                        stateIndexMain <= 1;
+                                     
+                                    when 1 =>
+                                        Argument1 <= Argument3;
+                                        stateIndexMain <= 2;
+                                        
+                                    when 2 =>
+                                        -- REG
+                                        case Argument1 is
+                                            when x"000000000000000E" =>
+                                                LocalRIP(15 downto 0) <= Argument3(15 downto 0);
+                                                state <= IDLE; -- state <= SAVE_RIP;
+                                            when x"000000000000000D" =>
+                                                LocalRSP(15 downto 0) <= Argument3(15 downto 0);
+                                                state <= IDLE; -- state <= SAVE_RIP;
+                                            when x"000000000000000F" =>
+                                                LocalStatus(15 downto 0) <= Argument3(15 downto 0);
+                                                state <= IDLE; -- state <= SAVE_RIP;
+                                            when x"0000000000000010" =>
+                                                LocalErr(15 downto 0) <= Argument3(15 downto 0);
+                                                state <= IDLE; -- state <= SAVE_RIP;
+                                            when x"0000000000000011" =>
+                                                LocalInterrupt(15 downto 0) <= Argument3(15 downto 0);
+                                                state <= IDLE; -- state <= SAVE_RIP;
+                                            when others =>
+
+                                                case stateIndexMain is
+                                                    when 0 =>
+                                                        state <= READ_REGISTER;
+                                                        nextState <= EXEC_16;
+                                                        
+                                                        stateIndexMain <= 1;
+                                                        
+                                                    when 1 =>
+                                                        Argument2(63 downto 16) <= Result(63 downto 16);
+                                                        state <= STORE_REGISTER;
+                                                        nextState <= EXEC_16;
+                                                        
+                                                        stateIndexMain <= 2;
+                                                        
+                                                    when 2 =>
+                                                        stateIndexMain <= 0;
+                                                        nextState <= IDLE; -- nextState <= SAVE_RIP;
+                                                    when others =>
+                                                end case;
+                                        end case;
+                                        
+                                        stateIndexMain <= 0;
+                                    
+                                    when others =>
+                                end case;
+
+                            when "0000000111" =>
+                                -- CMP
+                                case Argument3(7 downto 0) is
+                                    when "00000000" =>
+                                        -- EQU
+                                        if Argument2(15 downto 0) = Argument1(15 downto 0) then
+                                            LocalStatus <= LocalStatus or x"0000000000000004"; -- ... 01000
+                                        end if;
+
+                                        state <= IDLE;
+                                    when "00000001" =>
+                                        -- NEQ
+                                        if Argument2(15 downto 0) /= Argument1(15 downto 0) then
+                                            LocalStatus <= LocalStatus or x"0000000000000004"; -- ... 01000
+                                        end if;
+
+                                        state <= IDLE;
+                                    when "00000010" =>
+                                        -- LEQ
+                                        if Argument2(15 downto 0) <= Argument1(15 downto 0) then
+                                            LocalStatus <= LocalStatus or x"0000000000000004"; -- ... 01000
+                                        end if;
+
+                                        state <= IDLE;
+                                    when "00000011" =>
+                                        -- GEQ
+                                        if Argument2(15 downto 0) >= Argument1(15 downto 0) then
+                                            LocalStatus <= LocalStatus or x"0000000000000004"; -- ... 01000
+                                        end if;
+
+                                        state <= IDLE;
+                                    when "00000100" =>
+                                        -- LT
+                                        if Argument2(15 downto 0) < Argument1(15 downto 0) then
+                                            LocalStatus <= LocalStatus or x"0000000000000004"; -- ... 01000
+                                        end if;
+
+                                        state <= IDLE;
+                                    when "00000101" =>
+                                        -- GT
+                                        if Argument2(15 downto 0) > Argument1(15 downto 0) then
+                                            LocalStatus <= LocalStatus or x"0000000000000004"; -- ... 01000
+                                        end if;
+
+                                        state <= IDLE;
+                                    when others =>
+                                        -- THROW ERR
+                                        Argument3 <= (others => '0');
+                                end case;
+                                    
+                            when others =>
+                                state <= IDLE;
+                                -- THROW ERR
+                        end case;
+
+                    when EXEC_8 =>
+                        case CIR(15 downto 6) is
+                            when "0000000001" =>
+                                -- HALT Instruction
+                                state <= HALT;
+                                
+                            when "0000000010" =>
+                                -- MOV Instruction
+                                case CIR(3 downto 2) is
+                                    when "00" =>
+                                        -- REG
+                                        case Argument3 is
+                                            when x"000000000000000E" =>
+                                                LocalRIP(7 downto 0) <= Argument3(7 downto 0);
+                                                state <= IDLE; -- state <= SAVE_RIP;
+                                            when x"000000000000000D" =>
+                                                LocalRSP(7 downto 0) <= Argument3(7 downto 0);
+                                                state <= IDLE; -- state <= SAVE_RIP;
+                                            when x"000000000000000F" =>
+                                                LocalStatus(7 downto 0) <= Argument3(7 downto 0);
+                                                state <= IDLE; -- state <= SAVE_RIP;
+                                            when x"0000000000000010" =>
+                                                LocalErr(7 downto 0) <= Argument3(7 downto 0);
+                                                state <= IDLE; -- state <= SAVE_RIP;
+                                            when x"0000000000000011" =>
+                                                LocalInterrupt(7 downto 0) <= Argument3(7 downto 0);
+                                                state <= IDLE; -- state <= SAVE_RIP;
+                                            when others =>
+
+                                                case stateIndexMain is
+                                                    when 0 =>
+                                                        Argument1 <= Argument3;
+                                                        state <= READ_REGISTER;
+                                                        nextState <= EXEC_8;
+                                                        
+                                                        stateIndexMain <= 1;
+                                                        
+                                                    when 1 =>
+                                                        Argument2(63 downto 8) <= Result(63 downto 8);
+                                                        state <= STORE_REGISTER;
+                                                        nextState <= EXEC_8;
+                                                        
+                                                        stateIndexMain <= 2;
+                                                        
+                                                    when 2 =>
+                                                        stateIndexMain <= 0;
+                                                        nextState <= IDLE; -- nextState <= SAVE_RIP;
+                                                    when others =>
+                                                end case;
+                                        end case;
+                                        
+                                    when "01" =>
+                                        -- DIR
+                                        case stateIndexMain is
+                                            when 0 =>
+                                                Argument1 <= Argument3;
+                                                state <= BRAM_READ;
+                                                nextState <= EXEC_8;
+                                                
+                                                stateIndexMain <= 1;
+                                                
+                                            when 1 =>
+                                                Argument2(63 downto 8) <= Result(63 downto 8);
+                                                state <= BRAM_WRITE;
+                                                nextState <= EXEC_8;
+                                                
+                                                stateIndexMain <= 2;
+                                                
+                                            when 2 =>
+                                                stateIndexMain <= 0;
+                                                nextState <= IDLE; -- nextState <= SAVE_RIP;
+                                            when others =>
+                                        end case;
+                                        
+                                    when "11" =>
+                                        -- RDI
+                                        case stateIndexMain is
+                                            when 0 =>
+                                                Argument1 <= Argument3;
+                                                state <= BRAM_READ;
+                                                nextState <= EXEC_8;
+                                                
+                                                stateIndexMain <= 1;
+                                                
+                                            when 1 =>
+                                                Argument2(63 downto 8) <= Result(63 downto 8);
+                                                state <= BRAM_WRITE;
+                                                nextState <= EXEC_8;
+                                                
+                                                stateIndexMain <= 2;
+                                                
+                                            when 2 =>
+                                                stateIndexMain <= 0;
+                                                nextState <= IDLE; -- nextState <= SAVE_RIP;
+                                            when others =>
+                                        end case;
+       
+                                    when others =>
+                                        -- THROW ERR
+                                end case;
+                        
+                            when "0000000100" =>
+                                case stateIndexMain is
+                                    when 0 =>
+                                        -- ADD Instruction
+                                        Argument2 <= Argument1 + Argument2;
+                                        
+                                        stateIndexMain <= 1;
+                                     
+                                    when 1 =>
+                                        Argument1 <= Argument3;
+                                        stateIndexMain <= 2;
+                                        
+                                    when 2 =>
+                                        -- REG
+                                        case Argument1 is
+                                            when x"000000000000000E" =>
+                                                LocalRIP(7 downto 0) <= Argument3(7 downto 0);
+                                                state <= IDLE; -- state <= SAVE_RIP;
+                                            when x"000000000000000D" =>
+                                                LocalRSP(7 downto 0) <= Argument3(7 downto 0);
+                                                state <= IDLE; -- state <= SAVE_RIP;
+                                            when x"000000000000000F" =>
+                                                LocalStatus(7 downto 0) <= Argument3(7 downto 0);
+                                                state <= IDLE; -- state <= SAVE_RIP;
+                                            when x"0000000000000010" =>
+                                                LocalErr(7 downto 0) <= Argument3(7 downto 0);
+                                                state <= IDLE; -- state <= SAVE_RIP;
+                                            when x"0000000000000011" =>
+                                                LocalInterrupt(7 downto 0) <= Argument3(7 downto 0);
+                                                state <= IDLE; -- state <= SAVE_RIP;
+                                            when others =>
+                                                case stateIndexMain is
+                                                    when 0 =>
+                                                        state <= READ_REGISTER;
+                                                        nextState <= EXEC_8;
+                                                        
+                                                        stateIndexMain <= 1;
+                                                        
+                                                    when 1 =>
+                                                        Argument2(63 downto 8) <= Result(63 downto 8);
+                                                        state <= STORE_REGISTER;
+                                                        nextState <= EXEC_8;
+                                                        
+                                                        stateIndexMain <= 2;
+                                                        
+                                                    when 2 =>
+                                                        stateIndexMain <= 0;
+                                                        nextState <= IDLE; -- nextState <= SAVE_RIP;
+                                                    when others =>
+                                                end case;
+                                        end case;
+                                        
+                                        stateIndexMain <= 0;
+                                    
+                                    when others =>
+                                        -- THROW ERR
+                                end case;
+
+                            when "0000000111" =>
+                                -- CMP
+                                case Argument3(7 downto 0) is
+                                    when "00000000" =>
+                                        -- EQU
+                                        if Argument2(7 downto 0) = Argument1(7 downto 0) then
+                                            LocalStatus <= LocalStatus or x"0000000000000004"; -- ... 01000
+                                        end if;
+
+                                        state <= IDLE;
+                                    when "00000001" =>
+                                        -- NEQ
+                                        if Argument2(7 downto 0) /= Argument1(7 downto 0) then
+                                            LocalStatus <= LocalStatus or x"0000000000000004"; -- ... 01000
+                                        end if;
+
+                                        state <= IDLE;
+                                    when "00000010" =>
+                                        -- LEQ
+                                        if Argument2(7 downto 0) <= Argument1(7 downto 0) then
+                                            LocalStatus <= LocalStatus or x"0000000000000004"; -- ... 01000
+                                        end if;
+
+                                        state <= IDLE;
+                                    when "00000011" =>
+                                        -- GEQ
+                                        if Argument2(7 downto 0) >= Argument1(7 downto 0) then
+                                            LocalStatus <= LocalStatus or x"0000000000000004"; -- ... 01000
+                                        end if;
+
+                                        state <= IDLE;
+                                    when "00000100" =>
+                                        -- LT
+                                        if Argument2(7 downto 0) < Argument1(7 downto 0) then
+                                            LocalStatus <= LocalStatus or x"0000000000000004"; -- ... 01000
+                                        end if;
+
+                                        state <= IDLE;
+                                    when "00000101" =>
+                                        -- GT
+                                        if Argument2(7 downto 0) > Argument1(7 downto 0) then
+                                            LocalStatus <= LocalStatus or x"0000000000000004"; -- ... 01000
+                                        end if;
+
+                                        state <= IDLE;
+                                    when others =>
+                                        -- THROW ERR
+                                        Argument3 <= (others => '0');
+                                end case;
+                                
+                            when others =>
+                                state <= IDLE;
+                                -- THROW ERR
+                        end case;
+
+                    -- when SAVE_RIP =>
+                    --     Argument1 <= x"000000000000000E";
+                    --     Argument2 <= LocalRIP;
+                    --     state <= STORE_REGISTER;
+                    --     nextState <= END_CYCLE;
+
+                    -- when END_CYCLE =>
+                    --     -- 
+                    --     state <= IDLE;
                         
                     when HALT =>
                         if interrupt = '1' then

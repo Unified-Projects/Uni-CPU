@@ -3,4 +3,5 @@ bin
 .vscode
 build
 *.asm
-*.bytes
+*.bytes 
+*.py

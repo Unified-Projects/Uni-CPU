@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="impl_1" LaunchPart="xc7z020clg484-1" LaunchTime="1723241291">
+  <File Type="ROUTE-PWR" Name="Setup_wrapper_power_routed.rpt"/>
+  <File Type="PA-TCL" Name="Setup_wrapper.tcl"/>
+  <File Type="ROUTE-PWR-SUM" Name="Setup_wrapper_power_summary_routed.pb"/>
+  <File Type="REPORTS-TCL" Name="Setup_wrapper_reports.tcl"/>
+  <File Type="OPT-RQA-PB" Name="Setup_wrapper_rqa_opted.pb"/>
+  <File Type="BITSTR-MMI" Name="Setup_wrapper.mmi"/>
+  <File Type="OPT-METHODOLOGY-DRC" Name="Setup_wrapper_methodology_drc_opted.rpt"/>
+  <File Type="INIT-TIMING" Name="Setup_wrapper_timing_summary_init.rpt"/>
+  <File Type="OPT-TIMING" Name="Setup_wrapper_timing_summary_opted.rpt"/>
+  <File Type="OPT-DCP" Name="Setup_wrapper_opt.dcp"/>
+  <File Type="OPT-DRC" Name="Setup_wrapper_drc_opted.rpt"/>
+  <File Type="OPT-HWDEF" Name="Setup_wrapper.hwdef"/>
+  <File Type="PWROPT-DCP" Name="Setup_wrapper_pwropt.dcp"/>
+  <File Type="PWROPT-DRC" Name="Setup_wrapper_drc_pwropted.rpt"/>
+  <File Type="PWROPT-TIMING" Name="Setup_wrapper_timing_summary_pwropted.rpt"/>
+  <File Type="PLACE-DCP" Name="Setup_wrapper_placed.dcp"/>
+  <File Type="PLACE-IO" Name="Setup_wrapper_io_placed.rpt"/>
+  <File Type="PLACE-CLK" Name="Setup_wrapper_clock_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL" Name="Setup_wrapper_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="Setup_wrapper_utilization_placed.pb"/>
+  <File Type="PLACE-CTRL" Name="Setup_wrapper_control_sets_placed.rpt"/>
+  <File Type="PLACE-SIMILARITY" Name="Setup_wrapper_incremental_reuse_placed.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="Setup_wrapper_incremental_reuse_pre_placed.rpt"/>
+  <File Type="BG-BIN" Name="Setup_wrapper.bin"/>
+  <File Type="PLACE-TIMING" Name="Setup_wrapper_timing_summary_placed.rpt"/>
+  <File Type="ROUTE-PWR-RPX" Name="Setup_wrapper_power_routed.rpx"/>
+  <File Type="PLACE-RQA-PB" Name="Setup_wrapper_rqa_placed.pb"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="Setup_wrapper_postplace_pwropt.dcp"/>
+  <File Type="BITSTR-MSK" Name="Setup_wrapper.msk"/>
+  <File Type="POSTPLACE-PWROPT-TIMING" Name="Setup_wrapper_timing_summary_postplace_pwropted.rpt"/>
+  <File Type="PHYSOPT-DCP" Name="Setup_wrapper_physopt.dcp"/>
+  <File Type="PHYSOPT-DRC" Name="Setup_wrapper_drc_physopted.rpt"/>
+  <File Type="BITSTR-RBT" Name="Setup_wrapper.rbt"/>
+  <File Type="PHYSOPT-TIMING" Name="Setup_wrapper_timing_summary_physopted.rpt"/>
+  <File Type="ROUTE-ERROR-DCP" Name="Setup_wrapper_routed_error.dcp"/>
+  <File Type="ROUTE-DCP" Name="Setup_wrapper_routed.dcp"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="Setup_wrapper_routed_bb.dcp"/>
+  <File Type="ROUTE-DRC" Name="Setup_wrapper_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-PB" Name="Setup_wrapper_drc_routed.pb"/>
+  <File Type="ROUTE-DRC-RPX" Name="Setup_wrapper_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="Setup_wrapper_methodology_drc_routed.rpt"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="Setup_wrapper_methodology_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="Setup_wrapper_methodology_drc_routed.pb"/>
+  <File Type="ROUTE-RQS-PB" Name="Setup_wrapper_rqs_routed.pb"/>
+  <File Type="ROUTE-STATUS" Name="Setup_wrapper_route_status.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="Setup_wrapper_route_status.pb"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="Setup_wrapper_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-TIMING-PB" Name="Setup_wrapper_timing_summary_routed.pb"/>
+  <File Type="ROUTE-TIMING-RPX" Name="Setup_wrapper_timing_summary_routed.rpx"/>
+  <File Type="ROUTE-SIMILARITY" Name="Setup_wrapper_incremental_reuse_routed.rpt"/>
+  <File Type="ROUTE-CLK" Name="Setup_wrapper_clock_utilization_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW" Name="Setup_wrapper_bus_skew_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW-PB" Name="Setup_wrapper_bus_skew_routed.pb"/>
+  <File Type="ROUTE-BUS-SKEW-RPX" Name="Setup_wrapper_bus_skew_routed.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="Setup_wrapper_postroute_physopt.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="Setup_wrapper_postroute_physopt_bb.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="Setup_wrapper_timing_summary_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="Setup_wrapper_timing_summary_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="Setup_wrapper_timing_summary_postroute_physopted.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="Setup_wrapper_bus_skew_postroute_physopted.rpt"/>
+  <File Type="BG-BIT" Name="Setup_wrapper.bit"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="Setup_wrapper_bus_skew_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="Setup_wrapper_bus_skew_postroute_physopted.rpx"/>
+  <File Type="BITSTR-NKY" Name="Setup_wrapper.nky"/>
+  <File Type="BITSTR-BMM" Name="Setup_wrapper_bd.bmm"/>
+  <File Type="PDI-FILE" Name="Setup_wrapper.pdi"/>
+  <File Type="BOOT-PDI-FILE" Name="Setup_wrapper_boot.pdi"/>
+  <File Type="PL-PDI-FILE" Name="Setup_wrapper_pld.pdi"/>
+  <File Type="RCFI_FILE" Name="Setup_wrapper.rcfi"/>
+  <File Type="CFI_FILE" Name="Setup_wrapper.cfi"/>
+  <File Type="RNPI_FILE" Name="Setup_wrapper.rnpi"/>
+  <File Type="NPI_FILE" Name="Setup_wrapper.npi"/>
+  <File Type="RBD_FILE" Name="Setup_wrapper.rbd"/>
+  <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
+  <File Type="BITSTR-LTX" Name="Setup_wrapper.ltx"/>
+  <File Type="BITSTR-SYSDEF" Name="Setup_wrapper.sysdef"/>
+  <File Type="BG-BGN" Name="Setup_wrapper.bgn"/>
+  <File Type="BG-DRC" Name="Setup_wrapper.drc"/>
+  <File Type="RDI-RDI" Name="Setup_wrapper.vdi"/>
+  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+  <File Type="ROUTE-RQS" Name="Setup_wrapper_routed.rqs"/>
+  <File Type="POSTROUTE-PHYSOPT-RQS" Name="Setup_wrapper_postroute_physopted.rqs"/>
+  <File Type="ROUTE-RQS-RPT" Name="route_report_qor_suggestions_0.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-RQS-RPT" Name="postroute_physopt_report_qor_suggestions_0.rpt"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/new/Clock Divider.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/CPU.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/DDRAXIInterface.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/bd/Setup/Setup.bd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PGENDIR/sources_1/bd/Setup/hdl/Setup_wrapper.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/ALU.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/Register File.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/Testbench.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/BRAM.coe">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/BRAM64.coe">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../BRAM64.coe">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="Setup_wrapper"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1" RelGenDir="$PGENDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <File Path="$PSRCDIR/constrs_1/new/CPU.xdc">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="TargetConstrsFile" Val="$PSRCDIR/constrs_1/new/CPU.xdc"/>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="utils" Type="Utils" RelSrcDir="$PSRCDIR/utils_1" RelGenDir="$PGENDIR/utils_1">
+    <Filter Type="Utils"/>
+    <Config>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2024">
+      <Desc>Default settings for Implementation.</Desc>
+    </StratHandle>
+    <Step Id="init_design"/>
+    <Step Id="opt_design">
+      <Option Id="Verbose">1</Option>
+    </Step>
+    <Step Id="power_opt_design" EnableStepBool="1"/>
+    <Step Id="place_design"/>
+    <Step Id="post_place_power_opt_design" EnableStepBool="1"/>
+    <Step Id="phys_opt_design"/>
+    <Step Id="route_design"/>
+    <Step Id="post_route_phys_opt_design" EnableStepBool="1"/>
+    <Step Id="write_bitstream"/>
+  </Strategy>
+  <BlockFileSet Type="BlockSrcs" Name="Setup_blk_mem_gen_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Setup_processing_system7_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Setup_AXI_Master_0_3"/>
+  <BlockFileSet Type="BlockSrcs" Name="Setup_CPU_0_2"/>
+</GenRun>

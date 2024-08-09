@@ -2,7 +2,7 @@
 --Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
---Date        : Thu Aug  8 20:59:49 2024
+--Date        : Fri Aug  9 23:49:10 2024
 --Host        : DESKTOP-PSI4IU2 running 64-bit major release  (build 9200)
 --Command     : generate_target Setup.bd
 --Design      : Setup
@@ -728,16 +728,10 @@ entity Setup is
     FIXED_IO_mio : inout STD_LOGIC_VECTOR ( 53 downto 0 );
     FIXED_IO_ps_clk : inout STD_LOGIC;
     FIXED_IO_ps_porb : inout STD_LOGIC;
-    FIXED_IO_ps_srstb : inout STD_LOGIC;
-    addr_0 : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    address_0 : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    data_in_0 : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    data_out_0 : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    read_data_0 : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    write_data_0 : in STD_LOGIC_VECTOR ( 31 downto 0 )
+    FIXED_IO_ps_srstb : inout STD_LOGIC
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of Setup : entity is "Setup,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=Setup,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=11,numReposBlks=9,numNonXlnxBlks=0,numHierBlks=2,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=2,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=6,da_board_cnt=1,da_clkrst_cnt=10,da_ps7_cnt=2,synth_mode=Hierarchical}";
+  attribute CORE_GENERATION_INFO of Setup : entity is "Setup,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=Setup,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=11,numReposBlks=9,numNonXlnxBlks=0,numHierBlks=2,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=2,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=6,da_board_cnt=1,da_clkrst_cnt=11,da_ps7_cnt=2,synth_mode=Hierarchical}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of Setup : entity is "Setup.hwdef";
 end Setup;
@@ -928,18 +922,18 @@ architecture STRUCTURE of Setup is
     interrupt : out STD_LOGIC
   );
   end component Setup_AXI_Master_0_3;
-  component Setup_sim_clk_gen_0_0 is
-  port (
-    clk : out STD_LOGIC;
-    sync_rst : out STD_LOGIC
-  );
-  end component Setup_sim_clk_gen_0_0;
   component Setup_util_vector_logic_0_0 is
   port (
     Op1 : in STD_LOGIC_VECTOR ( 0 to 0 );
     Res : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component Setup_util_vector_logic_0_0;
+  component Setup_sim_clk_gen_0_0 is
+  port (
+    clk : out STD_LOGIC;
+    sync_rst : out STD_LOGIC
+  );
+  end component Setup_sim_clk_gen_0_0;
   signal AXI_Master_0_done : STD_LOGIC;
   signal AXI_Master_0_err : STD_LOGIC;
   signal AXI_Master_0_interrupt : STD_LOGIC;
@@ -969,7 +963,6 @@ architecture STRUCTURE of Setup is
   signal S00_AXI_1_WREADY : STD_LOGIC;
   signal S00_AXI_1_WSTRB : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal S00_AXI_1_WVALID : STD_LOGIC;
-  signal address_0_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal axi_interconnect_0_M00_AXI_ARADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal axi_interconnect_0_M00_AXI_ARBURST : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal axi_interconnect_0_M00_AXI_ARCACHE : STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -1004,7 +997,6 @@ architecture STRUCTURE of Setup is
   signal axi_interconnect_0_M00_AXI_WSTRB : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal axi_interconnect_0_M00_AXI_WVALID : STD_LOGIC;
   signal blk_mem_gen_0_douta : STD_LOGIC_VECTOR ( 63 downto 0 );
-  signal data_in_0_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal processing_system7_0_DDR_ADDR : STD_LOGIC_VECTOR ( 14 downto 0 );
   signal processing_system7_0_DDR_BA : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal processing_system7_0_DDR_CAS_N : STD_LOGIC;
@@ -1030,7 +1022,6 @@ architecture STRUCTURE of Setup is
   signal processing_system7_0_FIXED_IO_PS_SRSTB : STD_LOGIC;
   signal rst_ps7_0_50M_peripheral_aresetn : STD_LOGIC_VECTOR ( 0 to 0 );
   signal util_vector_logic_0_Res : STD_LOGIC;
-  signal write_data_0_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal NLW_processing_system7_0_FCLK_CLK0_UNCONNECTED : STD_LOGIC;
   signal NLW_processing_system7_0_M_AXI_GP0_ARVALID_UNCONNECTED : STD_LOGIC;
   signal NLW_processing_system7_0_M_AXI_GP0_AWVALID_UNCONNECTED : STD_LOGIC;
@@ -1096,12 +1087,6 @@ architecture STRUCTURE of Setup is
   attribute X_INTERFACE_INFO of DDR_dqs_p : signal is "xilinx.com:interface:ddrx:1.0 DDR DQS_P";
   attribute X_INTERFACE_INFO of FIXED_IO_mio : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO MIO";
 begin
-  addr_0(31 downto 0) <= CPU_0_addr(31 downto 0);
-  address_0_1(31 downto 0) <= address_0(31 downto 0);
-  data_in_0_1(31 downto 0) <= data_in_0(31 downto 0);
-  data_out_0(31 downto 0) <= CPU_0_data_out(31 downto 0);
-  read_data_0(31 downto 0) <= AXI_Master_0_read_data(31 downto 0);
-  write_data_0_1(31 downto 0) <= write_data_0(31 downto 0);
 AXI_Master_0: component Setup_AXI_Master_0_3
      port map (
       M_AXI_ARADDR(31 downto 0) => S00_AXI_1_ARADDR(31 downto 0),
@@ -1121,7 +1106,7 @@ AXI_Master_0: component Setup_AXI_Master_0_3
       M_AXI_WREADY => S00_AXI_1_WREADY,
       M_AXI_WSTRB(3 downto 0) => S00_AXI_1_WSTRB(3 downto 0),
       M_AXI_WVALID => S00_AXI_1_WVALID,
-      address(31 downto 0) => address_0_1(31 downto 0),
+      address(31 downto 0) => CPU_0_addr(31 downto 0),
       clk => processing_system7_0_FCLK_CLK0,
       done => AXI_Master_0_done,
       err => AXI_Master_0_err,
@@ -1130,7 +1115,7 @@ AXI_Master_0: component Setup_AXI_Master_0_3
       reset => rst_ps7_0_50M_peripheral_aresetn(0),
       start_read => CPU_0_mem_read,
       start_write => CPU_0_mem_write,
-      write_data(31 downto 0) => write_data_0_1(31 downto 0)
+      write_data(31 downto 0) => CPU_0_data_out(31 downto 0)
     );
 CPU_0: component Setup_CPU_0_2
      port map (
@@ -1141,7 +1126,7 @@ CPU_0: component Setup_CPU_0_2
       bram_en => CPU_0_bram_en,
       bram_we(7 downto 0) => CPU_0_bram_we(7 downto 0),
       clk => processing_system7_0_FCLK_CLK0,
-      data_in(31 downto 0) => data_in_0_1(31 downto 0),
+      data_in(31 downto 0) => AXI_Master_0_read_data(31 downto 0),
       data_out(31 downto 0) => CPU_0_data_out(31 downto 0),
       interrupt => AXI_Master_0_interrupt,
       mem_done => AXI_Master_0_done,

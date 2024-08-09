@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x99ACD1217C5E193A",
+      "boundary_crc": "0xCC6CFA53B4580162",
       "device": "xc7z020clg484-1",
       "gen_directory": "../../../../CPURev2.gen/sources_1/bd/Setup",
       "name": "Setup",
@@ -22,8 +22,8 @@
       "blk_mem_gen_0": "",
       "CPU_0": "",
       "AXI_Master_0": "",
-      "sim_clk_gen_0": "",
-      "util_vector_logic_0": ""
+      "util_vector_logic_0": "",
+      "sim_clk_gen_0": ""
     },
     "interface_ports": {
       "DDR": {
@@ -193,38 +193,6 @@
             "direction": "IO"
           }
         }
-      }
-    },
-    "ports": {
-      "read_data_0": {
-        "direction": "O",
-        "left": "31",
-        "right": "0"
-      },
-      "write_data_0": {
-        "direction": "I",
-        "left": "31",
-        "right": "0"
-      },
-      "address_0": {
-        "direction": "I",
-        "left": "31",
-        "right": "0"
-      },
-      "data_out_0": {
-        "direction": "O",
-        "left": "31",
-        "right": "0"
-      },
-      "addr_0": {
-        "direction": "O",
-        "left": "31",
-        "right": "0"
-      },
-      "data_in_0": {
-        "direction": "I",
-        "left": "31",
-        "right": "0"
       }
     },
     "components": {
@@ -816,7 +784,7 @@
             "value": "8"
           },
           "Coe_File": {
-            "value": "../../../../../../BRAM64.coe"
+            "value": "../../../../../../../BRAM64.coe"
           },
           "Fill_Remaining_Memory_Locations": {
             "value": "true"
@@ -859,7 +827,7 @@
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "250000000",
+                "value": "250000",
                 "value_src": "user_prop"
               },
               "CLK_DOMAIN": {
@@ -966,7 +934,7 @@
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "250000000",
+                "value": "250000",
                 "value_src": "user_prop"
               },
               "ID_WIDTH": {
@@ -1164,7 +1132,7 @@
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "250000000",
+                "value": "250000",
                 "value_src": "user_prop"
               },
               "CLK_DOMAIN": {
@@ -1230,24 +1198,6 @@
           }
         }
       },
-      "sim_clk_gen_0": {
-        "vlnv": "xilinx.com:ip:sim_clk_gen:1.0",
-        "ip_revision": "4",
-        "xci_name": "Setup_sim_clk_gen_0_0",
-        "xci_path": "ip\\Setup_sim_clk_gen_0_0\\Setup_sim_clk_gen_0_0.xci",
-        "inst_hier_path": "sim_clk_gen_0",
-        "parameters": {
-          "FREQ_HZ": {
-            "value": "250000000"
-          },
-          "INITIAL_RESET_CLOCK_CYCLES": {
-            "value": "5"
-          },
-          "RESET_POLARITY": {
-            "value": "ACTIVE_HIGH"
-          }
-        }
-      },
       "util_vector_logic_0": {
         "vlnv": "xilinx.com:ip:util_vector_logic:2.0",
         "ip_revision": "4",
@@ -1260,6 +1210,24 @@
           },
           "C_SIZE": {
             "value": "1"
+          }
+        }
+      },
+      "sim_clk_gen_0": {
+        "vlnv": "xilinx.com:ip:sim_clk_gen:1.0",
+        "ip_revision": "4",
+        "xci_name": "Setup_sim_clk_gen_0_0",
+        "xci_path": "ip\\Setup_sim_clk_gen_0_0\\Setup_sim_clk_gen_0_0.xci",
+        "inst_hier_path": "sim_clk_gen_0",
+        "parameters": {
+          "FREQ_HZ": {
+            "value": "250000"
+          },
+          "INITIAL_RESET_CLOCK_CYCLES": {
+            "value": "2"
+          },
+          "RESET_POLARITY": {
+            "value": "ACTIVE_HIGH"
           }
         }
       }
@@ -1312,13 +1280,13 @@
       "AXI_Master_0_read_data": {
         "ports": [
           "AXI_Master_0/read_data",
-          "read_data_0"
+          "CPU_0/data_in"
         ]
       },
       "CPU_0_addr": {
         "ports": [
           "CPU_0/addr",
-          "addr_0"
+          "AXI_Master_0/address"
         ]
       },
       "CPU_0_bram_addr": {
@@ -1348,7 +1316,7 @@
       "CPU_0_data_out": {
         "ports": [
           "CPU_0/data_out",
-          "data_out_0"
+          "AXI_Master_0/write_data"
         ]
       },
       "CPU_0_mem_read": {
@@ -1363,22 +1331,10 @@
           "AXI_Master_0/start_write"
         ]
       },
-      "address_0_1": {
-        "ports": [
-          "address_0",
-          "AXI_Master_0/address"
-        ]
-      },
       "blk_mem_gen_0_douta": {
         "ports": [
           "blk_mem_gen_0/douta",
           "CPU_0/bram_din"
-        ]
-      },
-      "data_in_0_1": {
-        "ports": [
-          "data_in_0",
-          "CPU_0/data_in"
         ]
       },
       "processing_system7_0_FCLK_CLK0": {
@@ -1415,12 +1371,6 @@
           "sim_clk_gen_0/sync_rst",
           "rst_ps7_0_50M/ext_reset_in",
           "CPU_0/reset"
-        ]
-      },
-      "write_data_0_1": {
-        "ports": [
-          "write_data_0",
-          "AXI_Master_0/write_data"
         ]
       }
     }

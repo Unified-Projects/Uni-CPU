@@ -1,7 +1,7 @@
 Vivado Simulator v2024.1
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
-Running: C:/Xilinx/Vivado/2024.1/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L CPU -L axi_infrastructure_v1_1_0 -L axi_vip_v1_1_17 -L processing_system7_vip_v1_0_19 -L lib_cdc_v1_0_3 -L proc_sys_reset_v5_0_15 -L blk_mem_gen_v8_4_8 -L sim_clk_gen_v1_0_4 -L util_vector_logic_v2_0_4 -L generic_baseblocks_v2_1_2 -L fifo_generator_v13_2_10 -L axi_data_fifo_v2_1_30 -L axi_register_slice_v2_1_31 -L axi_protocol_converter_v2_1_31 -L axi_clock_converter_v2_1_30 -L axi_dwidth_converter_v2_1_31 -L uvm -L xilinx_vip -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot CPU_TB_behav CPU.CPU_TB CPU.glbl -log elaborate.log 
+Running: C:/Xilinx/Vivado/2024.1/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L CPU -L axi_infrastructure_v1_1_0 -L axi_vip_v1_1_17 -L processing_system7_vip_v1_0_19 -L lib_cdc_v1_0_3 -L proc_sys_reset_v5_0_15 -L blk_mem_gen_v8_4_8 -L util_vector_logic_v2_0_4 -L sim_clk_gen_v1_0_4 -L generic_baseblocks_v2_1_2 -L fifo_generator_v13_2_10 -L axi_data_fifo_v2_1_30 -L axi_register_slice_v2_1_31 -L axi_protocol_converter_v2_1_31 -L axi_clock_converter_v2_1_30 -L axi_dwidth_converter_v2_1_31 -L uvm -L xilinx_vip -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot CPU_TB_behav CPU.CPU_TB CPU.glbl -log elaborate.log 
 Using 2 slave threads.
 WARNING: [XSIM 43-3431] One or more environment variables have been detected which affect the operation of the C compiler. These are typically not set in standard installations and are not tested by AMD, however they may be appropriate for your system, so the flow will attempt to continue.  If errors occur, try running xelab with the "-mt off -v 1" switches to see more information from the C compiler. The following environment variables have been detected:
 Starting static elaboration
@@ -171,7 +171,7 @@ Compiling architecture imp of entity proc_sys_reset_v5_0_15.upcnt_n [\upcnt_n(c_
 Compiling architecture imp of entity proc_sys_reset_v5_0_15.sequence_psr [sequence_psr_default]
 Compiling architecture imp of entity proc_sys_reset_v5_0_15.proc_sys_reset [\proc_sys_reset(c_family="zynq",...]
 Compiling architecture setup_rst_ps7_0_50m_0_arch of entity cpu.Setup_rst_ps7_0_50M_0 [setup_rst_ps7_0_50m_0_default]
-Compiling module sim_clk_gen_v1_0_4.sim_clk_gen(CLOCK_PERIOD=4.0,INI...
+Compiling module sim_clk_gen_v1_0_4.sim_clk_gen(CLOCK_PERIOD=4000.0,...
 Compiling module cpu.Setup_sim_clk_gen_0_0
 Compiling module util_vector_logic_v2_0_4.util_vector_logic_v2_0_4_util_ve...
 Compiling module cpu.Setup_util_vector_logic_0_0

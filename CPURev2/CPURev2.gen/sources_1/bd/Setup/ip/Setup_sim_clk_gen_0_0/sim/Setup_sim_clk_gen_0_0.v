@@ -58,7 +58,7 @@ module Setup_sim_clk_gen_0_0 (
   sync_rst
 );
 
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET sync_rst, FREQ_HZ 250000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN Setup_sim_clk_gen_0_0_clk, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET sync_rst, FREQ_HZ 250000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN Setup_sim_clk_gen_0_0_clk, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *)
 output wire clk;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME sync_rst, POLARITY ACTIVE_HIGH, INSERT_VIP 0" *)
@@ -66,8 +66,8 @@ output wire clk;
 output wire sync_rst;
 
   sim_clk_gen #(
-    .CLOCK_PERIOD(4.0),
-    .INITIAL_RESET_CLOCK_CYCLES(5),
+    .CLOCK_PERIOD(4000.0),
+    .INITIAL_RESET_CLOCK_CYCLES(2),
     .CLOCK_CYCLES_BEFORE_SHUTDOWN(0),
     .RESET_POLARITY(1)
   ) inst (

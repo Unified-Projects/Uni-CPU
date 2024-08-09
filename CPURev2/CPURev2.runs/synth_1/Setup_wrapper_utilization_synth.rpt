@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
-| Date         : Thu Aug  8 19:57:02 2024
+| Date         : Fri Aug  9 23:08:48 2024
 | Host         : DESKTOP-PSI4IU2 running 64-bit major release  (build 9200)
 | Command      : report_utilization -file Setup_wrapper_utilization_synth.rpt -pb Setup_wrapper_utilization_synth.pb
 | Design       : Setup_wrapper
@@ -93,7 +93,7 @@ Warning! For any ECO changes, please run place_design if there are unplaced inst
 +-----------------------------+------+-------+------------+-----------+-------+
 |          Site Type          | Used | Fixed | Prohibited | Available | Util% |
 +-----------------------------+------+-------+------------+-----------+-------+
-| Bonded IOB                  |  192 |     0 |          0 |       200 | 96.00 |
+| Bonded IOB                  |    0 |     0 |          0 |       200 |  0.00 |
 | Bonded IPADs                |    0 |     0 |          0 |         2 |  0.00 |
 | Bonded IOPADs               |    0 |     0 |          0 |       130 |  0.00 |
 | PHY_CONTROL                 |    0 |     0 |          0 |         4 |  0.00 |
@@ -149,9 +149,6 @@ Warning! For any ECO changes, please run place_design if there are unplaced inst
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| OBUF     |   96 |                  IO |
-| IBUF     |   96 |                  IO |
-+----------+------+---------------------+
 
 
 8. Black Boxes
@@ -161,7 +158,6 @@ Warning! For any ECO changes, please run place_design if there are unplaced inst
 |           Ref Name           | Used |
 +------------------------------+------+
 | Setup_util_vector_logic_0_0  |    1 |
-| Setup_sim_clk_gen_0_0        |    1 |
 | Setup_rst_ps7_0_50M_0        |    1 |
 | Setup_processing_system7_0_0 |    1 |
 | Setup_blk_mem_gen_0_0        |    1 |

@@ -56,6 +56,7 @@ if {$::dispatch::connected} {
 }
 
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param chipscope.maxJobs 4
 set_msg_config -id {Common 17-41} -limit 10000000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7z020clg484-1
@@ -77,8 +78,10 @@ OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 add_files Y:/C++/Uni-CPU/CPURev2/BRAM.coe
 add_files Y:/C++/Uni-CPU/CPURev2/BRAM64.coe
+add_files y:/C++/Uni-CPU/BRAM64.coe
 read_vhdl -library CPU Y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/hdl/Setup_wrapper.vhd
 add_files Y:/C++/Uni-CPU/CPURev2/CPURev2.srcs/sources_1/bd/Setup/Setup.bd
+set_property used_in_simulation 1 [get_files -all y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_CPU_0_2/synth/Setup_CPU_0_2.vhd]
 set_property used_in_implementation false [get_files -all y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_processing_system7_0_0/Setup_processing_system7_0_0.xdc]
 set_property used_in_implementation false [get_files -all y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_rst_ps7_0_50M_0/Setup_rst_ps7_0_50M_0_board.xdc]
 set_property used_in_implementation false [get_files -all y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_rst_ps7_0_50M_0/Setup_rst_ps7_0_50M_0.xdc]
@@ -105,8 +108,6 @@ set_property used_in_implementation false [get_files Y:/C++/Uni-CPU/CPURev2/CPUR
 read_xdc dont_touch.xdc
 set_property used_in_implementation false [get_files dont_touch.xdc]
 set_param ips.enableIPCacheLiteLoad 1
-
-read_checkpoint -auto_incremental -incremental Y:/C++/Uni-CPU/CPURev2/CPURev2.srcs/utils_1/imports/synth_1/Setup_wrapper.dcp
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }

@@ -1,6 +1,0 @@
-# compile vhdl design source files
-vhdl CPU  \
-"Setup_wrapper_func_synth.vhd" \
-
-# Do not sort compile order
-nosort

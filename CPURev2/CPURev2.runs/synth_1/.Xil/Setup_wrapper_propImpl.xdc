@@ -11,6 +11,8 @@ set_property src_info {type:XDC file:1 line:15 export:INPUT save:INPUT read:READ
 set_property PACKAGE_PIN ... [get_ports {FIXED_IO_*}]
 set_property src_info {type:XDC file:1 line:16 export:INPUT save:INPUT read:READ} [current_design]
 set_property DRIVE ... [get_ports {FIXED_IO_*}]
+set_property src_info {type:XDC file:1 line:20 export:INPUT save:INPUT read:READ} [current_design]
+set_property IOSTANDARD LVCMOS18 [get_ports {addr_0 address_0 data_in_0 data_out_0 mem_read_0 mem_write_0 read_data_0 write_data_0}]
 set_property src_info {type:XDC file:1 line:21 export:INPUT save:INPUT read:READ} [current_design]
 set_property PACKAGE_PIN ... [get_ports {addr_0 address_0 data_in_0 data_out_0 mem_read_0 mem_write_0 read_data_0 write_data_0}]
 set_property src_info {type:XDC file:1 line:22 export:INPUT save:INPUT read:READ} [current_design]

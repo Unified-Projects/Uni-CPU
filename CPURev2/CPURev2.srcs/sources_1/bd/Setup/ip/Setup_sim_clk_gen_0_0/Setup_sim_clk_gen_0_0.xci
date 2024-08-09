@@ -8,17 +8,17 @@
     "gen_directory": "../../../../../../CPURev2.gen/sources_1/bd/Setup/ip/Setup_sim_clk_gen_0_0",
     "parameters": {
       "component_parameters": {
-        "INITIAL_RESET_CLOCK_CYCLES": [ { "value": "5", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "INITIAL_RESET_CLOCK_CYCLES": [ { "value": "2", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "CLOCK_CYCLES_BEFORE_SHUTDOWN": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "Component_Name": [ { "value": "Setup_sim_clk_gen_0_0", "resolve_type": "user", "usage": "all" } ],
         "CLOCK_TYPE": [ { "value": "Single_Ended", "resolve_type": "user", "usage": "all" } ],
         "RESET_POLARITY": [ { "value": "ACTIVE_HIGH", "value_src": "user", "resolve_type": "user", "usage": "all" } ],
-        "FREQ_HZ": [ { "value": "250000000", "value_src": "user", "resolve_type": "user", "format": "float", "usage": "all" } ]
+        "FREQ_HZ": [ { "value": "250000", "value_src": "user", "resolve_type": "user", "format": "float", "usage": "all" } ]
       },
       "model_parameters": {
         "CLOCK_TYPE": [ { "value": "Single_Ended", "resolve_type": "generated", "usage": "simulation.tlm" } ],
-        "CLOCK_PERIOD": [ { "value": "4.0", "resolve_type": "generated", "format": "float", "usage": "all" } ],
-        "INITIAL_RESET_CLOCK_CYCLES": [ { "value": "5", "resolve_type": "generated", "format": "long", "enabled": false, "usage": "all" } ],
+        "CLOCK_PERIOD": [ { "value": "4000.0", "resolve_type": "generated", "format": "float", "usage": "all" } ],
+        "INITIAL_RESET_CLOCK_CYCLES": [ { "value": "2", "resolve_type": "generated", "format": "long", "enabled": false, "usage": "all" } ],
         "CLOCK_CYCLES_BEFORE_SHUTDOWN": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "RESET_POLARITY": [ { "value": "1", "resolve_type": "generated", "format": "long", "enabled": false, "usage": "all" } ]
       },
@@ -59,7 +59,7 @@
           "mode": "master",
           "parameters": {
             "ASSOCIATED_RESET": [ { "value": "sync_rst", "value_src": "constant", "value_permission": "bd", "usage": "all" } ],
-            "FREQ_HZ": [ { "value": "250000000", "value_src": "user", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
+            "FREQ_HZ": [ { "value": "250000", "value_src": "user", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
             "FREQ_TOLERANCE_HZ": [ { "value": "0", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
             "PHASE": [ { "value": "0.0", "value_permission": "bd", "resolve_type": "generated", "format": "float", "is_ips_inferred": true, "is_static_object": false } ],
             "CLK_DOMAIN": [ { "value": "Setup_sim_clk_gen_0_0_clk", "value_permission": "bd", "resolve_type": "generated", "is_ips_inferred": true, "is_static_object": false } ],
