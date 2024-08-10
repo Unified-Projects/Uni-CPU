@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="147.666666 us"></ZoomStartTime>
-      <ZoomEndTime time="289.666667 us"></ZoomEndTime>
-      <Cursor1Time time="266.000000 us"></Cursor1Time>
+      <ZoomStartTime time="1,267.143080 us"></ZoomStartTime>
+      <ZoomEndTime time="1,412.067299 us"></ZoomEndTime>
+      <Cursor1Time time="1,442.000000 us"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="201"></NameColumnWidth>
-      <ValueColumnWidth column_width="235"></ValueColumnWidth>
+      <ValueColumnWidth column_width="231"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="25" />
+   <WVObjectSize size="21" />
    <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/clk" type="logic">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -80,26 +80,6 @@
       <obj_property name="ElementShortName">Argument3[63:0]</obj_property>
       <obj_property name="ObjectShortName">Argument3[63:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/U0/LocalRIP" type="array">
-      <obj_property name="ElementShortName">LocalRIP[63:0]</obj_property>
-      <obj_property name="ObjectShortName">LocalRIP[63:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/U0/LocalRSP" type="array">
-      <obj_property name="ElementShortName">LocalRSP[63:0]</obj_property>
-      <obj_property name="ObjectShortName">LocalRSP[63:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/U0/LocalStatus" type="array">
-      <obj_property name="ElementShortName">LocalStatus[63:0]</obj_property>
-      <obj_property name="ObjectShortName">LocalStatus[63:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/U0/LocalInterrupt" type="array">
-      <obj_property name="ElementShortName">LocalInterrupt[63:0]</obj_property>
-      <obj_property name="ObjectShortName">LocalInterrupt[63:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/U0/LocalErr" type="array">
-      <obj_property name="ElementShortName">LocalErr[63:0]</obj_property>
-      <obj_property name="ObjectShortName">LocalErr[63:0]</obj_property>
-   </wvobject>
    <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/U0/state" type="other">
       <obj_property name="ElementShortName">state</obj_property>
       <obj_property name="ObjectShortName">state</obj_property>
@@ -119,5 +99,10 @@
    <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/U0/stateIndex" type="other">
       <obj_property name="ElementShortName">stateIndex</obj_property>
       <obj_property name="ObjectShortName">stateIndex</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TB/uut/Setup_i/CPU_0/U0/Registers" type="array">
+      <obj_property name="ElementShortName">Registers[0:19][63:0]</obj_property>
+      <obj_property name="ObjectShortName">Registers[0:19][63:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
    </wvobject>
 </wave_config>

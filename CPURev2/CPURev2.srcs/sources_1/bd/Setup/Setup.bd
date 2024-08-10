@@ -6,7 +6,7 @@
       "gen_directory": "../../../../CPURev2.gen/sources_1/bd/Setup",
       "name": "Setup",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
-      "synth_flow_mode": "Hierarchical",
+      "synth_flow_mode": "None",
       "tool_version": "2024.1",
       "validated": "true"
     },

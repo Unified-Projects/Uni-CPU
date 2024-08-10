@@ -1,6 +1,6 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
---use IEEE.NUMERIC_STD.ALL;
+use IEEE.NUMERIC_STD.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity CPU is
@@ -30,7 +30,7 @@ architecture Behavioral of CPU is
 --    signal write_enable : STD_LOGIC;
 --    signal reg_addr : STD_LOGIC_VECTOR(4 downto 0) := (others => '0'); -- Initialize to zero
     
-    type state_type is (IDLE, READ_REGISTER, STORE_REGISTER, BRAM_READ, BRAM_WRITE, DDR_READ, DDR_WRITE, FETCH_RIP, INC_RIP, FETCH_INSTRUCTION, DECODE_INSTRUCTION, GET_1_ARG, GET_1_ALT, GET_2_ARG, GET_3_ARG, EXEC, EXEC_8, EXEC_16, EXEC_32, EXEC_64, STORE, SAVE_RIP, END_CYCLE, HALT);
+    type state_type is (IDLE, BRAM_READ, BRAM_WRITE, DDR_READ, DDR_WRITE, FETCH_RIP, INC_RIP, FETCH_INSTRUCTION, DECODE_INSTRUCTION, GET_1_ARG, GET_1_ALT, GET_2_ARG, GET_3_ARG, EXEC, EXEC_8, EXEC_16, EXEC_32, EXEC_64, HALT);
     signal stateIndex : INTEGER range 0 to 15 := 0;
     signal stateIndexMain : INTEGER range 0 to 15 := 0;
     signal state : state_type := IDLE;
@@ -43,12 +43,10 @@ architecture Behavioral of CPU is
     signal Argument1 : STD_LOGIC_VECTOR(63 downto 0) := (others => '0');
     signal Argument2 : STD_LOGIC_VECTOR(63 downto 0) := (others => '0');
     signal Argument3 : STD_LOGIC_VECTOR(63 downto 0) := (others => '0');
+
+    type array_64bit is array (0 to 19) of STD_LOGIC_VECTOR(63 downto 0);
+    signal Registers : array_64bit := (others => (others => '0')); -- Initialize array to 0
     
-    signal LocalRIP : STD_LOGIC_VECTOR(63 downto 0) := (others => '0');
-    signal LocalRSP : STD_LOGIC_VECTOR(63 downto 0) := (others => '0');
-    signal LocalStatus : STD_LOGIC_VECTOR(63 downto 0) := (others => '0');
-    signal LocalInterrupt : STD_LOGIC_VECTOR(63 downto 0) := (others => '0');
-    signal LocalErr : STD_LOGIC_VECTOR(63 downto 0) := (others => '0');
     signal CIR : STD_LOGIC_VECTOR(15 downto 0) := (others => '0');
     
     function reverse_bytes(data_in: std_logic_vector(63 downto 0)) return std_logic_vector is
@@ -91,7 +89,7 @@ begin
 --    };
 
     -- Main control process
-    process(clk_div)
+    process(clk, reset)
         -- Variable declarations
         variable aligned_address : std_logic_vector(12 downto 0);
         variable alignedDDR_address : std_logic_vector(31 downto 0);
@@ -126,12 +124,9 @@ begin
             CIR <= (others => '0');
             interruptTemp := (others => '0');
 
-            LocalRIP <= x"00000000000000A0";
-            LocalRSP <= (others => '0');
-            LocalStatus <= (others => '0');
-            LocalInterrupt <= (others => '0');
-            LocalErr <= (others => '0');
-        elsif rising_edge(clk_div) then
+            Registers <= (others => (others => '0')); -- Initialize array to 0
+
+        elsif rising_edge(clk) then
             if cycle_count > 0 then
                 -- Decrement cycle_count and skip processing
                 cycle_count <= cycle_count - 1;
@@ -141,8 +136,8 @@ begin
                 mem_read <= '0';
                 mem_write <= '0';
 
-                workingStatus := LocalStatus;
-                -- LocalStatus <= (others => '0');
+                workingStatus := Registers(15);
+                -- Registers(15) <= (others => '0');
                        
                 case state is
                     when IDLE =>
@@ -156,88 +151,6 @@ begin
                             -- state <= FETCH_RIP;
                             state <= FETCH_INSTRUCTION;
                         end if;
-
-                    when READ_REGISTER =>
-                           
-                        case stateIndex is
-                            when 0 =>
-                                case Argument1 is
-                                    when x"000000000000000D" =>
-                                        Result <= LocalRSP;
-                                        stateIndexMain <= 0;
-                                        state <= nextNextState;
-                                    when x"000000000000000E" =>
-                                        Result <= LocalRIP;
-                                        stateIndexMain <= 0;
-                                        state <= nextNextState;
-                                    when x"000000000000000F" =>
-                                        Result <= LocalStatus;
-                                        stateIndexMain <= 0;
-                                        state <= nextNextState;
-                                    when x"0000000000000010" =>
-                                        Result <= LocalErr;
-                                        stateIndexMain <= 0;
-                                        state <= nextNextState;
-                                    when x"0000000000000011" =>
-                                        Result <= LocalInterrupt;
-                                        stateIndexMain <= 0;
-                                        state <= nextNextState;
-                                    when others =>
-                                        bram_addr <= Argument1 (12 downto 0);
-                                        bram_we <= "00000000"; -- Read
-                                        bram_en <= '1'; -- Enable
-        
-                                        cycle_count <= 1;
-                                        
-                                        stateIndex <= 1;
-                                end case;
-
-                            when 1 =>
-                                Result <= bram_din;
-                                
-                                stateIndex <= 0;
-                                state <= nextState;
-
-                            when others =>
-                                stateIndex <= 0;
-                        end case;
-                        
-                    when STORE_REGISTER =>
-                        case stateIndex is
-                            when 0 =>
-                                case Argument1 is
-                                    when x"000000000000000D" =>
-                                        LocalRSP <= Argument2;
-                                        stateIndexMain <= 0;
-                                        state <= nextNextState;
-                                    when x"000000000000000E" =>
-                                        LocalRIP <= Argument2;
-                                        stateIndexMain <= 0;
-                                        state <= nextNextState;
-                                    when x"000000000000000F" =>
-                                        LocalStatus <= Argument2;
-                                        stateIndexMain <= 0;
-                                        state <= nextNextState;
-                                    when x"0000000000000010" =>
-                                        LocalErr <= Argument2;
-                                        stateIndexMain <= 0;
-                                        state <= nextNextState;
-                                    when x"0000000000000011" =>
-                                        LocalInterrupt <= Argument2;
-                                        stateIndexMain <= 0;
-                                        state <= nextNextState;
-                                    when others =>
-                                        bram_dout <= Argument2;
-                                        bram_addr <= Argument1 (12 downto 0); 
-                                        bram_we <= "11111111"; -- Write
-                                        bram_en <= '1'; -- Enable
-                            
-                                        stateIndex <= 0;
-                                        state <= nextState;    
-                                end case;
-                            when others =>
-                                stateIndex <= 0;
-                        end case;
                     
                     when BRAM_READ =>
                         case stateIndex is
@@ -251,7 +164,7 @@ begin
                                 bram_we <= "00000000"; -- Read
                                 bram_en <= '1'; -- Enable
                 
-                                cycle_count <= 1;
+                                cycle_count <= 2;
                                 
                                 stateIndex <= 1; -- Move to the next state
                                 state <= BRAM_READ;
@@ -270,7 +183,7 @@ begin
                                     bram_we <= "00000000"; -- Read
                                     bram_en <= '1'; -- Enable
                                     
-                                    cycle_count <= 1;
+                                    cycle_count <= 2;
                                                     
                                     stateIndex <= 2; -- Move to the next state
                                     state <= BRAM_READ;
@@ -325,7 +238,7 @@ begin
                                 bram_we <= "00000000"; -- Read
                                 bram_en <= '1'; -- Enable
                                 
-                                cycle_count <= 1;
+                                cycle_count <= 2;
                                 
                                 stateIndex <= 1; -- Move to the next state
                                 state <= BRAM_WRITE;
@@ -340,7 +253,7 @@ begin
                                     bram_we <= "11111111"; -- Enable all 8 bytes for writing
                                     bram_en <= '1'; -- Enable
 
-                                    cycle_count <= 1;
+                                    cycle_count <= 2;
                                     
                                     state <= nextState;
                                 else
@@ -349,7 +262,7 @@ begin
                                     bram_we <= "00000000"; -- Read
                                     bram_en <= '1'; -- Enable
 
-                                    cycle_count <= 1;
+                                    cycle_count <= 2;
                                     
                                     stateIndex <= 2; -- Move to the next state
                                     state <= BRAM_WRITE;
@@ -450,7 +363,7 @@ begin
                                     addr <= alignedDDR_address;
                                     mem_read <= '1';
                                     
-                                    cycle_count <= 1;
+                                    cycle_count <= 2;
                                     stateIndex <= 1; -- Move to the next state
                                     state <= DDR_READ;
                         
@@ -471,7 +384,7 @@ begin
                                             addr <= alignedDDR_address + 1;
                                             mem_read <= '1';
                         
-                                            cycle_count <= 1;
+                                            cycle_count <= 2;
                                             stateIndex <= 2; -- Move to the next state
                                             state <= DDR_READ;
                                         end if;
@@ -536,35 +449,49 @@ begin
                     when GET_1_ARG =>
                         case stateIndexMain is 
                             when 0 =>
-                                -- GET Store Location
-                                Argument1 <= LocalRIP;
-                                nextState <= GET_1_ARG;
-                                state <= BRAM_READ;
-                                stateIndexMain <= 1;
+                                case CIR(3 downto 2) is
+                                    when "00" =>
+                                        -- REG
+                                        Registers(14) <= Registers(14) + 1;
+                                        
+                                        Argument1 <= Registers(to_integer(unsigned(Result(20 downto 16))));
+                                        state <= nextNextState;
+                                        stateIndexMain <= 0;                                -- GET Store Location
+                                    
+                                    when "11" =>
+                                        -- RDI
+                                        Registers(14) <= Registers(14) + 1;
+                                            
+                                        Argument1 <= Registers(to_integer(unsigned(Result(20 downto 16))));
+                                        state <= BRAM_READ;
+                                        nextState <= GET_1_ARG;
+                                        stateIndexMain <= 2;
+
+                                    when others=>
+                                        Argument1 <= Registers(14);
+                                        nextState <= GET_1_ARG;
+                                        state <= BRAM_READ;
+                                        stateIndexMain <= 1;
+                                end case;
                             
                             when 1 =>
                                 case CIR(3 downto 2) is
                                     when "00" =>
                                         -- REG
-                                        LocalRIP <= LocalRIP + 1;
-                                        
-                                        Argument1 <= x"00000000000000" & Result(7 downto 0);
-                                        state <= READ_REGISTER;
-                                        nextState <= GET_1_ARG;
-                                        stateIndexMain <= 2;
+                                        -- THROW ERR
                                         
                                     when "01" =>
                                         -- DIR
-                                        LocalRIP <= LocalRIP + 8;
+                                        Registers(14) <= Registers(14) + 8;
                                         
                                         Argument1 <= Result;
-                                        state <= READ_REGISTER;
+                                        state <= BRAM_READ;
                                         nextState <= GET_1_ARG;
                                         stateIndexMain <= 2;
                                         
                                     when "10" =>
                                         -- IMM
-                                        LocalRIP <= LocalRIP + 8;
+                                        Registers(14) <= Registers(14) + 8;
                                         
                                         Argument1 <= Result;
                                         stateIndexMain <= 0;
@@ -572,13 +499,7 @@ begin
                                                                                         
                                     when "11" =>
                                         -- RDI
-                                        LocalRIP <= LocalRIP + 1;
-                                        
-                                        Argument1 <= x"00000000000000" & Result(7 downto 0);
-                                        state <= READ_REGISTER;
-                                        nextState <= GET_1_ARG;
-                                        stateIndexMain <= 2;
-                                        
+                                        -- THROW ERR
                                                                                     
                                     when others =>
                                 end case;
@@ -604,30 +525,6 @@ begin
                                     when "11" =>
                                        -- RDI
                                         Argument1 <= Result;
-                                        state <= BRAM_READ;
-                                        nextState <= GET_1_ARG;
-                                        stateIndexMain <= 3;
-       
-                                    when others =>
-                                end case;
-                                
-                            when 3 =>
-                                case CIR(3 downto 2) is
-                                    when "00" =>
-                                        -- REG
-                                        -- THROW ERRR
-                                        
-                                    when "01" =>
-                                        -- DIR
-                                        -- THROW ERRR
-                                        
-                                    when "10" =>
-                                        -- IMM
-                                        -- THROW ERRR
-                                        
-                                    when "11" =>
-                                        -- RDI
-                                        Argument1 <= Result;
                                         stateIndexMain <= 0;
                                         state <= nextNextState;
        
@@ -641,17 +538,10 @@ begin
                     when GET_1_ALT =>
                         case stateIndexMain is 
                             when 0 =>
-                                -- GET Store Location
-                                Argument1 <= LocalRIP;
-                                nextState <= GET_1_ALT;
-                                state <= BRAM_READ;
-                                stateIndexMain <= 1;
-                            
-                            when 1 =>
                                 -- REG
-                                LocalRIP <= LocalRIP + 1;
+                                Registers(14) <= Registers(14) + 1;
                                     
-                                Argument1 <= x"00000000000000" & Result(7 downto 0);
+                                Argument1 <= x"00000000000000" & Result(23 downto 16);
                                 stateIndexMain <= 0;
                                 state <= nextNextState;
                             
@@ -663,22 +553,37 @@ begin
                         case stateIndexMain is
                             when 0 =>
                                 -- GET Store Location
-                                Argument1 <= LocalRIP;
-                                nextState <= GET_2_ARG;
-                                state <= BRAM_READ;
-                                stateIndexMain <= 1;
+                                case CIR(3 downto 2) is
+                                    when "00" =>
+                                        -- REG
+                                        Registers(14) <= Registers(14) + 1;
+                                        
+                                        Argument3 <= Registers(to_integer(unsigned(Result(20 downto 16))));
+                                        stateIndexMain <= 3;
+                                    
+                                    when "11" =>
+                                        -- RDI
+                                        Registers(14) <= Registers(14) + 1;
+                                            
+                                        Argument3 <= Registers(to_integer(unsigned(Result(20 downto 16))));
+                                        stateIndexMain <= 2;
+
+                                    when others=>
+                                        Argument1 <= Registers(14);
+                                        nextState <= GET_2_ARG;
+                                        state <= BRAM_READ;
+                                        stateIndexMain <= 1;
+                                end case;
                             
                             when 1 =>
                                 case CIR(3 downto 2) is
                                     when "00" =>
                                         -- REG
-                                        LocalRIP <= LocalRIP + 1;
-                                        Argument3 <= x"00000000000000" & Result(7 downto 0);
-                                        stateIndexMain <= 3;
+                                        -- THROW ERR
                                         
                                     when "01" =>
                                         -- DIR
-                                        LocalRIP <= LocalRIP + 8;
+                                        Registers(14) <= Registers(14) + 8;
                                         Argument3 <= Result;
                                         stateIndexMain <= 3;
                                         
@@ -688,83 +593,90 @@ begin
                                         
                                     when "11" =>
                                         -- RDI
-                                        LocalRIP <= LocalRIP + 1;
-                                        
-                                        Argument1 <= x"00000000000000" & Result(7 downto 0);
-                                        state <= READ_REGISTER;
-                                        nextState <= GET_2_ARG;
-                                        stateIndexMain <= 2;
+                                        -- THROW ERR
                                         
                                                                                     
                                     when others =>
                                 end case;
                                 
-                            when 2 =>
-                                case CIR(3 downto 2) is
-                                    when "00" =>
-                                        -- REG
-                                        -- THROW ERRR
-                                        
-                                    when "01" =>
-                                        -- DIR
-                                        -- THROW ERRR
-                                        
-                                    when "10" =>
-                                        -- IMM
-                                        -- THROW ERRR
-                                        
-                                    when "11" =>
-                                        -- RDI
-                                        Argument3 <= Result;
-                                        stateIndexMain <= 3;
-       
-                                    when others =>
-                                end case;
-                                
                             when 3 =>
-                                -- GET Store Location
-                                Argument1 <= LocalRIP;
-                                nextState <= GET_2_ARG;
-                                state <= BRAM_READ;
-                                stateIndexMain <= 4;
+                                case CIR(3 downto 0) is
+                                    when "0000" =>
+                                        -- REG REG
+                                        Registers(14) <= Registers(14) + 1;
+                                        
+                                        Argument2 <= Registers(to_integer(unsigned(Result(28 downto 24))));
+                                        state <= nextNextState;
+                                        stateIndexMain <= 0;
+                                        
+                                    when "1100" =>
+                                        -- RDI REG
+                                        Registers(14) <= Registers(14) + 1;
+                                        
+                                        Argument2 <= Registers(to_integer(unsigned(Result(28 downto 24))));
+                                        state <= nextNextState;
+                                        stateIndexMain <= 0;
+                                    
+                                    when "0011" =>
+                                        -- REG RDI
+                                        Registers(14) <= Registers(14) + 1;
+                                            
+                                        Argument1 <= Registers(to_integer(unsigned(Result(28 downto 24))));
+                                        state <= BRAM_READ;
+                                        nextState <= GET_2_ARG;
+                                        stateIndexMain <= 6;
+
+                                    when "1111" =>
+                                        -- RDI RDI
+                                        Registers(14) <= Registers(14) + 1;
+                                            
+                                        Argument1 <= Registers(to_integer(unsigned(Result(28 downto 24))));
+                                        state <= BRAM_READ;
+                                        nextState <= GET_2_ARG;
+                                        stateIndexMain <= 6;
+
+                                    when others=>
+                                        Argument1 <= Registers(14);
+                                        nextState <= GET_2_ARG;
+                                        state <= BRAM_READ;
+                                        stateIndexMain <= 4;
+                                end case;
                             
                             when 4 =>
                                 case CIR(1 downto 0) is
                                     when "00" =>
                                         -- REG
-                                        LocalRIP <= LocalRIP + 1;
+                                        Registers(14) <= Registers(14) + 1;
                                         
-                                        Argument1 <= x"00000000000000" & Result(7 downto 0);
-                                        state <= READ_REGISTER;
-                                        nextState <= GET_2_ARG;
-                                        stateIndexMain <= 5;
+                                        Argument2 <= Registers(to_integer(unsigned(Result(4 downto 0))));
+                                        state <= nextNextState;
+                                        stateIndexMain <= 0;
                                         
                                     when "01" =>
                                         -- DIR
-                                        LocalRIP <= LocalRIP + 8;
+                                        Registers(14) <= Registers(14) + 8;
                                         
                                         Argument1 <= Result;
-                                        state <= READ_REGISTER;
+                                        state <= BRAM_READ;
                                         nextState <= GET_2_ARG;
-                                        stateIndexMain <= 5;
+                                        stateIndexMain <= 6;
                                         
                                     when "10" =>
                                         -- IMM
-                                        LocalRIP <= LocalRIP + 8;
+                                        Registers(14) <= Registers(14) + 8;
                                         
                                         Argument2 <= Result;
                                         stateIndexMain <= 0;
                                         state <= nextNextState;
-                                                                                        
+                                        
                                     when "11" =>
                                         -- RDI
-                                        LocalRIP <= LocalRIP + 1;
-                                        
-                                        Argument1 <= x"00000000000000" & Result(7 downto 0);
-                                        state <= READ_REGISTER;
+                                        Registers(14) <= Registers(14) + 1;
+                                            
+                                        Argument1 <= Registers(to_integer(unsigned(Result(4 downto 0))));
+                                        state <= BRAM_READ;
                                         nextState <= GET_2_ARG;
-                                        stateIndexMain <= 5;
-                                        
+                                        stateIndexMain <= 6;
                                                                                     
                                     when others =>
                                 end case;
@@ -773,9 +685,7 @@ begin
                                 case CIR(1 downto 0) is
                                     when "00" =>
                                         -- REG
-                                        Argument2 <= Result;
-                                        state <= nextNextState;
-                                        stateIndexMain <= 0;
+                                        -- THROW ERR
                                         
                                     when "01" =>
                                         -- DIR
@@ -788,11 +698,8 @@ begin
                                         -- THROW ERRR
                                         
                                     when "11" =>
-                                       -- RDI
-                                        Argument1 <= Result;
-                                        state <= BRAM_READ;
-                                        nextState <= GET_2_ARG;
-                                        stateIndexMain <= 6;
+                                         -- RDI
+                                        -- THROW
        
                                     when others =>
                                 end case;
@@ -828,60 +735,63 @@ begin
                         case stateIndexMain is 
                             when 0 =>
                                 -- GET Store Location
-                                Argument1 <= LocalRIP;
-                                nextState <= GET_3_ARG;
-                                state <= BRAM_READ;
-                                stateIndexMain <= 1;
-                            
-                            when 1 =>
-                                    -- REG
-                                    LocalRIP <= LocalRIP + 1;
-                                        
-                                    Argument3 <= x"00000000000000" & Result(7 downto 0);
-                                    stateIndexMain <= 2;
+                                -- REG
+                                Registers(14) <= Registers(14) + 1;
+                                    
+                                Argument3 <= x"00000000000000" & Result(23 downto 16);
+                                stateIndexMain <= 2;
                                 
                             when 2 =>
                                 -- GET Store Location
-                                Argument1 <= LocalRIP;
-                                nextState <= GET_3_ARG;
-                                state <= BRAM_READ;
-                                stateIndexMain <= 3;
+                                case CIR(3 downto 2) is
+                                    when "00" =>
+                                        -- REG
+                                        Registers(14) <= Registers(14) + 1;
+                                        
+                                        Argument2 <= Registers(to_integer(unsigned(Result(28 downto 24))));
+                                        stateIndexMain <= 6;
+                                    
+                                    when "11" =>
+                                        -- RDI
+                                        Registers(14) <= Registers(14) + 1;
+                                            
+                                        Argument1 <= Registers(to_integer(unsigned(Result(28 downto 24))));
+                                        state <= BRAM_READ;
+                                        nextState <= GET_3_ARG;
+                                        stateIndexMain <= 4;
+
+                                    when others=>
+                                        Argument1 <= Registers(14);
+                                        nextState <= GET_3_ARG;
+                                        state <= BRAM_READ;
+                                        stateIndexMain <= 3;
+                                end case;
                             
                             when 3 =>
                                 case CIR(3 downto 2) is
                                     when "00" =>
                                         -- REG
-                                        LocalRIP <= LocalRIP + 1;
-                                        
-                                        Argument1 <= x"00000000000000" & Result(7 downto 0);
-                                        state <= READ_REGISTER;
-                                        nextState <= GET_3_ARG;
-                                        stateIndexMain <= 4;
+                                        -- THROW ERR
                                         
                                     when "01" =>
                                         -- DIR
-                                        LocalRIP <= LocalRIP + 8;
+                                        Registers(14) <= Registers(14) + 8;
                                         
                                         Argument1 <= Result;
-                                        state <= READ_REGISTER;
+                                        state <= BRAM_READ;
                                         nextState <= GET_3_ARG;
                                         stateIndexMain <= 4;
                                         
                                     when "10" =>
                                         -- IMM
-                                        LocalRIP <= LocalRIP + 8;
+                                        Registers(14) <= Registers(14) + 8;
                                         
                                         Argument2 <= Result;
                                         stateIndexMain <= 6;
                                                                                         
                                     when "11" =>
                                         -- RDI
-                                        LocalRIP <= LocalRIP + 1;
-                                        
-                                        Argument1 <= x"00000000000000" & Result(7 downto 0);
-                                        state <= READ_REGISTER;
-                                        nextState <= GET_3_ARG;
-                                        stateIndexMain <= 4;
+                                        -- Throw ERR
                                         
                                                                                     
                                     when others =>
@@ -891,8 +801,7 @@ begin
                                 case CIR(3 downto 2) is
                                     when "00" =>
                                         -- REG
-                                        Argument2 <= Result;
-                                        stateIndexMain <= 6;
+                                        -- THROW ERR
                                         
                                     when "01" =>
                                         -- DIR
@@ -906,30 +815,6 @@ begin
                                     when "11" =>
                                        -- RDI
                                         Argument2 <= Result;
-                                        state <= BRAM_READ;
-                                        nextState <= GET_3_ARG;
-                                        stateIndexMain <= 5;
-       
-                                    when others =>
-                                end case;
-                                
-                            when 5 =>
-                                case CIR(3 downto 2) is
-                                    when "00" =>
-                                        -- REG
-                                        -- THROW ERRR
-                                        
-                                    when "01" =>
-                                        -- DIR
-                                        -- THROW ERRR
-                                        
-                                    when "10" =>
-                                        -- IMM
-                                        -- THROW ERRR
-                                        
-                                    when "11" =>
-                                        -- RDI
-                                        Argument2 <= Result;
                                         stateIndexMain <= 6;
        
                                     when others =>
@@ -937,34 +822,70 @@ begin
                             
                             when 6 =>
                                 -- GET Store Location
-                                Argument1 <= LocalRIP;
-                                nextState <= GET_3_ARG;
-                                state <= BRAM_READ;
-                                stateIndexMain <= 7;
+                                case CIR(3 downto 0) is
+                                    when "0000" =>
+                                        -- REG REG
+                                        Registers(14) <= Registers(14) + 1;
+                                        
+                                        Argument2 <= Registers(to_integer(unsigned(Result(28 downto 24))));
+                                        state <= nextNextState;
+                                        stateIndexMain <= 0;
+                                        
+                                    when "1100" =>
+                                        -- RDI REG
+                                        Registers(14) <= Registers(14) + 1;
+                                        
+                                        Argument2 <= Registers(to_integer(unsigned(Result(28 downto 24))));
+                                        state <= nextNextState;
+                                        stateIndexMain <= 0;
+                                    
+                                    when "0011" =>
+                                        -- REG RDI
+                                        Registers(14) <= Registers(14) + 1;
+                                            
+                                        Argument1 <= Registers(to_integer(unsigned(Result(28 downto 24))));
+                                        state <= BRAM_READ;
+                                        nextState <= GET_3_ARG;
+                                        stateIndexMain <= 8;
+
+                                    when "1111" =>
+                                        -- RDI RDI
+                                        Registers(14) <= Registers(14) + 1;
+                                            
+                                        Argument1 <= Registers(to_integer(unsigned(Result(28 downto 24))));
+                                        state <= BRAM_READ;
+                                        nextState <= GET_3_ARG;
+                                        stateIndexMain <= 8;
+
+                                    when others=>
+                                        Argument1 <= Registers(14);
+                                        nextState <= GET_3_ARG;
+                                        state <= BRAM_READ;
+                                        stateIndexMain <= 7;
+                                end case;
                             
                             when 7 =>
                                 case CIR(1 downto 0) is
                                     when "00" =>
                                         -- REG
-                                        LocalRIP <= LocalRIP + 1;
+                                        Registers(14) <= Registers(14) + 1;
                                         
-                                        Argument1 <= x"00000000000000" & Result(7 downto 0);
-                                        state <= READ_REGISTER;
-                                        nextState <= GET_3_ARG;
-                                        stateIndexMain <= 8;
+                                        Argument1 <= Registers(to_integer(unsigned(Result(4 downto 0))));
+                                        state <= nextNextState;
+                                        stateIndexMain <= 0;
                                         
                                     when "01" =>
                                         -- DIR
-                                        LocalRIP <= LocalRIP + 8;
+                                        Registers(14) <= Registers(14) + 8;
                                         
                                         Argument1 <= Result;
-                                        state <= READ_REGISTER;
+                                        state <= BRAM_READ;
                                         nextState <= GET_3_ARG;
                                         stateIndexMain <= 8;
                                         
                                     when "10" =>
                                         -- IMM
-                                        LocalRIP <= LocalRIP + 8;
+                                        Registers(14) <= Registers(14) + 8;
                                         
                                         Argument1 <= Result;
                                         stateIndexMain <= 0;
@@ -972,12 +893,12 @@ begin
                                                                                         
                                     when "11" =>
                                         -- RDI
-                                        LocalRIP <= LocalRIP + 1;
+                                        Registers(14) <= Registers(14) + 1;
                                         
-                                        Argument1 <= x"00000000000000" & Result(7 downto 0);
-                                        state <= READ_REGISTER;
-                                        nextState <= GET_3_ARG;
+                                        Argument1 <= Registers(to_integer(unsigned(Result(4 downto 0))));
                                         stateIndexMain <= 8;
+                                        state <= BRAM_READ;
+                                        nextState <= GET_3_ARG;
                                         
                                                                                     
                                     when others =>
@@ -987,9 +908,7 @@ begin
                                 case CIR(1 downto 0) is
                                     when "00" =>
                                         -- REG
-                                        Argument1 <= Result;
-                                        state <= nextNextState;
-                                        stateIndexMain <= 0;
+                                        -- TROW ERR
                                         
                                     when "01" =>
                                         -- DIR
@@ -1003,30 +922,6 @@ begin
                                         
                                     when "11" =>
                                        -- RDI
-                                        Argument1 <= Result;
-                                        state <= BRAM_READ;
-                                        nextState <= GET_3_ARG;
-                                        stateIndexMain <= 9;
-       
-                                    when others =>
-                                end case;
-                                
-                            when 9 =>
-                                case CIR(1 downto 0) is
-                                    when "00" =>
-                                        -- REG
-                                        -- THROW ERRR
-                                        
-                                    when "01" =>
-                                        -- DIR
-                                        -- THROW ERRR
-                                        
-                                    when "10" =>
-                                        -- IMM
-                                        -- THROW ERRR
-                                        
-                                    when "11" =>
-                                        -- RDI
                                         Argument1 <= Result;
                                         stateIndexMain <= 0;
                                         state <= nextNextState;
@@ -1045,15 +940,15 @@ begin
                         
                     when FETCH_INSTRUCTION =>
                         -- -- Save RIP First
-                        -- LocalRIP <= Result;
+                        -- Registers(14) <= Result;
                     
                         nextState <= INC_RIP;
                         state <= BRAM_READ;
-                        Argument1 <= LocalRIP;
+                        Argument1 <= Registers(14);
                         
                     when INC_RIP =>
                         -- Increment RIP
-                        LocalRIP <= LocalRIP + 2;
+                        Registers(14) <= Registers(14) + 2;
                         
                         -- Save INSTRUCTION
                         CIR <= Result(15 downto 0);
@@ -1137,38 +1032,8 @@ begin
                                 case CIR(3 downto 2) is
                                     when "00" =>
                                         -- REG
-                                        case Argument3 is
-                                            when x"000000000000000E" =>
-                                                LocalRIP <= Argument2;
-                                                state <= IDLE; -- state <= SAVE_RIP;
-                                            when x"000000000000000D" =>
-                                                LocalRSP <= Argument2;
-                                                state <= IDLE; -- state <= SAVE_RIP;
-                                            when x"000000000000000F" =>
-                                                LocalStatus <= Argument2;
-                                                state <= IDLE; -- state <= SAVE_RIP;
-                                            when x"0000000000000010" =>
-                                                LocalErr <= Argument2;
-                                                state <= IDLE; -- state <= SAVE_RIP;
-                                            when x"0000000000000011" =>
-                                                LocalInterrupt <= Argument2;
-                                                state <= IDLE; -- state <= SAVE_RIP;
-                                            when others =>
-                                                case stateIndexMain is
-                                                    when 0 =>
-                                                        Argument1 <= Argument3;
-                                                        stateIndexMain <= 1;
-                                                        
-                                                    when 1 =>
-                                                        -- REG
-                                                        state <= STORE_REGISTER;
-                                                        nextState <= IDLE; -- nextState <= SAVE_RIP;
-                                                        
-                                                        stateIndexMain <= 0;
-                                                    
-                                                    when others =>
-                                                end case;
-                                        end case;
+                                        Registers(to_integer(unsigned(Argument3(4 downto 0)))) <= Argument2;
+                                        state <= IDLE;
                                         
                                     when "01" =>
                                         -- DIR
@@ -1188,7 +1053,7 @@ begin
                         
                             when "0000000011" =>
                                 -- JMP Instruction
-                                LocalRIP <= Argument1;
+                                Registers(14) <= Argument1;
                                 state <= IDLE; -- state <= SAVE_RIP; -- Get 1 args
                                 
                             when "0000000100" =>
@@ -1200,32 +1065,8 @@ begin
                                         stateIndexMain <= 1;
                                      
                                     when 1 =>
-                                        Argument1 <= Argument3;
-                                        stateIndexMain <= 2;
-                                        
-                                    when 2 =>
-                                        -- REG
-                                        case Argument1 is
-                                            when x"000000000000000E" =>
-                                                LocalRIP <= Argument2;
-                                                state <= IDLE; -- state <= SAVE_RIP;
-                                            when x"000000000000000D" =>
-                                                LocalRSP <= Argument2;
-                                                state <= IDLE; -- state <= SAVE_RIP;
-                                            when x"000000000000000F" =>
-                                                LocalStatus <= Argument2;
-                                                state <= IDLE; -- state <= SAVE_RIP;
-                                            when x"0000000000000010" =>
-                                                LocalErr <= Argument2;
-                                                state <= IDLE; -- state <= SAVE_RIP;
-                                            when x"0000000000000011" =>
-                                                LocalInterrupt <= Argument2;
-                                                state <= IDLE; -- state <= SAVE_RIP;
-                                            when others =>
-                                                state <= STORE_REGISTER;
-                                                nextState <= IDLE; -- nextState <= SAVE_RIP;
-                                        end case;
-                                        
+                                        Registers(to_integer(unsigned(Argument3(4 downto 0)))) <= Argument2;
+                                        state <= IDLE;
                                         stateIndexMain <= 0;
                                     
                                     when others =>
@@ -1235,25 +1076,20 @@ begin
                                 -- PUSH
                                 case stateIndexMain is
                                     when 0 =>
-                                        Argument1 <= Argument3;
-                                        state <= READ_REGISTER;
-                                        nextState <= EXEC_64;
-                                        stateIndexMain <= 1;
+                                        Argument2 <= Registers(to_integer(unsigned(Argument3(4 downto 0))));
 
-                                    when 1 =>
-                                        Argument2 <= Result;
                                         stateIndexMain <= 2; 
 
                                     when 2 =>
                                         -- Write to RSP Position
-                                        Argument1 <= LocalRSP;
+                                        Argument1 <= Registers(13);
                                         state <= BRAM_WRITE;
                                         stateIndexMain <= 3;
                                         nextState <= EXEC_64;
                                     
                                     when 3 =>
                                         -- Increment RSP
-                                        LocalRSP <= LocalRSP + 8;
+                                        Registers(13) <= Registers(13) + 8;
                                         stateIndexMain <= 0;
                                         state <= IDLE; -- state <= SAVE_RIP;
                                     
@@ -1268,26 +1104,20 @@ begin
                                         Argument3 <= Argument1;
 
                                         -- Decrement RSP
-                                        LocalRSP <= LocalRSP - 8;
+                                        Registers(13) <= Registers(13) - 8;
                                         stateIndexMain <= 0;
                                         state <= EXEC_64;
                                         
                                         
-                                        when 2 =>
+                                    when 2 =>
                                         -- Read from RSP
-                                        Argument1 <= LocalRSP;
+                                        Argument1 <= Registers(13);
                                         state <= BRAM_READ;
                                         state <= EXEC_64;
                                         stateIndexMain <= 3;
                                         
                                     when 3 =>
-                                        Argument1 <= Argument3;
-                                        Argument2 <= Result;
-
-                                        state <= STORE_REGISTER;
-                                
-                                        stateIndexMain <= 0;
-                                        nextState <= IDLE; -- nextState <= SAVE_RIP;
+                                        Registers(to_integer(unsigned(Argument3(4 downto 0)))) <= Result;
                                     
                                     when others =>
                                         -- Throw ERR
@@ -1299,42 +1129,42 @@ begin
                                     when "00000000" =>
                                         -- EQU
                                         if Argument2 = Argument1 then
-                                            LocalStatus <= LocalStatus or x"0000000000000004"; -- ... 01000
+                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 01000
                                         end if;
 
                                         state <= IDLE;
                                     when "00000001" =>
                                         -- NEQ
                                         if Argument2 /= Argument1 then
-                                            LocalStatus <= LocalStatus or x"0000000000000004"; -- ... 01000
+                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 01000
                                         end if;
 
                                         state <= IDLE;
                                     when "00000010" =>
                                         -- LEQ
                                         if Argument2 <= Argument1 then
-                                            LocalStatus <= LocalStatus or x"0000000000000004"; -- ... 01000
+                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 01000
                                         end if;
 
                                         state <= IDLE;
                                     when "00000011" =>
                                         -- GEQ
                                         if Argument2 >= Argument1 then
-                                            LocalStatus <= LocalStatus or x"0000000000000004"; -- ... 01000
+                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 01000
                                         end if;
 
                                         state <= IDLE;
                                     when "00000100" =>
                                         -- LT
                                         if Argument2 < Argument1 then
-                                            LocalStatus <= LocalStatus or x"0000000000000004"; -- ... 01000
+                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 01000
                                         end if;
 
                                         state <= IDLE;
                                     when "00000101" =>
                                         -- GT
                                         if Argument2 > Argument1 then
-                                            LocalStatus <= LocalStatus or x"0000000000000004"; -- ... 01000
+                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 01000
                                         end if;
 
                                         state <= IDLE;
@@ -1345,8 +1175,8 @@ begin
                                 
                             when "0000001000" =>
                                 -- JC
-                                if LocalStatus(2 downto 2) = "1" then
-                                    LocalRIP <= Argument1;
+                                if Registers(15)(2 downto 2) = "1" then
+                                    Registers(14) <= Argument1;
                                 end if;
 
                                 state <= IDLE;
@@ -1367,44 +1197,8 @@ begin
                                 case CIR(3 downto 2) is
                                     when "00" =>
                                         -- REG
-                                        case Argument3 is
-                                            when x"000000000000000E" =>
-                                                LocalRIP(31 downto 0) <= Argument2(31 downto 0);
-                                                state <= IDLE; -- state <= SAVE_RIP;
-                                            when x"000000000000000D" =>
-                                                LocalRSP(31 downto 0) <= Argument2(31 downto 0);
-                                                state <= IDLE; -- state <= SAVE_RIP;
-                                            when x"000000000000000F" =>
-                                                LocalStatus(31 downto 0) <= Argument2(31 downto 0);
-                                                state <= IDLE; -- state <= SAVE_RIP;
-                                            when x"0000000000000010" =>
-                                                LocalErr(31 downto 0) <= Argument2(31 downto 0);
-                                                state <= IDLE; -- state <= SAVE_RIP;
-                                            when x"0000000000000011" =>
-                                                LocalInterrupt(31 downto 0) <= Argument2(31 downto 0);
-                                                state <= IDLE; -- state <= SAVE_RIP;
-                                            when others =>
-                                                case stateIndexMain is
-                                                    when 0 =>
-                                                        Argument1 <= Argument3;
-                                                        state <= READ_REGISTER;
-                                                        nextState <= EXEC_32;
-                                                        
-                                                        stateIndexMain <= 1;
-                                                        
-                                                    when 1 =>
-                                                        Argument2(63 downto 32) <= Result(63 downto 32);
-                                                        state <= STORE_REGISTER;
-                                                        nextState <= EXEC_32;
-                                                        
-                                                        stateIndexMain <= 2;
-                                                        
-                                                    when 2 =>
-                                                        stateIndexMain <= 0;
-                                                        nextState <= IDLE; -- nextState <= SAVE_RIP;
-                                                    when others =>
-                                                end case;
-                                        end case;
+                                        Registers(to_integer(unsigned(Argument3(4 downto 0))))(31 downto 0) <= Argument2(31 downto 0);
+                                        state <= IDLE;
                                         
                                     when "01" =>
                                         -- DIR
@@ -1468,49 +1262,8 @@ begin
                                         stateIndexMain <= 1;
                                      
                                     when 1 =>
-                                        Argument1 <= Argument3;
-                                        stateIndexMain <= 2;
-                                        
-                                    when 2 =>
-                                        -- REG
-                                        case Argument1 is
-                                            when x"000000000000000E" =>
-                                                LocalRIP(31 downto 0) <= Argument2(31 downto 0);
-                                                state <= IDLE; -- state <= SAVE_RIP;
-                                            when x"000000000000000D" =>
-                                                LocalRSP(31 downto 0) <= Argument2(31 downto 0);
-                                                state <= IDLE; -- state <= SAVE_RIP;
-                                            when x"000000000000000F" =>
-                                                LocalStatus(31 downto 0) <= Argument2(31 downto 0);
-                                                state <= IDLE; -- state <= SAVE_RIP;
-                                            when x"0000000000000010" =>
-                                                LocalErr(31 downto 0) <= Argument2(31 downto 0);
-                                                state <= IDLE; -- state <= SAVE_RIP;
-                                            when x"0000000000000011" =>
-                                                LocalInterrupt(31 downto 0) <= Argument2(31 downto 0);
-                                                state <= IDLE; -- state <= SAVE_RIP;
-                                            when others =>
-                                                case stateIndexMain is
-                                                    when 0 =>
-                                                        state <= READ_REGISTER;
-                                                        nextState <= EXEC_32;
-                                                        
-                                                        stateIndexMain <= 1;
-                                                        
-                                                    when 1 =>
-                                                        Argument2(63 downto 32) <= Result(63 downto 32);
-                                                        state <= STORE_REGISTER;
-                                                        nextState <= EXEC_32;
-                                                        
-                                                        stateIndexMain <= 2;
-                                                        
-                                                    when 2 =>
-                                                        stateIndexMain <= 0;
-                                                        nextState <= IDLE; -- nextState <= SAVE_RIP;
-                                                    when others =>
-                                                end case;
-                                        end case;
-                                        
+                                        Registers(to_integer(unsigned(Argument3(4 downto 0))))(31 downto 0) <= Argument2(31 downto 0);
+                                        state <= IDLE;
                                         stateIndexMain <= 0;
                                     
                                     when others =>
@@ -1522,42 +1275,42 @@ begin
                                     when "00000000" =>
                                         -- EQU
                                         if Argument2(31 downto 0) = Argument1(31 downto 0) then
-                                            LocalStatus <= LocalStatus or x"0000000000000004"; -- ... 01000
+                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 01000
                                         end if;
 
                                         state <= IDLE;
                                     when "00000001" =>
                                         -- NEQ
                                         if Argument2(31 downto 0) /= Argument1(31 downto 0) then
-                                            LocalStatus <= LocalStatus or x"0000000000000004"; -- ... 01000
+                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 01000
                                         end if;
 
                                         state <= IDLE;
                                     when "00000010" =>
                                         -- LEQ
                                         if Argument2(31 downto 0) <= Argument1(31 downto 0) then
-                                            LocalStatus <= LocalStatus or x"0000000000000004"; -- ... 01000
+                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 01000
                                         end if;
 
                                         state <= IDLE;
                                     when "00000011" =>
                                         -- GEQ
                                         if Argument2(31 downto 0) >= Argument1(31 downto 0) then
-                                            LocalStatus <= LocalStatus or x"0000000000000004"; -- ... 01000
+                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 01000
                                         end if;
 
                                         state <= IDLE;
                                     when "00000100" =>
                                         -- LT
                                         if Argument2(31 downto 0) < Argument1(31 downto 0) then
-                                            LocalStatus <= LocalStatus or x"0000000000000004"; -- ... 01000
+                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 01000
                                         end if;
 
                                         state <= IDLE;
                                     when "00000101" =>
                                         -- GT
                                         if Argument2(31 downto 0) > Argument1(31 downto 0) then
-                                            LocalStatus <= LocalStatus or x"0000000000000004"; -- ... 01000
+                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 01000
                                         end if;
 
                                         state <= IDLE;
@@ -1582,45 +1335,8 @@ begin
                                 case CIR(3 downto 2) is
                                     when "00" =>
                                         -- REG
-                                        case Argument3 is
-                                            when x"000000000000000E" =>
-                                                LocalRIP(15 downto 0) <= Argument3(15 downto 0);
-                                                state <= IDLE; -- state <= SAVE_RIP;
-                                            when x"000000000000000D" =>
-                                                LocalRSP(15 downto 0) <= Argument3(15 downto 0);
-                                                state <= IDLE; -- state <= SAVE_RIP;
-                                            when x"000000000000000F" =>
-                                                LocalStatus(15 downto 0) <= Argument3(15 downto 0);
-                                                state <= IDLE; -- state <= SAVE_RIP;
-                                            when x"0000000000000010" =>
-                                                LocalErr(15 downto 0) <= Argument3(15 downto 0);
-                                                state <= IDLE; -- state <= SAVE_RIP;
-                                            when x"0000000000000011" =>
-                                                LocalInterrupt(15 downto 0) <= Argument3(15 downto 0);
-                                                state <= IDLE; -- state <= SAVE_RIP;
-                                            when others =>
-
-                                                case stateIndexMain is
-                                                    when 0 =>
-                                                        Argument1 <= Argument3;
-                                                        state <= READ_REGISTER;
-                                                        nextState <= EXEC_16;
-                                                        
-                                                        stateIndexMain <= 1;
-                                                        
-                                                    when 1 =>
-                                                        Argument2(63 downto 16) <= Result(63 downto 16);
-                                                        state <= STORE_REGISTER;
-                                                        nextState <= EXEC_16;
-                                                        
-                                                        stateIndexMain <= 2;
-                                                        
-                                                    when 2 =>
-                                                        stateIndexMain <= 0;
-                                                        nextState <= IDLE; -- nextState <= SAVE_RIP;
-                                                    when others =>
-                                                end case;
-                                        end case;
+                                        Registers(to_integer(unsigned(Argument3(4 downto 0))))(15 downto 0) <= Argument2(15 downto 0);
+                                        state <= IDLE;
                                         
                                     when "01" =>
                                         -- DIR
@@ -1681,50 +1397,8 @@ begin
                                         stateIndexMain <= 1;
                                      
                                     when 1 =>
-                                        Argument1 <= Argument3;
-                                        stateIndexMain <= 2;
-                                        
-                                    when 2 =>
-                                        -- REG
-                                        case Argument1 is
-                                            when x"000000000000000E" =>
-                                                LocalRIP(15 downto 0) <= Argument3(15 downto 0);
-                                                state <= IDLE; -- state <= SAVE_RIP;
-                                            when x"000000000000000D" =>
-                                                LocalRSP(15 downto 0) <= Argument3(15 downto 0);
-                                                state <= IDLE; -- state <= SAVE_RIP;
-                                            when x"000000000000000F" =>
-                                                LocalStatus(15 downto 0) <= Argument3(15 downto 0);
-                                                state <= IDLE; -- state <= SAVE_RIP;
-                                            when x"0000000000000010" =>
-                                                LocalErr(15 downto 0) <= Argument3(15 downto 0);
-                                                state <= IDLE; -- state <= SAVE_RIP;
-                                            when x"0000000000000011" =>
-                                                LocalInterrupt(15 downto 0) <= Argument3(15 downto 0);
-                                                state <= IDLE; -- state <= SAVE_RIP;
-                                            when others =>
-
-                                                case stateIndexMain is
-                                                    when 0 =>
-                                                        state <= READ_REGISTER;
-                                                        nextState <= EXEC_16;
-                                                        
-                                                        stateIndexMain <= 1;
-                                                        
-                                                    when 1 =>
-                                                        Argument2(63 downto 16) <= Result(63 downto 16);
-                                                        state <= STORE_REGISTER;
-                                                        nextState <= EXEC_16;
-                                                        
-                                                        stateIndexMain <= 2;
-                                                        
-                                                    when 2 =>
-                                                        stateIndexMain <= 0;
-                                                        nextState <= IDLE; -- nextState <= SAVE_RIP;
-                                                    when others =>
-                                                end case;
-                                        end case;
-                                        
+                                        Registers(to_integer(unsigned(Argument3(4 downto 0))))(15 downto 0) <= Argument2(15 downto 0);
+                                        state <= IDLE;
                                         stateIndexMain <= 0;
                                     
                                     when others =>
@@ -1736,42 +1410,42 @@ begin
                                     when "00000000" =>
                                         -- EQU
                                         if Argument2(15 downto 0) = Argument1(15 downto 0) then
-                                            LocalStatus <= LocalStatus or x"0000000000000004"; -- ... 01000
+                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 01000
                                         end if;
 
                                         state <= IDLE;
                                     when "00000001" =>
                                         -- NEQ
                                         if Argument2(15 downto 0) /= Argument1(15 downto 0) then
-                                            LocalStatus <= LocalStatus or x"0000000000000004"; -- ... 01000
+                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 01000
                                         end if;
 
                                         state <= IDLE;
                                     when "00000010" =>
                                         -- LEQ
                                         if Argument2(15 downto 0) <= Argument1(15 downto 0) then
-                                            LocalStatus <= LocalStatus or x"0000000000000004"; -- ... 01000
+                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 01000
                                         end if;
 
                                         state <= IDLE;
                                     when "00000011" =>
                                         -- GEQ
                                         if Argument2(15 downto 0) >= Argument1(15 downto 0) then
-                                            LocalStatus <= LocalStatus or x"0000000000000004"; -- ... 01000
+                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 01000
                                         end if;
 
                                         state <= IDLE;
                                     when "00000100" =>
                                         -- LT
                                         if Argument2(15 downto 0) < Argument1(15 downto 0) then
-                                            LocalStatus <= LocalStatus or x"0000000000000004"; -- ... 01000
+                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 01000
                                         end if;
 
                                         state <= IDLE;
                                     when "00000101" =>
                                         -- GT
                                         if Argument2(15 downto 0) > Argument1(15 downto 0) then
-                                            LocalStatus <= LocalStatus or x"0000000000000004"; -- ... 01000
+                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 01000
                                         end if;
 
                                         state <= IDLE;
@@ -1796,45 +1470,8 @@ begin
                                 case CIR(3 downto 2) is
                                     when "00" =>
                                         -- REG
-                                        case Argument3 is
-                                            when x"000000000000000E" =>
-                                                LocalRIP(7 downto 0) <= Argument3(7 downto 0);
-                                                state <= IDLE; -- state <= SAVE_RIP;
-                                            when x"000000000000000D" =>
-                                                LocalRSP(7 downto 0) <= Argument3(7 downto 0);
-                                                state <= IDLE; -- state <= SAVE_RIP;
-                                            when x"000000000000000F" =>
-                                                LocalStatus(7 downto 0) <= Argument3(7 downto 0);
-                                                state <= IDLE; -- state <= SAVE_RIP;
-                                            when x"0000000000000010" =>
-                                                LocalErr(7 downto 0) <= Argument3(7 downto 0);
-                                                state <= IDLE; -- state <= SAVE_RIP;
-                                            when x"0000000000000011" =>
-                                                LocalInterrupt(7 downto 0) <= Argument3(7 downto 0);
-                                                state <= IDLE; -- state <= SAVE_RIP;
-                                            when others =>
-
-                                                case stateIndexMain is
-                                                    when 0 =>
-                                                        Argument1 <= Argument3;
-                                                        state <= READ_REGISTER;
-                                                        nextState <= EXEC_8;
-                                                        
-                                                        stateIndexMain <= 1;
-                                                        
-                                                    when 1 =>
-                                                        Argument2(63 downto 8) <= Result(63 downto 8);
-                                                        state <= STORE_REGISTER;
-                                                        nextState <= EXEC_8;
-                                                        
-                                                        stateIndexMain <= 2;
-                                                        
-                                                    when 2 =>
-                                                        stateIndexMain <= 0;
-                                                        nextState <= IDLE; -- nextState <= SAVE_RIP;
-                                                    when others =>
-                                                end case;
-                                        end case;
+                                        Registers(to_integer(unsigned(Argument3(4 downto 0))))(7 downto 0) <= Argument2(7 downto 0);
+                                        state <= IDLE;
                                         
                                     when "01" =>
                                         -- DIR
@@ -1895,49 +1532,8 @@ begin
                                         stateIndexMain <= 1;
                                      
                                     when 1 =>
-                                        Argument1 <= Argument3;
-                                        stateIndexMain <= 2;
-                                        
-                                    when 2 =>
-                                        -- REG
-                                        case Argument1 is
-                                            when x"000000000000000E" =>
-                                                LocalRIP(7 downto 0) <= Argument3(7 downto 0);
-                                                state <= IDLE; -- state <= SAVE_RIP;
-                                            when x"000000000000000D" =>
-                                                LocalRSP(7 downto 0) <= Argument3(7 downto 0);
-                                                state <= IDLE; -- state <= SAVE_RIP;
-                                            when x"000000000000000F" =>
-                                                LocalStatus(7 downto 0) <= Argument3(7 downto 0);
-                                                state <= IDLE; -- state <= SAVE_RIP;
-                                            when x"0000000000000010" =>
-                                                LocalErr(7 downto 0) <= Argument3(7 downto 0);
-                                                state <= IDLE; -- state <= SAVE_RIP;
-                                            when x"0000000000000011" =>
-                                                LocalInterrupt(7 downto 0) <= Argument3(7 downto 0);
-                                                state <= IDLE; -- state <= SAVE_RIP;
-                                            when others =>
-                                                case stateIndexMain is
-                                                    when 0 =>
-                                                        state <= READ_REGISTER;
-                                                        nextState <= EXEC_8;
-                                                        
-                                                        stateIndexMain <= 1;
-                                                        
-                                                    when 1 =>
-                                                        Argument2(63 downto 8) <= Result(63 downto 8);
-                                                        state <= STORE_REGISTER;
-                                                        nextState <= EXEC_8;
-                                                        
-                                                        stateIndexMain <= 2;
-                                                        
-                                                    when 2 =>
-                                                        stateIndexMain <= 0;
-                                                        nextState <= IDLE; -- nextState <= SAVE_RIP;
-                                                    when others =>
-                                                end case;
-                                        end case;
-                                        
+                                        Registers(to_integer(unsigned(Argument3(4 downto 0))))(16 downto 0) <= Argument2(16 downto 0);
+                                        state <= IDLE;
                                         stateIndexMain <= 0;
                                     
                                     when others =>
@@ -1950,42 +1546,42 @@ begin
                                     when "00000000" =>
                                         -- EQU
                                         if Argument2(7 downto 0) = Argument1(7 downto 0) then
-                                            LocalStatus <= LocalStatus or x"0000000000000004"; -- ... 01000
+                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 01000
                                         end if;
 
                                         state <= IDLE;
                                     when "00000001" =>
                                         -- NEQ
                                         if Argument2(7 downto 0) /= Argument1(7 downto 0) then
-                                            LocalStatus <= LocalStatus or x"0000000000000004"; -- ... 01000
+                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 01000
                                         end if;
 
                                         state <= IDLE;
                                     when "00000010" =>
                                         -- LEQ
                                         if Argument2(7 downto 0) <= Argument1(7 downto 0) then
-                                            LocalStatus <= LocalStatus or x"0000000000000004"; -- ... 01000
+                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 01000
                                         end if;
 
                                         state <= IDLE;
                                     when "00000011" =>
                                         -- GEQ
                                         if Argument2(7 downto 0) >= Argument1(7 downto 0) then
-                                            LocalStatus <= LocalStatus or x"0000000000000004"; -- ... 01000
+                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 01000
                                         end if;
 
                                         state <= IDLE;
                                     when "00000100" =>
                                         -- LT
                                         if Argument2(7 downto 0) < Argument1(7 downto 0) then
-                                            LocalStatus <= LocalStatus or x"0000000000000004"; -- ... 01000
+                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 01000
                                         end if;
 
                                         state <= IDLE;
                                     when "00000101" =>
                                         -- GT
                                         if Argument2(7 downto 0) > Argument1(7 downto 0) then
-                                            LocalStatus <= LocalStatus or x"0000000000000004"; -- ... 01000
+                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 01000
                                         end if;
 
                                         state <= IDLE;
@@ -2001,7 +1597,7 @@ begin
 
                     -- when SAVE_RIP =>
                     --     Argument1 <= x"000000000000000E";
-                    --     Argument2 <= LocalRIP;
+                    --     Argument2 <= Registers(14);
                     --     state <= STORE_REGISTER;
                     --     nextState <= END_CYCLE;
 
