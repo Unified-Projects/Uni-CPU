@@ -16,6 +16,8 @@ struct Line {
     std::string label;
     std::string content;
     uint64_t lineNumber;
+    uint64_t Offset;
+    bool Offsetter;
 };
 
 std::map<std::string, int> RegisterMap = {
@@ -45,6 +47,7 @@ std::map<std::string, int> RegisterMap = {
 
 struct LabelToAdd{
     unsigned long long Offset = 0;
+    unsigned long long OffsetOrig = 0;
     std::string Label = "";
 };
 
@@ -54,6 +57,8 @@ std::vector<uint8_t> BytesOut = {};
 
 std::vector<LabelToAdd> Labels = {};
 std::vector<LabelToAdd> LabelsNeeded = {};
+
+uint64_t CurrentOffset = 0;
 
 bool hasWhitespaceBeforeSemicolon(const std::string& line) {
     size_t semicolonPos = line.find(';');
@@ -108,19 +113,28 @@ int main(int argc, char* argv[]) {
     while (std::getline(ss, line)) {
         line = line.substr(0, line.find('\r'));
 
-        std::string label;
-        std::string content;
+        std::string label = "";
+        std::string content = "";
+        uint64_t offset = 0;
+        bool offstter = false;
         std::size_t colonPos = line.find(':');
 
         // Check if there's a label
         if (colonPos != std::string::npos) {
             label = line.substr(0, colonPos);
             content = line.substr(colonPos + 1);
-        } else {
+        } else if (line[0] == '.'){
+            // Special Line
+            if (line.substr(0, 6) == ".orig "){
+                offset = atoll(line.substr(6).data());
+                offstter = true;
+            }
+        } 
+        else {
             content = line;
         }
 
-        lines.push_back({label, content, lineNumber});
+        lines.push_back({label, content, lineNumber+1, offset, offstter});
         lineNumber++;
     }
 
@@ -410,7 +424,7 @@ int main(int argc, char* argv[]) {
                             }
                             if(!Found){
                                 // Must be a label
-                                LabelsNeeded.push_back({BytesOut.size() + 2 + ArgBytes.size(), extractedValue});
+                                LabelsNeeded.push_back({BytesOut.size() + 2 + ArgBytes.size(), 0, extractedValue});
                                 if (DebugMode)
                                     std::cout << "    Arg::" << i << ":: DIR::Label::" << extractedValue << std::endl;
                                 if((OperandCount == 3 && i == 1) || (OperandCount == 2 && i == 0) || (OperandCount == 1 && i == 0)){
@@ -461,7 +475,7 @@ int main(int argc, char* argv[]) {
                         }
                         else{
                             // Must be a label
-                            LabelsNeeded.push_back({BytesOut.size() + 2 + ArgBytes.size(), content});
+                            LabelsNeeded.push_back({BytesOut.size() + 2 + ArgBytes.size(), 0, content});
 
                             if (DebugMode)
                                 std::cout << "    Arg::" << i << ":: DIR::Label::" << content << std::endl;
@@ -546,7 +560,7 @@ int main(int argc, char* argv[]) {
                     extractedValue = Arg;
 
                     // Must be a label
-                    LabelsNeeded.push_back({BytesOut.size() + 2 + ArgBytes.size(), extractedValue});
+                    LabelsNeeded.push_back({BytesOut.size() + 2 + ArgBytes.size(), 0, extractedValue});
                     if (DebugMode)
                         std::cout << "    Arg::" << i << ":: IMM::Label::" << extractedValue << std::endl;
                     if((OperandCount == 3 && i == 1) || (OperandCount == 2 && i == 0) || (OperandCount == 1 && i == 0)){
@@ -581,7 +595,10 @@ int main(int argc, char* argv[]) {
                 continue;
             }
 
-            Labels.push_back({BytesOut.size(), l.label});
+            Labels.push_back({BytesOut.size() + CurrentOffset, BytesOut.size(), l.label});
+        }
+        else if(l.Offsetter){
+            CurrentOffset = l.Offset;
         }
     }
 
@@ -594,6 +611,13 @@ int main(int argc, char* argv[]) {
 
                 if (DebugMode)
                     std::cout << "Replacing::Label::" << x.Label << " with " << y.Offset << std::endl;
+            }
+            else if(y.Label == x.Label.substr(1) && x.Label[0] == '$'){
+                for(int i = 0; i < 8; i++){
+                    BytesOut.data()[x.Offset + i] = ((uint8_t*)(&(y.OffsetOrig)))[i];
+                }
+                if (DebugMode)
+                    std::cout << "Replacing::Label::Original::" << x.Label << " with " << y.OffsetOrig << std::endl;
             }
         }
     }
