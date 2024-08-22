@@ -22,8 +22,7 @@
       "blk_mem_gen_0": "",
       "CPU_0": "",
       "AXI_Master_0": "",
-      "util_vector_logic_0": "",
-      "sim_clk_gen_0": ""
+      "util_vector_logic_0": ""
     },
     "interface_ports": {
       "DDR": {
@@ -827,24 +826,18 @@
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "250000",
+                "value": "5e+07",
                 "value_src": "user_prop"
               },
               "CLK_DOMAIN": {
-                "value": "Setup_sim_clk_gen_0_0_clk",
+                "value": "Setup_processing_system7_0_0_FCLK_CLK0",
                 "value_src": "default_prop"
               }
             }
           },
           "reset": {
             "type": "rst",
-            "direction": "I",
-            "parameters": {
-              "POLARITY": {
-                "value": "ACTIVE_HIGH",
-                "value_src": "user_prop"
-              }
-            }
+            "direction": "I"
           },
           "interrupt": {
             "type": "intr",
@@ -934,7 +927,7 @@
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "250000",
+                "value": "5e+07",
                 "value_src": "user_prop"
               },
               "ID_WIDTH": {
@@ -1022,7 +1015,7 @@
                 "value_src": "auto"
               },
               "CLK_DOMAIN": {
-                "value": "Setup_sim_clk_gen_0_0_clk",
+                "value": "Setup_processing_system7_0_0_FCLK_CLK0",
                 "value_src": "default_prop"
               }
             },
@@ -1132,11 +1125,11 @@
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "250000",
+                "value": "5e+07",
                 "value_src": "user_prop"
               },
               "CLK_DOMAIN": {
-                "value": "Setup_sim_clk_gen_0_0_clk",
+                "value": "Setup_processing_system7_0_0_FCLK_CLK0",
                 "value_src": "default_prop"
               }
             }
@@ -1210,24 +1203,6 @@
           },
           "C_SIZE": {
             "value": "1"
-          }
-        }
-      },
-      "sim_clk_gen_0": {
-        "vlnv": "xilinx.com:ip:sim_clk_gen:1.0",
-        "ip_revision": "4",
-        "xci_name": "Setup_sim_clk_gen_0_0",
-        "xci_path": "ip\\Setup_sim_clk_gen_0_0\\Setup_sim_clk_gen_0_0.xci",
-        "inst_hier_path": "sim_clk_gen_0",
-        "parameters": {
-          "FREQ_HZ": {
-            "value": "250000"
-          },
-          "INITIAL_RESET_CLOCK_CYCLES": {
-            "value": "2"
-          },
-          "RESET_POLARITY": {
-            "value": "ACTIVE_HIGH"
           }
         }
       }
@@ -1339,7 +1314,7 @@
       },
       "processing_system7_0_FCLK_CLK0": {
         "ports": [
-          "sim_clk_gen_0/clk",
+          "processing_system7_0/FCLK_CLK0",
           "rst_ps7_0_50M/slowest_sync_clk",
           "processing_system7_0/S_AXI_HP0_ACLK",
           "processing_system7_0/M_AXI_GP0_ACLK",
@@ -1368,7 +1343,6 @@
       },
       "util_vector_logic_0_Res": {
         "ports": [
-          "sim_clk_gen_0/sync_rst",
           "rst_ps7_0_50M/ext_reset_in",
           "CPU_0/reset"
         ]

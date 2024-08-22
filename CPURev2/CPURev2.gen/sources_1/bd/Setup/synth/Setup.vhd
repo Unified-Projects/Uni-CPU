@@ -2,7 +2,7 @@
 --Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
---Date        : Sat Aug 10 14:47:16 2024
+--Date        : Thu Aug 22 20:57:47 2024
 --Host        : DESKTOP-PSI4IU2 running 64-bit major release  (build 9200)
 --Command     : generate_target Setup.bd
 --Design      : Setup
@@ -731,7 +731,7 @@ entity Setup is
     FIXED_IO_ps_srstb : inout STD_LOGIC
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of Setup : entity is "Setup,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=Setup,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=11,numReposBlks=9,numNonXlnxBlks=0,numHierBlks=2,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=2,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=6,da_board_cnt=1,da_clkrst_cnt=11,da_ps7_cnt=2,synth_mode=None}";
+  attribute CORE_GENERATION_INFO of Setup : entity is "Setup,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=Setup,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=10,numReposBlks=8,numNonXlnxBlks=0,numHierBlks=2,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=2,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=6,da_board_cnt=1,da_clkrst_cnt=12,da_ps7_cnt=2,synth_mode=None}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of Setup : entity is "Setup.hwdef";
 end Setup;
@@ -928,12 +928,6 @@ architecture STRUCTURE of Setup is
     Res : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component Setup_util_vector_logic_0_0;
-  component Setup_sim_clk_gen_0_0 is
-  port (
-    clk : out STD_LOGIC;
-    sync_rst : out STD_LOGIC
-  );
-  end component Setup_sim_clk_gen_0_0;
   signal AXI_Master_0_done : STD_LOGIC;
   signal AXI_Master_0_err : STD_LOGIC;
   signal AXI_Master_0_interrupt : STD_LOGIC;
@@ -1021,8 +1015,7 @@ architecture STRUCTURE of Setup is
   signal processing_system7_0_FIXED_IO_PS_PORB : STD_LOGIC;
   signal processing_system7_0_FIXED_IO_PS_SRSTB : STD_LOGIC;
   signal rst_ps7_0_50M_peripheral_aresetn : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal util_vector_logic_0_Res : STD_LOGIC;
-  signal NLW_processing_system7_0_FCLK_CLK0_UNCONNECTED : STD_LOGIC;
+  signal NLW_CPU_0_reset_UNCONNECTED : STD_LOGIC;
   signal NLW_processing_system7_0_M_AXI_GP0_ARVALID_UNCONNECTED : STD_LOGIC;
   signal NLW_processing_system7_0_M_AXI_GP0_AWVALID_UNCONNECTED : STD_LOGIC;
   signal NLW_processing_system7_0_M_AXI_GP0_BREADY_UNCONNECTED : STD_LOGIC;
@@ -1056,6 +1049,7 @@ architecture STRUCTURE of Setup is
   signal NLW_processing_system7_0_S_AXI_HP0_RID_UNCONNECTED : STD_LOGIC_VECTOR ( 5 downto 0 );
   signal NLW_processing_system7_0_S_AXI_HP0_WACOUNT_UNCONNECTED : STD_LOGIC_VECTOR ( 5 downto 0 );
   signal NLW_processing_system7_0_S_AXI_HP0_WCOUNT_UNCONNECTED : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal NLW_rst_ps7_0_50M_ext_reset_in_UNCONNECTED : STD_LOGIC;
   signal NLW_rst_ps7_0_50M_mb_reset_UNCONNECTED : STD_LOGIC;
   signal NLW_rst_ps7_0_50M_bus_struct_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_rst_ps7_0_50M_interconnect_aresetn_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -1133,7 +1127,7 @@ CPU_0: component Setup_CPU_0_2
       mem_err => AXI_Master_0_err,
       mem_read => CPU_0_mem_read,
       mem_write => CPU_0_mem_write,
-      reset => util_vector_logic_0_Res
+      reset => NLW_CPU_0_reset_UNCONNECTED
     );
 axi_interconnect_0: entity work.Setup_axi_interconnect_0_1
      port map (
@@ -1222,7 +1216,7 @@ processing_system7_0: component Setup_processing_system7_0_0
       DDR_VRN => FIXED_IO_ddr_vrn,
       DDR_VRP => FIXED_IO_ddr_vrp,
       DDR_WEB => DDR_we_n,
-      FCLK_CLK0 => NLW_processing_system7_0_FCLK_CLK0_UNCONNECTED,
+      FCLK_CLK0 => processing_system7_0_FCLK_CLK0,
       FCLK_RESET0_N => processing_system7_0_FCLK_RESET0_N,
       MIO(53 downto 0) => FIXED_IO_mio(53 downto 0),
       M_AXI_GP0_ACLK => processing_system7_0_FCLK_CLK0,
@@ -1318,18 +1312,13 @@ rst_ps7_0_50M: component Setup_rst_ps7_0_50M_0
       aux_reset_in => '1',
       bus_struct_reset(0) => NLW_rst_ps7_0_50M_bus_struct_reset_UNCONNECTED(0),
       dcm_locked => '1',
-      ext_reset_in => util_vector_logic_0_Res,
+      ext_reset_in => NLW_rst_ps7_0_50M_ext_reset_in_UNCONNECTED,
       interconnect_aresetn(0) => NLW_rst_ps7_0_50M_interconnect_aresetn_UNCONNECTED(0),
       mb_debug_sys_rst => '0',
       mb_reset => NLW_rst_ps7_0_50M_mb_reset_UNCONNECTED,
       peripheral_aresetn(0) => rst_ps7_0_50M_peripheral_aresetn(0),
       peripheral_reset(0) => NLW_rst_ps7_0_50M_peripheral_reset_UNCONNECTED(0),
       slowest_sync_clk => processing_system7_0_FCLK_CLK0
-    );
-sim_clk_gen_0: component Setup_sim_clk_gen_0_0
-     port map (
-      clk => processing_system7_0_FCLK_CLK0,
-      sync_rst => util_vector_logic_0_Res
     );
 util_vector_logic_0: component Setup_util_vector_logic_0_0
      port map (
