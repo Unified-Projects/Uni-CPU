@@ -167,7 +167,7 @@ void EmuClock(UniCPUEmulator::Bus* Emulator){
     // ClockPeriod = 1000*1000; // 1 KHz
     // ClockPeriod = 1000*1000*100; // 10 Hz
     // ClockPeriod = 1000*1000*1000; // 1 Hz
-    // ClockPeriod = 1000*1000*1000*2; // 1/2 Hz (Manual)
+    ClockPeriod = 1000*1000*1000*2; // 1/2 Hz (Manual)
 
     while (true)
     {
@@ -175,13 +175,93 @@ void EmuClock(UniCPUEmulator::Bus* Emulator){
             // Manual clocking
             int clockCount = 0;
             std::cin >> clockCount;
+
+            if (clockCount == 0){
+                std::cout << "What to Log: ";
+                std::cin >> clockCount;
+                
+                if(clockCount == 1){
+                    for(int i = 0; i < 512; i++){
+                        std::cout << std::hex << std::setw(2) << (0xFF & ((uint8_t*)Emulator->ram->GetDataBuffer())[i]) << " ";
+                    }
+                    std::cout << std::dec << std::endl;
+                }
+                else if(clockCount == 2){
+                    std::string SOffset = "";
+                    std::cout << "Memory Offset (Hex): ";
+                    std::cin >> SOffset;
+                    uint64_t Offset = std::stoul(SOffset, nullptr, 16);
+                    std::cout << "Getting " << Offset << std::endl;
+                    for(int i = 0; i < 512; i++){
+                        std::cout << std::hex << std::setw(2) << (0xFF & (Emulator->memRead(i+Offset))) << " ";
+                    }
+                    std::cout << std::dec << std::endl;
+                }
+                else if(clockCount == 3){
+                    std::string SOffset = "";
+                    std::cout << "Memory Offset (Dec): ";
+                    std::cin >> SOffset;
+                    uint64_t Offset = std::stoul(SOffset, nullptr, 10);
+                    std::cout << "Getting " << Offset << std::endl;
+                    for(int i = 0; i < 512; i++){
+                        std::cout << std::hex << std::setw(2) << (0xFF & (Emulator->memRead(i+Offset))) << " ";
+                    }
+                    std::cout << std::dec << std::endl;
+                }
+                else if(clockCount == 0){
+                    auto regs = Emulator->cpu->GetCurrentRegisterStack();
+                    
+                    std::cout << "Current Register Stack:\n";
+                    std::cout << "-----------------------------------\n";
+                    std::cout << "General Purpose Registers:\n";
+                    std::cout << "  r0 : " << std::setw(16) << std::hex << regs.r0 << "\n";
+                    std::cout << "  r1 : " << std::setw(16) << std::hex << regs.r1 << "\n";
+                    std::cout << "  r2 : " << std::setw(16) << std::hex << regs.r2 << "\n";
+                    std::cout << "  r3 : " << std::setw(16) << std::hex << regs.r3 << "\n";
+                    std::cout << "  r4 : " << std::setw(16) << std::hex << regs.r4 << "\n";
+                    std::cout << "  r5 : " << std::setw(16) << std::hex << regs.r5 << "\n";
+                    std::cout << "  r6 : " << std::setw(16) << std::hex << regs.r6 << "\n";
+                    std::cout << "\n";
+
+                    std::cout << "Argument Registers and Return Value:\n";
+                    std::cout << "  rax: " << std::setw(16) << std::hex << regs.rax << "\n";
+                    std::cout << "  rbx: " << std::setw(16) << std::hex << regs.rbx << "\n";
+                    std::cout << "  rcx: " << std::setw(16) << std::hex << regs.rcx << "\n";
+                    std::cout << "  rdx: " << std::setw(16) << std::hex << regs.rdx << "\n";
+                    std::cout << "  rsi: " << std::setw(16) << std::hex << regs.rsi << "\n";
+                    std::cout << "  rdi: " << std::setw(16) << std::hex << regs.rdi << "\n";
+                    std::cout << "\n";
+
+                    std::cout << "Stack and Instruction Pointers:\n";
+                    std::cout << "  rsp: " << std::setw(16) << std::hex << regs.rsp << "\n";
+                    std::cout << "  rip: " << std::setw(16) << std::hex << regs.rip << "\n";
+                    std::cout << "\n";
+
+                    std::cout << "Flags and Status:\n";
+                    std::cout << "  status   : " << std::setw(16) << std::hex << regs.status << "\n";
+                    std::cout << "  error    : " << std::setw(16) << std::hex << regs.err << "\n";
+                    std::cout << "  interrupt: " << std::setw(16) << std::hex << regs.interrupt << "\n";
+                    std::cout << "\n";
+
+                    std::cout << "Page Table Address:\n";
+                    std::cout << "  page: " << std::setw(16) << std::hex << regs.page << "\n";
+                    std::cout << "\n";
+
+                    std::cout << "Configuration:\n";
+                    std::cout << "  conf: " << std::setw(16) << std::hex << regs.conf << "\n";
+                    std::cout << "\n";
+
+                    std::cout << "IDT Information:\n";
+                    std::cout << "  IDT Address: " << std::setw(16) << std::hex << regs.IDT_addr << "\n";
+                    std::cout << "  IDT Size   : " << std::setw(16) << std::dec << regs.IDT_size << " bytes\n";
+                    std::cout << "-----------------------------------\n";
+                }
+            }
+
             for(int i = 0; i < clockCount; i++){
                 Emulator->clock();
             }
-            for(int i = 0; i < 512; i++){
-                std::cout << std::hex << std::setw(2) << (0xFF & ((uint8_t*)Emulator->ram->GetDataBuffer())[i]) << " ";
-            }
-            std::cout << std::dec << std::endl;
+            
         }
         else{
             auto CycleStartTime = high_resolution_clock::now();
@@ -253,9 +333,9 @@ int main(int argc, char* argv[]) {
 
     // Main thread can perform other tasks
 
-    runThread.detach();
-    // runThread.join();
+    // runThread.detach();
+    runThread.join();
 
-    RenderFramebuffer(&(Emulator.VideoOutput));
+    // RenderFramebuffer(&(Emulator.VideoOutput));
     return 0;
 }

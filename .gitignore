@@ -4,3 +4,4 @@ bin
 *.bytes
 .DS_Store
 *.asm
+*.img

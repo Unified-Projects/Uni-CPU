@@ -40,6 +40,7 @@ namespace UniCPUEmulator
 
         // Inputs
         // TODOzs
+        uint8_t* SDImage = nullptr;
 
         // Video
         Framebuffer VideoOutput = {};

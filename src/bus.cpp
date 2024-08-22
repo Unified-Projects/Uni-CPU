@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <cstring>
+#include <fstream>
 
 using namespace UniCPUEmulator;
 using namespace std::chrono;
@@ -24,6 +25,29 @@ Bus::Bus()
     };
 
     Mappings.push_back({0x1000000000000, VideoOutput.Buffer, VideoOutput.Size});
+
+    std::string filename = "../UniFS.img";
+    std::ifstream file(filename, std::ios::binary);
+
+    if (!file.is_open()) {
+        std::cerr << "Could not open the img: " << filename << std::endl;
+        return;
+    }
+
+    std::vector<char> buffer((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
+    file.close();
+
+    std::cout << "Read " << buffer.size() << " bytes from img " << filename << std::endl;
+
+    for(int i = 0; i < 512; i++){
+        std::cout << std::hex << std::setw(2) << (0xFF & (buffer[i])) << " ";
+    }
+
+    std::cout << std::dec << std::endl;
+
+    SDImage = new uint8_t[buffer.size()];
+    memcpy((void*)SDImage, (void*)buffer.data(), buffer.size());
+    Mappings.push_back({0x2000000000000, (uint64_t)SDImage, buffer.size()});
 }
 
 Bus::~Bus() {
@@ -68,7 +92,7 @@ void Bus::reset() {
 void Bus::memWrite(uint64_t addr, uint64_t data){
     for(auto x : Mappings){
         if(addr >= x.Address && addr < x.Address + x.Size){
-            ((uint64_t*)x.IOBuffer)[addr - x.Address] = data;
+            ((uint64_t*)(x.IOBuffer + (addr - x.Address)))[0] = data;
             return;
         }
     }
@@ -78,8 +102,8 @@ void Bus::memWrite(uint64_t addr, uint64_t data){
 
 uint64_t Bus::memRead(uint64_t addr, bool bReadOnly){
     for(auto x : Mappings){
-        if(addr > x.Address && addr < x.Address + x.Size){
-            return ((uint64_t*)x.IOBuffer)[addr - x.Address];
+        if(addr >= x.Address && addr < x.Address + x.Size){
+            return ((uint64_t*)(x.IOBuffer + (addr - x.Address)))[0];
         }
     }
 

@@ -42,6 +42,12 @@ using namespace UniCPUEmulator;
 #define INSTRUCTION_OR      0b0000010011 // OR B R, [X], [Y]
 #define INSTRUCTION_XOR     0b0000010100 // XOR B R, [X], [Y]
 
+#define INSTRUCTION_INC     0b0000010101 // INC R
+#define INSTRUCTION_DEC     0b0000010110 // DEC R
+
+#define INSTRUCTION_IOW     0b0000010111 // IOW T, [X], [Y] (IO Device) (Address) (Data)
+#define INSTRUCTION_IOR     0b0000011000 // IOR R, T, [Y] (Register) (IO Device) (Address)
+
 #define CMP_EQU 0
 #define CMP_NEQ 1
 #define CMP_LEQ 2

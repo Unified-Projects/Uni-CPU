@@ -7,7 +7,7 @@
             "request": "launch",
             // Resolved by CMake Tools:
             "program": "${command:cmake.launchTargetPath}",
-            "args": ["${workspaceFolder}/custom.bytes"],
+            "args": ["${workspaceFolder}/BIOS.bytes"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "externalConsole": false,
@@ -26,7 +26,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${command:cmake.launchTargetPath}",
-            "args": ["${workspaceFolder}/custom.bytes"],
+            "args": ["${workspaceFolder}/BIOS.bytes"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],
