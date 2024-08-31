@@ -9,7 +9,7 @@ using namespace std::chrono;
 
 Bus::Bus() 
 {
-    ram = new RAM(256 * 1024 * 1024);
+    ram = new RAM(512 * 1024 * 1024);
 
     auto CurrentTime = high_resolution_clock::now();
     LastTime = CurrentTime;
@@ -18,13 +18,18 @@ Bus::Bus()
     cpu->LoadBus(this);
 
     VideoOutput = {
-        (uint64_t)(new uint64_t[1280 * 720 * 4]),
-        1280 * 720 * 4,
-        1280,
-        720
+        (uint64_t)(new uint64_t[840 * 240]),
+        840 * 480 * 4,
+        840,
+        480
     };
 
     Mappings.push_back({0x1000000000000, VideoOutput.Buffer, VideoOutput.Size});
+
+    uint32_t* Screen = (uint32_t*)VideoOutput.Buffer;
+    for (int i = 0; i < VideoOutput.Size / 4; i++){
+        // Screen[i] = 0xFFFF0000;
+    }
 
     std::string filename = "../UniFS.img";
     std::ifstream file(filename, std::ios::binary);
