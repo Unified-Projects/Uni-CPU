@@ -5,9 +5,11 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity CPU is
     Port (
+        -- Important
         clk : in STD_LOGIC;
         reset : in STD_LOGIC;
         interrupt : in STD_LOGIC;
+
         data_in : in STD_LOGIC_VECTOR(31 downto 0);
         data_out : out STD_LOGIC_VECTOR(31 downto 0);
         addr : out STD_LOGIC_VECTOR(31 downto 0);
@@ -20,7 +22,13 @@ entity CPU is
         bram_en : out std_logic;
         bram_din : in std_logic_vector(63 downto 0);
         bram_dout : out std_logic_vector(63 downto 0);
-        bram_addr : out std_logic_vector(12 downto 0)
+        bram_addr : out std_logic_vector(12 downto 0);
+        
+        IO_Enable : out std_logic;
+        IO_WriteEnable : out std_logic;
+        IO_In : in std_logic_vector(63 downto 0);
+        IO_Out : out std_logic_vector(63 downto 0);
+        IO_Select : out std_logic_vector(7 downto 0)
     );
 end CPU;
 

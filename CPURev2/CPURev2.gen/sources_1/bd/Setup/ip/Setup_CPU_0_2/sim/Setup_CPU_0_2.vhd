@@ -69,7 +69,12 @@ ENTITY Setup_CPU_0_2 IS
     bram_en : OUT STD_LOGIC;
     bram_din : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
     bram_dout : OUT STD_LOGIC_VECTOR(63 DOWNTO 0);
-    bram_addr : OUT STD_LOGIC_VECTOR(12 DOWNTO 0)
+    bram_addr : OUT STD_LOGIC_VECTOR(12 DOWNTO 0);
+    IO_Enable : OUT STD_LOGIC;
+    IO_WriteEnable : OUT STD_LOGIC;
+    IO_In : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
+    IO_Out : OUT STD_LOGIC_VECTOR(63 DOWNTO 0);
+    IO_Select : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
   );
 END Setup_CPU_0_2;
 
@@ -92,7 +97,12 @@ ARCHITECTURE Setup_CPU_0_2_arch OF Setup_CPU_0_2 IS
       bram_en : OUT STD_LOGIC;
       bram_din : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
       bram_dout : OUT STD_LOGIC_VECTOR(63 DOWNTO 0);
-      bram_addr : OUT STD_LOGIC_VECTOR(12 DOWNTO 0)
+      bram_addr : OUT STD_LOGIC_VECTOR(12 DOWNTO 0);
+      IO_Enable : OUT STD_LOGIC;
+      IO_WriteEnable : OUT STD_LOGIC;
+      IO_In : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
+      IO_Out : OUT STD_LOGIC_VECTOR(63 DOWNTO 0);
+      IO_Select : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
     );
   END COMPONENT CPU;
   ATTRIBUTE X_INTERFACE_INFO : STRING;
@@ -120,6 +130,11 @@ BEGIN
       bram_en => bram_en,
       bram_din => bram_din,
       bram_dout => bram_dout,
-      bram_addr => bram_addr
+      bram_addr => bram_addr,
+      IO_Enable => IO_Enable,
+      IO_WriteEnable => IO_WriteEnable,
+      IO_In => IO_In,
+      IO_Out => IO_Out,
+      IO_Select => IO_Select
     );
 END Setup_CPU_0_2_arch;

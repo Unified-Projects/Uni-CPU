@@ -2,7 +2,7 @@
 --Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
---Date        : Sat Aug 10 14:47:16 2024
+--Date        : Thu Sep  5 12:13:45 2024
 --Host        : DESKTOP-PSI4IU2 running 64-bit major release  (build 9200)
 --Command     : generate_target Setup.bd
 --Design      : Setup
@@ -708,6 +708,7 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity Setup is
   port (
+    BUT0_0 : in STD_LOGIC;
     DDR_addr : inout STD_LOGIC_VECTOR ( 14 downto 0 );
     DDR_ba : inout STD_LOGIC_VECTOR ( 2 downto 0 );
     DDR_cas_n : inout STD_LOGIC;
@@ -728,10 +729,11 @@ entity Setup is
     FIXED_IO_mio : inout STD_LOGIC_VECTOR ( 53 downto 0 );
     FIXED_IO_ps_clk : inout STD_LOGIC;
     FIXED_IO_ps_porb : inout STD_LOGIC;
-    FIXED_IO_ps_srstb : inout STD_LOGIC
+    FIXED_IO_ps_srstb : inout STD_LOGIC;
+    LED0_0 : out STD_LOGIC
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of Setup : entity is "Setup,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=Setup,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=11,numReposBlks=9,numNonXlnxBlks=0,numHierBlks=2,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=2,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=6,da_board_cnt=1,da_clkrst_cnt=11,da_ps7_cnt=2,synth_mode=None}";
+  attribute CORE_GENERATION_INFO of Setup : entity is "Setup,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=Setup,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=12,numReposBlks=10,numNonXlnxBlks=0,numHierBlks=2,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=3,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=6,da_board_cnt=1,da_clkrst_cnt=12,da_ps7_cnt=2,synth_mode=None}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of Setup : entity is "Setup.hwdef";
 end Setup;
@@ -888,7 +890,12 @@ architecture STRUCTURE of Setup is
     bram_en : out STD_LOGIC;
     bram_din : in STD_LOGIC_VECTOR ( 63 downto 0 );
     bram_dout : out STD_LOGIC_VECTOR ( 63 downto 0 );
-    bram_addr : out STD_LOGIC_VECTOR ( 12 downto 0 )
+    bram_addr : out STD_LOGIC_VECTOR ( 12 downto 0 );
+    IO_Enable : out STD_LOGIC;
+    IO_WriteEnable : out STD_LOGIC;
+    IO_In : in STD_LOGIC_VECTOR ( 63 downto 0 );
+    IO_Out : out STD_LOGIC_VECTOR ( 63 downto 0 );
+    IO_Select : out STD_LOGIC_VECTOR ( 7 downto 0 )
   );
   end component Setup_CPU_0_2;
   component Setup_AXI_Master_0_3 is
@@ -934,10 +941,23 @@ architecture STRUCTURE of Setup is
     sync_rst : out STD_LOGIC
   );
   end component Setup_sim_clk_gen_0_0;
+  component Setup_IOController_0_0 is
+  port (
+    Enable : in STD_LOGIC;
+    Write : in STD_LOGIC;
+    DataIn : in STD_LOGIC_VECTOR ( 63 downto 0 );
+    DataOut : out STD_LOGIC_VECTOR ( 63 downto 0 );
+    clk : in STD_LOGIC;
+    Selector : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    LED0 : out STD_LOGIC;
+    BUT0 : in STD_LOGIC
+  );
+  end component Setup_IOController_0_0;
   signal AXI_Master_0_done : STD_LOGIC;
   signal AXI_Master_0_err : STD_LOGIC;
   signal AXI_Master_0_interrupt : STD_LOGIC;
   signal AXI_Master_0_read_data : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal BUT0_0_1 : STD_LOGIC;
   signal CPU_0_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal CPU_0_bram_addr : STD_LOGIC_VECTOR ( 12 downto 0 );
   signal CPU_0_bram_dout : STD_LOGIC_VECTOR ( 63 downto 0 );
@@ -946,6 +966,7 @@ architecture STRUCTURE of Setup is
   signal CPU_0_data_out : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal CPU_0_mem_read : STD_LOGIC;
   signal CPU_0_mem_write : STD_LOGIC;
+  signal IOController_0_LED0 : STD_LOGIC;
   signal S00_AXI_1_ARADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal S00_AXI_1_ARREADY : STD_LOGIC;
   signal S00_AXI_1_ARVALID : STD_LOGIC;
@@ -1013,7 +1034,6 @@ architecture STRUCTURE of Setup is
   signal processing_system7_0_DDR_RESET_N : STD_LOGIC;
   signal processing_system7_0_DDR_WE_N : STD_LOGIC;
   signal processing_system7_0_FCLK_CLK0 : STD_LOGIC;
-  signal processing_system7_0_FCLK_RESET0_N : STD_LOGIC;
   signal processing_system7_0_FIXED_IO_DDR_VRN : STD_LOGIC;
   signal processing_system7_0_FIXED_IO_DDR_VRP : STD_LOGIC;
   signal processing_system7_0_FIXED_IO_MIO : STD_LOGIC_VECTOR ( 53 downto 0 );
@@ -1021,8 +1041,15 @@ architecture STRUCTURE of Setup is
   signal processing_system7_0_FIXED_IO_PS_PORB : STD_LOGIC;
   signal processing_system7_0_FIXED_IO_PS_SRSTB : STD_LOGIC;
   signal rst_ps7_0_50M_peripheral_aresetn : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal util_vector_logic_0_Res : STD_LOGIC;
+  signal sim_clk_gen_0_sync_rst : STD_LOGIC;
+  signal util_vector_logic_0_Res : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal NLW_CPU_0_IO_Enable_UNCONNECTED : STD_LOGIC;
+  signal NLW_CPU_0_IO_WriteEnable_UNCONNECTED : STD_LOGIC;
+  signal NLW_CPU_0_IO_Out_UNCONNECTED : STD_LOGIC_VECTOR ( 63 downto 0 );
+  signal NLW_CPU_0_IO_Select_UNCONNECTED : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal NLW_IOController_0_DataOut_UNCONNECTED : STD_LOGIC_VECTOR ( 63 downto 0 );
   signal NLW_processing_system7_0_FCLK_CLK0_UNCONNECTED : STD_LOGIC;
+  signal NLW_processing_system7_0_FCLK_RESET0_N_UNCONNECTED : STD_LOGIC;
   signal NLW_processing_system7_0_M_AXI_GP0_ARVALID_UNCONNECTED : STD_LOGIC;
   signal NLW_processing_system7_0_M_AXI_GP0_AWVALID_UNCONNECTED : STD_LOGIC;
   signal NLW_processing_system7_0_M_AXI_GP0_BREADY_UNCONNECTED : STD_LOGIC;
@@ -1060,7 +1087,6 @@ architecture STRUCTURE of Setup is
   signal NLW_rst_ps7_0_50M_bus_struct_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_rst_ps7_0_50M_interconnect_aresetn_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_rst_ps7_0_50M_peripheral_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal NLW_util_vector_logic_0_Res_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of DDR_cas_n : signal is "xilinx.com:interface:ddrx:1.0 DDR CAS_N";
   attribute X_INTERFACE_INFO of DDR_ck_n : signal is "xilinx.com:interface:ddrx:1.0 DDR CK_N";
@@ -1087,6 +1113,8 @@ architecture STRUCTURE of Setup is
   attribute X_INTERFACE_INFO of DDR_dqs_p : signal is "xilinx.com:interface:ddrx:1.0 DDR DQS_P";
   attribute X_INTERFACE_INFO of FIXED_IO_mio : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO MIO";
 begin
+  BUT0_0_1 <= BUT0_0;
+  LED0_0 <= IOController_0_LED0;
 AXI_Master_0: component Setup_AXI_Master_0_3
      port map (
       M_AXI_ARADDR(31 downto 0) => S00_AXI_1_ARADDR(31 downto 0),
@@ -1119,6 +1147,11 @@ AXI_Master_0: component Setup_AXI_Master_0_3
     );
 CPU_0: component Setup_CPU_0_2
      port map (
+      IO_Enable => NLW_CPU_0_IO_Enable_UNCONNECTED,
+      IO_In(63 downto 0) => B"0000000000000000000000000000000000000000000000000000000000000000",
+      IO_Out(63 downto 0) => NLW_CPU_0_IO_Out_UNCONNECTED(63 downto 0),
+      IO_Select(7 downto 0) => NLW_CPU_0_IO_Select_UNCONNECTED(7 downto 0),
+      IO_WriteEnable => NLW_CPU_0_IO_WriteEnable_UNCONNECTED,
       addr(31 downto 0) => CPU_0_addr(31 downto 0),
       bram_addr(12 downto 0) => CPU_0_bram_addr(12 downto 0),
       bram_din(63 downto 0) => blk_mem_gen_0_douta(63 downto 0),
@@ -1133,7 +1166,18 @@ CPU_0: component Setup_CPU_0_2
       mem_err => AXI_Master_0_err,
       mem_read => CPU_0_mem_read,
       mem_write => CPU_0_mem_write,
-      reset => util_vector_logic_0_Res
+      reset => util_vector_logic_0_Res(0)
+    );
+IOController_0: component Setup_IOController_0_0
+     port map (
+      BUT0 => BUT0_0_1,
+      DataIn(63 downto 0) => B"0000000000000000000000000000000000000000000000000000000000000000",
+      DataOut(63 downto 0) => NLW_IOController_0_DataOut_UNCONNECTED(63 downto 0),
+      Enable => '0',
+      LED0 => IOController_0_LED0,
+      Selector(7 downto 0) => B"00000000",
+      Write => '0',
+      clk => processing_system7_0_FCLK_CLK0
     );
 axi_interconnect_0: entity work.Setup_axi_interconnect_0_1
      port map (
@@ -1223,7 +1267,7 @@ processing_system7_0: component Setup_processing_system7_0_0
       DDR_VRP => FIXED_IO_ddr_vrp,
       DDR_WEB => DDR_we_n,
       FCLK_CLK0 => NLW_processing_system7_0_FCLK_CLK0_UNCONNECTED,
-      FCLK_RESET0_N => processing_system7_0_FCLK_RESET0_N,
+      FCLK_RESET0_N => NLW_processing_system7_0_FCLK_RESET0_N_UNCONNECTED,
       MIO(53 downto 0) => FIXED_IO_mio(53 downto 0),
       M_AXI_GP0_ACLK => processing_system7_0_FCLK_CLK0,
       M_AXI_GP0_ARADDR(31 downto 0) => NLW_processing_system7_0_M_AXI_GP0_ARADDR_UNCONNECTED(31 downto 0),
@@ -1318,7 +1362,7 @@ rst_ps7_0_50M: component Setup_rst_ps7_0_50M_0
       aux_reset_in => '1',
       bus_struct_reset(0) => NLW_rst_ps7_0_50M_bus_struct_reset_UNCONNECTED(0),
       dcm_locked => '1',
-      ext_reset_in => util_vector_logic_0_Res,
+      ext_reset_in => util_vector_logic_0_Res(0),
       interconnect_aresetn(0) => NLW_rst_ps7_0_50M_interconnect_aresetn_UNCONNECTED(0),
       mb_debug_sys_rst => '0',
       mb_reset => NLW_rst_ps7_0_50M_mb_reset_UNCONNECTED,
@@ -1329,11 +1373,11 @@ rst_ps7_0_50M: component Setup_rst_ps7_0_50M_0
 sim_clk_gen_0: component Setup_sim_clk_gen_0_0
      port map (
       clk => processing_system7_0_FCLK_CLK0,
-      sync_rst => util_vector_logic_0_Res
+      sync_rst => sim_clk_gen_0_sync_rst
     );
 util_vector_logic_0: component Setup_util_vector_logic_0_0
      port map (
-      Op1(0) => processing_system7_0_FCLK_RESET0_N,
-      Res(0) => NLW_util_vector_logic_0_Res_UNCONNECTED(0)
+      Op1(0) => sim_clk_gen_0_sync_rst,
+      Res(0) => util_vector_logic_0_Res(0)
     );
 end STRUCTURE;
