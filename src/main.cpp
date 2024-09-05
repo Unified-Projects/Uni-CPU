@@ -277,6 +277,13 @@ int main(int argc, char* argv[]) {
                 LineOffset = 8;
                 BitOpAllowed = true;
             }
+            else if (l.content.find("resb") == 4) {
+                std::string valueStr = l.content.substr(9);
+                long long value = std::atoll(valueStr.c_str());
+                for(int i = 0; i < value; i++)
+                    BytesOut.push_back(0);
+                continue;
+            }
             else if (l.content.find("db") == 4) {
                 std::string valueStr = l.content.substr(7);
                 int value = std::atoi(valueStr.c_str());
