@@ -80,6 +80,14 @@ namespace UniCPUEmulator
         uint64_t MUL();
         uint64_t DIV();
 
+        uint64_t LSR();
+        uint64_t LSL();
+
+        uint64_t AND();
+        uint64_t NOT();
+        uint64_t OR();
+        uint64_t XOR();
+
         // Comparisons
         uint64_t CMP();
 

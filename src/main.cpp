@@ -9,6 +9,9 @@
 
 using namespace std::chrono;
 
+bool Debug = false;
+bool Display = false;
+
 #ifdef __APPLE__
     #include <SDL2/SDL.h>
 
@@ -167,7 +170,9 @@ void EmuClock(UniCPUEmulator::Bus* Emulator){
     // ClockPeriod = 1000*1000; // 1 KHz
     // ClockPeriod = 1000*1000*100; // 10 Hz
     // ClockPeriod = 1000*1000*1000; // 1 Hz
+    if(Debug)
     ClockPeriod = 1000*1000*1000*2; // 1/2 Hz (Manual)
+    
 
     while (true)
     {
@@ -297,9 +302,16 @@ void EmuClock(UniCPUEmulator::Bus* Emulator){
 }
 
 int main(int argc, char* argv[]) {
-    if (argc != 2) {
+    if (argc < 2) {
         std::cerr << "Usage: " << argv[0] << " <filename>" << std::endl;
         return 1;
+    }
+
+    if(argc == 3 && !strcmp(argv[2], "-D")){
+        Debug = true;
+    }
+    if(argc == 3 && !strcmp(argv[2], "-V")){
+        Display = true;
     }
 
     std::string filename = argv[1];
@@ -333,9 +345,11 @@ int main(int argc, char* argv[]) {
 
     // Main thread can perform other tasks
 
-    // runThread.detach();
+    if(!Display)
     runThread.join();
+    else
+    runThread.detach();
 
-    // RenderFramebuffer(&(Emulator.VideoOutput));
+    RenderFramebuffer(&(Emulator.VideoOutput));
     return 0;
 }
