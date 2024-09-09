@@ -205,8 +205,8 @@ void Core::clock(){
         Regs.status = 0;
     }
 
-    cycles--;
-    // cycles = 0;
+    // cycles--;
+    cycles = 0;
 }
 
 uint64_t Core::read(uint64_t addr, bool bReadOnly){
