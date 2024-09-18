@@ -219,6 +219,40 @@ void Core::write(uint64_t addr, uint64_t data){
     bus->memWrite(addr, data);
 }
 
+uint64_t CastDataToCorrectSize(uint64_t Data, uint8_t SizeFlag, bool Register){
+    if(Register){
+        if(SizeFlag == 0){
+            return Data;
+        }
+        else if(SizeFlag == 1){
+            return Data & 0xFFFFFFFF;
+        }
+        else if(SizeFlag == 2){
+            return Data & 0xFFFF;
+        }
+        else if(SizeFlag == 3){
+            return Data & 0xFF;
+        }
+    }
+    else{
+        uint64_t DataOut = Data;
+        if(!SizeFlag){
+            DataOut = DataOut;
+        }
+        else if(SizeFlag == 1) {
+            DataOut = static_cast<uint32_t>(DataOut);
+        }
+        else if(SizeFlag == 2) {
+            DataOut = static_cast<uint16_t>(DataOut);
+        }
+        else if(SizeFlag == 3) {
+            DataOut = static_cast<uint8_t>(DataOut);
+        }
+        return DataOut;
+    }
+    return 0;
+}
+
 uint64_t Core::MOV(){
     uint64_t In = 0;
     int Cycles = 0;
@@ -468,56 +502,18 @@ uint64_t Core::ADD(){
         std::cout << "ADD: Attempted to Write to a non register: " << static_cast<uint8_t>(Output) << std::endl;
     }
 
-    if(!SizeFlag){
-        Registers[static_cast<uint8_t>(Output)] = Input1 + Input2;
-
-        // TODO FLAG Checks here
+    uint64_t Data1 = CastDataToCorrectSize(Input1, SizeFlag, (CurOP.AddressingMode1 == &Core::REG));
+    uint64_t Data2 = CastDataToCorrectSize(Input2, SizeFlag, (CurOP.AddressingMode2 == &Core::REG));
+    uint64_t Result = Data1 + Data2;
+    uint64_t CastedResult = CastDataToCorrectSize(Result, SizeFlag, true);
+    if(Result > CastedResult){
+        Regs.status |= CPU_STATUS_OVERFLOW; // Overflow error
     }
-    else if(SizeFlag == 1) {
-        uint64_t Data = Input1 + Input2;
-        uint32_t AdaptedData = static_cast<uint32_t>(Data);
-        
-        if(Data > AdaptedData){
-            Regs.status |= CPU_STATUS_OVERFLOW; // Overflow error
-        }
-        if(Data == 0){
-            Regs.status |= CPU_STATUS_ZERO; // Zero Flag
-        }
-
-        // Save to register
-        ((uint32_t*)(&Registers[static_cast<uint8_t>(Output)]))[0] = AdaptedData;
-        Cycles++;
+    if(Result == 0){
+        Regs.status |= CPU_STATUS_ZERO; // Zero Flag
     }
-    else if(SizeFlag == 2) {
-        uint64_t Data = Input1 + Input2;
-        uint16_t AdaptedData = static_cast<uint16_t>(Data);
-        
-        if(Data > AdaptedData){
-            Regs.status |= CPU_STATUS_OVERFLOW; // Overflow error
-        }
-        if(Data == 0){
-            Regs.status |= CPU_STATUS_ZERO; // Zero Flag
-        }
-
-        // Save to register
-        ((uint16_t*)(&Registers[static_cast<uint8_t>(Output)]))[0] = AdaptedData;
-        Cycles++;
-    }
-    else if(SizeFlag == 3) {
-        uint64_t Data = Input1 + Input2;
-        uint8_t AdaptedData = static_cast<uint8_t>(Data);
-        
-        if(Data > AdaptedData){
-            Regs.status |= CPU_STATUS_OVERFLOW; // Overflow error
-        }
-        if(Data == 0){
-            Regs.status |= CPU_STATUS_ZERO; // Zero Flag
-        }
-
-        // Save to register
-        ((uint8_t*)(&Registers[static_cast<uint8_t>(Output)]))[0] = AdaptedData;
-        Cycles++;
-    }
+    Registers[static_cast<uint8_t>(Output)] = CastedResult;
+    Cycles++;
 
     return Cycles;
 }
@@ -594,56 +590,18 @@ uint64_t Core::MUL(){
         std::cout << "MUL: Attempted to Write to a non register: " << static_cast<uint8_t>(Output) << std::endl;
     }
 
-    if(!SizeFlag){
-        Registers[static_cast<uint8_t>(Output)] = Input1 * Input2;
-
-        // TODO FLAG Checks here
+    uint64_t Data1 = CastDataToCorrectSize(Input1, SizeFlag, (CurOP.AddressingMode1 == &Core::REG));
+    uint64_t Data2 = CastDataToCorrectSize(Input2, SizeFlag, (CurOP.AddressingMode2 == &Core::REG));
+    uint64_t Result = Data1 * Data2;
+    uint64_t CastedResult = CastDataToCorrectSize(Result, SizeFlag, true);
+    if(Result > CastedResult){
+        Regs.status |= CPU_STATUS_OVERFLOW; // Overflow error
     }
-    else if(SizeFlag == 1) {
-        uint64_t Data = Input1 * Input2;
-        uint32_t AdaptedData = static_cast<uint32_t>(Data);
-        
-        if(Data > AdaptedData){
-            Regs.status |= CPU_STATUS_OVERFLOW; // Overflow error
-        }
-        if(Data == 0){
-            Regs.status |= CPU_STATUS_ZERO; // Zero Flag
-        }
-
-        // Save to register
-        ((uint32_t*)(&Registers[static_cast<uint8_t>(Output)]))[0] = AdaptedData;
-        Cycles++;
+    if(Result == 0){
+        Regs.status |= CPU_STATUS_ZERO; // Zero Flag
     }
-    else if(SizeFlag == 2) {
-        uint64_t Data = Input1 * Input2;
-        uint16_t AdaptedData = static_cast<uint16_t>(Data);
-        
-        if(Data > AdaptedData){
-            Regs.status |= CPU_STATUS_OVERFLOW; // Overflow error
-        }
-        if(Data == 0){
-            Regs.status |= CPU_STATUS_ZERO; // Zero Flag
-        }
-
-        // Save to register
-        ((uint16_t*)(&Registers[static_cast<uint8_t>(Output)]))[0] = AdaptedData;
-        Cycles++;
-    }
-    else if(SizeFlag == 3) {
-        uint64_t Data = Input1 * Input2;
-        uint8_t AdaptedData = static_cast<uint8_t>(Data);
-        
-        if(Data > AdaptedData){
-            Regs.status |= CPU_STATUS_OVERFLOW; // Overflow error
-        }
-        if(Data == 0){
-            Regs.status |= CPU_STATUS_ZERO; // Zero Flag
-        }
-
-        // Save to register
-        ((uint8_t*)(&Registers[static_cast<uint8_t>(Output)]))[0] = AdaptedData;
-        Cycles++;
-    }
+    Registers[static_cast<uint8_t>(Output)] = CastedResult;
+    Cycles++;
 
     return Cycles;
 }
@@ -720,56 +678,18 @@ uint64_t Core::SUB(){
         std::cout << "SUB: Attempted to Write to a non register: " << static_cast<uint8_t>(Output) << std::endl;
     }
 
-    if(!SizeFlag){
-        Registers[static_cast<uint8_t>(Output)] = Input1 - Input2;
-
-        // TODO FLAG Checks here
+    uint64_t Data1 = CastDataToCorrectSize(Input1, SizeFlag, (CurOP.AddressingMode1 == &Core::REG));
+    uint64_t Data2 = CastDataToCorrectSize(Input2, SizeFlag, (CurOP.AddressingMode2 == &Core::REG));
+    uint64_t Result = Data1 - Data2;
+    uint64_t CastedResult = CastDataToCorrectSize(Result, SizeFlag, true);
+    if(Result > CastedResult){
+        Regs.status |= CPU_STATUS_OVERFLOW; // Overflow error
     }
-    else if(SizeFlag == 1) {
-        uint64_t Data = Input1 - Input2;
-        uint32_t AdaptedData = static_cast<uint32_t>(Data);
-        
-        if(Data > AdaptedData){
-            Regs.status |= CPU_STATUS_OVERFLOW; // Overflow error
-        }
-        if(Data == 0){
-            Regs.status |= CPU_STATUS_ZERO; // Zero Flag
-        }
-
-        // Save to register
-        ((uint32_t*)(&Registers[static_cast<uint8_t>(Output)]))[0] = AdaptedData;
-        Cycles++;
+    if(Result == 0){
+        Regs.status |= CPU_STATUS_ZERO; // Zero Flag
     }
-    else if(SizeFlag == 2) {
-        uint64_t Data = Input1 - Input2;
-        uint16_t AdaptedData = static_cast<uint16_t>(Data);
-        
-        if(Data > AdaptedData){
-            Regs.status |= CPU_STATUS_OVERFLOW; // Overflow error
-        }
-        if(Data == 0){
-            Regs.status |= CPU_STATUS_ZERO; // Zero Flag
-        }
-
-        // Save to register
-        ((uint16_t*)(&Registers[static_cast<uint8_t>(Output)]))[0] = AdaptedData;
-        Cycles++;
-    }
-    else if(SizeFlag == 3) {
-        uint64_t Data = Input1 - Input2;
-        uint8_t AdaptedData = static_cast<uint8_t>(Data);
-        
-        if(Data > AdaptedData){
-            Regs.status |= CPU_STATUS_OVERFLOW; // Overflow error
-        }
-        if(Data == 0){
-            Regs.status |= CPU_STATUS_ZERO; // Zero Flag
-        }
-
-        // Save to register
-        ((uint8_t*)(&Registers[static_cast<uint8_t>(Output)]))[0] = AdaptedData;
-        Cycles++;
-    }
+    Registers[static_cast<uint8_t>(Output)] = CastedResult;
+    Cycles++;
 
     return Cycles;
 }
@@ -846,56 +766,18 @@ uint64_t Core::DIV(){
         std::cout << "DIV: Attempted to Write to a non register: " << static_cast<uint8_t>(Output) << std::endl;
     }
 
-    if(!SizeFlag){
-        Registers[static_cast<uint8_t>(Output)] = Input1 / Input2;
-
-        // TODO FLAG Checks here
+    uint64_t Data1 = CastDataToCorrectSize(Input1, SizeFlag, (CurOP.AddressingMode1 == &Core::REG));
+    uint64_t Data2 = CastDataToCorrectSize(Input2, SizeFlag, (CurOP.AddressingMode2 == &Core::REG));
+    uint64_t Result = Data1 / Data2;
+    uint64_t CastedResult = CastDataToCorrectSize(Result, SizeFlag, true);
+    if(Result > CastedResult){
+        Regs.status |= CPU_STATUS_OVERFLOW; // Overflow error
     }
-    else if(SizeFlag == 1) {
-        uint64_t Data = Input1 / Input2;
-        uint32_t AdaptedData = static_cast<uint32_t>(Data);
-        
-        if(Data > AdaptedData){
-            Regs.status |= CPU_STATUS_OVERFLOW; // Overflow error
-        }
-        if(Data == 0){
-            Regs.status |= CPU_STATUS_ZERO; // Zero Flag
-        }
-
-        // Save to register
-        ((uint32_t*)(&Registers[static_cast<uint8_t>(Output)]))[0] = AdaptedData;
-        Cycles++;
+    if(Result == 0){
+        Regs.status |= CPU_STATUS_ZERO; // Zero Flag
     }
-    else if(SizeFlag == 2) {
-        uint64_t Data = Input1 / Input2;
-        uint16_t AdaptedData = static_cast<uint16_t>(Data);
-        
-        if(Data > AdaptedData){
-            Regs.status |= CPU_STATUS_OVERFLOW; // Overflow error
-        }
-        if(Data == 0){
-            Regs.status |= CPU_STATUS_ZERO; // Zero Flag
-        }
-
-        // Save to register
-        ((uint16_t*)(&Registers[static_cast<uint8_t>(Output)]))[0] = AdaptedData;
-        Cycles++;
-    }
-    else if(SizeFlag == 3) {
-        uint64_t Data = Input1 / Input2;
-        uint8_t AdaptedData = static_cast<uint8_t>(Data);
-        
-        if(Data > AdaptedData){
-            Regs.status |= CPU_STATUS_OVERFLOW; // Overflow error
-        }
-        if(Data == 0){
-            Regs.status |= CPU_STATUS_ZERO; // Zero Flag
-        }
-
-        // Save to register
-        ((uint8_t*)(&Registers[static_cast<uint8_t>(Output)]))[0] = AdaptedData;
-        Cycles++;
-    }
+    Registers[static_cast<uint8_t>(Output)] = CastedResult;
+    Cycles++;
 
     return Cycles;
 }
@@ -972,56 +854,18 @@ uint64_t Core::LSR(){
         std::cout << "LSR: Attempted to Write to a non register: " << static_cast<uint8_t>(Output) << std::endl;
     }
 
-    if(!SizeFlag){
-        Registers[static_cast<uint8_t>(Output)] = Input1 >> Input2;
-
-        // TODO FLAG Checks here
+    uint64_t Data1 = CastDataToCorrectSize(Input1, SizeFlag, (CurOP.AddressingMode1 == &Core::REG));
+    uint64_t Data2 = CastDataToCorrectSize(Input2, SizeFlag, (CurOP.AddressingMode2 == &Core::REG));
+    uint64_t Result = Data1 >> Data2;
+    uint64_t CastedResult = CastDataToCorrectSize(Result, SizeFlag, true);
+    if(Result > CastedResult){
+        Regs.status |= CPU_STATUS_OVERFLOW; // Overflow error
     }
-    else if(SizeFlag == 1) {
-        uint64_t Data = Input1 >> Input2;
-        uint32_t AdaptedData = static_cast<uint32_t>(Data);
-        
-        if(Data > AdaptedData){
-            Regs.status |= CPU_STATUS_OVERFLOW; // Overflow error
-        }
-        if(Data == 0){
-            Regs.status |= CPU_STATUS_ZERO; // Zero Flag
-        }
-
-        // Save to register
-        ((uint32_t*)(&Registers[static_cast<uint8_t>(Output)]))[0] = AdaptedData;
-        Cycles++;
+    if(Result == 0){
+        Regs.status |= CPU_STATUS_ZERO; // Zero Flag
     }
-    else if(SizeFlag == 2) {
-        uint64_t Data = Input1 >> Input2;
-        uint16_t AdaptedData = static_cast<uint16_t>(Data);
-        
-        if(Data > AdaptedData){
-            Regs.status |= CPU_STATUS_OVERFLOW; // Overflow error
-        }
-        if(Data == 0){
-            Regs.status |= CPU_STATUS_ZERO; // Zero Flag
-        }
-
-        // Save to register
-        ((uint16_t*)(&Registers[static_cast<uint8_t>(Output)]))[0] = AdaptedData;
-        Cycles++;
-    }
-    else if(SizeFlag == 3) {
-        uint64_t Data = Input1 >> Input2;
-        uint8_t AdaptedData = static_cast<uint8_t>(Data);
-        
-        if(Data > AdaptedData){
-            Regs.status |= CPU_STATUS_OVERFLOW; // Overflow error
-        }
-        if(Data == 0){
-            Regs.status |= CPU_STATUS_ZERO; // Zero Flag
-        }
-
-        // Save to register
-        ((uint8_t*)(&Registers[static_cast<uint8_t>(Output)]))[0] = AdaptedData;
-        Cycles++;
-    }
+    Registers[static_cast<uint8_t>(Output)] = CastedResult;
+    Cycles++;
 
     return Cycles;
 }
@@ -1098,56 +942,18 @@ uint64_t Core::LSL(){
         std::cout << "LSL: Attempted to Write to a non register: " << static_cast<uint8_t>(Output) << std::endl;
     }
 
-    if(!SizeFlag){
-        Registers[static_cast<uint8_t>(Output)] = Input1 << Input2;
-
-        // TODO FLAG Checks here
+    uint64_t Data1 = CastDataToCorrectSize(Input1, SizeFlag, (CurOP.AddressingMode1 == &Core::REG));
+    uint64_t Data2 = CastDataToCorrectSize(Input2, SizeFlag, (CurOP.AddressingMode2 == &Core::REG));
+    uint64_t Result = Data1 << Data2;
+    uint64_t CastedResult = CastDataToCorrectSize(Result, SizeFlag, true);
+    if(Result > CastedResult){
+        Regs.status |= CPU_STATUS_OVERFLOW; // Overflow error
     }
-    else if(SizeFlag == 1) {
-        uint64_t Data = Input1 << Input2;
-        uint32_t AdaptedData = static_cast<uint32_t>(Data);
-        
-        if(Data > AdaptedData){
-            Regs.status |= CPU_STATUS_OVERFLOW; // Overflow error
-        }
-        if(Data == 0){
-            Regs.status |= CPU_STATUS_ZERO; // Zero Flag
-        }
-
-        // Save to register
-        ((uint32_t*)(&Registers[static_cast<uint8_t>(Output)]))[0] = AdaptedData;
-        Cycles++;
+    if(Result == 0){
+        Regs.status |= CPU_STATUS_ZERO; // Zero Flag
     }
-    else if(SizeFlag == 2) {
-        uint64_t Data = Input1 << Input2;
-        uint16_t AdaptedData = static_cast<uint16_t>(Data);
-        
-        if(Data > AdaptedData){
-            Regs.status |= CPU_STATUS_OVERFLOW; // Overflow error
-        }
-        if(Data == 0){
-            Regs.status |= CPU_STATUS_ZERO; // Zero Flag
-        }
-
-        // Save to register
-        ((uint16_t*)(&Registers[static_cast<uint8_t>(Output)]))[0] = AdaptedData;
-        Cycles++;
-    }
-    else if(SizeFlag == 3) {
-        uint64_t Data = Input1 << Input2;
-        uint8_t AdaptedData = static_cast<uint8_t>(Data);
-        
-        if(Data > AdaptedData){
-            Regs.status |= CPU_STATUS_OVERFLOW; // Overflow error
-        }
-        if(Data == 0){
-            Regs.status |= CPU_STATUS_ZERO; // Zero Flag
-        }
-
-        // Save to register
-        ((uint8_t*)(&Registers[static_cast<uint8_t>(Output)]))[0] = AdaptedData;
-        Cycles++;
-    }
+    Registers[static_cast<uint8_t>(Output)] = CastedResult;
+    Cycles++;
 
     return Cycles;
 }
@@ -1224,56 +1030,18 @@ uint64_t Core::AND(){
         std::cout << "AND: Attempted to Write to a non register: " << static_cast<uint8_t>(Output) << std::endl;
     }
 
-    if(!SizeFlag){
-        Registers[static_cast<uint8_t>(Output)] = Input1 & Input2;
-
-        // TODO FLAG Checks here
+    uint64_t Data1 = CastDataToCorrectSize(Input1, SizeFlag, (CurOP.AddressingMode1 == &Core::REG));
+    uint64_t Data2 = CastDataToCorrectSize(Input2, SizeFlag, (CurOP.AddressingMode2 == &Core::REG));
+    uint64_t Result = Data1 & Data2;
+    uint64_t CastedResult = CastDataToCorrectSize(Result, SizeFlag, true);
+    if(Result > CastedResult){
+        Regs.status |= CPU_STATUS_OVERFLOW; // Overflow error
     }
-    else if(SizeFlag == 1) {
-        uint64_t Data = Input1 & Input2;
-        uint32_t AdaptedData = static_cast<uint32_t>(Data);
-        
-        if(Data > AdaptedData){
-            Regs.status |= CPU_STATUS_OVERFLOW; // Overflow error
-        }
-        if(Data == 0){
-            Regs.status |= CPU_STATUS_ZERO; // Zero Flag
-        }
-
-        // Save to register
-        ((uint32_t*)(&Registers[static_cast<uint8_t>(Output)]))[0] = AdaptedData;
-        Cycles++;
+    if(Result == 0){
+        Regs.status |= CPU_STATUS_ZERO; // Zero Flag
     }
-    else if(SizeFlag == 2) {
-        uint64_t Data = Input1 & Input2;
-        uint16_t AdaptedData = static_cast<uint16_t>(Data);
-        
-        if(Data > AdaptedData){
-            Regs.status |= CPU_STATUS_OVERFLOW; // Overflow error
-        }
-        if(Data == 0){
-            Regs.status |= CPU_STATUS_ZERO; // Zero Flag
-        }
-
-        // Save to register
-        ((uint16_t*)(&Registers[static_cast<uint8_t>(Output)]))[0] = AdaptedData;
-        Cycles++;
-    }
-    else if(SizeFlag == 3) {
-        uint64_t Data = Input1 & Input2;
-        uint8_t AdaptedData = static_cast<uint8_t>(Data);
-        
-        if(Data > AdaptedData){
-            Regs.status |= CPU_STATUS_OVERFLOW; // Overflow error
-        }
-        if(Data == 0){
-            Regs.status |= CPU_STATUS_ZERO; // Zero Flag
-        }
-
-        // Save to register
-        ((uint8_t*)(&Registers[static_cast<uint8_t>(Output)]))[0] = AdaptedData;
-        Cycles++;
-    }
+    Registers[static_cast<uint8_t>(Output)] = CastedResult;
+    Cycles++;
 
     return Cycles;
 }
@@ -1329,56 +1097,17 @@ uint64_t Core::NOT(){
         Input2 = read(Input2);
     }
 
-    if(!SizeFlag){
-        Registers[static_cast<uint8_t>(Input1)] = Input2 ^ 0xFFFFFFFFFFFFFFFF;
-
-        // TODO FLAG Checks here
+    uint64_t Data1 = CastDataToCorrectSize(Input2, SizeFlag, (CurOP.AddressingMode2 == &Core::REG));
+    uint64_t Result = Data1 ^ CastDataToCorrectSize(0xFFFFFFFFFFFFFFFF, SizeFlag, true);
+    uint64_t CastedResult = CastDataToCorrectSize(Result, SizeFlag, true);
+    if(Result > CastedResult){
+        Regs.status |= CPU_STATUS_OVERFLOW; // Overflow error
     }
-    else if(SizeFlag == 1) {
-        uint64_t Data = Input2 ^ 0xFFFFFFFF;
-        uint32_t AdaptedData = static_cast<uint32_t>(Data);
-        
-        if(Data > AdaptedData){
-            Regs.status |= CPU_STATUS_OVERFLOW; // Overflow error
-        }
-        if(Data == 0){
-            Regs.status |= CPU_STATUS_ZERO; // Zero Flag
-        }
-
-        // Save to register
-        ((uint32_t*)(&Registers[static_cast<uint8_t>(Input1)]))[0] = AdaptedData;
-        Cycles++;
+    if(Result == 0){
+        Regs.status |= CPU_STATUS_ZERO; // Zero Flag
     }
-    else if(SizeFlag == 2) {
-        uint64_t Data = Input2 ^ 0xFFFF;
-        uint16_t AdaptedData = static_cast<uint16_t>(Data);
-        
-        if(Data > AdaptedData){
-            Regs.status |= CPU_STATUS_OVERFLOW; // Overflow error
-        }
-        if(Data == 0){
-            Regs.status |= CPU_STATUS_ZERO; // Zero Flag
-        }
-
-        // Save to register
-        ((uint16_t*)(&Registers[static_cast<uint8_t>(Input1)]))[0] = AdaptedData;
-        Cycles++;
-    }
-    else if(SizeFlag == 3) {
-        uint64_t Data = Input2 ^ 0xFF;
-        uint8_t AdaptedData = static_cast<uint8_t>(Data);
-        
-        if(Data > AdaptedData){
-            Regs.status |= CPU_STATUS_OVERFLOW; // Overflow error
-        }
-        if(Data == 0){
-            Regs.status |= CPU_STATUS_ZERO; // Zero Flag
-        }
-
-        // Save to register
-        ((uint8_t*)(&Registers[static_cast<uint8_t>(Input1)]))[0] = AdaptedData;
-        Cycles++;
-    }
+    Registers[static_cast<uint8_t>(Input1)] = CastedResult;
+    Cycles++;
 
     return Cycles;
 }
@@ -1455,56 +1184,18 @@ uint64_t Core::OR(){
         std::cout << "OR: Attempted to Write to a non register: " << static_cast<uint8_t>(Output) << std::endl;
     }
 
-    if(!SizeFlag){
-        Registers[static_cast<uint8_t>(Output)] = Input1 | Input2;
-
-        // TODO FLAG Checks here
+    uint64_t Data1 = CastDataToCorrectSize(Input1, SizeFlag, (CurOP.AddressingMode1 == &Core::REG));
+    uint64_t Data2 = CastDataToCorrectSize(Input2, SizeFlag, (CurOP.AddressingMode2 == &Core::REG));
+    uint64_t Result = Data1 | Data2;
+    uint64_t CastedResult = CastDataToCorrectSize(Result, SizeFlag, true);
+    if(Result > CastedResult){
+        Regs.status |= CPU_STATUS_OVERFLOW; // Overflow error
     }
-    else if(SizeFlag == 1) {
-        uint64_t Data = Input1 | Input2;
-        uint32_t AdaptedData = static_cast<uint32_t>(Data);
-        
-        if(Data > AdaptedData){
-            Regs.status |= CPU_STATUS_OVERFLOW; // Overflow error
-        }
-        if(Data == 0){
-            Regs.status |= CPU_STATUS_ZERO; // Zero Flag
-        }
-
-        // Save to register
-        ((uint32_t*)(&Registers[static_cast<uint8_t>(Output)]))[0] = AdaptedData;
-        Cycles++;
+    if(Result == 0){
+        Regs.status |= CPU_STATUS_ZERO; // Zero Flag
     }
-    else if(SizeFlag == 2) {
-        uint64_t Data = Input1 | Input2;
-        uint16_t AdaptedData = static_cast<uint16_t>(Data);
-        
-        if(Data > AdaptedData){
-            Regs.status |= CPU_STATUS_OVERFLOW; // Overflow error
-        }
-        if(Data == 0){
-            Regs.status |= CPU_STATUS_ZERO; // Zero Flag
-        }
-
-        // Save to register
-        ((uint16_t*)(&Registers[static_cast<uint8_t>(Output)]))[0] = AdaptedData;
-        Cycles++;
-    }
-    else if(SizeFlag == 3) {
-        uint64_t Data = Input1 | Input2;
-        uint8_t AdaptedData = static_cast<uint8_t>(Data);
-        
-        if(Data > AdaptedData){
-            Regs.status |= CPU_STATUS_OVERFLOW; // Overflow error
-        }
-        if(Data == 0){
-            Regs.status |= CPU_STATUS_ZERO; // Zero Flag
-        }
-
-        // Save to register
-        ((uint8_t*)(&Registers[static_cast<uint8_t>(Output)]))[0] = AdaptedData;
-        Cycles++;
-    }
+    Registers[static_cast<uint8_t>(Output)] = CastedResult;
+    Cycles++;
 
     return Cycles;
 }
@@ -1581,56 +1272,18 @@ uint64_t Core::XOR(){
         std::cout << "XOR: Attempted to Write to a non register: " << static_cast<uint8_t>(Output) << std::endl;
     }
 
-    if(!SizeFlag){
-        Registers[static_cast<uint8_t>(Output)] = Input1 ^ Input2;
-
-        // TODO FLAG Checks here
+    uint64_t Data1 = CastDataToCorrectSize(Input1, SizeFlag, (CurOP.AddressingMode1 == &Core::REG));
+    uint64_t Data2 = CastDataToCorrectSize(Input2, SizeFlag, (CurOP.AddressingMode2 == &Core::REG));
+    uint64_t Result = Data1 ^ Data2;
+    uint64_t CastedResult = CastDataToCorrectSize(Result, SizeFlag, true);
+    if(Result > CastedResult){
+        Regs.status |= CPU_STATUS_OVERFLOW; // Overflow error
     }
-    else if(SizeFlag == 1) {
-        uint64_t Data = Input1 ^ Input2;
-        uint32_t AdaptedData = static_cast<uint32_t>(Data);
-        
-        if(Data > AdaptedData){
-            Regs.status |= CPU_STATUS_OVERFLOW; // Overflow error
-        }
-        if(Data == 0){
-            Regs.status |= CPU_STATUS_ZERO; // Zero Flag
-        }
-
-        // Save to register
-        ((uint32_t*)(&Registers[static_cast<uint8_t>(Output)]))[0] = AdaptedData;
-        Cycles++;
+    if(Result == 0){
+        Regs.status |= CPU_STATUS_ZERO; // Zero Flag
     }
-    else if(SizeFlag == 2) {
-        uint64_t Data = Input1 ^ Input2;
-        uint16_t AdaptedData = static_cast<uint16_t>(Data);
-        
-        if(Data > AdaptedData){
-            Regs.status |= CPU_STATUS_OVERFLOW; // Overflow error
-        }
-        if(Data == 0){
-            Regs.status |= CPU_STATUS_ZERO; // Zero Flag
-        }
-
-        // Save to register
-        ((uint16_t*)(&Registers[static_cast<uint8_t>(Output)]))[0] = AdaptedData;
-        Cycles++;
-    }
-    else if(SizeFlag == 3) {
-        uint64_t Data = Input1 ^ Input2;
-        uint8_t AdaptedData = static_cast<uint8_t>(Data);
-        
-        if(Data > AdaptedData){
-            Regs.status |= CPU_STATUS_OVERFLOW; // Overflow error
-        }
-        if(Data == 0){
-            Regs.status |= CPU_STATUS_ZERO; // Zero Flag
-        }
-
-        // Save to register
-        ((uint8_t*)(&Registers[static_cast<uint8_t>(Output)]))[0] = AdaptedData;
-        Cycles++;
-    }
+    Registers[static_cast<uint8_t>(Output)] = CastedResult;
+    Cycles++;
 
     return Cycles;
 }
@@ -1731,25 +1384,8 @@ uint64_t Core::CMP(){
         Input2 = read(Input2);
     }
 
-    uint64_t Data1 = 0;
-    uint64_t Data2 = 0;
-
-    if(!SizeFlag){
-        Data1 = Input1;
-        Data2 = Input2;
-    }
-    else if(SizeFlag == 1) {
-        Data1 = static_cast<uint32_t>(Data1);
-        Data2 = static_cast<uint32_t>(Data2);
-    }
-    else if(SizeFlag == 2) {
-        Data1 = static_cast<uint16_t>(Data1);
-        Data2 = static_cast<uint16_t>(Data2);
-    }
-    else if(SizeFlag == 3) {
-        Data1 = static_cast<uint8_t>(Data1);
-        Data2 = static_cast<uint8_t>(Data2);
-    }
+    uint64_t Data1 = CastDataToCorrectSize(Input1, SizeFlag, (CurOP.AddressingMode1 == &Core::REG));
+    uint64_t Data2 = CastDataToCorrectSize(Input2, SizeFlag, (CurOP.AddressingMode2 == &Core::REG));
 
     // Compare
     if(CMP == CMP_EQU){
