@@ -56,6 +56,8 @@ using namespace UniCPUEmulator;
 #define CMP_NEQ 1
 #define CMP_LEQ 2
 #define CMP_GEQ 3
+#define CMP_LT 4
+#define CMP_GT 5
 
 #define GenCode(inst, addr1, addr2) ((inst << 6) + (addr1 << 2) + addr2)
 
@@ -179,7 +181,7 @@ Core::Core(){
 }
 
 void Core::clock(){
-    bool ResetStatus = false;
+    bool ResetStatus = false; // TODO Only reset if unmodifed!
     if(!cycles && Regs.status){
         ResetStatus = true;
     }
@@ -1767,6 +1769,16 @@ uint64_t Core::CMP(){
     }
     else if(CMP == CMP_GEQ){
         if(Data1 >= Data2){
+            Regs.status |= CPU_STATUS_CMP;
+        }
+    }
+    else if(CMP == CMP_LT){
+        if(Data1 < Data2){
+            Regs.status |= CPU_STATUS_CMP;
+        }
+    }
+    else if(CMP == CMP_GT){
+        if(Data1 > Data2){
             Regs.status |= CPU_STATUS_CMP;
         }
     }
