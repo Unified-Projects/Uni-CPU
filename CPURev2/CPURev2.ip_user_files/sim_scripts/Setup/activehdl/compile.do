@@ -107,6 +107,7 @@ vlog -work CPU  -v2k5 "+incdir+../../../../CPURev2.gen/sources_1/bd/Setup/ipshar
 
 vcom -work CPU -93  \
 "../../../bd/Setup/ip/Setup_IOController_0_0/sim/Setup_IOController_0_0.vhd" \
+"../../../bd/Setup/sim/Setup.vhd" \
 
 vlog -work generic_baseblocks_v2_1_2  -v2k5 "+incdir+../../../../CPURev2.gen/sources_1/bd/Setup/ipshared/ec67/hdl" "+incdir+../../../../CPURev2.gen/sources_1/bd/Setup/ipshared/b28c/hdl" "+incdir+C:/Xilinx/Vivado/2024.1/data/xilinx_vip/include" -l xilinx_vip -l xpm -l axi_infrastructure_v1_1_0 -l axi_vip_v1_1_17 -l processing_system7_vip_v1_0_19 -l CPU -l lib_cdc_v1_0_3 -l proc_sys_reset_v5_0_15 -l blk_mem_gen_v8_4_8 -l util_vector_logic_v2_0_4 -l sim_clk_gen_v1_0_4 -l generic_baseblocks_v2_1_2 -l fifo_generator_v13_2_10 -l axi_data_fifo_v2_1_30 -l axi_register_slice_v2_1_31 -l axi_protocol_converter_v2_1_31 -l axi_clock_converter_v2_1_30 -l axi_dwidth_converter_v2_1_31 \
 "../../../../CPURev2.gen/sources_1/bd/Setup/ipshared/0c28/hdl/generic_baseblocks_v2_1_vl_rfs.v" \
@@ -140,9 +141,6 @@ vlog -work axi_dwidth_converter_v2_1_31  -v2k5 "+incdir+../../../../CPURev2.gen/
 
 vlog -work CPU  -v2k5 "+incdir+../../../../CPURev2.gen/sources_1/bd/Setup/ipshared/ec67/hdl" "+incdir+../../../../CPURev2.gen/sources_1/bd/Setup/ipshared/b28c/hdl" "+incdir+C:/Xilinx/Vivado/2024.1/data/xilinx_vip/include" -l xilinx_vip -l xpm -l axi_infrastructure_v1_1_0 -l axi_vip_v1_1_17 -l processing_system7_vip_v1_0_19 -l CPU -l lib_cdc_v1_0_3 -l proc_sys_reset_v5_0_15 -l blk_mem_gen_v8_4_8 -l util_vector_logic_v2_0_4 -l sim_clk_gen_v1_0_4 -l generic_baseblocks_v2_1_2 -l fifo_generator_v13_2_10 -l axi_data_fifo_v2_1_30 -l axi_register_slice_v2_1_31 -l axi_protocol_converter_v2_1_31 -l axi_clock_converter_v2_1_30 -l axi_dwidth_converter_v2_1_31 \
 "../../../bd/Setup/ip/Setup_auto_us_0/sim/Setup_auto_us_0.v" \
-
-vcom -work CPU -93  \
-"../../../bd/Setup/sim/Setup.vhd" \
 
 vlog -work CPU \
 "glbl.v"

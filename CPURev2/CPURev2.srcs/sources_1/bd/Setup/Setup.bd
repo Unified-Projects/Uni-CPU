@@ -7,7 +7,8 @@
       "name": "Setup",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
       "synth_flow_mode": "None",
-      "tool_version": "2024.1"
+      "tool_version": "2024.1",
+      "validated": "true"
     },
     "design_tree": {
       "processing_system7_0": "",
@@ -857,6 +858,8 @@
           "interrupt": {
             "type": "intr",
             "direction": "I",
+            "left": "31",
+            "right": "0",
             "parameters": {
               "SENSITIVITY": {
                 "value": "LEVEL_HIGH",
@@ -1175,8 +1178,8 @@
             "direction": "I",
             "parameters": {
               "POLARITY": {
-                "value": "ACTIVE_LOW",
-                "value_src": "const_prop"
+                "value": "ACTIVE_HIGH",
+                "value_src": "ip_prop"
               }
             }
           },
@@ -1210,6 +1213,8 @@
           "interrupt": {
             "type": "intr",
             "direction": "O",
+            "left": "31",
+            "right": "0",
             "parameters": {
               "SENSITIVITY": {
                 "value": "LEVEL_HIGH",
@@ -1473,18 +1478,9 @@
           "axi_interconnect_0/S00_ACLK",
           "axi_interconnect_0/M00_ACLK",
           "blk_mem_gen_0/clka",
-          "AXI_Master_0/clk",
           "IOController_0/clk",
-          "CPU_0/clk"
-        ]
-      },
-      "rst_ps7_0_50M_peripheral_aresetn": {
-        "ports": [
-          "rst_ps7_0_50M/peripheral_aresetn",
-          "axi_interconnect_0/ARESETN",
-          "axi_interconnect_0/S00_ARESETN",
-          "axi_interconnect_0/M00_ARESETN",
-          "AXI_Master_0/reset"
+          "CPU_0/clk",
+          "AXI_Master_0/clk"
         ]
       },
       "sim_clk_gen_0_sync_rst": {
@@ -1497,7 +1493,9 @@
         "ports": [
           "util_vector_logic_0/Res",
           "rst_ps7_0_50M/ext_reset_in",
-          "CPU_0/reset"
+          "CPU_0/reset",
+          "axi_interconnect_0/ARESETN",
+          "AXI_Master_0/reset"
         ]
       }
     }

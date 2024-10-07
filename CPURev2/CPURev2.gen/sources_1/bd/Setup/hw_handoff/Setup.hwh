@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Sep  5 12:13:47 2024" VIVADOVERSION="2024.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Mon Oct  7 14:51:19 2024" VIVADOVERSION="2024.1">
 
   <SYSTEMINFO ARCH="zynq" DEVICE="7z020" NAME="Setup" PACKAGE="clg484" SPEEDGRADE="-1"/>
 
@@ -281,7 +281,7 @@
             <CONNECTION INSTANCE="CPU_0" PORT="mem_err"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="interrupt" SENSITIVITY="LEVEL_HIGH" SIGIS="INTERRUPT" SIGNAME="AXI_Master_0_interrupt">
+        <PORT DIR="O" LEFT="31" NAME="interrupt" RIGHT="0" SENSITIVITY="LEVEL_HIGH" SIGIS="INTERRUPT" SIGNAME="AXI_Master_0_interrupt">
           <CONNECTIONS>
             <CONNECTION INSTANCE="CPU_0" PORT="interrupt"/>
           </CONNECTIONS>
@@ -291,9 +291,9 @@
             <CONNECTION INSTANCE="CPU_0" PORT="data_in"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="rst_ps7_0_50M_peripheral_aresetn">
+        <PORT DIR="I" NAME="reset" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="util_vector_logic_0_Res">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="rst_ps7_0_50M" PORT="peripheral_aresetn"/>
+            <CONNECTION INSTANCE="util_vector_logic_0" PORT="Res"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="start_read" SIGIS="undef" SIGNAME="CPU_0_mem_read">
@@ -376,11 +376,31 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="O" NAME="IO_Enable" SIGIS="undef"/>
-        <PORT DIR="I" LEFT="63" NAME="IO_In" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="O" LEFT="63" NAME="IO_Out" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="O" LEFT="7" NAME="IO_Select" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="O" NAME="IO_WriteEnable" SIGIS="undef"/>
+        <PORT DIR="O" NAME="IO_Enable" SIGIS="undef" SIGNAME="CPU_0_IO_Enable">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IOController_0" PORT="Enable"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="63" NAME="IO_In" RIGHT="0" SIGIS="undef" SIGNAME="IOController_0_DataOut">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IOController_0" PORT="DataOut"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="63" NAME="IO_Out" RIGHT="0" SIGIS="undef" SIGNAME="CPU_0_IO_Out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IOController_0" PORT="DataIn"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="IO_Select" RIGHT="0" SIGIS="undef" SIGNAME="CPU_0_IO_Select">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IOController_0" PORT="Selector"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="IO_WriteEnable" SIGIS="undef" SIGNAME="CPU_0_IO_WriteEnable">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IOController_0" PORT="Write"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="O" LEFT="31" NAME="addr" RIGHT="0" SIGIS="undef" SIGNAME="CPU_0_addr">
           <CONNECTIONS>
             <CONNECTION INSTANCE="AXI_Master_0" PORT="address"/>
@@ -426,7 +446,7 @@
             <CONNECTION INSTANCE="AXI_Master_0" PORT="write_data"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="interrupt" SENSITIVITY="LEVEL_HIGH" SIGIS="INTERRUPT" SIGNAME="AXI_Master_0_interrupt">
+        <PORT DIR="I" LEFT="31" NAME="interrupt" RIGHT="0" SENSITIVITY="LEVEL_HIGH" SIGIS="INTERRUPT" SIGNAME="AXI_Master_0_interrupt">
           <CONNECTIONS>
             <CONNECTION INSTANCE="AXI_Master_0" PORT="interrupt"/>
           </CONNECTIONS>
@@ -471,16 +491,36 @@
             <CONNECTION INSTANCE="External_Ports" PORT="BUT0_0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="63" NAME="DataIn" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="O" LEFT="63" NAME="DataOut" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="I" NAME="Enable" SIGIS="undef"/>
+        <PORT DIR="I" LEFT="63" NAME="DataIn" RIGHT="0" SIGIS="undef" SIGNAME="CPU_0_IO_Out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="CPU_0" PORT="IO_Out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="63" NAME="DataOut" RIGHT="0" SIGIS="undef" SIGNAME="IOController_0_DataOut">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="CPU_0" PORT="IO_In"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="Enable" SIGIS="undef" SIGNAME="CPU_0_IO_Enable">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="CPU_0" PORT="IO_Enable"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="O" NAME="LED0" SIGIS="undef" SIGNAME="IOController_0_LED0">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="LED0_0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="7" NAME="Selector" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="I" NAME="Write" SIGIS="undef"/>
+        <PORT DIR="I" LEFT="7" NAME="Selector" RIGHT="0" SIGIS="undef" SIGNAME="CPU_0_IO_Select">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="CPU_0" PORT="IO_Select"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="Write" SIGIS="undef" SIGNAME="CPU_0_IO_WriteEnable">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="CPU_0" PORT="IO_WriteEnable"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT CLKFREQUENCY="250000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="sim_clk_gen_0_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="sim_clk_gen_0" PORT="clk"/>
@@ -817,9 +857,9 @@
             <CONNECTION INSTANCE="sim_clk_gen_0" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="ARESETN" SIGIS="rst" SIGNAME="rst_ps7_0_50M_peripheral_aresetn">
+        <PORT DIR="I" NAME="ARESETN" SIGIS="rst" SIGNAME="util_vector_logic_0_Res">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="rst_ps7_0_50M" PORT="peripheral_aresetn"/>
+            <CONNECTION INSTANCE="util_vector_logic_0" PORT="Res"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="M00_ACLK" SIGIS="clk" SIGNAME="sim_clk_gen_0_clk">
@@ -827,11 +867,7 @@
             <CONNECTION INSTANCE="sim_clk_gen_0" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="M00_ARESETN" SIGIS="rst" SIGNAME="rst_ps7_0_50M_peripheral_aresetn">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="rst_ps7_0_50M" PORT="peripheral_aresetn"/>
-          </CONNECTIONS>
-        </PORT>
+        <PORT DIR="I" NAME="M00_ARESETN" SIGIS="rst"/>
         <PORT DIR="O" LEFT="31" NAME="M00_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_M00_AXI_araddr">
           <CONNECTIONS>
             <CONNECTION INSTANCE="processing_system7_0" PORT="S_AXI_HP0_ARADDR"/>
@@ -1002,11 +1038,7 @@
             <CONNECTION INSTANCE="sim_clk_gen_0" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="S00_ARESETN" SIGIS="rst" SIGNAME="rst_ps7_0_50M_peripheral_aresetn">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="rst_ps7_0_50M" PORT="peripheral_aresetn"/>
-          </CONNECTIONS>
-        </PORT>
+        <PORT DIR="I" NAME="S00_ARESETN" SIGIS="rst"/>
         <PORT DIR="I" LEFT="31" NAME="S00_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="AXI_Master_0_M_AXI_ARADDR">
           <CONNECTIONS>
             <CONNECTION INSTANCE="AXI_Master_0" PORT="M_AXI_ARADDR"/>
@@ -2387,7 +2419,7 @@
             <CONNECTION INSTANCE="Setup_imp" PORT="DDR_we_n"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="5e+07" DIR="O" NAME="FCLK_CLK0" SIGIS="clk"/>
+        <PORT CLKFREQUENCY="50000000" DIR="O" NAME="FCLK_CLK0" SIGIS="clk"/>
         <PORT DIR="O" NAME="FCLK_RESET0_N" POLARITY="ACTIVE_LOW" SIGIS="rst"/>
         <PORT DIR="IO" LEFT="53" NAME="MIO" RIGHT="0" SIGIS="undef" SIGNAME="processing_system7_0_MIO">
           <CONNECTIONS>
@@ -2860,14 +2892,7 @@
         <PORT DIR="O" LEFT="0" NAME="interconnect_aresetn" POLARITY="ACTIVE_LOW" RIGHT="0" SIGIS="rst"/>
         <PORT DIR="I" NAME="mb_debug_sys_rst" POLARITY="ACTIVE_HIGH" SIGIS="rst"/>
         <PORT DIR="O" NAME="mb_reset" POLARITY="ACTIVE_HIGH" SIGIS="rst"/>
-        <PORT DIR="O" LEFT="0" NAME="peripheral_aresetn" POLARITY="ACTIVE_LOW" RIGHT="0" SIGIS="rst" SIGNAME="rst_ps7_0_50M_peripheral_aresetn">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_interconnect_0" PORT="ARESETN"/>
-            <CONNECTION INSTANCE="axi_interconnect_0" PORT="S00_ARESETN"/>
-            <CONNECTION INSTANCE="axi_interconnect_0" PORT="M00_ARESETN"/>
-            <CONNECTION INSTANCE="AXI_Master_0" PORT="reset"/>
-          </CONNECTIONS>
-        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="peripheral_aresetn" POLARITY="ACTIVE_LOW" RIGHT="0" SIGIS="rst"/>
         <PORT DIR="O" LEFT="0" NAME="peripheral_reset" POLARITY="ACTIVE_HIGH" RIGHT="0" SIGIS="rst"/>
         <PORT CLKFREQUENCY="250000" DIR="I" NAME="slowest_sync_clk" SIGIS="clk" SIGNAME="sim_clk_gen_0_clk">
           <CONNECTIONS>
@@ -2901,9 +2926,9 @@
             <CONNECTION INSTANCE="axi_interconnect_0" PORT="S00_ACLK"/>
             <CONNECTION INSTANCE="axi_interconnect_0" PORT="M00_ACLK"/>
             <CONNECTION INSTANCE="blk_mem_gen_0" PORT="clka"/>
-            <CONNECTION INSTANCE="AXI_Master_0" PORT="clk"/>
             <CONNECTION INSTANCE="IOController_0" PORT="clk"/>
             <CONNECTION INSTANCE="CPU_0" PORT="clk"/>
+            <CONNECTION INSTANCE="AXI_Master_0" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="sync_rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="sim_clk_gen_0_sync_rst">
@@ -2933,6 +2958,8 @@
           <CONNECTIONS>
             <CONNECTION INSTANCE="rst_ps7_0_50M" PORT="ext_reset_in"/>
             <CONNECTION INSTANCE="CPU_0" PORT="reset"/>
+            <CONNECTION INSTANCE="axi_interconnect_0" PORT="ARESETN"/>
+            <CONNECTION INSTANCE="AXI_Master_0" PORT="reset"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>

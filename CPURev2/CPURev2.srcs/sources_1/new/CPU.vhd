@@ -8,7 +8,7 @@ entity CPU is
         -- Important
         clk : in STD_LOGIC;
         reset : in STD_LOGIC;
-        interrupt : in STD_LOGIC;
+        interrupt : in STD_LOGIC_VECTOR(31 downto 0);
 
         data_in : in STD_LOGIC_VECTOR(31 downto 0);
         data_out : out STD_LOGIC_VECTOR(31 downto 0);
@@ -144,12 +144,11 @@ begin
                 mem_read <= '0';
                 mem_write <= '0';
 
-                workingStatus := Registers(15);
-                -- Registers(15) <= (others => '0');
-                       
+                
                 case state is
                     when IDLE =>
-                        if interrupt = '1' then
+                        workingStatus := Registers(15);
+                        if interrupt /= "00000000000000000000000000000000" then
                             -- Handle interrupt
                             state <= IDLE;
                         elsif workingStatus(1 downto 1) = "1" then
@@ -949,6 +948,7 @@ begin
                     when FETCH_INSTRUCTION =>
                         -- -- Save RIP First
                         -- Registers(14) <= Result;
+                        Registers(15) <= (others => '0');
                     
                         nextState <= INC_RIP;
                         state <= BRAM_READ;
@@ -1010,10 +1010,58 @@ begin
                                 -- JC Instruction
                                 state <= GET_1_ARG;
                                 nextNextState <= EXEC;
-                                
+                            when "0000001001" =>
+                                -- RET Instruction
+                                state <= EXEC;
+                            when "0000001010" =>
+                                -- INT Instruction
+                                state <= GET_1_ARG;
+                                nextNextState <= EXEC;
+                            when "0000001011" =>
+                                -- CALL Instruction
+                                state <= GET_1_ARG;
+                                nextNextState <= EXEC;
+                            when "0000001100" =>
+                                -- MUL Instruction
+                                state <= GET_3_ARG;
+                                nextNextState <= EXEC;
+                            when "0000001101" =>
+                                -- DIV Instruction
+                                state <= GET_3_ARG;
+                                nextNextState <= EXEC;
+                            when "0000001110" =>
+                                -- SUB Instruction
+                                state <= GET_3_ARG;
+                                nextNextState <= EXEC;
+                            when "0000001111" =>
+                                -- LSR Instruction
+                                state <= GET_3_ARG;
+                                nextNextState <= EXEC;
+                            when "0000010000" =>
+                                -- LSL Instruction
+                                state <= GET_3_ARG;
+                                nextNextState <= EXEC;
+                            when "0000010001" =>
+                                -- AND Instruction
+                                state <= GET_3_ARG;
+                                nextNextState <= EXEC;
+                            when "0000010010" =>
+                                -- NOT Instruction
+                                state <= GET_2_ARG;
+                                nextNextState <= EXEC;
+                            when "0000010011" =>
+                                -- OR Instruction
+                                state <= GET_3_ARG;
+                                nextNextState <= EXEC;
+                            when "0000010100" =>
+                                -- XOR Instruction
+                                state <= GET_3_ARG;
+                                nextNextState <= EXEC;
+                            
                             when others =>
                                 state <= IDLE;
                                 -- THROW ERR
+                                -- JMP to Int OP-Code
                         end case;
                         
                     when EXEC =>
@@ -1614,7 +1662,7 @@ begin
                     --     state <= IDLE;
                         
                     when HALT =>
-                        if interrupt = '1' then
+                        if interrupt /= "00000000000000000000000000000000" then
                             state <= IDLE;
                         end if;
                         

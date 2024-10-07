@@ -81,7 +81,7 @@ ENTITY Setup_AXI_Master_0_3 IS
     address : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
     done : OUT STD_LOGIC;
     err : OUT STD_LOGIC;
-    interrupt : OUT STD_LOGIC
+    interrupt : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
   );
 END Setup_AXI_Master_0_3;
 
@@ -116,7 +116,7 @@ ARCHITECTURE Setup_AXI_Master_0_3_arch OF Setup_AXI_Master_0_3 IS
       address : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
       done : OUT STD_LOGIC;
       err : OUT STD_LOGIC;
-      interrupt : OUT STD_LOGIC
+      interrupt : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
     );
   END COMPONENT AXI_Master;
   ATTRIBUTE X_INTERFACE_INFO : STRING;

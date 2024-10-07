@@ -42,7 +42,7 @@ entity AXI_Master is
         address : in STD_LOGIC_VECTOR(31 downto 0);        -- 32-bit address
         done : out STD_LOGIC;
         err : out STD_LOGIC;
-        interrupt : out STD_LOGIC
+        interrupt : out STD_LOGIC_VECTOR(31 downto 0)
     );
 end AXI_Master;
 
@@ -62,6 +62,7 @@ begin
             M_AXI_RREADY <= '0';
             done <= '0';
             err <= '0';
+            interrupt <= (others => '0');
         elsif rising_edge(clk) then
             case state is
                 when IDLE =>

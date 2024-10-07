@@ -2,8 +2,8 @@
 --Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
---Date        : Thu Sep  5 12:13:45 2024
---Host        : DESKTOP-PSI4IU2 running 64-bit major release  (build 9200)
+--Date        : Mon Oct  7 14:51:17 2024
+--Host        : PopTop running 64-bit major release  (build 9200)
 --Command     : generate_target Setup.bd
 --Design      : Setup
 --Purpose     : IP block netlist
@@ -878,7 +878,7 @@ architecture STRUCTURE of Setup is
   port (
     clk : in STD_LOGIC;
     reset : in STD_LOGIC;
-    interrupt : in STD_LOGIC;
+    interrupt : in STD_LOGIC_VECTOR ( 31 downto 0 );
     data_in : in STD_LOGIC_VECTOR ( 31 downto 0 );
     data_out : out STD_LOGIC_VECTOR ( 31 downto 0 );
     addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -926,7 +926,7 @@ architecture STRUCTURE of Setup is
     address : in STD_LOGIC_VECTOR ( 31 downto 0 );
     done : out STD_LOGIC;
     err : out STD_LOGIC;
-    interrupt : out STD_LOGIC
+    interrupt : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
   end component Setup_AXI_Master_0_3;
   component Setup_util_vector_logic_0_0 is
@@ -955,9 +955,13 @@ architecture STRUCTURE of Setup is
   end component Setup_IOController_0_0;
   signal AXI_Master_0_done : STD_LOGIC;
   signal AXI_Master_0_err : STD_LOGIC;
-  signal AXI_Master_0_interrupt : STD_LOGIC;
+  signal AXI_Master_0_interrupt : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal AXI_Master_0_read_data : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal BUT0_0_1 : STD_LOGIC;
+  signal CPU_0_IO_Enable : STD_LOGIC;
+  signal CPU_0_IO_Out : STD_LOGIC_VECTOR ( 63 downto 0 );
+  signal CPU_0_IO_Select : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal CPU_0_IO_WriteEnable : STD_LOGIC;
   signal CPU_0_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal CPU_0_bram_addr : STD_LOGIC_VECTOR ( 12 downto 0 );
   signal CPU_0_bram_dout : STD_LOGIC_VECTOR ( 63 downto 0 );
@@ -966,6 +970,7 @@ architecture STRUCTURE of Setup is
   signal CPU_0_data_out : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal CPU_0_mem_read : STD_LOGIC;
   signal CPU_0_mem_write : STD_LOGIC;
+  signal IOController_0_DataOut : STD_LOGIC_VECTOR ( 63 downto 0 );
   signal IOController_0_LED0 : STD_LOGIC;
   signal S00_AXI_1_ARADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal S00_AXI_1_ARREADY : STD_LOGIC;
@@ -1040,14 +1045,8 @@ architecture STRUCTURE of Setup is
   signal processing_system7_0_FIXED_IO_PS_CLK : STD_LOGIC;
   signal processing_system7_0_FIXED_IO_PS_PORB : STD_LOGIC;
   signal processing_system7_0_FIXED_IO_PS_SRSTB : STD_LOGIC;
-  signal rst_ps7_0_50M_peripheral_aresetn : STD_LOGIC_VECTOR ( 0 to 0 );
   signal sim_clk_gen_0_sync_rst : STD_LOGIC;
   signal util_vector_logic_0_Res : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal NLW_CPU_0_IO_Enable_UNCONNECTED : STD_LOGIC;
-  signal NLW_CPU_0_IO_WriteEnable_UNCONNECTED : STD_LOGIC;
-  signal NLW_CPU_0_IO_Out_UNCONNECTED : STD_LOGIC_VECTOR ( 63 downto 0 );
-  signal NLW_CPU_0_IO_Select_UNCONNECTED : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal NLW_IOController_0_DataOut_UNCONNECTED : STD_LOGIC_VECTOR ( 63 downto 0 );
   signal NLW_processing_system7_0_FCLK_CLK0_UNCONNECTED : STD_LOGIC;
   signal NLW_processing_system7_0_FCLK_RESET0_N_UNCONNECTED : STD_LOGIC;
   signal NLW_processing_system7_0_M_AXI_GP0_ARVALID_UNCONNECTED : STD_LOGIC;
@@ -1086,6 +1085,7 @@ architecture STRUCTURE of Setup is
   signal NLW_rst_ps7_0_50M_mb_reset_UNCONNECTED : STD_LOGIC;
   signal NLW_rst_ps7_0_50M_bus_struct_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_rst_ps7_0_50M_interconnect_aresetn_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal NLW_rst_ps7_0_50M_peripheral_aresetn_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_rst_ps7_0_50M_peripheral_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of DDR_cas_n : signal is "xilinx.com:interface:ddrx:1.0 DDR CAS_N";
@@ -1138,20 +1138,20 @@ AXI_Master_0: component Setup_AXI_Master_0_3
       clk => processing_system7_0_FCLK_CLK0,
       done => AXI_Master_0_done,
       err => AXI_Master_0_err,
-      interrupt => AXI_Master_0_interrupt,
+      interrupt(31 downto 0) => AXI_Master_0_interrupt(31 downto 0),
       read_data(31 downto 0) => AXI_Master_0_read_data(31 downto 0),
-      reset => rst_ps7_0_50M_peripheral_aresetn(0),
+      reset => util_vector_logic_0_Res(0),
       start_read => CPU_0_mem_read,
       start_write => CPU_0_mem_write,
       write_data(31 downto 0) => CPU_0_data_out(31 downto 0)
     );
 CPU_0: component Setup_CPU_0_2
      port map (
-      IO_Enable => NLW_CPU_0_IO_Enable_UNCONNECTED,
-      IO_In(63 downto 0) => B"0000000000000000000000000000000000000000000000000000000000000000",
-      IO_Out(63 downto 0) => NLW_CPU_0_IO_Out_UNCONNECTED(63 downto 0),
-      IO_Select(7 downto 0) => NLW_CPU_0_IO_Select_UNCONNECTED(7 downto 0),
-      IO_WriteEnable => NLW_CPU_0_IO_WriteEnable_UNCONNECTED,
+      IO_Enable => CPU_0_IO_Enable,
+      IO_In(63 downto 0) => IOController_0_DataOut(63 downto 0),
+      IO_Out(63 downto 0) => CPU_0_IO_Out(63 downto 0),
+      IO_Select(7 downto 0) => CPU_0_IO_Select(7 downto 0),
+      IO_WriteEnable => CPU_0_IO_WriteEnable,
       addr(31 downto 0) => CPU_0_addr(31 downto 0),
       bram_addr(12 downto 0) => CPU_0_bram_addr(12 downto 0),
       bram_din(63 downto 0) => blk_mem_gen_0_douta(63 downto 0),
@@ -1161,7 +1161,7 @@ CPU_0: component Setup_CPU_0_2
       clk => processing_system7_0_FCLK_CLK0,
       data_in(31 downto 0) => AXI_Master_0_read_data(31 downto 0),
       data_out(31 downto 0) => CPU_0_data_out(31 downto 0),
-      interrupt => AXI_Master_0_interrupt,
+      interrupt(31 downto 0) => AXI_Master_0_interrupt(31 downto 0),
       mem_done => AXI_Master_0_done,
       mem_err => AXI_Master_0_err,
       mem_read => CPU_0_mem_read,
@@ -1171,20 +1171,20 @@ CPU_0: component Setup_CPU_0_2
 IOController_0: component Setup_IOController_0_0
      port map (
       BUT0 => BUT0_0_1,
-      DataIn(63 downto 0) => B"0000000000000000000000000000000000000000000000000000000000000000",
-      DataOut(63 downto 0) => NLW_IOController_0_DataOut_UNCONNECTED(63 downto 0),
-      Enable => '0',
+      DataIn(63 downto 0) => CPU_0_IO_Out(63 downto 0),
+      DataOut(63 downto 0) => IOController_0_DataOut(63 downto 0),
+      Enable => CPU_0_IO_Enable,
       LED0 => IOController_0_LED0,
-      Selector(7 downto 0) => B"00000000",
-      Write => '0',
+      Selector(7 downto 0) => CPU_0_IO_Select(7 downto 0),
+      Write => CPU_0_IO_WriteEnable,
       clk => processing_system7_0_FCLK_CLK0
     );
 axi_interconnect_0: entity work.Setup_axi_interconnect_0_1
      port map (
       ACLK => processing_system7_0_FCLK_CLK0,
-      ARESETN => rst_ps7_0_50M_peripheral_aresetn(0),
+      ARESETN => util_vector_logic_0_Res(0),
       M00_ACLK => processing_system7_0_FCLK_CLK0,
-      M00_ARESETN => rst_ps7_0_50M_peripheral_aresetn(0),
+      M00_ARESETN => '0',
       M00_AXI_araddr(31 downto 0) => axi_interconnect_0_M00_AXI_ARADDR(31 downto 0),
       M00_AXI_arburst(1 downto 0) => axi_interconnect_0_M00_AXI_ARBURST(1 downto 0),
       M00_AXI_arcache(3 downto 0) => axi_interconnect_0_M00_AXI_ARCACHE(3 downto 0),
@@ -1219,7 +1219,7 @@ axi_interconnect_0: entity work.Setup_axi_interconnect_0_1
       M00_AXI_wstrb(7 downto 0) => axi_interconnect_0_M00_AXI_WSTRB(7 downto 0),
       M00_AXI_wvalid => axi_interconnect_0_M00_AXI_WVALID,
       S00_ACLK => processing_system7_0_FCLK_CLK0,
-      S00_ARESETN => rst_ps7_0_50M_peripheral_aresetn(0),
+      S00_ARESETN => '0',
       S00_AXI_araddr(31 downto 0) => S00_AXI_1_ARADDR(31 downto 0),
       S00_AXI_arready => S00_AXI_1_ARREADY,
       S00_AXI_arvalid => S00_AXI_1_ARVALID,
@@ -1366,7 +1366,7 @@ rst_ps7_0_50M: component Setup_rst_ps7_0_50M_0
       interconnect_aresetn(0) => NLW_rst_ps7_0_50M_interconnect_aresetn_UNCONNECTED(0),
       mb_debug_sys_rst => '0',
       mb_reset => NLW_rst_ps7_0_50M_mb_reset_UNCONNECTED,
-      peripheral_aresetn(0) => rst_ps7_0_50M_peripheral_aresetn(0),
+      peripheral_aresetn(0) => NLW_rst_ps7_0_50M_peripheral_aresetn_UNCONNECTED(0),
       peripheral_reset(0) => NLW_rst_ps7_0_50M_peripheral_reset_UNCONNECTED(0),
       slowest_sync_clk => processing_system7_0_FCLK_CLK0
     );

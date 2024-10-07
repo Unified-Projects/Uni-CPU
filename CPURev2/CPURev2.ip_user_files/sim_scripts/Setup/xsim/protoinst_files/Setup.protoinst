@@ -8,7 +8,7 @@
 					"ports": {
 						"ACLK": { "actual": "clk"},
 						"ARADDR": { "actual": "M_AXI_ARADDR[31:0]"},
-						"ARESETN": { "actual": "reset"},
+						"ARESET": { "actual": "reset"},
 						"ARREADY": { "actual": "M_AXI_ARREADY"},
 						"ARVALID": { "actual": "M_AXI_ARVALID"},
 						"AWADDR": { "actual": "M_AXI_AWADDR[31:0]"},
@@ -34,7 +34,7 @@
 						"ARADDR": { "actual": "M00_AXI_araddr[31:0]"},
 						"ARBURST": { "actual": "M00_AXI_arburst[1:0]"},
 						"ARCACHE": { "actual": "M00_AXI_arcache[3:0]"},
-						"ARESETN": { "actual": "ARESETN"},
+						"ARESET": { "actual": "ARESETN"},
 						"ARLEN": { "actual": "M00_AXI_arlen[3:0]"},
 						"ARLOCK": { "actual": "M00_AXI_arlock[1:0]"},
 						"ARPROT": { "actual": "M00_AXI_arprot[2:0]"},
@@ -72,7 +72,7 @@
 					"ports": {
 						"ACLK": { "actual": "S00_ACLK"},
 						"ARADDR": { "actual": "S00_AXI_araddr[31:0]"},
-						"ARESETN": { "actual": "ARESETN"},
+						"ARESET": { "actual": "ARESETN"},
 						"ARREADY": { "actual": "S00_AXI_arready"},
 						"ARVALID": { "actual": "S00_AXI_arvalid"},
 						"AWADDR": { "actual": "S00_AXI_awaddr[31:0]"},

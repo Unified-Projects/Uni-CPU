@@ -168,7 +168,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:1107f7ba</spirit:value>
+            <spirit:value>9:7a63e9e9</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -180,7 +180,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:8b065ca6</spirit:value>
+            <spirit:value>9:9fe364cf</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -191,7 +191,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:8b065ca6</spirit:value>
+            <spirit:value>9:9fe364cf</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -207,11 +207,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Sep 05 11:13:46 UTC 2024</spirit:value>
+            <spirit:value>Mon Oct 07 13:32:48 UTC 2024</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:1107f7ba</spirit:value>
+            <spirit:value>9:7a63e9e9</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -227,11 +227,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Sep 05 11:13:46 UTC 2024</spirit:value>
+            <spirit:value>Mon Oct 07 13:32:48 UTC 2024</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:8b065ca6</spirit:value>
+            <spirit:value>9:9fe364cf</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -267,9 +267,13 @@
         <spirit:name>interrupt</spirit:name>
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long">31</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
-              <spirit:typeName>STD_LOGIC</spirit:typeName>
+              <spirit:typeName>STD_LOGIC_VECTOR</spirit:typeName>
               <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
               <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>

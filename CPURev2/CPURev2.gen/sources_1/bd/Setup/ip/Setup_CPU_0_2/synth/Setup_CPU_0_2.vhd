@@ -57,7 +57,7 @@ ENTITY Setup_CPU_0_2 IS
   PORT (
     clk : IN STD_LOGIC;
     reset : IN STD_LOGIC;
-    interrupt : IN STD_LOGIC;
+    interrupt : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
     data_in : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
     data_out : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
     addr : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -85,7 +85,7 @@ ARCHITECTURE Setup_CPU_0_2_arch OF Setup_CPU_0_2 IS
     PORT (
       clk : IN STD_LOGIC;
       reset : IN STD_LOGIC;
-      interrupt : IN STD_LOGIC;
+      interrupt : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
       data_in : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
       data_out : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
       addr : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);

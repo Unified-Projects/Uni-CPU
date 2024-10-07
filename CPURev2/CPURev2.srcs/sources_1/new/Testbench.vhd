@@ -36,6 +36,8 @@ architecture Behavioral of CPU_TB is
     signal FIXED_IO_ps_clk : STD_LOGIC := '0';
     signal FIXED_IO_ps_porb : STD_LOGIC := '1';
     signal FIXED_IO_ps_srstb : STD_LOGIC := '1';
+    
+    signal BUT0_0 : STD_LOGIC := '1';
 
 begin
     -- Clock generation
@@ -64,7 +66,8 @@ begin
             FIXED_IO_mio => FIXED_IO_mio,
             FIXED_IO_ps_clk => FIXED_IO_ps_clk,
             FIXED_IO_ps_porb => FIXED_IO_ps_porb,
-            FIXED_IO_ps_srstb => FIXED_IO_ps_srstb
+            FIXED_IO_ps_srstb => FIXED_IO_ps_srstb,
+            BUT0_0 => BUT0_0
         );
 
     -- Test process

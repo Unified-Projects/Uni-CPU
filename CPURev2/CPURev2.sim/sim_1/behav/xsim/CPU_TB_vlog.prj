@@ -1,0 +1,14 @@
+# compile verilog/system verilog design source files
+verilog CPU  --include "../../../../CPURev2.gen/sources_1/bd/Setup/ipshared/ec67/hdl" --include "../../../../CPURev2.gen/sources_1/bd/Setup/ipshared/b28c/hdl" --include "C:/Xilinx/Vivado/2024.1/data/xilinx_vip/include" \
+"../../../../CPURev2.ip_user_files/bd/Setup/ip/Setup_processing_system7_0_0/sim/Setup_processing_system7_0_0.v" \
+"../../../../CPURev2.ip_user_files/bd/Setup/ip/Setup_blk_mem_gen_0_0/sim/Setup_blk_mem_gen_0_0.v" \
+"../../../../CPURev2.ip_user_files/bd/Setup/ip/Setup_util_vector_logic_0_0/sim/Setup_util_vector_logic_0_0.v" \
+"../../../../CPURev2.ip_user_files/bd/Setup/ip/Setup_sim_clk_gen_0_0/sim/Setup_sim_clk_gen_0_0.v" \
+"../../../../CPURev2.ip_user_files/bd/Setup/ip/Setup_auto_pc_0/sim/Setup_auto_pc_0.v" \
+"../../../../CPURev2.ip_user_files/bd/Setup/ip/Setup_auto_us_0/sim/Setup_auto_us_0.v" \
+
+# compile glbl module
+verilog CPU "glbl.v"
+
+# Do not sort compile order
+nosort
