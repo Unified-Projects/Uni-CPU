@@ -1,6 +1,6 @@
-set_property SRC_FILE_INFO {cfile:y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_processing_system7_0_0/Setup_processing_system7_0_0.xdc rfile:../../../CPURev2.gen/sources_1/bd/Setup/ip/Setup_processing_system7_0_0/Setup_processing_system7_0_0.xdc id:1 order:EARLY scoped_inst:Setup_i/processing_system7_0/inst} [current_design]
-set_property SRC_FILE_INFO {cfile:y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_rst_ps7_0_50M_0/Setup_rst_ps7_0_50M_0.xdc rfile:../../../CPURev2.gen/sources_1/bd/Setup/ip/Setup_rst_ps7_0_50M_0/Setup_rst_ps7_0_50M_0.xdc id:2 order:EARLY scoped_inst:Setup_i/rst_ps7_0_50M/U0} [current_design]
-set_property SRC_FILE_INFO {cfile:Y:/C++/Uni-CPU/CPURev2/CPURev2.srcs/constrs_1/new/CPU.xdc rfile:../../../CPURev2.srcs/constrs_1/new/CPU.xdc id:3} [current_design]
+set_property SRC_FILE_INFO {cfile:c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_processing_system7_0_0/Setup_processing_system7_0_0.xdc rfile:../../../CPURev2.gen/sources_1/bd/Setup/ip/Setup_processing_system7_0_0/Setup_processing_system7_0_0.xdc id:1 order:EARLY scoped_inst:Setup_i/processing_system7_0/inst} [current_design]
+set_property SRC_FILE_INFO {cfile:c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_rst_ps7_0_50M_0/Setup_rst_ps7_0_50M_0.xdc rfile:../../../CPURev2.gen/sources_1/bd/Setup/ip/Setup_rst_ps7_0_50M_0/Setup_rst_ps7_0_50M_0.xdc id:2 order:EARLY scoped_inst:Setup_i/rst_ps7_0_50M/U0} [current_design]
+set_property SRC_FILE_INFO {cfile:C:/Git/Uni-CPU/CPURev2/CPURev2.srcs/constrs_1/new/CPU.xdc rfile:../../../CPURev2.srcs/constrs_1/new/CPU.xdc id:3} [current_design]
 current_instance Setup_i/processing_system7_0/inst
 set_property src_info {type:SCOPED_XDC file:1 line:21 export:INPUT save:INPUT read:READ} [current_design]
 set_input_jitter clk_fpga_0 0.6
@@ -165,5 +165,7 @@ current_instance Setup_i/rst_ps7_0_50M/U0
 set_property src_info {type:SCOPED_XDC file:2 line:50 export:INPUT save:INPUT read:READ} [current_design]
 create_waiver -type CDC -id {CDC-11} -user "proc_sys_reset" -desc "Timing uncritical paths" -tags "1171415" -scope -internal -to [get_pins -quiet -filter REF_PIN_NAME=~*D -of_objects [get_cells -hierarchical -filter {NAME =~ */ACTIVE_LOW_AUX.ACT_LO_AUX/GENERATE_LEVEL_P_S_CDC.SINGLE_BIT.CROSS_PLEVEL_IN2SCNDRY_IN_cdc_to}]]
 current_instance
-set_property src_info {type:XDC file:3 line:25 export:INPUT save:INPUT read:READ} [current_design]
-create _clock -add -name
+set_property src_info {type:XDC file:3 line:24 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN P20 [get_ports led]
+set_property src_info {type:XDC file:3 line:27 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN K21 [get_ports btn]

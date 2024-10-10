@@ -8,14 +8,14 @@
   **** SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
   **** IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
   **** SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
-  **** Start of session at: Thu Aug 22 20:58:02 2024
+  **** Start of session at: Thu Oct 10 15:47:10 2024
     ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
     ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 
 source Setup_wrapper.tcl -notrace
-create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 531.266 ; gain = 199.133
+create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:07 . Memory (MB): peak = 529.395 ; gain = 199.430
 INFO: [IP_Flow 19-234] Refreshing IP repositories
-INFO: [IP_Flow 19-1700] Loaded user IP repository 'y:/C++/Uni-CPU/ip_repo/PL_DDR_RW_1_0'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Git/Uni-CPU/ip_repo/PL_DDR_RW_1_0'.
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2024.1/data/ip'.
 Command: synth_design -top Setup_wrapper -part xc7z020clg484-1
 Starting synth_design
@@ -25,13 +25,15 @@ INFO: [Device 21-403] Loading part xc7z020clg484-1
 INFO: [Device 21-9227] Part: xc7z020clg484-1 does not have CEAM library.
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 6520
+INFO: [Synth 8-7075] Helper process launched with PID 28164
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1428.082 ; gain = 446.332
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:07 . Memory (MB): peak = 1429.516 ; gain = 448.816
 ---------------------------------------------------------------------------------
-WARNING: [Synth 8-3848] Net interrupt in module/entity AXI_Master does not have driver. [Y:/C++/Uni-CPU/CPURev2/CPURev2.srcs/sources_1/new/DDRAXIInterface.vhd:45]
-WARNING: [Synth 8-3848] Net NLW_rst_ps7_0_50M_ext_reset_in_UNCONNECTED in module/entity Setup does not have driver. [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/synth/Setup.vhd:1052]
-WARNING: [Synth 8-3848] Net NLW_CPU_0_reset_UNCONNECTED in module/entity Setup does not have driver. [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/synth/Setup.vhd:1018]
+WARNING: [Synth 8-3848] Net IO_Enable in module/entity CPU does not have driver. [C:/Git/Uni-CPU/CPURev2/CPURev2.srcs/sources_1/new/CPU.vhd:27]
+WARNING: [Synth 8-3848] Net IO_WriteEnable in module/entity CPU does not have driver. [C:/Git/Uni-CPU/CPURev2/CPURev2.srcs/sources_1/new/CPU.vhd:28]
+WARNING: [Synth 8-3848] Net IO_Out in module/entity CPU does not have driver. [C:/Git/Uni-CPU/CPURev2/CPURev2.srcs/sources_1/new/CPU.vhd:30]
+WARNING: [Synth 8-3848] Net IO_Select in module/entity CPU does not have driver. [C:/Git/Uni-CPU/CPURev2/CPURev2.srcs/sources_1/new/CPU.vhd:31]
+WARNING: [Synth 8-3848] Net DataOut in module/entity IOController does not have driver. [C:/Git/Uni-CPU/CPURev2/CPURev2.srcs/sources_1/new/IOController.vhd:38]
 WARNING: [Synth 8-7129] Port Op2[0] in module util_vector_logic_v2_0_4_util_vector_logic is either unconnected or has no load
 WARNING: [Synth 8-7129] Port prmry_aclk in module cdc_sync is either unconnected or has no load
 WARNING: [Synth 8-7129] Port prmry_resetn in module cdc_sync is either unconnected or has no load
@@ -134,66 +136,67 @@ WARNING: [Synth 8-7129] Port DOUTB_I[51] in module blk_mem_output_block is eithe
 WARNING: [Synth 8-7129] Port DOUTB_I[50] in module blk_mem_output_block is either unconnected or has no load
 INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:12 ; elapsed = 00:00:28 . Memory (MB): peak = 1890.711 ; gain = 908.961
+Finished RTL Elaboration : Time (s): cpu = 00:00:12 ; elapsed = 00:00:40 . Memory (MB): peak = 1894.453 ; gain = 913.754
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:12 ; elapsed = 00:00:28 . Memory (MB): peak = 1890.711 ; gain = 908.961
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:12 ; elapsed = 00:00:40 . Memory (MB): peak = 1894.453 ; gain = 913.754
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:28 . Memory (MB): peak = 1890.711 ; gain = 908.961
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:40 . Memory (MB): peak = 1894.453 ; gain = 913.754
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.185 . Memory (MB): peak = 1890.711 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.252 . Memory (MB): peak = 1894.453 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 29 Unisim elements for replacement
-INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_processing_system7_0_0/Setup_processing_system7_0_0.xdc] for cell 'Setup_i/processing_system7_0/inst'
-Finished Parsing XDC File [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_processing_system7_0_0/Setup_processing_system7_0_0.xdc] for cell 'Setup_i/processing_system7_0/inst'
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_processing_system7_0_0/Setup_processing_system7_0_0.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/Setup_wrapper_propImpl.xdc].
+Parsing XDC File [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_processing_system7_0_0/Setup_processing_system7_0_0.xdc] for cell 'Setup_i/processing_system7_0/inst'
+Finished Parsing XDC File [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_processing_system7_0_0/Setup_processing_system7_0_0.xdc] for cell 'Setup_i/processing_system7_0/inst'
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_processing_system7_0_0/Setup_processing_system7_0_0.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/Setup_wrapper_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/Setup_wrapper_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
-Parsing XDC File [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_rst_ps7_0_50M_0/Setup_rst_ps7_0_50M_0_board.xdc] for cell 'Setup_i/rst_ps7_0_50M/U0'
-Finished Parsing XDC File [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_rst_ps7_0_50M_0/Setup_rst_ps7_0_50M_0_board.xdc] for cell 'Setup_i/rst_ps7_0_50M/U0'
-Parsing XDC File [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_rst_ps7_0_50M_0/Setup_rst_ps7_0_50M_0.xdc] for cell 'Setup_i/rst_ps7_0_50M/U0'
-Finished Parsing XDC File [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_rst_ps7_0_50M_0/Setup_rst_ps7_0_50M_0.xdc] for cell 'Setup_i/rst_ps7_0_50M/U0'
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_rst_ps7_0_50M_0/Setup_rst_ps7_0_50M_0.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/Setup_wrapper_propImpl.xdc].
+Parsing XDC File [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_rst_ps7_0_50M_0/Setup_rst_ps7_0_50M_0_board.xdc] for cell 'Setup_i/rst_ps7_0_50M/U0'
+Finished Parsing XDC File [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_rst_ps7_0_50M_0/Setup_rst_ps7_0_50M_0_board.xdc] for cell 'Setup_i/rst_ps7_0_50M/U0'
+Parsing XDC File [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_rst_ps7_0_50M_0/Setup_rst_ps7_0_50M_0.xdc] for cell 'Setup_i/rst_ps7_0_50M/U0'
+Finished Parsing XDC File [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_rst_ps7_0_50M_0/Setup_rst_ps7_0_50M_0.xdc] for cell 'Setup_i/rst_ps7_0_50M/U0'
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_rst_ps7_0_50M_0/Setup_rst_ps7_0_50M_0.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/Setup_wrapper_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/Setup_wrapper_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
-Parsing XDC File [Y:/C++/Uni-CPU/CPURev2/CPURev2.srcs/constrs_1/new/CPU.xdc]
-CRITICAL WARNING: [Designutils 20-1307] Command 'create' is not supported in the xdc constraint file. [Y:/C++/Uni-CPU/CPURev2/CPURev2.srcs/constrs_1/new/CPU.xdc:25]
-Finished Parsing XDC File [Y:/C++/Uni-CPU/CPURev2/CPURev2.srcs/constrs_1/new/CPU.xdc]
-Parsing XDC File [Y:/C++/Uni-CPU/CPURev2/CPURev2.runs/synth_1/dont_touch.xdc]
-Finished Parsing XDC File [Y:/C++/Uni-CPU/CPURev2/CPURev2.runs/synth_1/dont_touch.xdc]
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [Y:/C++/Uni-CPU/CPURev2/CPURev2.runs/synth_1/dont_touch.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/Setup_wrapper_propImpl.xdc].
+Parsing XDC File [C:/Git/Uni-CPU/CPURev2/CPURev2.srcs/constrs_1/new/CPU.xdc]
+Finished Parsing XDC File [C:/Git/Uni-CPU/CPURev2/CPURev2.srcs/constrs_1/new/CPU.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Git/Uni-CPU/CPURev2/CPURev2.srcs/constrs_1/new/CPU.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/Setup_wrapper_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/Setup_wrapper_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Parsing XDC File [C:/Git/Uni-CPU/CPURev2/CPURev2.runs/synth_1/dont_touch.xdc]
+Finished Parsing XDC File [C:/Git/Uni-CPU/CPURev2/CPURev2.runs/synth_1/dont_touch.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Git/Uni-CPU/CPURev2/CPURev2.runs/synth_1/dont_touch.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/Setup_wrapper_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/Setup_wrapper_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1926.398 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1958.695 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 13 instances were transformed.
   FDR => FDRE: 12 instances
   SRL16 => SRL16E: 1 instance 
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.036 . Memory (MB): peak = 1926.398 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.057 . Memory (MB): peak = 1958.695 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:19 ; elapsed = 00:00:35 . Memory (MB): peak = 1926.398 ; gain = 944.648
+Finished Constraint Validation : Time (s): cpu = 00:00:18 ; elapsed = 00:00:50 . Memory (MB): peak = 1958.695 ; gain = 977.996
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z020clg484-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:19 ; elapsed = 00:00:35 . Memory (MB): peak = 1926.398 ; gain = 944.648
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:18 ; elapsed = 00:00:50 . Memory (MB): peak = 1958.695 ; gain = 977.996
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
-Applied set_property KEEP_HIERARCHY = SOFT for Setup_i/processing_system7_0/inst. (constraint file  Y:/C++/Uni-CPU/CPURev2/CPURev2.runs/synth_1/dont_touch.xdc, line 37).
-Applied set_property KEEP_HIERARCHY = SOFT for Setup_i/rst_ps7_0_50M/U0. (constraint file  Y:/C++/Uni-CPU/CPURev2/CPURev2.runs/synth_1/dont_touch.xdc, line 40).
-Applied set_property KEEP_HIERARCHY = SOFT for Setup_i/axi_interconnect_0/s00_couplers/auto_us/inst. (constraint file  Y:/C++/Uni-CPU/CPURev2/CPURev2.runs/synth_1/dont_touch.xdc, line 50).
+Applied set_property KEEP_HIERARCHY = SOFT for Setup_i/processing_system7_0/inst. (constraint file  C:/Git/Uni-CPU/CPURev2/CPURev2.runs/synth_1/dont_touch.xdc, line 40).
+Applied set_property KEEP_HIERARCHY = SOFT for Setup_i/rst_ps7_0_50M/U0. (constraint file  C:/Git/Uni-CPU/CPURev2/CPURev2.runs/synth_1/dont_touch.xdc, line 43).
+Applied set_property KEEP_HIERARCHY = SOFT for Setup_i/axi_interconnect_0/s00_couplers/auto_us/inst. (constraint file  C:/Git/Uni-CPU/CPURev2/CPURev2.runs/synth_1/dont_touch.xdc, line 53).
 Applied set_property KEEP_HIERARCHY = SOFT for Setup_i. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for Setup_i/processing_system7_0. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for Setup_i/rst_ps7_0_50M. (constraint file  auto generated constraint).
@@ -204,8 +207,9 @@ Applied set_property KEEP_HIERARCHY = SOFT for Setup_i/blk_mem_gen_0. (constrain
 Applied set_property KEEP_HIERARCHY = SOFT for Setup_i/CPU_0. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for Setup_i/AXI_Master_0. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for Setup_i/util_vector_logic_0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for Setup_i/IOController_0. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:19 ; elapsed = 00:00:35 . Memory (MB): peak = 1926.398 ; gain = 944.648
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:18 ; elapsed = 00:00:50 . Memory (MB): peak = 1958.695 ; gain = 977.996
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'AXI_Master'
 ---------------------------------------------------------------------------------------------------
@@ -218,10 +222,11 @@ INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'AXI_M
                read_resp |                              100 |                              100
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'AXI_Master'
-WARNING: [Synth 8-327] inferring latch for variable 'err_reg' [Y:/C++/Uni-CPU/CPURev2/CPURev2.srcs/sources_1/new/DDRAXIInterface.vhd:64]
-WARNING: [Synth 8-327] inferring latch for variable 'data_out_reg' [Y:/C++/Uni-CPU/CPURev2/CPURev2.srcs/sources_1/new/CPU.vhd:110]
+WARNING: [Synth 8-327] inferring latch for variable 'err_reg' [C:/Git/Uni-CPU/CPURev2/CPURev2.srcs/sources_1/new/DDRAXIInterface.vhd:64]
+WARNING: [Synth 8-327] inferring latch for variable 'interrupt_reg' [C:/Git/Uni-CPU/CPURev2/CPURev2.srcs/sources_1/new/DDRAXIInterface.vhd:65]
+WARNING: [Synth 8-327] inferring latch for variable 'data_out_reg' [C:/Git/Uni-CPU/CPURev2/CPURev2.srcs/sources_1/new/CPU.vhd:118]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:21 ; elapsed = 00:00:38 . Memory (MB): peak = 1926.398 ; gain = 944.648
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:21 ; elapsed = 00:00:54 . Memory (MB): peak = 1958.695 ; gain = 977.996
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -254,17 +259,17 @@ Detailed RTL Component Info :
 	                4 Bit    Registers := 2     
 	                3 Bit    Registers := 10    
 	                2 Bit    Registers := 15    
-	                1 Bit    Registers := 70    
+	                1 Bit    Registers := 71    
 +---Muxes : 
 	   2 Input   73 Bit        Muxes := 2     
 	   2 Input   68 Bit        Muxes := 2     
 	   2 Input   64 Bit        Muxes := 68    
-	   5 Input   64 Bit        Muxes := 32    
 	  18 Input   64 Bit        Muxes := 21    
-	   4 Input   64 Bit        Muxes := 15    
+	   5 Input   64 Bit        Muxes := 32    
 	   9 Input   64 Bit        Muxes := 4     
 	   8 Input   64 Bit        Muxes := 1     
 	   7 Input   64 Bit        Muxes := 4     
+	   4 Input   64 Bit        Muxes := 15    
 	   3 Input   64 Bit        Muxes := 2     
 	   4 Input   56 Bit        Muxes := 2     
 	   2 Input   56 Bit        Muxes := 1     
@@ -287,11 +292,12 @@ Detailed RTL Component Info :
 	   8 Input    8 Bit        Muxes := 5     
 	   2 Input    6 Bit        Muxes := 1     
 	   2 Input    5 Bit        Muxes := 14    
-	   9 Input    5 Bit        Muxes := 3     
+	  21 Input    5 Bit        Muxes := 2     
 	   4 Input    5 Bit        Muxes := 16    
 	   3 Input    5 Bit        Muxes := 1     
 	   7 Input    5 Bit        Muxes := 1     
 	   5 Input    5 Bit        Muxes := 4     
+	   9 Input    5 Bit        Muxes := 1     
 	   2 Input    4 Bit        Muxes := 9     
 	   4 Input    4 Bit        Muxes := 4     
 	   5 Input    4 Bit        Muxes := 2     
@@ -301,17 +307,18 @@ Detailed RTL Component Info :
 	   4 Input    3 Bit        Muxes := 1     
 	   2 Input    3 Bit        Muxes := 13    
 	   8 Input    3 Bit        Muxes := 6     
+	   3 Input    2 Bit        Muxes := 2     
 	   2 Input    2 Bit        Muxes := 11    
 	   4 Input    2 Bit        Muxes := 3     
-	   3 Input    2 Bit        Muxes := 2     
 	   2 Input    1 Bit        Muxes := 249   
-	  18 Input    1 Bit        Muxes := 7     
+	   5 Input    1 Bit        Muxes := 28    
+	   9 Input    1 Bit        Muxes := 4     
 	   4 Input    1 Bit        Muxes := 100   
 	   7 Input    1 Bit        Muxes := 7     
-	   3 Input    1 Bit        Muxes := 8     
-	   5 Input    1 Bit        Muxes := 28    
 	   8 Input    1 Bit        Muxes := 2     
-	   9 Input    1 Bit        Muxes := 6     
+	   3 Input    1 Bit        Muxes := 8     
+	  18 Input    1 Bit        Muxes := 7     
+	  21 Input    1 Bit        Muxes := 2     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -328,7 +335,7 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
-INFO: [Synth 8-3936] Found unconnected internal register 'gen_upsizer.gen_full_upsizer.axi_upsizer_inst/USE_READ.gen_non_fifo_r_upsizer.mi_register_slice_inst/r.r_pipe/m_payload_i_reg' and it is trimmed from '68' to '67' bits. [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1726]
+INFO: [Synth 8-3936] Found unconnected internal register 'gen_upsizer.gen_full_upsizer.axi_upsizer_inst/USE_READ.gen_non_fifo_r_upsizer.mi_register_slice_inst/r.r_pipe/m_payload_i_reg' and it is trimmed from '68' to '67' bits. [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1726]
 INFO: [Synth 8-3332] Sequential element (U0/err_reg) is unused and will be removed from module Setup_AXI_Master_0_3.
 WARNING: [Synth 8-3332] Sequential element (EXT_LPF/ACTIVE_HIGH_EXT.ACT_HI_EXT/GENERATE_LEVEL_P_S_CDC.SINGLE_BIT.CROSS_PLEVEL_IN2SCNDRY_IN_cdc_to) is unused and will be removed from module proc_sys_reset.
 WARNING: [Synth 8-3332] Sequential element (EXT_LPF/ACTIVE_HIGH_EXT.ACT_HI_EXT/GENERATE_LEVEL_P_S_CDC.SINGLE_BIT.CROSS_PLEVEL_IN2SCNDRY_s_level_out_d2) is unused and will be removed from module proc_sys_reset.
@@ -346,28 +353,28 @@ WARNING: [Synth 8-3332] Sequential element (FDRE_inst) is unused and will be rem
 WARNING: [Synth 8-3332] Sequential element (BSR_OUT_DFF[0].FDRE_BSR) is unused and will be removed from module proc_sys_reset.
 WARNING: [Synth 8-3332] Sequential element (ACTIVE_LOW_BSR_OUT_DFF[0].FDRE_BSR_N) is unused and will be removed from module proc_sys_reset.
 WARNING: [Synth 8-3332] Sequential element (PR_OUT_DFF[0].FDRE_PER) is unused and will be removed from module proc_sys_reset.
+WARNING: [Synth 8-3332] Sequential element (ACTIVE_LOW_PR_OUT_DFF[0].FDRE_PER_N) is unused and will be removed from module proc_sys_reset.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:35 ; elapsed = 00:00:52 . Memory (MB): peak = 1926.398 ; gain = 944.648
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:33 ; elapsed = 00:01:13 . Memory (MB): peak = 1958.695 ; gain = 977.996
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
-WARNING: [Synth 8-3321] set_false_path : Empty to list for constraint at line 49 of y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_rst_ps7_0_50M_0/Setup_rst_ps7_0_50M_0.xdc. [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_rst_ps7_0_50M_0/Setup_rst_ps7_0_50M_0.xdc:49]
+WARNING: [Synth 8-3321] set_false_path : Empty to list for constraint at line 49 of c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_rst_ps7_0_50M_0/Setup_rst_ps7_0_50M_0.xdc. [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ip/Setup_rst_ps7_0_50M_0/Setup_rst_ps7_0_50M_0.xdc:49]
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:39 ; elapsed = 00:00:56 . Memory (MB): peak = 1926.398 ; gain = 944.648
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:36 ; elapsed = 00:01:18 . Memory (MB): peak = 1958.695 ; gain = 977.996
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
-info: optimization accepted worst group hill climbing move (13098.0/oG.CP 716.0ps)
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:54 ; elapsed = 00:01:11 . Memory (MB): peak = 2064.586 ; gain = 1082.836
+Finished Timing Optimization : Time (s): cpu = 00:00:54 ; elapsed = 00:01:44 . Memory (MB): peak = 2115.453 ; gain = 1134.754
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:57 ; elapsed = 00:01:14 . Memory (MB): peak = 2064.586 ; gain = 1082.836
+Finished Technology Mapping : Time (s): cpu = 00:00:56 ; elapsed = 00:01:47 . Memory (MB): peak = 2115.453 ; gain = 1134.754
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -384,139 +391,139 @@ Start Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/14b9/hdl/axi_dwidth_converter_v2_1_vlsyn_rfs.v:5153]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/14b9/hdl/axi_dwidth_converter_v2_1_vlsyn_rfs.v:5153]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/14b9/hdl/axi_dwidth_converter_v2_1_vlsyn_rfs.v:5153]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/14b9/hdl/axi_dwidth_converter_v2_1_vlsyn_rfs.v:5153]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
-WARNING: [Synth 8-5396] Clock pin CLK has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/0c28/hdl/generic_baseblocks_v2_1_vl_rfs.v:927]
-WARNING: [Synth 8-5396] Clock pin CLK has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/0c28/hdl/generic_baseblocks_v2_1_vl_rfs.v:927]
-WARNING: [Synth 8-5396] Clock pin CLK has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/0c28/hdl/generic_baseblocks_v2_1_vl_rfs.v:927]
-WARNING: [Synth 8-5396] Clock pin CLK has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/0c28/hdl/generic_baseblocks_v2_1_vl_rfs.v:927]
-WARNING: [Synth 8-5396] Clock pin CLK has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/0c28/hdl/generic_baseblocks_v2_1_vl_rfs.v:927]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2090]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [y:/C++/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/14b9/hdl/axi_dwidth_converter_v2_1_vlsyn_rfs.v:5153]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/14b9/hdl/axi_dwidth_converter_v2_1_vlsyn_rfs.v:5153]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/14b9/hdl/axi_dwidth_converter_v2_1_vlsyn_rfs.v:5153]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/14b9/hdl/axi_dwidth_converter_v2_1_vlsyn_rfs.v:5153]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:1751]
+WARNING: [Synth 8-5396] Clock pin CLK has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/0c28/hdl/generic_baseblocks_v2_1_vl_rfs.v:927]
+WARNING: [Synth 8-5396] Clock pin CLK has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/0c28/hdl/generic_baseblocks_v2_1_vl_rfs.v:927]
+WARNING: [Synth 8-5396] Clock pin CLK has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/0c28/hdl/generic_baseblocks_v2_1_vl_rfs.v:927]
+WARNING: [Synth 8-5396] Clock pin CLK has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/0c28/hdl/generic_baseblocks_v2_1_vl_rfs.v:927]
+WARNING: [Synth 8-5396] Clock pin CLK has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/0c28/hdl/generic_baseblocks_v2_1_vl_rfs.v:927]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2090]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/Git/Uni-CPU/CPURev2/CPURev2.gen/sources_1/bd/Setup/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v:2092]
 INFO: [Common 17-14] Message 'Synth 8-5396' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:59 ; elapsed = 00:01:17 . Memory (MB): peak = 2064.586 ; gain = 1082.836
+Finished IO Insertion : Time (s): cpu = 00:00:58 ; elapsed = 00:01:51 . Memory (MB): peak = 2115.453 ; gain = 1134.754
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:59 ; elapsed = 00:01:17 . Memory (MB): peak = 2064.586 ; gain = 1082.836
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:58 ; elapsed = 00:01:51 . Memory (MB): peak = 2115.453 ; gain = 1134.754
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:00 ; elapsed = 00:01:17 . Memory (MB): peak = 2064.586 ; gain = 1082.836
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:59 ; elapsed = 00:01:52 . Memory (MB): peak = 2115.453 ; gain = 1134.754
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:01:00 ; elapsed = 00:01:17 . Memory (MB): peak = 2064.586 ; gain = 1082.836
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:59 ; elapsed = 00:01:52 . Memory (MB): peak = 2115.453 ; gain = 1134.754
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:00 ; elapsed = 00:01:17 . Memory (MB): peak = 2064.586 ; gain = 1082.836
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:59 ; elapsed = 00:01:53 . Memory (MB): peak = 2115.453 ; gain = 1134.754
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:01:00 ; elapsed = 00:01:17 . Memory (MB): peak = 2064.586 ; gain = 1082.836
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:59 ; elapsed = 00:01:53 . Memory (MB): peak = 2115.453 ; gain = 1134.754
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -549,47 +556,46 @@ Report Cell Usage:
 |1     |BIBUF    |   130|
 |2     |BUFG     |     1|
 |3     |CARRY4   |   189|
-|4     |LUT1     |    95|
-|5     |LUT2     |   184|
-|6     |LUT3     |   344|
-|7     |LUT4     |   771|
-|8     |LUT5     |   761|
-|9     |LUT6     |  3067|
-|10    |MUXF7    |   487|
-|11    |MUXF8    |    34|
+|4     |LUT1     |    94|
+|5     |LUT2     |   130|
+|6     |LUT3     |   403|
+|7     |LUT4     |   890|
+|8     |LUT5     |   956|
+|9     |LUT6     |  2986|
+|10    |MUXF7    |   634|
+|11    |MUXF8    |    64|
 |12    |PS7      |     1|
 |13    |RAMB36E1 |    16|
-|21    |SRL16    |     1|
 |22    |SRLC32E  |     5|
-|23    |FDCE     |     7|
-|24    |FDRE     |  2177|
-|25    |FDSE     |     5|
+|23    |FDCE     |  1725|
+|24    |FDRE     |   449|
+|25    |FDSE     |     2|
+|26    |IBUF     |     1|
+|27    |OBUF     |     1|
 +------+---------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:01:00 ; elapsed = 00:01:17 . Memory (MB): peak = 2064.586 ; gain = 1082.836
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:59 ; elapsed = 00:01:53 . Memory (MB): peak = 2115.453 ; gain = 1134.754
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 232 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:45 ; elapsed = 00:01:14 . Memory (MB): peak = 2064.586 ; gain = 1047.148
-Synthesis Optimization Complete : Time (s): cpu = 00:01:00 ; elapsed = 00:01:18 . Memory (MB): peak = 2064.586 ; gain = 1082.836
+Synthesis finished with 0 errors, 0 critical warnings and 372 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:44 ; elapsed = 00:01:49 . Memory (MB): peak = 2115.453 ; gain = 1070.512
+Synthesis Optimization Complete : Time (s): cpu = 00:00:59 ; elapsed = 00:01:54 . Memory (MB): peak = 2115.453 ; gain = 1134.754
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.066 . Memory (MB): peak = 2064.586 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 727 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.090 . Memory (MB): peak = 2115.453 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 903 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 WARNING: [Netlist 29-101] Netlist 'Setup_wrapper' is not ideal for floorplanning, since the cellview 'CPU' contains a large number of primitives.  Please consider enabling hierarchy in synthesis if you want to do floorplanning.
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 2064.586 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 2115.453 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 1 instances were transformed.
-  SRL16 => SRL16E: 1 instance 
+No Unisim elements were transformed.
 
-Synth Design complete | Checksum: 4e44c4f9
+Synth Design complete | Checksum: 684dad4
 INFO: [Common 17-83] Releasing license: Synthesis
-160 Infos, 242 Warnings, 1 Critical Warnings and 0 Errors encountered.
+167 Infos, 246 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:04 ; elapsed = 00:01:22 . Memory (MB): peak = 2064.586 ; gain = 1518.348
-INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.026 . Memory (MB): peak = 2064.586 ; gain = 0.000
-INFO: [Common 17-1381] The checkpoint 'Y:/C++/Uni-CPU/CPURev2/CPURev2.runs/synth_1/Setup_wrapper.dcp' has been generated.
+synth_design: Time (s): cpu = 00:01:03 ; elapsed = 00:02:01 . Memory (MB): peak = 2115.453 ; gain = 1570.152
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.019 . Memory (MB): peak = 2115.453 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Git/Uni-CPU/CPURev2/CPURev2.runs/synth_1/Setup_wrapper.dcp' has been generated.
 INFO: [Vivado 12-24828] Executing command : report_utilization -file Setup_wrapper_utilization_synth.rpt -pb Setup_wrapper_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Thu Aug 22 20:59:33 2024...
+INFO: [Common 17-206] Exiting Vivado at Thu Oct 10 15:49:22 2024...

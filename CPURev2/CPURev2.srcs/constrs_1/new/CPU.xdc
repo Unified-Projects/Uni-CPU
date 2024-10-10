@@ -21,5 +21,8 @@ set_property IOSTANDARD LVCMOS18 [get_ports {FIXED_IO_*}]
 #set_property PACKAGE_PIN ... [get_ports {addr_0 address_0 data_in_0 data_out_0 mem_read_0 mem_write_0 read_data_0 write_data_0}]
 #set_property DRIVE ... [get_ports {addr_0 address_0 data_in_0 data_out_0 mem_read_0 mem_write_0 read_data_0 write_data_0}]
 
+set_property PACKAGE_PIN P20 [get_ports led]
+set_property IOSTANDARD LVCMOS33 [get_ports led]
 
-create _clock -add -name 
+set_property PACKAGE_PIN K21 [get_ports btn]
+set_property IOSTANDARD LVCMOS33 [get_ports btn]

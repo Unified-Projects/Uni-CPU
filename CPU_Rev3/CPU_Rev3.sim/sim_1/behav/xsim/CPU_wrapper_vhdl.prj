@@ -1,0 +1,17 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../CPU_Rev3.srcs/sources_1/new/clock_divide.vhd" \
+"../../../../CPU_Rev3.ip_user_files/bd/CPU/ip/CPU_gmii_to_rgmii_0_0/synth/CPU_gmii_to_rgmii_0_0_clocking.vhd" \
+"../../../../CPU_Rev3.ip_user_files/bd/CPU/ip/CPU_gmii_to_rgmii_0_0/synth/CPU_gmii_to_rgmii_0_0_resets.vhd" \
+"../../../../CPU_Rev3.ip_user_files/bd/CPU/ip/CPU_gmii_to_rgmii_0_0/synth/CPU_gmii_to_rgmii_0_0_support.vhd" \
+"../../../../CPU_Rev3.ip_user_files/bd/CPU/ip/CPU_gmii_to_rgmii_0_0/synth/CPU_gmii_to_rgmii_0_0_reset_sync.vhd" \
+"../../../../CPU_Rev3.ip_user_files/bd/CPU/ip/CPU_gmii_to_rgmii_0_0/synth/CPU_gmii_to_rgmii_0_0_block.vhd" \
+"../../../../CPU_Rev3.ip_user_files/bd/CPU/ip/CPU_gmii_to_rgmii_0_0/CPU_gmii_to_rgmii_0_0/simulation/demo_tb.vhd" \
+"../../../../CPU_Rev3.ip_user_files/bd/CPU/ip/CPU_gmii_to_rgmii_0_0/synth/CPU_gmii_to_rgmii_0_0.vhd" \
+"../../../../CPU_Rev3.ip_user_files/bd/CPU/ip/CPU_ClockDivider_0_0/sim/CPU_ClockDivider_0_0.vhd" \
+"../../../../CPU_Rev3.ip_user_files/bd/CPU/sim/CPU.vhd" \
+"../../../../CPU_Rev3.ip_user_files/bd/CPU/ip/CPU_proc_sys_reset_0_0/sim/CPU_proc_sys_reset_0_0.vhd" \
+"../../../../CPU_Rev3.gen/sources_1/bd/CPU/hdl/CPU_wrapper.vhd" \
+
+# Do not sort compile order
+nosort

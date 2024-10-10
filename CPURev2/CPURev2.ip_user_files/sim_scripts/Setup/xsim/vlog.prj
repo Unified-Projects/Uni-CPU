@@ -2,7 +2,6 @@ verilog CPU --include "C:/Xilinx/Vivado/2024.1/data/xilinx_vip/include" --includ
 "../../../bd/Setup/ip/Setup_processing_system7_0_0/sim/Setup_processing_system7_0_0.v" \
 "../../../bd/Setup/ip/Setup_blk_mem_gen_0_0/sim/Setup_blk_mem_gen_0_0.v" \
 "../../../bd/Setup/ip/Setup_util_vector_logic_0_0/sim/Setup_util_vector_logic_0_0.v" \
-"../../../bd/Setup/ip/Setup_sim_clk_gen_0_0/sim/Setup_sim_clk_gen_0_0.v" \
 "../../../bd/Setup/ip/Setup_auto_pc_0/sim/Setup_auto_pc_0.v" \
 "../../../bd/Setup/ip/Setup_auto_us_0/sim/Setup_auto_us_0.v" \
 

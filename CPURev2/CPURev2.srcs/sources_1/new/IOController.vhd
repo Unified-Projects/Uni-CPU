@@ -46,5 +46,10 @@ architecture Behavioral of IOController is
 
 begin
 
-
+process(clk)
+begin
+    if rising_edge(clk) then
+        LED0 <= BUT0;
+    end if;
+end process;
 end Behavioral;

@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Sat Feb 25 11:09:43 2023
+# Process ID: 6460
+# Current directory: E:/Smart_ZYNQ_7020/Petalinux/08_Petalinux_NET_TEST/NET_TEST
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent1984 E:\Smart_ZYNQ_7020\Petalinux\08_Petalinux_NET_TEST\NET_TEST\NET_TEST.xpr
+# Log file: E:/Smart_ZYNQ_7020/Petalinux/08_Petalinux_NET_TEST/NET_TEST/vivado.log
+# Journal file: E:/Smart_ZYNQ_7020/Petalinux/08_Petalinux_NET_TEST/NET_TEST\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project E:/Smart_ZYNQ_7020/Petalinux/08_Petalinux_NET_TEST/NET_TEST/NET_TEST.xpr
+update_compile_order -fileset sources_1

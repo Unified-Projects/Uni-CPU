@@ -1,0 +1,24 @@
+#-----------------------------------------------------------
+# Vivado v2024.1 (64-bit)
+# SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
+# IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+# SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+# Start of session at: Thu Oct 10 15:29:16 2024
+# Process ID: 26596
+# Current directory: C:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.runs/impl_1
+# Command line: vivado.exe -log CPU_wrapper.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source CPU_wrapper.tcl -notrace
+# Log file: C:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.runs/impl_1/CPU_wrapper.vdi
+# Journal file: C:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.runs/impl_1\vivado.jou
+# Running On        :PopTop
+# Platform          :Windows Server 2016 or Windows 10
+# Operating System  :22631
+# Processor Detail  :12th Gen Intel(R) Core(TM) i5-1240P
+# CPU Frequency     :2112 MHz
+# CPU Physical cores:12
+# CPU Logical cores :16
+# Host memory       :16865 MB
+# Swap memory       :11374 MB
+# Total Virtual     :28240 MB
+# Available Virtual :5450 MB
+#-----------------------------------------------------------
+source CPU_wrapper.tcl -notrace

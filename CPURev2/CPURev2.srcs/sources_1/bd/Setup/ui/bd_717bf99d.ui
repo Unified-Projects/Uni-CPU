@@ -1,52 +1,51 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"1.174",
-   "Default View_TopLeft":"497,147",
+   "Default View_ScaleFactor":"0.722682",
+   "Default View_TopLeft":"848,50",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.7.1 2023-07-26 3bc4126617 VDI=43 GEI=38 GUI=JA:21.0
 #  -string -flagsOSRD
 preplace port DDR -pg 1 -lvl 7 -x 2190 -y 520 -defaultsOSRD
 preplace port FIXED_IO -pg 1 -lvl 7 -x 2190 -y 550 -defaultsOSRD
-preplace port port-id_LED0_0 -pg 1 -lvl 7 -x 2190 -y 160 -defaultsOSRD
-preplace port port-id_BUT0_0 -pg 1 -lvl 0 -x 0 -y 410 -defaultsOSRD
+preplace port port-id_led -pg 1 -lvl 7 -x 2190 -y 160 -defaultsOSRD
+preplace port port-id_btn -pg 1 -lvl 0 -x 0 -y 10 -defaultsOSRD
 preplace inst processing_system7_0 -pg 1 -lvl 6 -x 1940 -y 570 -defaultsOSRD
-preplace inst rst_ps7_0_50M -pg 1 -lvl 3 -x 760 -y 510 -defaultsOSRD
-preplace inst axi_interconnect_0 -pg 1 -lvl 5 -x 1550 -y 560 -defaultsOSRD
-preplace inst blk_mem_gen_0 -pg 1 -lvl 4 -x 1200 -y 270 -defaultsOSRD
-preplace inst CPU_0 -pg 1 -lvl 3 -x 760 -y 200 -defaultsOSRD
-preplace inst AXI_Master_0 -pg 1 -lvl 4 -x 1200 -y 540 -defaultsOSRD
+preplace inst rst_ps7_0_50M -pg 1 -lvl 3 -x 770 -y 510 -defaultsOSRD
+preplace inst axi_interconnect_0 -pg 1 -lvl 5 -x 1570 -y 560 -defaultsOSRD
+preplace inst blk_mem_gen_0 -pg 1 -lvl 4 -x 1220 -y 270 -defaultsOSRD
+preplace inst CPU_0 -pg 1 -lvl 3 -x 770 -y 200 -defaultsOSRD
+preplace inst AXI_Master_0 -pg 1 -lvl 4 -x 1220 -y 540 -defaultsOSRD
 preplace inst util_vector_logic_0 -pg 1 -lvl 2 -x 380 -y 350 -defaultsOSRD
-preplace inst sim_clk_gen_0 -pg 1 -lvl 1 -x 120 -y 480 -defaultsOSRD
 preplace inst IOController_0 -pg 1 -lvl 6 -x 1940 -y 150 -defaultsOSRD
-preplace netloc AXI_Master_0_done 1 2 3 580 400 NJ 400 1350
-preplace netloc AXI_Master_0_err 1 2 3 570 660 NJ 660 1350
-preplace netloc AXI_Master_0_interrupt 1 2 3 590 390 NJ 390 1360
-preplace netloc AXI_Master_0_read_data 1 2 3 550 670 NJ 670 1370
-preplace netloc BUT0_0_1 1 0 6 20J 10 NJ 10 NJ 10 NJ 10 NJ 10 1700J
-preplace netloc CPU_0_IO_Enable 1 3 3 930J 100 NJ 100 N
-preplace netloc CPU_0_IO_Out 1 3 3 1020J 140 NJ 140 N
-preplace netloc CPU_0_IO_Select 1 3 3 980J 150 NJ 150 1690
-preplace netloc CPU_0_IO_WriteEnable 1 3 3 950J 120 NJ 120 N
-preplace netloc CPU_0_addr 1 3 1 940 110n
+preplace netloc AXI_Master_0_done 1 2 3 590 390 NJ 390 1400
+preplace netloc AXI_Master_0_err 1 2 3 600 380 940J 420 1370
+preplace netloc AXI_Master_0_interrupt 1 2 3 580 400 NJ 400 1390
+preplace netloc AXI_Master_0_read_data 1 2 3 550 660 NJ 660 1380
+preplace netloc BUT0_0_1 1 0 6 NJ 10 NJ 10 NJ 10 NJ 10 NJ 10 1720J
+preplace netloc CPU_0_IO_Enable 1 3 3 940J 100 NJ 100 N
+preplace netloc CPU_0_IO_Out 1 3 3 1000J 140 NJ 140 N
+preplace netloc CPU_0_IO_Select 1 3 3 1010J 150 NJ 150 1710
+preplace netloc CPU_0_IO_WriteEnable 1 3 3 960J 120 NJ 120 N
+preplace netloc CPU_0_addr 1 3 1 950 110n
 preplace netloc CPU_0_bram_addr 1 3 1 N 230
-preplace netloc CPU_0_bram_dout 1 3 1 1030 210n
-preplace netloc CPU_0_bram_en 1 3 1 990 190n
-preplace netloc CPU_0_bram_we 1 3 1 1000 170n
-preplace netloc CPU_0_data_out 1 3 1 1010 90n
-preplace netloc CPU_0_mem_read 1 3 1 960 150n
-preplace netloc CPU_0_mem_write 1 3 1 970 130n
-preplace netloc IOController_0_DataOut 1 2 5 540 20 NJ 20 NJ 20 NJ 20 2150
+preplace netloc CPU_0_bram_dout 1 3 1 1040 210n
+preplace netloc CPU_0_bram_en 1 3 1 1020 190n
+preplace netloc CPU_0_bram_we 1 3 1 1030 170n
+preplace netloc CPU_0_data_out 1 3 1 990 90n
+preplace netloc CPU_0_mem_read 1 3 1 970 150n
+preplace netloc CPU_0_mem_write 1 3 1 980 130n
+preplace netloc IOController_0_DataOut 1 2 5 540 20 NJ 20 NJ 20 NJ 20 2160
 preplace netloc IOController_0_LED0 1 6 1 NJ 160
-preplace netloc blk_mem_gen_0_douta 1 2 2 560 30 1040J
-preplace netloc processing_system7_0_FCLK_CLK0 1 1 5 N 470 520 370 1050 430 1400 430 1730
-preplace netloc sim_clk_gen_0_sync_rst 1 1 1 220 350n
-preplace netloc util_vector_logic_0_Res 1 2 3 530 410 930 650 1410
+preplace netloc blk_mem_gen_0_douta 1 2 2 570 30 1050J
+preplace netloc processing_system7_0_FCLK_CLK0 1 2 5 560 370 1070 430 1420 430 1730 670 2150
+preplace netloc util_vector_logic_0_Res 1 2 3 530 610 1070 650 1430
+preplace netloc processing_system7_0_FCLK_RESET0_N 1 1 6 240 410 NJ 410 NJ 410 NJ 410 NJ 410 2160
 preplace netloc S00_AXI_1 1 4 1 N 500
 preplace netloc axi_interconnect_0_M00_AXI 1 5 1 N 560
-preplace netloc processing_system7_0_DDR 1 6 1 2150J 520n
+preplace netloc processing_system7_0_DDR 1 6 1 2170J 520n
 preplace netloc processing_system7_0_FIXED_IO 1 6 1 NJ 550
-levelinfo -pg 1 0 120 380 760 1200 1550 1940 2190
-pagesize -pg 1 -db -bbox -sgen -110 0 2310 680
+levelinfo -pg 1 0 120 380 770 1220 1570 1940 2190
+pagesize -pg 1 -db -bbox -sgen -110 -10 2310 680
 "
 }
 {

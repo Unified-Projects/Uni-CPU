@@ -2,7 +2,7 @@
 --Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
---Date        : Mon Oct  7 14:51:17 2024
+--Date        : Thu Oct 10 15:46:42 2024
 --Host        : PopTop running 64-bit major release  (build 9200)
 --Command     : generate_target Setup.bd
 --Design      : Setup
@@ -708,7 +708,6 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity Setup is
   port (
-    BUT0_0 : in STD_LOGIC;
     DDR_addr : inout STD_LOGIC_VECTOR ( 14 downto 0 );
     DDR_ba : inout STD_LOGIC_VECTOR ( 2 downto 0 );
     DDR_cas_n : inout STD_LOGIC;
@@ -730,10 +729,11 @@ entity Setup is
     FIXED_IO_ps_clk : inout STD_LOGIC;
     FIXED_IO_ps_porb : inout STD_LOGIC;
     FIXED_IO_ps_srstb : inout STD_LOGIC;
-    LED0_0 : out STD_LOGIC
+    btn : in STD_LOGIC;
+    led : out STD_LOGIC
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of Setup : entity is "Setup,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=Setup,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=12,numReposBlks=10,numNonXlnxBlks=0,numHierBlks=2,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=3,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=6,da_board_cnt=1,da_clkrst_cnt=12,da_ps7_cnt=2,synth_mode=None}";
+  attribute CORE_GENERATION_INFO of Setup : entity is "Setup,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=Setup,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=11,numReposBlks=9,numNonXlnxBlks=0,numHierBlks=2,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=3,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=6,da_board_cnt=1,da_clkrst_cnt=12,da_ps7_cnt=2,synth_mode=None}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of Setup : entity is "Setup.hwdef";
 end Setup;
@@ -935,12 +935,6 @@ architecture STRUCTURE of Setup is
     Res : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component Setup_util_vector_logic_0_0;
-  component Setup_sim_clk_gen_0_0 is
-  port (
-    clk : out STD_LOGIC;
-    sync_rst : out STD_LOGIC
-  );
-  end component Setup_sim_clk_gen_0_0;
   component Setup_IOController_0_0 is
   port (
     Enable : in STD_LOGIC;
@@ -1039,16 +1033,14 @@ architecture STRUCTURE of Setup is
   signal processing_system7_0_DDR_RESET_N : STD_LOGIC;
   signal processing_system7_0_DDR_WE_N : STD_LOGIC;
   signal processing_system7_0_FCLK_CLK0 : STD_LOGIC;
+  signal processing_system7_0_FCLK_RESET0_N : STD_LOGIC;
   signal processing_system7_0_FIXED_IO_DDR_VRN : STD_LOGIC;
   signal processing_system7_0_FIXED_IO_DDR_VRP : STD_LOGIC;
   signal processing_system7_0_FIXED_IO_MIO : STD_LOGIC_VECTOR ( 53 downto 0 );
   signal processing_system7_0_FIXED_IO_PS_CLK : STD_LOGIC;
   signal processing_system7_0_FIXED_IO_PS_PORB : STD_LOGIC;
   signal processing_system7_0_FIXED_IO_PS_SRSTB : STD_LOGIC;
-  signal sim_clk_gen_0_sync_rst : STD_LOGIC;
   signal util_vector_logic_0_Res : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal NLW_processing_system7_0_FCLK_CLK0_UNCONNECTED : STD_LOGIC;
-  signal NLW_processing_system7_0_FCLK_RESET0_N_UNCONNECTED : STD_LOGIC;
   signal NLW_processing_system7_0_M_AXI_GP0_ARVALID_UNCONNECTED : STD_LOGIC;
   signal NLW_processing_system7_0_M_AXI_GP0_AWVALID_UNCONNECTED : STD_LOGIC;
   signal NLW_processing_system7_0_M_AXI_GP0_BREADY_UNCONNECTED : STD_LOGIC;
@@ -1113,8 +1105,8 @@ architecture STRUCTURE of Setup is
   attribute X_INTERFACE_INFO of DDR_dqs_p : signal is "xilinx.com:interface:ddrx:1.0 DDR DQS_P";
   attribute X_INTERFACE_INFO of FIXED_IO_mio : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO MIO";
 begin
-  BUT0_0_1 <= BUT0_0;
-  LED0_0 <= IOController_0_LED0;
+  BUT0_0_1 <= btn;
+  led <= IOController_0_LED0;
 AXI_Master_0: component Setup_AXI_Master_0_3
      port map (
       M_AXI_ARADDR(31 downto 0) => S00_AXI_1_ARADDR(31 downto 0),
@@ -1266,8 +1258,8 @@ processing_system7_0: component Setup_processing_system7_0_0
       DDR_VRN => FIXED_IO_ddr_vrn,
       DDR_VRP => FIXED_IO_ddr_vrp,
       DDR_WEB => DDR_we_n,
-      FCLK_CLK0 => NLW_processing_system7_0_FCLK_CLK0_UNCONNECTED,
-      FCLK_RESET0_N => NLW_processing_system7_0_FCLK_RESET0_N_UNCONNECTED,
+      FCLK_CLK0 => processing_system7_0_FCLK_CLK0,
+      FCLK_RESET0_N => processing_system7_0_FCLK_RESET0_N,
       MIO(53 downto 0) => FIXED_IO_mio(53 downto 0),
       M_AXI_GP0_ACLK => processing_system7_0_FCLK_CLK0,
       M_AXI_GP0_ARADDR(31 downto 0) => NLW_processing_system7_0_M_AXI_GP0_ARADDR_UNCONNECTED(31 downto 0),
@@ -1370,14 +1362,9 @@ rst_ps7_0_50M: component Setup_rst_ps7_0_50M_0
       peripheral_reset(0) => NLW_rst_ps7_0_50M_peripheral_reset_UNCONNECTED(0),
       slowest_sync_clk => processing_system7_0_FCLK_CLK0
     );
-sim_clk_gen_0: component Setup_sim_clk_gen_0_0
-     port map (
-      clk => processing_system7_0_FCLK_CLK0,
-      sync_rst => sim_clk_gen_0_sync_rst
-    );
 util_vector_logic_0: component Setup_util_vector_logic_0_0
      port map (
-      Op1(0) => sim_clk_gen_0_sync_rst,
+      Op1(0) => processing_system7_0_FCLK_RESET0_N,
       Res(0) => util_vector_logic_0_Res(0)
     );
 end STRUCTURE;

@@ -1,0 +1,86 @@
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+-----------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
+| Date         : Sat Aug 19 10:51:47 2023
+| Host         : LAPTOP-IBQPOVJO running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file ZYNQ_wrapper_control_sets_placed.rpt
+| Design       : ZYNQ_wrapper
+| Device       : xc7z020
+-----------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Number of unique control sets                            |    15 |
+| Unused register locations in slices containing registers |    57 |
++----------------------------------------------------------+-------+
+
+
+2. Histogram
+------------
+
++--------+--------------+
+| Fanout | Control Sets |
++--------+--------------+
+|      4 |            2 |
+|      5 |            4 |
+|     10 |            2 |
+|     12 |            2 |
+|     13 |            1 |
+|     14 |            1 |
+|     15 |            1 |
+|    16+ |            2 |
++--------+--------------+
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |              57 |           22 |
+| No           | No                    | Yes                    |              25 |            5 |
+| No           | Yes                   | No                     |              38 |           13 |
+| Yes          | No                    | No                     |               8 |            3 |
+| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | Yes                   | No                     |              31 |            7 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++--------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+------------------+----------------+
+|                                                       Clock Signal                                                       |                                                                  Enable Signal                                                                  |                                                                 Set/Reset Signal                                                                | Slice Load Count | Bel Load Count |
++--------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+------------------+----------------+
+|  ZYNQ_i/gmii_to_rgmii_0/U0/i_ZYNQ_gmii_to_rgmii_0_0_clocking/clkin_out                                                   | ZYNQ_i/gmii_to_rgmii_0/U0/i_gmii_to_rgmii_block/ZYNQ_gmii_to_rgmii_0_0_core/i_gmii_to_rgmii/i_MANAGEMENT/MDIO_INTERFACE_1/BIT_COUNT             |                                                                                                                                                 |                1 |              4 |
+|  ZYNQ_i/gmii_to_rgmii_0/U0/i_ZYNQ_gmii_to_rgmii_0_0_clocking/clkin_out                                                   | ZYNQ_i/gmii_to_rgmii_0/U0/i_gmii_to_rgmii_block/ZYNQ_gmii_to_rgmii_0_0_core/i_gmii_to_rgmii/i_MANAGEMENT/MDIO_INTERFACE_1/SHIFT_REG[15]_i_1_n_0 |                                                                                                                                                 |                2 |              4 |
+|  ZYNQ_i/gmii_to_rgmii_0/U0/i_ZYNQ_gmii_to_rgmii_0_0_clocking/clkin_out                                                   |                                                                                                                                                 | ZYNQ_i/gmii_to_rgmii_0/U0/i_ZYNQ_gmii_to_rgmii_0_0_clocking/tx_reset                                                                            |                1 |              5 |
+|  ZYNQ_i/gmii_to_rgmii_0/U0/i_ZYNQ_gmii_to_rgmii_0_0_clocking/clkin_out                                                   |                                                                                                                                                 | ZYNQ_i/gmii_to_rgmii_0/U0/i_gmii_to_rgmii_block/ZYNQ_gmii_to_rgmii_0_0_core/i_gmii_to_rgmii/i_reset_sync_rx_reset/reset_in                      |                1 |              5 |
+|  ZYNQ_i/gmii_to_rgmii_0/U0/i_ZYNQ_gmii_to_rgmii_0_0_clocking/clkin_out                                                   | ZYNQ_i/gmii_to_rgmii_0/U0/i_gmii_to_rgmii_block/ZYNQ_gmii_to_rgmii_0_0_core/i_gmii_to_rgmii/i_MANAGEMENT/MDIO_INTERFACE_1/ADDR_WR[4]_i_1_n_0    | ZYNQ_i/gmii_to_rgmii_0/U0/i_gmii_to_rgmii_block/ZYNQ_gmii_to_rgmii_0_0_core/i_gmii_to_rgmii/i_reset_sync_mgmt_reset/reset_out                   |                1 |              5 |
+|  ZYNQ_i/gmii_to_rgmii_0/U0/i_gmii_to_rgmii_block/gmii_tx_clk                                                             |                                                                                                                                                 | ZYNQ_i/gmii_to_rgmii_0/U0/i_gmii_to_rgmii_block/ZYNQ_gmii_to_rgmii_0_0_core/i_gmii_to_rgmii/tx_reset_async_reg_n_0                              |                1 |              5 |
+|  ZYNQ_i/gmii_to_rgmii_0/U0/i_ZYNQ_gmii_to_rgmii_0_0_clocking/clkin_out                                                   |                                                                                                                                                 | ZYNQ_i/util_vector_logic_0/Res[0]                                                                                                               |                2 |             10 |
+|  ZYNQ_i/gmii_to_rgmii_0/U0/i_gmii_to_rgmii_block/gmii_tx_clk                                                             |                                                                                                                                                 | ZYNQ_i/gmii_to_rgmii_0/U0/i_gmii_to_rgmii_block/ZYNQ_gmii_to_rgmii_0_0_core/i_gmii_to_rgmii/i_gmii_to_rgmii/i_reset_sync_tx_reset/reset_out     |                7 |             10 |
+|  ZYNQ_i/gmii_to_rgmii_0/U0/i_ZYNQ_gmii_to_rgmii_0_0_clocking/clkin_out                                                   | ZYNQ_i/gmii_to_rgmii_0/U0/i_gmii_to_rgmii_block/ZYNQ_gmii_to_rgmii_0_0_core/i_gmii_to_rgmii/i_MANAGEMENT/MDIO_INTERFACE_1/SHIFT_REG[15]_i_1_n_0 | ZYNQ_i/gmii_to_rgmii_0/U0/i_gmii_to_rgmii_block/ZYNQ_gmii_to_rgmii_0_0_core/i_gmii_to_rgmii/i_MANAGEMENT/MDIO_INTERFACE_1/SHIFT_REG[14]_i_1_n_0 |                2 |             12 |
+|  ZYNQ_i/gmii_to_rgmii_0/U0/i_gmii_to_rgmii_block/ZYNQ_gmii_to_rgmii_0_0_core/i_gmii_to_rgmii/i_gmii_to_rgmii/rgmii_rxc_0 |                                                                                                                                                 |                                                                                                                                                 |                7 |             12 |
+|  ZYNQ_i/gmii_to_rgmii_0/U0/i_ZYNQ_gmii_to_rgmii_0_0_clocking/clkin_out                                                   |                                                                                                                                                 | ZYNQ_i/gmii_to_rgmii_0/U0/i_gmii_to_rgmii_block/ZYNQ_gmii_to_rgmii_0_0_core/i_gmii_to_rgmii/i_reset_sync_mgmt_reset/reset_out                   |                4 |             13 |
+|  ZYNQ_i/gmii_to_rgmii_0/U0/i_ZYNQ_gmii_to_rgmii_0_0_clocking/clkin_out                                                   | ZYNQ_i/gmii_to_rgmii_0/U0/i_gmii_to_rgmii_block/ZYNQ_gmii_to_rgmii_0_0_core/i_gmii_to_rgmii/i_MANAGEMENT/MDC_RISING_REG1                        | ZYNQ_i/gmii_to_rgmii_0/U0/i_gmii_to_rgmii_block/ZYNQ_gmii_to_rgmii_0_0_core/i_gmii_to_rgmii/i_reset_sync_mgmt_reset/reset_out                   |                4 |             14 |
+|  ZYNQ_i/gmii_to_rgmii_0/U0/i_ZYNQ_gmii_to_rgmii_0_0_clocking/clkin_out                                                   |                                                                                                                                                 | ZYNQ_i/gmii_to_rgmii_0/U0/i_ZYNQ_gmii_to_rgmii_0_0_resets/idelayctrl_reset_gen/reset_out                                                        |                2 |             15 |
+|  ZYNQ_i/gmii_to_rgmii_0/U0/i_ZYNQ_gmii_to_rgmii_0_0_clocking/clkin_out                                                   |                                                                                                                                                 |                                                                                                                                                 |                7 |             20 |
+|  ZYNQ_i/gmii_to_rgmii_0/U0/i_gmii_to_rgmii_block/gmii_tx_clk                                                             |                                                                                                                                                 |                                                                                                                                                 |                8 |             25 |
++--------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+------------------+----------------+
+
+

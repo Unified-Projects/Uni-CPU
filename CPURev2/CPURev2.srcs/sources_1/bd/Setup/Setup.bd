@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x34CFA7DDC51B65B7",
+      "boundary_crc": "0x53496D6BFA57AF6E",
       "device": "xc7z020clg484-1",
       "gen_directory": "../../../../CPURev2.gen/sources_1/bd/Setup",
       "name": "Setup",
@@ -23,7 +23,6 @@
       "CPU_0": "",
       "AXI_Master_0": "",
       "util_vector_logic_0": "",
-      "sim_clk_gen_0": "",
       "IOController_0": ""
     },
     "interface_ports": {
@@ -197,10 +196,10 @@
       }
     },
     "ports": {
-      "LED0_0": {
+      "led": {
         "direction": "O"
       },
-      "BUT0_0": {
+      "btn": {
         "direction": "I"
       }
     },
@@ -836,11 +835,11 @@
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "250000",
+                "value": "50000000",
                 "value_src": "user_prop"
               },
               "CLK_DOMAIN": {
-                "value": "Setup_sim_clk_gen_0_0_clk",
+                "value": "Setup_processing_system7_0_0_FCLK_CLK0",
                 "value_src": "default_prop"
               }
             }
@@ -966,7 +965,7 @@
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "250000",
+                "value": "50000000",
                 "value_src": "user_prop"
               },
               "ID_WIDTH": {
@@ -1054,7 +1053,7 @@
                 "value_src": "auto"
               },
               "CLK_DOMAIN": {
-                "value": "Setup_sim_clk_gen_0_0_clk",
+                "value": "Setup_processing_system7_0_0_FCLK_CLK0",
                 "value_src": "default_prop"
               }
             },
@@ -1164,11 +1163,11 @@
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "250000",
+                "value": "50000000",
                 "value_src": "user_prop"
               },
               "CLK_DOMAIN": {
-                "value": "Setup_sim_clk_gen_0_0_clk",
+                "value": "Setup_processing_system7_0_0_FCLK_CLK0",
                 "value_src": "default_prop"
               }
             }
@@ -1247,24 +1246,6 @@
           }
         }
       },
-      "sim_clk_gen_0": {
-        "vlnv": "xilinx.com:ip:sim_clk_gen:1.0",
-        "ip_revision": "4",
-        "xci_name": "Setup_sim_clk_gen_0_0",
-        "xci_path": "ip\\Setup_sim_clk_gen_0_0\\Setup_sim_clk_gen_0_0.xci",
-        "inst_hier_path": "sim_clk_gen_0",
-        "parameters": {
-          "FREQ_HZ": {
-            "value": "250000"
-          },
-          "INITIAL_RESET_CLOCK_CYCLES": {
-            "value": "5"
-          },
-          "RESET_POLARITY": {
-            "value": "ACTIVE_LOW"
-          }
-        }
-      },
       "IOController_0": {
         "vlnv": "xilinx.com:module_ref:IOController:1.0",
         "ip_revision": "1",
@@ -1298,11 +1279,11 @@
             "direction": "I",
             "parameters": {
               "FREQ_HZ": {
-                "value": "250000",
+                "value": "50000000",
                 "value_src": "user_prop"
               },
               "CLK_DOMAIN": {
-                "value": "Setup_sim_clk_gen_0_0_clk",
+                "value": "Setup_processing_system7_0_0_FCLK_CLK0",
                 "value_src": "default_prop"
               }
             }
@@ -1374,7 +1355,7 @@
       },
       "BUT0_0_1": {
         "ports": [
-          "BUT0_0",
+          "btn",
           "IOController_0/BUT0"
         ]
       },
@@ -1459,7 +1440,7 @@
       "IOController_0_LED0": {
         "ports": [
           "IOController_0/LED0",
-          "LED0_0"
+          "led"
         ]
       },
       "blk_mem_gen_0_douta": {
@@ -1470,7 +1451,7 @@
       },
       "processing_system7_0_FCLK_CLK0": {
         "ports": [
-          "sim_clk_gen_0/clk",
+          "processing_system7_0/FCLK_CLK0",
           "rst_ps7_0_50M/slowest_sync_clk",
           "processing_system7_0/S_AXI_HP0_ACLK",
           "processing_system7_0/M_AXI_GP0_ACLK",
@@ -1478,14 +1459,14 @@
           "axi_interconnect_0/S00_ACLK",
           "axi_interconnect_0/M00_ACLK",
           "blk_mem_gen_0/clka",
-          "IOController_0/clk",
           "CPU_0/clk",
-          "AXI_Master_0/clk"
+          "AXI_Master_0/clk",
+          "IOController_0/clk"
         ]
       },
-      "sim_clk_gen_0_sync_rst": {
+      "processing_system7_0_FCLK_RESET0_N": {
         "ports": [
-          "sim_clk_gen_0/sync_rst",
+          "processing_system7_0/FCLK_RESET0_N",
           "util_vector_logic_0/Op1"
         ]
       },

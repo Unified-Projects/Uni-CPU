@@ -1,0 +1,6 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.ip_user_files/bd/CPU/ip/CPU_processing_system7_0_0/sim/CPU_processing_system7_0_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module CPU_processing_system7_0_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.ip_user_files/bd/CPU/ip/CPU_util_vector_logic_0_0/sim/CPU_util_vector_logic_0_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module CPU_util_vector_logic_0_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl

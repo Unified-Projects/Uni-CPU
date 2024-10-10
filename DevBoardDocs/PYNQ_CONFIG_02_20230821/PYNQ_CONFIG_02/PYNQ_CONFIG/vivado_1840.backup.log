@@ -1,0 +1,134 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Sat Feb 25 11:11:07 2023
+# Process ID: 1840
+# Current directory: E:/Smart_ZYNQ_7020/Petalinux/08_Petalinux_NET_TEST/NET_TEST
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent11936 E:\Smart_ZYNQ_7020\Petalinux\08_Petalinux_NET_TEST\NET_TEST\NET_TEST.xpr
+# Log file: E:/Smart_ZYNQ_7020/Petalinux/08_Petalinux_NET_TEST/NET_TEST/vivado.log
+# Journal file: E:/Smart_ZYNQ_7020/Petalinux/08_Petalinux_NET_TEST/NET_TEST\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project E:/Smart_ZYNQ_7020/Petalinux/08_Petalinux_NET_TEST/NET_TEST/NET_TEST.xpr
+INFO: [Project 1-313] Project file moved from 'E:/Smart_ZYNQ_7010/Petalinux/08_Petalinux_NET_TEST/NET_TEST' since last save.
+Scanning sources...
+Finished scanning sources
+WARNING: [Project 1-509] GeneratedRun file for 'synth_1' not found
+WARNING: [Project 1-509] GeneratedRun file for 'ZYNQ_processing_system7_0_0_synth_1' not found
+WARNING: [Project 1-509] GeneratedRun file for 'ZYNQ_gmii_to_rgmii_0_0_synth_1' not found
+WARNING: [Project 1-509] GeneratedRun file for 'ZYNQ_util_vector_logic_0_0_synth_1' not found
+WARNING: [Project 1-509] GeneratedRun file for 'impl_1' not found
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Xilinx/Vivado/2018.3/data/ip'.
+open_project: Time (s): cpu = 00:00:13 ; elapsed = 00:00:06 . Memory (MB): peak = 804.320 ; gain = 175.582
+update_compile_order -fileset sources_1
+set_property part xc7z020clg400-1 [current_project]
+WARNING: [IP_Flow 19-2162] IP 'ZYNQ_processing_system7_0_0' is locked:
+* Current project part 'xc7z020clg400-1' and the part 'xc7z010clg400-1' used to customize the IP 'ZYNQ_processing_system7_0_0' do not match.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-2162] IP 'ZYNQ_gmii_to_rgmii_0_0' is locked:
+* Current project part 'xc7z020clg400-1' and the part 'xc7z010clg400-1' used to customize the IP 'ZYNQ_gmii_to_rgmii_0_0' do not match.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-2162] IP 'ZYNQ_util_vector_logic_0_0' is locked:
+* Current project part 'xc7z020clg400-1' and the part 'xc7z010clg400-1' used to customize the IP 'ZYNQ_util_vector_logic_0_0' do not match.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+report_ip_status -name ip_status 
+upgrade_ip [get_ips  {ZYNQ_util_vector_logic_0_0 ZYNQ_processing_system7_0_0 ZYNQ_gmii_to_rgmii_0_0}] -log ip_upgrade.log
+Adding cell -- xilinx.com:ip:processing_system7:5.5 - processing_system7_0
+Adding cell -- xilinx.com:ip:gmii_to_rgmii:4.0 - gmii_to_rgmii_0
+Adding cell -- xilinx.com:ip:util_vector_logic:2.0 - util_vector_logic_0
+Successfully read diagram <ZYNQ> from BD file <E:/Smart_ZYNQ_7020/Petalinux/08_Petalinux_NET_TEST/NET_TEST/NET_TEST.srcs/sources_1/bd/ZYNQ/ZYNQ.bd>
+Upgrading 'E:/Smart_ZYNQ_7020/Petalinux/08_Petalinux_NET_TEST/NET_TEST/NET_TEST.srcs/sources_1/bd/ZYNQ/ZYNQ.bd'
+INFO: [IP_Flow 19-3420] Updated ZYNQ_gmii_to_rgmii_0_0 to use current project options
+INFO: [IP_Flow 19-3420] Updated ZYNQ_processing_system7_0_0 to use current project options
+INFO: [IP_Flow 19-3420] Updated ZYNQ_util_vector_logic_0_0 to use current project options
+Wrote  : <E:\Smart_ZYNQ_7020\Petalinux\08_Petalinux_NET_TEST\NET_TEST\NET_TEST.srcs\sources_1\bd\ZYNQ\ZYNQ.bd> 
+INFO: [Coretcl 2-1525] Wrote upgrade log to 'E:/Smart_ZYNQ_7020/Petalinux/08_Petalinux_NET_TEST/NET_TEST/ip_upgrade.log'.
+upgrade_ip: Time (s): cpu = 00:00:10 ; elapsed = 00:00:08 . Memory (MB): peak = 896.434 ; gain = 49.406
+export_ip_user_files -of_objects [get_ips {ZYNQ_util_vector_logic_0_0 ZYNQ_processing_system7_0_0 ZYNQ_gmii_to_rgmii_0_0}] -no_script -sync -force -quiet
+generate_target all [get_files  E:/Smart_ZYNQ_7020/Petalinux/08_Petalinux_NET_TEST/NET_TEST/NET_TEST.srcs/sources_1/bd/ZYNQ/ZYNQ.bd]
+Wrote  : <E:\Smart_ZYNQ_7020\Petalinux\08_Petalinux_NET_TEST\NET_TEST\NET_TEST.srcs\sources_1\bd\ZYNQ\ZYNQ.bd> 
+VHDL Output written to : E:/Smart_ZYNQ_7020/Petalinux/08_Petalinux_NET_TEST/NET_TEST/NET_TEST.srcs/sources_1/bd/ZYNQ/synth/ZYNQ.v
+VHDL Output written to : E:/Smart_ZYNQ_7020/Petalinux/08_Petalinux_NET_TEST/NET_TEST/NET_TEST.srcs/sources_1/bd/ZYNQ/sim/ZYNQ.v
+VHDL Output written to : E:/Smart_ZYNQ_7020/Petalinux/08_Petalinux_NET_TEST/NET_TEST/NET_TEST.srcs/sources_1/bd/ZYNQ/hdl/ZYNQ_wrapper.v
+INFO: [BD 41-1029] Generation completed for the IP Integrator block processing_system7_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block gmii_to_rgmii_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block util_vector_logic_0 .
+Exporting to file E:/Smart_ZYNQ_7020/Petalinux/08_Petalinux_NET_TEST/NET_TEST/NET_TEST.srcs/sources_1/bd/ZYNQ/hw_handoff/ZYNQ.hwh
+Generated Block Design Tcl file E:/Smart_ZYNQ_7020/Petalinux/08_Petalinux_NET_TEST/NET_TEST/NET_TEST.srcs/sources_1/bd/ZYNQ/hw_handoff/ZYNQ_bd.tcl
+Generated Hardware Definition File E:/Smart_ZYNQ_7020/Petalinux/08_Petalinux_NET_TEST/NET_TEST/NET_TEST.srcs/sources_1/bd/ZYNQ/synth/ZYNQ.hwdef
+generate_target: Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 1028.652 ; gain = 115.781
+catch { config_ip_cache -export [get_ips -all ZYNQ_processing_system7_0_0] }
+catch { config_ip_cache -export [get_ips -all ZYNQ_gmii_to_rgmii_0_0] }
+catch { config_ip_cache -export [get_ips -all ZYNQ_util_vector_logic_0_0] }
+export_ip_user_files -of_objects [get_files E:/Smart_ZYNQ_7020/Petalinux/08_Petalinux_NET_TEST/NET_TEST/NET_TEST.srcs/sources_1/bd/ZYNQ/ZYNQ.bd] -no_script -sync -force -quiet
+create_ip_run [get_files -of_objects [get_fileset sources_1] E:/Smart_ZYNQ_7020/Petalinux/08_Petalinux_NET_TEST/NET_TEST/NET_TEST.srcs/sources_1/bd/ZYNQ/ZYNQ.bd]
+launch_runs -jobs 8 {ZYNQ_processing_system7_0_0_synth_1 ZYNQ_gmii_to_rgmii_0_0_synth_1 ZYNQ_util_vector_logic_0_0_synth_1}
+[Sat Feb 25 11:12:43 2023] Launched ZYNQ_processing_system7_0_0_synth_1, ZYNQ_gmii_to_rgmii_0_0_synth_1, ZYNQ_util_vector_logic_0_0_synth_1...
+Run output will be captured here:
+ZYNQ_processing_system7_0_0_synth_1: E:/Smart_ZYNQ_7020/Petalinux/08_Petalinux_NET_TEST/NET_TEST/NET_TEST.runs/ZYNQ_processing_system7_0_0_synth_1/runme.log
+ZYNQ_gmii_to_rgmii_0_0_synth_1: E:/Smart_ZYNQ_7020/Petalinux/08_Petalinux_NET_TEST/NET_TEST/NET_TEST.runs/ZYNQ_gmii_to_rgmii_0_0_synth_1/runme.log
+ZYNQ_util_vector_logic_0_0_synth_1: E:/Smart_ZYNQ_7020/Petalinux/08_Petalinux_NET_TEST/NET_TEST/NET_TEST.runs/ZYNQ_util_vector_logic_0_0_synth_1/runme.log
+export_simulation -of_objects [get_files E:/Smart_ZYNQ_7020/Petalinux/08_Petalinux_NET_TEST/NET_TEST/NET_TEST.srcs/sources_1/bd/ZYNQ/ZYNQ.bd] -directory E:/Smart_ZYNQ_7020/Petalinux/08_Petalinux_NET_TEST/NET_TEST/NET_TEST.ip_user_files/sim_scripts -ip_user_files_dir E:/Smart_ZYNQ_7020/Petalinux/08_Petalinux_NET_TEST/NET_TEST/NET_TEST.ip_user_files -ipstatic_source_dir E:/Smart_ZYNQ_7020/Petalinux/08_Petalinux_NET_TEST/NET_TEST/NET_TEST.ip_user_files/ipstatic -lib_map_path [list {modelsim=E:/Smart_ZYNQ_7020/Petalinux/08_Petalinux_NET_TEST/NET_TEST/NET_TEST.cache/compile_simlib/modelsim} {questa=E:/Smart_ZYNQ_7020/Petalinux/08_Petalinux_NET_TEST/NET_TEST/NET_TEST.cache/compile_simlib/questa} {riviera=E:/Smart_ZYNQ_7020/Petalinux/08_Petalinux_NET_TEST/NET_TEST/NET_TEST.cache/compile_simlib/riviera} {activehdl=E:/Smart_ZYNQ_7020/Petalinux/08_Petalinux_NET_TEST/NET_TEST/NET_TEST.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+launch_runs synth_1 -jobs 8
+[Sat Feb 25 11:13:11 2023] Launched ZYNQ_processing_system7_0_0_synth_1, ZYNQ_gmii_to_rgmii_0_0_synth_1, ZYNQ_util_vector_logic_0_0_synth_1...
+Run output will be captured here:
+ZYNQ_processing_system7_0_0_synth_1: E:/Smart_ZYNQ_7020/Petalinux/08_Petalinux_NET_TEST/NET_TEST/NET_TEST.runs/ZYNQ_processing_system7_0_0_synth_1/runme.log
+ZYNQ_gmii_to_rgmii_0_0_synth_1: E:/Smart_ZYNQ_7020/Petalinux/08_Petalinux_NET_TEST/NET_TEST/NET_TEST.runs/ZYNQ_gmii_to_rgmii_0_0_synth_1/runme.log
+ZYNQ_util_vector_logic_0_0_synth_1: E:/Smart_ZYNQ_7020/Petalinux/08_Petalinux_NET_TEST/NET_TEST/NET_TEST.runs/ZYNQ_util_vector_logic_0_0_synth_1/runme.log
+[Sat Feb 25 11:13:11 2023] Launched synth_1...
+Run output will be captured here: E:/Smart_ZYNQ_7020/Petalinux/08_Petalinux_NET_TEST/NET_TEST/NET_TEST.runs/synth_1/runme.log
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+[Sat Feb 25 11:17:16 2023] Launched impl_1...
+Run output will be captured here: E:/Smart_ZYNQ_7020/Petalinux/08_Petalinux_NET_TEST/NET_TEST/NET_TEST.runs/impl_1/runme.log
+open_hw
+connect_hw_server
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+INFO: [Labtools 27-2222] Launching hw_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+****** Xilinx hw_server v2018.3
+  **** Build date : Dec  7 2018-00:40:27
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+
+open_hw_target
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210357A7D00EA
+set_property PROGRAM.FILE {E:/Smart_ZYNQ_7020/Petalinux/08_Petalinux_NET_TEST/NET_TEST/NET_TEST.runs/impl_1/ZYNQ_wrapper.bit} [get_hw_devices xc7z010_1]
+current_hw_device [get_hw_devices xc7z010_1]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7z010_1] 0]
+INFO: [Labtools 27-1435] Device xc7z010 (JTAG device index = 1) is not programmed (DONE status = 0).
+ERROR: [Labtoolstcl 44-513] HW Target shutdown. Closing target: localhost:3121/xilinx_tcf/Digilent/210357A7D00EA
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210357A7D00EA
+WARNING: [Labtoolstcl 44-129] No matching hw_ila_data was found.
+INFO: [Labtools 27-1435] Device xc7z010 (JTAG device index = 1) is not programmed (DONE status = 0).
+WARNING: [Labtoolstcl 44-129] No matching hw_ila_data was found.
+file copy -force E:/Smart_ZYNQ_7020/Petalinux/08_Petalinux_NET_TEST/NET_TEST/NET_TEST.runs/impl_1/ZYNQ_wrapper.sysdef E:/Smart_ZYNQ_7020/Petalinux/08_Petalinux_NET_TEST/NET_TEST/NET_TEST.sdk/ZYNQ_wrapper.hdf
+
+launch_sdk -workspace E:/Smart_ZYNQ_7020/Petalinux/08_Petalinux_NET_TEST/NET_TEST/NET_TEST.sdk -hwspec E:/Smart_ZYNQ_7020/Petalinux/08_Petalinux_NET_TEST/NET_TEST/NET_TEST.sdk/ZYNQ_wrapper.hdf
+INFO: [Vivado 12-393] Launching SDK...
+INFO: [Vivado 12-417] Running xsdk -workspace E:/Smart_ZYNQ_7020/Petalinux/08_Petalinux_NET_TEST/NET_TEST/NET_TEST.sdk -hwspec E:/Smart_ZYNQ_7020/Petalinux/08_Petalinux_NET_TEST/NET_TEST/NET_TEST.sdk/ZYNQ_wrapper.hdf
+INFO: [Vivado 12-3157] SDK launch initiated. Please check console for any further messages.
+ERROR: [Labtoolstcl 44-513] HW Target shutdown. Closing target: localhost:3121/xilinx_tcf/Digilent/210357A7D00EA
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210357A7D00EA
+WARNING: [Labtoolstcl 44-129] No matching hw_ila_data was found.
+INFO: [Labtools 27-1435] Device xc7z010 (JTAG device index = 1) is not programmed (DONE status = 0).
+WARNING: [Labtoolstcl 44-129] No matching hw_ila_data was found.
+open_project E:/Smart_ZYNQ_7010/ALL_TEST/PL_HDMI_TEST/03_PL_HDMI_TEST.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'e:/Smart_ZYNQ_7010/ALL_TEST/PL_HDMI_TEST/rgb2dvi'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Xilinx/Vivado/2018.3/data/ip'.
+open_project: Time (s): cpu = 00:00:09 ; elapsed = 00:00:05 . Memory (MB): peak = 2074.398 ; gain = 43.891
+current_project NET_TEST
+close_project
+update_compile_order -fileset sources_1
+launch_sdk -workspace E:/Smart_ZYNQ_7010/ALL_TEST/PL_HDMI_TEST/03_PL_HDMI_TEST.sdk -hwspec E:/Smart_ZYNQ_7010/ALL_TEST/PL_HDMI_TEST/03_PL_HDMI_TEST.sdk/top.hdf
+INFO: [Vivado 12-393] Launching SDK...
+INFO: [Vivado 12-417] Running xsdk -workspace E:/Smart_ZYNQ_7010/ALL_TEST/PL_HDMI_TEST/03_PL_HDMI_TEST.sdk -hwspec E:/Smart_ZYNQ_7010/ALL_TEST/PL_HDMI_TEST/03_PL_HDMI_TEST.sdk/top.hdf
+INFO: [Vivado 12-3157] SDK launch initiated. Please check console for any further messages.
+exit
+INFO: [Common 17-206] Exiting Vivado at Sat Feb 25 12:24:16 2023...
