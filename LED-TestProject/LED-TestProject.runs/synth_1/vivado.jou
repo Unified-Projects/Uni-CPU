@@ -1,0 +1,24 @@
+#-----------------------------------------------------------
+# Vivado v2024.1.2 (64-bit)
+# SW Build 5164865 on Thu Sep  5 14:37:11 MDT 2024
+# IP Build 5164407 on Fri Sep  6 08:18:11 MDT 2024
+# SharedData Build 5164864 on Thu Sep 05 13:09:09 MDT 2024
+# Start of session at: Wed Oct  9 15:35:50 2024
+# Process ID: 13420
+# Current directory: Y:/C++/Uni-CPU/LED-TestProject/LED-TestProject.runs/synth_1
+# Command line: vivado.exe -log LED.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source LED.tcl
+# Log file: Y:/C++/Uni-CPU/LED-TestProject/LED-TestProject.runs/synth_1/LED.vds
+# Journal file: Y:/C++/Uni-CPU/LED-TestProject/LED-TestProject.runs/synth_1\vivado.jou
+# Running On        :DESKTOP-PSI4IU2
+# Platform          :Windows Server 2016 or Windows 10
+# Operating System  :22631
+# Processor Detail  :13th Gen Intel(R) Core(TM) i7-13700K
+# CPU Frequency     :3418 MHz
+# CPU Physical cores:12
+# CPU Logical cores :12
+# Host memory       :34340 MB
+# Swap memory       :2147 MB
+# Total Virtual     :36487 MB
+# Available Virtual :28306 MB
+#-----------------------------------------------------------
+source LED.tcl -notrace
