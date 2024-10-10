@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7z020clg484-1" LaunchTime="1728570448">
+<GenRun Id="impl_1" LaunchPart="xc7z020clg484-1" LaunchTime="1728574751">
   <File Type="ROUTE-PWR" Name="CPU_wrapper_power_routed.rpt"/>
   <File Type="PA-TCL" Name="CPU_wrapper.tcl"/>
   <File Type="ROUTE-PWR-SUM" Name="CPU_wrapper_power_summary_routed.pb"/>
@@ -92,6 +92,12 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PSRCDIR/sources_1/new/Buttn_LED_Switch.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PSRCDIR/sources_1/bd/CPU/CPU.bd">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -138,9 +144,7 @@
     </Config>
   </FileSet>
   <Strategy Version="1" Minor="2">
-    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2024">
-      <Desc>Default settings for Implementation.</Desc>
-    </StratHandle>
+    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2024"/>
     <Step Id="init_design"/>
     <Step Id="opt_design"/>
     <Step Id="power_opt_design"/>
@@ -151,6 +155,7 @@
     <Step Id="post_route_phys_opt_design"/>
     <Step Id="write_bitstream"/>
   </Strategy>
+  <BlockFileSet Type="BlockSrcs" Name="CPU_Buttn_LED_Switch_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="CPU_proc_sys_reset_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="CPU_processing_system7_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="CPU_util_vector_logic_0_0"/>

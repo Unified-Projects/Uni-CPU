@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "C:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.runs/synth_1/CPU_wrapper.tcl"
+  variable script "C:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.runs/CPU_Buttn_LED_Switch_0_0_synth_1/CPU_Buttn_LED_Switch_0_0.tcl"
   variable category "vivado_synth"
 }
 
@@ -55,8 +55,10 @@ if {$::dispatch::connected} {
   }
 }
 
-OPTRACE "synth_1" START { ROLLUP_AUTO }
+OPTRACE "CPU_Buttn_LED_Switch_0_0_synth_1" START { ROLLUP_AUTO }
+set_param project.vivado.isBlockSynthRun true
 OPTRACE "Creating in-memory project" START { }
+set_param ips.modRefOverrideMrefDirPath c:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/mref
 create_project -in_memory -part xc7z020clg484-1
 
 set_param project.singleFileAddWarning.threshold 0
@@ -67,20 +69,13 @@ set_property webtalk.parent_dir C:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.cache/wt [curre
 set_property parent.project_path C:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
+update_ip_catalog
 set_property ip_output_repo c:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-read_vhdl -library xil_defaultlib C:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/hdl/CPU_wrapper.vhd
-add_files C:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/bd/CPU/CPU.bd
-set_property used_in_implementation false [get_files -all c:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_processing_system7_0_0/CPU_processing_system7_0_0.xdc]
-set_property used_in_implementation false [get_files -all c:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_gmii_to_rgmii_0_0/synth/CPU_gmii_to_rgmii_0_0.xdc]
-set_property used_in_implementation false [get_files -all c:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_gmii_to_rgmii_0_0/synth/CPU_gmii_to_rgmii_0_0_clocks.xdc]
-set_property used_in_implementation false [get_files -all c:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_gmii_to_rgmii_0_0/synth/CPU_gmii_to_rgmii_0_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_proc_sys_reset_0_0/CPU_proc_sys_reset_0_0_board.xdc]
-set_property used_in_implementation false [get_files -all c:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_proc_sys_reset_0_0/CPU_proc_sys_reset_0_0.xdc]
-set_property used_in_implementation false [get_files -all c:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_proc_sys_reset_0_0/CPU_proc_sys_reset_0_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/CPU_ooc.xdc]
+read_vhdl -library xil_defaultlib C:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/new/Buttn_LED_Switch.vhd
+read_ip -quiet c:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/bd/CPU/ip/CPU_Buttn_LED_Switch_0_0/CPU_Buttn_LED_Switch_0_0.xci
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -91,32 +86,69 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc C:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/constrs_1/new/ZYNQ.xdc
-set_property used_in_implementation false [get_files C:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/constrs_1/new/ZYNQ.xdc]
-
-read_xdc dont_touch.xdc
-set_property used_in_implementation false [get_files dont_touch.xdc]
 set_param ips.enableIPCacheLiteLoad 1
-
-read_checkpoint -auto_incremental -incremental C:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/utils_1/imports/synth_1/CPU_wrapper.dcp
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }
-synth_design -top CPU_wrapper -part xc7z020clg484-1
+synth_design -top CPU_Buttn_LED_Switch_0_0 -part xc7z020clg484-1 -incremental_mode off -mode out_of_context
 OPTRACE "synth_design" END { }
 if { [get_msg_config -count -severity {CRITICAL WARNING}] > 0 } {
  send_msg_id runtcl-6 info "Synthesis results are not added to the cache due to CRITICAL_WARNING"
 }
 
+rename_ref -prefix_all CPU_Buttn_LED_Switch_0_0_
 
 OPTRACE "write_checkpoint" START { CHECKPOINT }
 # disable binary constraint mode for synth run checkpoints
 set_param constraints.enableBinaryConstraints false
-write_checkpoint -force -noxdef CPU_wrapper.dcp
+write_checkpoint -force -noxdef CPU_Buttn_LED_Switch_0_0.dcp
 OPTRACE "write_checkpoint" END { }
 OPTRACE "synth reports" START { REPORT }
-generate_parallel_reports -reports { "report_utilization -file CPU_wrapper_utilization_synth.rpt -pb CPU_wrapper_utilization_synth.pb"  } 
+generate_parallel_reports -reports { "report_utilization -file CPU_Buttn_LED_Switch_0_0_utilization_synth.rpt -pb CPU_Buttn_LED_Switch_0_0_utilization_synth.pb"  } 
 OPTRACE "synth reports" END { }
+
+if { [catch {
+  file copy -force C:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.runs/CPU_Buttn_LED_Switch_0_0_synth_1/CPU_Buttn_LED_Switch_0_0.dcp c:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_Buttn_LED_Switch_0_0/CPU_Buttn_LED_Switch_0_0.dcp
+} _RESULT ] } { 
+  send_msg_id runtcl-3 status "ERROR: Unable to successfully create or copy the sub-design checkpoint file."
+  error "ERROR: Unable to successfully create or copy the sub-design checkpoint file."
+}
+
+if { [catch {
+  write_verilog -force -mode synth_stub c:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_Buttn_LED_Switch_0_0/CPU_Buttn_LED_Switch_0_0_stub.v
+} _RESULT ] } { 
+  puts "CRITICAL WARNING: Unable to successfully create a Verilog synthesis stub for the sub-design. This may lead to errors in top level synthesis of the design. Error reported: $_RESULT"
+}
+
+if { [catch {
+  write_vhdl -force -mode synth_stub c:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_Buttn_LED_Switch_0_0/CPU_Buttn_LED_Switch_0_0_stub.vhdl
+} _RESULT ] } { 
+  puts "CRITICAL WARNING: Unable to successfully create a VHDL synthesis stub for the sub-design. This may lead to errors in top level synthesis of the design. Error reported: $_RESULT"
+}
+
+if { [catch {
+  write_verilog -force -mode funcsim c:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_Buttn_LED_Switch_0_0/CPU_Buttn_LED_Switch_0_0_sim_netlist.v
+} _RESULT ] } { 
+  puts "CRITICAL WARNING: Unable to successfully create the Verilog functional simulation sub-design file. Post-Synthesis Functional Simulation with this file may not be possible or may give incorrect results. Error reported: $_RESULT"
+}
+
+if { [catch {
+  write_vhdl -force -mode funcsim c:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_Buttn_LED_Switch_0_0/CPU_Buttn_LED_Switch_0_0_sim_netlist.vhdl
+} _RESULT ] } { 
+  puts "CRITICAL WARNING: Unable to successfully create the VHDL functional simulation sub-design file. Post-Synthesis Functional Simulation with this file may not be possible or may give incorrect results. Error reported: $_RESULT"
+}
+
+if {[file isdir C:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.ip_user_files/ip/CPU_Buttn_LED_Switch_0_0]} {
+  catch { 
+    file copy -force c:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_Buttn_LED_Switch_0_0/CPU_Buttn_LED_Switch_0_0_stub.v C:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.ip_user_files/ip/CPU_Buttn_LED_Switch_0_0
+  }
+}
+
+if {[file isdir C:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.ip_user_files/ip/CPU_Buttn_LED_Switch_0_0]} {
+  catch { 
+    file copy -force c:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_Buttn_LED_Switch_0_0/CPU_Buttn_LED_Switch_0_0_stub.vhdl C:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.ip_user_files/ip/CPU_Buttn_LED_Switch_0_0
+  }
+}
 file delete __synthesis_is_running__
 close [open __synthesis_is_complete__ w]
-OPTRACE "synth_1" END { }
+OPTRACE "CPU_Buttn_LED_Switch_0_0_synth_1" END { }

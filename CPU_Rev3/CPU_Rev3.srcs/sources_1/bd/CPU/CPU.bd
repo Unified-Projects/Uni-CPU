@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0xA90FB5384D8C0BB1",
+      "boundary_crc": "0xD34671DCBFE458DB",
       "device": "xc7z020clg484-1",
       "gen_directory": "../../../../CPU_Rev3.gen/sources_1/bd/CPU",
       "name": "CPU",
@@ -15,7 +15,8 @@
       "gmii_to_rgmii_0": "",
       "util_vector_logic_0": "",
       "proc_sys_reset_0": "",
-      "ClockDivider_0": ""
+      "ClockDivider_0": "",
+      "Buttn_LED_Switch_0": ""
     },
     "interface_ports": {
       "DDR": {
@@ -267,8 +268,17 @@
       }
     },
     "ports": {
-      "led": {
+      "led_0": {
         "direction": "IO"
+      },
+      "led1": {
+        "direction": "O"
+      },
+      "btn_2": {
+        "direction": "I"
+      },
+      "btn_0": {
+        "direction": "I"
       }
     },
     "components": {
@@ -1043,6 +1053,57 @@
             "direction": "IO"
           }
         }
+      },
+      "Buttn_LED_Switch_0": {
+        "vlnv": "xilinx.com:module_ref:Buttn_LED_Switch:1.0",
+        "ip_revision": "1",
+        "xci_name": "CPU_Buttn_LED_Switch_0_0",
+        "xci_path": "ip\\CPU_Buttn_LED_Switch_0_0\\CPU_Buttn_LED_Switch_0_0.xci",
+        "inst_hier_path": "Buttn_LED_Switch_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "Buttn_LED_Switch",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "btn1": {
+            "direction": "I"
+          },
+          "btn2": {
+            "direction": "I"
+          },
+          "reset": {
+            "type": "rst",
+            "direction": "I",
+            "parameters": {
+              "POLARITY": {
+                "value": "ACTIVE_HIGH",
+                "value_src": "const_prop"
+              }
+            }
+          },
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "reset",
+                "value_src": "constant"
+              },
+              "FREQ_HZ": {
+                "value": "200000000",
+                "value_src": "user_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "CPU_processing_system7_0_0_FCLK_CLK0",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "led2": {
+            "direction": "O"
+          }
+        }
       }
     },
     "interface_nets": {
@@ -1090,16 +1151,35 @@
       }
     },
     "nets": {
+      "Buttn_LED_Switch_0_led2": {
+        "ports": [
+          "Buttn_LED_Switch_0/led2",
+          "led1"
+        ]
+      },
       "Net": {
         "ports": [
-          "led",
+          "led_0",
           "ClockDivider_0/clk_div"
+        ]
+      },
+      "btn1_0_1": {
+        "ports": [
+          "btn_0",
+          "Buttn_LED_Switch_0/btn1"
+        ]
+      },
+      "btn2_0_1": {
+        "ports": [
+          "btn_2",
+          "Buttn_LED_Switch_0/btn2"
         ]
       },
       "proc_sys_reset_0_mb_reset": {
         "ports": [
           "proc_sys_reset_0/mb_reset",
-          "ClockDivider_0/reset"
+          "ClockDivider_0/reset",
+          "Buttn_LED_Switch_0/reset"
         ]
       },
       "processing_system7_0_FCLK_CLK0": {
@@ -1107,7 +1187,8 @@
           "processing_system7_0/FCLK_CLK0",
           "gmii_to_rgmii_0/clkin",
           "proc_sys_reset_0/slowest_sync_clk",
-          "ClockDivider_0/clk"
+          "ClockDivider_0/clk",
+          "Buttn_LED_Switch_0/clk"
         ]
       },
       "processing_system7_0_FCLK_RESET0_N": {

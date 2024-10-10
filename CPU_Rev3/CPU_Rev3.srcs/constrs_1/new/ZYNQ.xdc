@@ -40,9 +40,14 @@ set_property SLEW FAST [get_ports {RGMII_0_td[3]}]
 set_property SLEW FAST [get_ports RGMII_0_tx_ctl]
 set_property SLEW FAST [get_ports RGMII_0_txc]
 
+set_property PACKAGE_PIN P20 [get_ports led_0]
+set_property IOSTANDARD LVCMOS33 [get_ports led_0]
 
-create_clock -period 8.000 -name RGMII_0_rxc -waveform {0.000 4.000} [get_ports RGMII_0_rxc]
-set_clock_groups -logically_exclusive -group [get_clocks -include_generated_clocks {gmii_clk_25m_out gmii_clk_2_5m_out}] -group [get_clocks -include_generated_clocks gmii_clk_125m_out]
+set_property PACKAGE_PIN P21 [get_ports led_1]    
+set_property IOSTANDARD LVCMOS33 [get_ports led_1]
 
-set_property PACKAGE_PIN P20 [get_ports led]
-set_property IOSTANDARD LVCMOS33 [get_ports led]
+set_property PACKAGE_PIN K21 [get_ports btn_0]    
+set_property IOSTANDARD LVCMOS33 [get_ports btn_0]
+
+set_property PACKAGE_PIN J20 [get_ports btn_1]    
+set_property IOSTANDARD LVCMOS33 [get_ports btn_1]

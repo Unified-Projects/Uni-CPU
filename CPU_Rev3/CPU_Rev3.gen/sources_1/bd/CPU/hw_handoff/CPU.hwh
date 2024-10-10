@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Oct 10 15:26:44 2024" VIVADOVERSION="2024.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Oct 10 16:39:04 2024" VIVADOVERSION="2024.1">
 
   <SYSTEMINFO ARCH="zynq" DEVICE="7z020" NAME="CPU" PACKAGE="clg484" SPEEDGRADE="-1"/>
 
@@ -69,7 +69,7 @@
         <CONNECTION INSTANCE="processing_system7_0" PORT="DDR_RAS_n"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="IO" NAME="DDR_reset_n" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="processing_system7_0_DDR_DRSTB">
+    <PORT DIR="IO" NAME="DDR_reset_n" SIGIS="rst" SIGNAME="processing_system7_0_DDR_DRSTB">
       <CONNECTIONS>
         <CONNECTION INSTANCE="processing_system7_0" PORT="DDR_DRSTB"/>
       </CONNECTIONS>
@@ -169,7 +169,22 @@
         <CONNECTION INSTANCE="processing_system7_0" PORT="UART0_TX"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="IO" NAME="led" SIGIS="undef" SIGNAME="External_Ports_led">
+    <PORT DIR="I" NAME="btn_0" SIGIS="undef" SIGNAME="External_Ports_btn_0">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Buttn_LED_Switch_0" PORT="btn1"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="btn_2" SIGIS="undef" SIGNAME="External_Ports_btn_2">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Buttn_LED_Switch_0" PORT="btn2"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="led1" SIGIS="undef" SIGNAME="Buttn_LED_Switch_0_led2">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Buttn_LED_Switch_0" PORT="led2"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="IO" NAME="led_0" SIGIS="undef" SIGNAME="External_Ports_led_0">
       <CONNECTIONS>
         <CONNECTION INSTANCE="ClockDivider_0" PORT="clk_div"/>
       </CONNECTIONS>
@@ -249,6 +264,41 @@
   </EXTERNALINTERFACES>
 
   <MODULES>
+    <MODULE COREREVISION="1" FULLNAME="/Buttn_LED_Switch_0" HWVERSION="1.0" INSTANCE="Buttn_LED_Switch_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="Buttn_LED_Switch" VLNV="xilinx.com:module_ref:Buttn_LED_Switch:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="CPU_Buttn_LED_Switch_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" NAME="btn1" SIGIS="undef" SIGNAME="External_Ports_btn_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="btn_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="btn2" SIGIS="undef" SIGNAME="External_Ports_btn_2">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="btn_2"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="200000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="led2" SIGIS="undef" SIGNAME="Buttn_LED_Switch_0_led2">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="led1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="reset" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="proc_sys_reset_0_mb_reset">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="proc_sys_reset_0" PORT="mb_reset"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
     <MODULE COREREVISION="1" FULLNAME="/ClockDivider_0" HWVERSION="1.0" INSTANCE="ClockDivider_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="ClockDivider" VLNV="xilinx.com:module_ref:ClockDivider:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
@@ -261,9 +311,9 @@
             <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="IO" NAME="clk_div" SIGIS="undef" SIGNAME="External_Ports_led">
+        <PORT DIR="IO" NAME="clk_div" SIGIS="undef" SIGNAME="External_Ports_led_0">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="led"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="led_0"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="reset" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="proc_sys_reset_0_mb_reset">
@@ -515,6 +565,7 @@
         <PORT DIR="O" NAME="mb_reset" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="proc_sys_reset_0_mb_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ClockDivider_0" PORT="reset"/>
+            <CONNECTION INSTANCE="Buttn_LED_Switch_0" PORT="reset"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="0" NAME="peripheral_aresetn" POLARITY="ACTIVE_LOW" RIGHT="0" SIGIS="rst"/>
@@ -1630,6 +1681,7 @@
             <CONNECTION INSTANCE="gmii_to_rgmii_0" PORT="clkin"/>
             <CONNECTION INSTANCE="proc_sys_reset_0" PORT="slowest_sync_clk"/>
             <CONNECTION INSTANCE="ClockDivider_0" PORT="clk"/>
+            <CONNECTION INSTANCE="Buttn_LED_Switch_0" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="FCLK_RESET0_N" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="processing_system7_0_FCLK_RESET0_N">

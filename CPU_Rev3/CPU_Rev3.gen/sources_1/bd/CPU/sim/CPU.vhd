@@ -2,7 +2,7 @@
 --Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
---Date        : Thu Oct 10 15:26:44 2024
+--Date        : Thu Oct 10 16:39:03 2024
 --Host        : PopTop running 64-bit major release  (build 9200)
 --Command     : generate_target CPU.bd
 --Design      : CPU
@@ -47,10 +47,13 @@ entity CPU is
     RGMII_0_txc : out STD_LOGIC;
     UART_0_0_rxd : in STD_LOGIC;
     UART_0_0_txd : out STD_LOGIC;
-    led : inout STD_LOGIC
+    btn_0 : in STD_LOGIC;
+    btn_2 : in STD_LOGIC;
+    led1 : out STD_LOGIC;
+    led_0 : inout STD_LOGIC
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of CPU : entity is "CPU,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=CPU,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=5,numReposBlks=5,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=1,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=2,da_board_cnt=1,da_clkrst_cnt=1,da_ps7_cnt=1,synth_mode=Hierarchical}";
+  attribute CORE_GENERATION_INFO of CPU : entity is "CPU,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=CPU,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=6,numReposBlks=6,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=2,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=2,da_board_cnt=1,da_clkrst_cnt=1,da_ps7_cnt=1,synth_mode=Hierarchical}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of CPU : entity is "CPU.hwdef";
 end CPU;
@@ -170,7 +173,19 @@ architecture STRUCTURE of CPU is
     clk_div : inout STD_LOGIC
   );
   end component CPU_ClockDivider_0_0;
+  component CPU_Buttn_LED_Switch_0_0 is
+  port (
+    btn1 : in STD_LOGIC;
+    btn2 : in STD_LOGIC;
+    reset : in STD_LOGIC;
+    clk : in STD_LOGIC;
+    led2 : out STD_LOGIC
+  );
+  end component CPU_Buttn_LED_Switch_0_0;
+  signal Buttn_LED_Switch_0_led2 : STD_LOGIC;
   signal Net : STD_LOGIC;
+  signal btn1_0_1 : STD_LOGIC;
+  signal btn2_0_1 : STD_LOGIC;
   signal gmii_to_rgmii_0_MDIO_PHY_MDC : STD_LOGIC;
   signal gmii_to_rgmii_0_MDIO_PHY_MDIO_I : STD_LOGIC;
   signal gmii_to_rgmii_0_MDIO_PHY_MDIO_O : STD_LOGIC;
@@ -283,15 +298,26 @@ begin
   RGMII_0_tx_ctl <= gmii_to_rgmii_0_RGMII_TX_CTL;
   RGMII_0_txc <= gmii_to_rgmii_0_RGMII_TXC;
   UART_0_0_txd <= processing_system7_0_UART_0_TxD;
+  btn1_0_1 <= btn_0;
+  btn2_0_1 <= btn_2;
   gmii_to_rgmii_0_MDIO_PHY_MDIO_I <= MDIO_PHY_0_mdio_i;
   gmii_to_rgmii_0_RGMII_RD(3 downto 0) <= RGMII_0_rd(3 downto 0);
   gmii_to_rgmii_0_RGMII_RXC <= RGMII_0_rxc;
   gmii_to_rgmii_0_RGMII_RX_CTL <= RGMII_0_rx_ctl;
+  led1 <= Buttn_LED_Switch_0_led2;
   processing_system7_0_UART_0_RxD <= UART_0_0_rxd;
+Buttn_LED_Switch_0: component CPU_Buttn_LED_Switch_0_0
+     port map (
+      btn1 => btn1_0_1,
+      btn2 => btn2_0_1,
+      clk => processing_system7_0_FCLK_CLK0,
+      led2 => Buttn_LED_Switch_0_led2,
+      reset => proc_sys_reset_0_mb_reset
+    );
 ClockDivider_0: component CPU_ClockDivider_0_0
      port map (
       clk => processing_system7_0_FCLK_CLK0,
-      clk_div => led,
+      clk_div => led_0,
       reset => proc_sys_reset_0_mb_reset
     );
 gmii_to_rgmii_0: component CPU_gmii_to_rgmii_0_0

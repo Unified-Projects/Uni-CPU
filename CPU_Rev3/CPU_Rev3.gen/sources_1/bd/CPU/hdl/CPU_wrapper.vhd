@@ -2,7 +2,7 @@
 --Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
---Date        : Thu Oct 10 15:26:44 2024
+--Date        : Thu Oct 10 16:39:03 2024
 --Host        : PopTop running 64-bit major release  (build 9200)
 --Command     : generate_target CPU_wrapper.bd
 --Design      : CPU_wrapper
@@ -45,7 +45,10 @@ entity CPU_wrapper is
     RGMII_0_txc : out STD_LOGIC;
     UART_0_0_rxd : in STD_LOGIC;
     UART_0_0_txd : out STD_LOGIC;
-    led : inout STD_LOGIC
+    btn_0 : in STD_LOGIC;
+    btn_2 : in STD_LOGIC;
+    led1 : out STD_LOGIC;
+    led_0 : inout STD_LOGIC
   );
 end CPU_wrapper;
 
@@ -85,7 +88,10 @@ architecture STRUCTURE of CPU_wrapper is
     RGMII_0_txc : out STD_LOGIC;
     UART_0_0_txd : out STD_LOGIC;
     UART_0_0_rxd : in STD_LOGIC;
-    led : inout STD_LOGIC
+    led_0 : inout STD_LOGIC;
+    led1 : out STD_LOGIC;
+    btn_2 : in STD_LOGIC;
+    btn_0 : in STD_LOGIC
   );
   end component CPU;
   component IOBUF is
@@ -135,7 +141,10 @@ CPU_i: component CPU
       RGMII_0_txc => RGMII_0_txc,
       UART_0_0_rxd => UART_0_0_rxd,
       UART_0_0_txd => UART_0_0_txd,
-      led => led
+      btn_0 => btn_0,
+      btn_2 => btn_2,
+      led1 => led1,
+      led_0 => led_0
     );
 MDIO_PHY_0_mdio_iobuf: component IOBUF
      port map (

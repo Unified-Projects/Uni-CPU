@@ -15,10 +15,13 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==CPU_gmii_to
 # IP: bd/CPU/ip/CPU_util_vector_logic_0_0/CPU_util_vector_logic_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==CPU_util_vector_logic_0_0 || ORIG_REF_NAME==CPU_util_vector_logic_0_0} -quiet] -quiet
 
+# IP: bd/CPU/ip/CPU_proc_sys_reset_0_0/CPU_proc_sys_reset_0_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==CPU_proc_sys_reset_0_0 || ORIG_REF_NAME==CPU_proc_sys_reset_0_0} -quiet] -quiet
+
 # IP: bd/CPU/ip/CPU_ClockDivider_0_0/CPU_ClockDivider_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==CPU_ClockDivider_0_0 || ORIG_REF_NAME==CPU_ClockDivider_0_0} -quiet] -quiet
 
-# IP: bd/CPU/ip/CPU_proc_sys_reset_0_0/CPU_proc_sys_reset_0_0.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==CPU_proc_sys_reset_0_0 || ORIG_REF_NAME==CPU_proc_sys_reset_0_0} -quiet] -quiet
+# IP: bd/CPU/ip/CPU_Buttn_LED_Switch_0_0/CPU_Buttn_LED_Switch_0_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==CPU_Buttn_LED_Switch_0_0 || ORIG_REF_NAME==CPU_Buttn_LED_Switch_0_0} -quiet] -quiet
 
 # XDC: c:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/CPU_ooc.xdc
