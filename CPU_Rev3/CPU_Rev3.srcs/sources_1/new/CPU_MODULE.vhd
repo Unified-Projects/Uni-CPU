@@ -1,6 +1,8 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
+-- use IEEE.NUMERIC_STD.unsigned;
+-- use IEEE.NUMERIC_STD.to_integer;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity CPU_Module is
@@ -59,6 +61,8 @@ architecture Behavioral of CPU_Module is
     
     signal IO_Enable_Buffer : STD_LOGIC;
     signal IO_Out_Buffer : STD_LOGIC;
+
+    signal DivisionRegister : STD_LOGIC_VECTOR(128 downto 0);
     
     function reverse_bytes(data_in: std_logic_vector(63 downto 0)) return std_logic_vector is
         variable data_out: std_logic_vector(63 downto 0);
@@ -1139,7 +1143,7 @@ begin
                                 case stateIndexMain is
                                     when 0 =>
                                         -- ADD Instruction
-                                        Argument2 <= Argument1 + Argument2;
+                                        Argument2 <= std_logic_vector(resize(signed(Argument1) + signed(Argument2), 64));
                                         
                                         stateIndexMain <= 1;
                                      
@@ -1286,7 +1290,7 @@ begin
                                 
                             when "0000001010" =>
                                 -- INT Instruction
-                                Registers(15) <= Registers(15) AND "10"; -- Load Interrupt Flag
+                                Registers(15) <= Registers(15) AND "0000000000000000000000000000000000000000000000000000000000000010"; -- Load Interrupt Flag
                                 Registers(17) <= Argument1;
                                 
                             when "0000001011" =>
@@ -1316,7 +1320,152 @@ begin
                                     when others =>
                                         -- Throw ERR
                                 end case;
+                            
+                            when "0000001100" =>
+                                -- MUL Instruction
+                                case stateIndexMain is
+                                    when 0 =>
+                                        Argument2 <= std_logic_vector(resize(signed(Argument1) * signed(Argument2), 64));
+                                        
+                                        stateIndexMain <= 1;
+                                     
+                                    when 1 =>
+                                        Registers(to_integer(unsigned(Argument3(4 downto 0)))) <= Argument2;
+                                        state <= IDLE;
+                                        stateIndexMain <= 0;
+                                    
+                                    when others =>
+                                end case;
+
+                            when "0000001101" =>
+                                -- DIV Instruction
+                                case stateIndexMain is
+                                    when 0 =>
+                                        Argument2 <= std_logic_vector(signed(Argument1) / signed(Argument2));
+                                        
+                                        stateIndexMain <= 1;
+
+                                    when 1 =>
+                                        Registers(to_integer(unsigned(Argument3(4 downto 0)))) <= Argument2;
+                                        state <= IDLE;
+                                        stateIndexMain <= 0;
+                                    
+                                    when others =>
+                                end case;
+
+                            when "0000001110" =>
+                                -- SUB Instruction
+                                case stateIndexMain is
+                                    when 0 =>
+                                        Argument2 <= std_logic_vector(resize(signed(Argument1) - signed(Argument2), 64));
+                                        
+                                        stateIndexMain <= 1;
+                                     
+                                    when 1 =>
+                                        Registers(to_integer(unsigned(Argument3(4 downto 0)))) <= Argument2;
+                                        state <= IDLE;
+                                        stateIndexMain <= 0;
+                                    
+                                    when others =>
+                                end case;
+
+                            when "0000001111" =>
+                                -- LSR Instruction
+                                case stateIndexMain is
+                                    when 0 =>
+                                        Argument2 <= std_logic_vector(shift_right(unsigned(Argument1), to_integer(unsigned(Argument2(63 downto 0)))));
+                                        
+                                        stateIndexMain <= 1;
+                                     
+                                    when 1 =>
+                                        Registers(to_integer(unsigned(Argument3(4 downto 0)))) <= Argument2;
+                                        state <= IDLE;
+                                        stateIndexMain <= 0;
+                                    
+                                    when others =>
+                                end case;
+
+                            when "0000010000" =>
+                                -- LSL Instruction
+                                case stateIndexMain is
+                                    when 0 =>
+                                        Argument2 <= std_logic_vector(shift_left(unsigned(Argument1), to_integer(unsigned(Argument2(63 downto 0)))));
+                                        
+                                        stateIndexMain <= 1;
+                                     
+                                    when 1 =>
+                                        Registers(to_integer(unsigned(Argument3(4 downto 0)))) <= Argument2;
+                                        state <= IDLE;
+                                        stateIndexMain <= 0;
+                                    
+                                    when others =>
+                                end case;
+
+                            when "0000010001" =>
+                                -- AND Instruction
+                                case stateIndexMain is
+                                    when 0 =>
+                                        Argument2 <= Argument1 and Argument2;
+                                        
+                                        stateIndexMain <= 1;
+                                     
+                                    when 1 =>
+                                        Registers(to_integer(unsigned(Argument3(4 downto 0)))) <= Argument2;
+                                        state <= IDLE;
+                                        stateIndexMain <= 0;
+                                    
+                                    when others =>
+                                end case;
+
+                            when "0000010010" =>
+                                -- NOT Instruction
+                                case stateIndexMain is
+                                    when 0 =>
+                                        Argument2 <= not Argument1;
+                                        
+                                        stateIndexMain <= 1;
+                                     
+                                    when 1 =>
+                                        Registers(to_integer(unsigned(Argument3(4 downto 0)))) <= Argument2;
+                                        state <= IDLE;
+                                        stateIndexMain <= 0;
+                                    
+                                    when others =>
+                                end case;
+
+                            when "0000010011" =>
+                                -- OR Instruction
+                                case stateIndexMain is
+                                    when 0 =>
+                                        Argument2 <= Argument1 or Argument2;
+                                        
+                                        stateIndexMain <= 1;
+                                     
+                                    when 1 =>
+                                        Registers(to_integer(unsigned(Argument3(4 downto 0)))) <= Argument2;
+                                        state <= IDLE;
+                                        stateIndexMain <= 0;
+                                    
+                                    when others =>
+                                end case;
+
+                            when "0000010100" =>
+                                -- XOR Instruction
+                                case stateIndexMain is
+                                    when 0 =>
+                                        Argument2 <= Argument1 xor Argument2;
+                                        
+                                        stateIndexMain <= 1;
+                                     
+                                    when 1 =>
+                                        Registers(to_integer(unsigned(Argument3(4 downto 0)))) <= Argument2;
+                                        state <= IDLE;
+                                        stateIndexMain <= 0;
+                                    
+                                    when others =>
+                                end case;
                                 
+                            
                             when others =>
                                 state <= IDLE;
                                 -- THROW ERR
@@ -1393,7 +1542,7 @@ begin
                                 case stateIndexMain is
                                     when 0 =>
                                         -- ADD Instruction
-                                        Argument2 <= Argument1 + Argument2;
+                                        Argument2 <= std_logic_vector(resize(signed(Argument1) + signed(Argument2), 64));
                                         
                                         stateIndexMain <= 1;
                                      
@@ -1453,6 +1602,123 @@ begin
                                     when others =>
                                         -- THROW ERR
                                         Argument3 <= (others => '0');
+                                end case;
+                            
+                            when "0000001100" =>
+                                -- MUL Instruction
+                                case stateIndexMain is
+                                    when 0 =>
+                                        Argument2 <= std_logic_vector(resize(signed(Argument1) * signed(Argument2), 64));
+                                        stateIndexMain <= 1;
+                                    when 1 =>
+                                        Registers(to_integer(unsigned(Argument3(4 downto 0))))(31 downto 0) <= Argument2(31 downto 0);
+                                        state <= IDLE;
+                                        stateIndexMain <= 0;
+                                    when others =>
+                                end case;
+
+                            when "0000001101" =>
+                                -- DIV Instruction
+                                case stateIndexMain is
+                                    when 0 =>
+                                        Argument2 <= std_logic_vector(signed(Argument1) / signed(Argument2));
+                                        stateIndexMain <= 1;
+                                    when 1 =>
+                                        Registers(to_integer(unsigned(Argument3(4 downto 0))))(31 downto 0) <= Argument2(31 downto 0);
+                                        state <= IDLE;
+                                        stateIndexMain <= 0;
+                                    when others =>
+                                end case;
+
+                            when "0000001110" =>
+                                -- SUB Instruction
+                                case stateIndexMain is
+                                    when 0 =>
+                                        Argument2 <= std_logic_vector(resize(signed(Argument1) - signed(Argument2), 64));
+                                        stateIndexMain <= 1;
+                                    when 1 =>
+                                        Registers(to_integer(unsigned(Argument3(4 downto 0))))(31 downto 0) <= Argument2(31 downto 0);
+                                        state <= IDLE;
+                                        stateIndexMain <= 0;
+                                    when others =>
+                                end case;
+
+                            when "0000001111" =>
+                                -- LSR Instruction
+                                case stateIndexMain is
+                                    when 0 =>
+                                        Argument2 <= std_logic_vector(shift_right(unsigned(Argument1), to_integer(unsigned(Argument2(31 downto 0)))));
+                                        stateIndexMain <= 1;
+                                    when 1 =>
+                                        Registers(to_integer(unsigned(Argument3(4 downto 0))))(31 downto 0) <= Argument2(31 downto 0);
+                                        state <= IDLE;
+                                        stateIndexMain <= 0;
+                                    when others =>
+                                end case;
+
+                            when "0000010000" =>
+                                -- LSL Instruction
+                                case stateIndexMain is
+                                    when 0 =>
+                                        Argument2 <= std_logic_vector(shift_left(unsigned(Argument1), to_integer(unsigned(Argument2(31 downto 0)))));
+                                        stateIndexMain <= 1;
+                                    when 1 =>
+                                        Registers(to_integer(unsigned(Argument3(4 downto 0))))(31 downto 0) <= Argument2(31 downto 0);
+                                        state <= IDLE;
+                                        stateIndexMain <= 0;
+                                    when others =>
+                                end case;
+
+                            when "0000010001" =>
+                                -- AND Instruction
+                                case stateIndexMain is
+                                    when 0 =>
+                                        Argument2 <= Argument1 and Argument2;
+                                        stateIndexMain <= 1;
+                                    when 1 =>
+                                        Registers(to_integer(unsigned(Argument3(4 downto 0))))(31 downto 0) <= Argument2(31 downto 0);
+                                        state <= IDLE;
+                                        stateIndexMain <= 0;
+                                    when others =>
+                                end case;
+
+                            when "0000010010" =>
+                                -- NOT Instruction
+                                case stateIndexMain is
+                                    when 0 =>
+                                        Argument2 <= not Argument1;
+                                        stateIndexMain <= 1;
+                                    when 1 =>
+                                        Registers(to_integer(unsigned(Argument3(4 downto 0))))(31 downto 0) <= Argument2(31 downto 0);
+                                        state <= IDLE;
+                                        stateIndexMain <= 0;
+                                    when others =>
+                                end case;
+
+                            when "0000010011" =>
+                                -- OR Instruction
+                                case stateIndexMain is
+                                    when 0 =>
+                                        Argument2 <= Argument1 or Argument2;
+                                        stateIndexMain <= 1;
+                                    when 1 =>
+                                        Registers(to_integer(unsigned(Argument3(4 downto 0))))(31 downto 0) <= Argument2(31 downto 0);
+                                        state <= IDLE;
+                                        stateIndexMain <= 0;
+                                    when others =>
+                                end case;
+
+                            when "0000010100" =>
+                                -- XOR Instruction
+                                case stateIndexMain is
+                                    when 0 =>
+                                        Argument2 <= Argument1 xor Argument2;
+                                        stateIndexMain <= 1;
+                                    when 1 =>
+                                        Registers(to_integer(unsigned(Argument3(4 downto 0))))(31 downto 0) <= Argument2(31 downto 0);
+                                        state <= IDLE;
+                                        stateIndexMain <= 0;
+                                    when others =>
                                 end case;
                                 
                             when others =>
@@ -1528,7 +1794,7 @@ begin
                                 case stateIndexMain is
                                     when 0 =>
                                         -- ADD Instruction
-                                        Argument2 <= Argument1 + Argument2;
+                                        Argument2 <= std_logic_vector(resize(signed(Argument1) + signed(Argument2), 64));
                                         
                                         stateIndexMain <= 1;
                                      
@@ -1588,6 +1854,123 @@ begin
                                     when others =>
                                         -- THROW ERR
                                         Argument3 <= (others => '0');
+                                end case;
+
+                            when "0000001100" =>
+                                -- MUL Instruction
+                                case stateIndexMain is
+                                    when 0 =>
+                                        Argument2 <= std_logic_vector(resize(signed(Argument1) * signed(Argument2), 64));
+                                        stateIndexMain <= 1;
+                                    when 1 =>
+                                        Registers(to_integer(unsigned(Argument3(4 downto 0))))(15 downto 0) <= Argument2(15 downto 0);
+                                        state <= IDLE;
+                                        stateIndexMain <= 0;
+                                    when others =>
+                                end case;
+
+                            when "0000001101" =>
+                                -- DIV Instruction
+                                case stateIndexMain is
+                                    when 0 =>
+                                        Argument2 <= std_logic_vector(signed(Argument1) / signed(Argument2));
+                                        stateIndexMain <= 1;
+                                    when 1 =>
+                                        Registers(to_integer(unsigned(Argument3(4 downto 0))))(15 downto 0) <= Argument2(15 downto 0);
+                                        state <= IDLE;
+                                        stateIndexMain <= 0;
+                                    when others =>
+                                end case;
+
+                            when "0000001110" =>
+                                -- SUB Instruction
+                                case stateIndexMain is
+                                    when 0 =>
+                                        Argument2 <= std_logic_vector(resize(signed(Argument1) - signed(Argument2), 64));
+                                        stateIndexMain <= 1;
+                                    when 1 =>
+                                        Registers(to_integer(unsigned(Argument3(4 downto 0))))(15 downto 0) <= Argument2(15 downto 0);
+                                        state <= IDLE;
+                                        stateIndexMain <= 0;
+                                    when others =>
+                                end case;
+
+                            when "0000001111" =>
+                                -- LSR Instruction
+                                case stateIndexMain is
+                                    when 0 =>
+                                        Argument2 <= std_logic_vector(shift_right(unsigned(Argument1), to_integer(unsigned(Argument2(15 downto 0)))));
+                                        stateIndexMain <= 1;
+                                    when 1 =>
+                                        Registers(to_integer(unsigned(Argument3(4 downto 0))))(15 downto 0) <= Argument2(15 downto 0);
+                                        state <= IDLE;
+                                        stateIndexMain <= 0;
+                                    when others =>
+                                end case;
+
+                            when "0000010000" =>
+                                -- LSL Instruction
+                                case stateIndexMain is
+                                    when 0 =>
+                                        Argument2 <= std_logic_vector(shift_left(unsigned(Argument1), to_integer(unsigned(Argument2(15 downto 0)))));
+                                        stateIndexMain <= 1;
+                                    when 1 =>
+                                        Registers(to_integer(unsigned(Argument3(4 downto 0))))(15 downto 0) <= Argument2(15 downto 0);
+                                        state <= IDLE;
+                                        stateIndexMain <= 0;
+                                    when others =>
+                                end case;
+
+                            when "0000010001" =>
+                                -- AND Instruction
+                                case stateIndexMain is
+                                    when 0 =>
+                                        Argument2 <= Argument1 and Argument2;
+                                        stateIndexMain <= 1;
+                                    when 1 =>
+                                        Registers(to_integer(unsigned(Argument3(4 downto 0))))(15 downto 0) <= Argument2(15 downto 0);
+                                        state <= IDLE;
+                                        stateIndexMain <= 0;
+                                    when others =>
+                                end case;
+
+                            when "0000010010" =>
+                                -- NOT Instruction
+                                case stateIndexMain is
+                                    when 0 =>
+                                        Argument2 <= not Argument1;
+                                        stateIndexMain <= 1;
+                                    when 1 =>
+                                        Registers(to_integer(unsigned(Argument3(4 downto 0))))(15 downto 0) <= Argument2(15 downto 0);
+                                        state <= IDLE;
+                                        stateIndexMain <= 0;
+                                    when others =>
+                                end case;
+
+                            when "0000010011" =>
+                                -- OR Instruction
+                                case stateIndexMain is
+                                    when 0 =>
+                                        Argument2 <= Argument1 or Argument2;
+                                        stateIndexMain <= 1;
+                                    when 1 =>
+                                        Registers(to_integer(unsigned(Argument3(4 downto 0))))(15 downto 0) <= Argument2(15 downto 0);
+                                        state <= IDLE;
+                                        stateIndexMain <= 0;
+                                    when others =>
+                                end case;
+
+                            when "0000010100" =>
+                                -- XOR Instruction
+                                case stateIndexMain is
+                                    when 0 =>
+                                        Argument2 <= Argument1 xor Argument2;
+                                        stateIndexMain <= 1;
+                                    when 1 =>
+                                        Registers(to_integer(unsigned(Argument3(4 downto 0))))(15 downto 0) <= Argument2(15 downto 0);
+                                        state <= IDLE;
+                                        stateIndexMain <= 0;
+                                    when others =>
                                 end case;
                                     
                             when others =>
@@ -1663,12 +2046,12 @@ begin
                                 case stateIndexMain is
                                     when 0 =>
                                         -- ADD Instruction
-                                        Argument2 <= Argument1 + Argument2;
+                                        Argument2 <= std_logic_vector(resize(signed(Argument1) + signed(Argument2), 64));
                                         
                                         stateIndexMain <= 1;
                                      
                                     when 1 =>
-                                        Registers(to_integer(unsigned(Argument3(4 downto 0))))(16 downto 0) <= Argument2(16 downto 0);
+                                        Registers(to_integer(unsigned(Argument3(4 downto 0))))(7 downto 0) <= Argument2(7 downto 0);
                                         state <= IDLE;
                                         stateIndexMain <= 0;
                                     
@@ -1725,7 +2108,124 @@ begin
                                         -- THROW ERR
                                         Argument3 <= (others => '0');
                                 end case;
-                                
+                            
+                            when "0000001100" =>
+                                -- MUL Instruction
+                                case stateIndexMain is
+                                    when 0 =>
+                                        Argument2 <= std_logic_vector(resize(signed(Argument1) * signed(Argument2), 64));
+                                        stateIndexMain <= 1;
+                                    when 1 =>
+                                        Registers(to_integer(unsigned(Argument3(4 downto 0))))(7 downto 0) <= Argument2(7 downto 0);
+                                        state <= IDLE;
+                                        stateIndexMain <= 0;
+                                    when others =>
+                                end case;
+
+                            when "0000001101" =>
+                                -- DIV Instruction
+                                case stateIndexMain is
+                                    when 0 =>
+                                        Argument2 <= std_logic_vector(signed(Argument1) / signed(Argument2));
+                                        stateIndexMain <= 1;
+                                    when 1 =>
+                                        Registers(to_integer(unsigned(Argument3(4 downto 0))))(7 downto 0) <= Argument2(7 downto 0);
+                                        state <= IDLE;
+                                        stateIndexMain <= 0;
+                                    when others =>
+                                end case;
+
+                            when "0000001110" =>
+                                -- SUB Instruction
+                                case stateIndexMain is
+                                    when 0 =>
+                                        Argument2 <= std_logic_vector(resize(signed(Argument1) - signed(Argument2), 64));
+                                        stateIndexMain <= 1;
+                                    when 1 =>
+                                        Registers(to_integer(unsigned(Argument3(4 downto 0))))(7 downto 0) <= Argument2(7 downto 0);
+                                        state <= IDLE;
+                                        stateIndexMain <= 0;
+                                    when others =>
+                                end case;
+
+                            when "0000001111" =>
+                                -- LSR Instruction
+                                case stateIndexMain is
+                                    when 0 =>
+                                        Argument2 <= std_logic_vector(shift_right(unsigned(Argument1), to_integer(unsigned(Argument2(7 downto 0)))));
+                                        stateIndexMain <= 1;
+                                    when 1 =>
+                                        Registers(to_integer(unsigned(Argument3(4 downto 0))))(7 downto 0) <= Argument2(7 downto 0);
+                                        state <= IDLE;
+                                        stateIndexMain <= 0;
+                                    when others =>
+                                end case;
+
+                            when "0000010000" =>
+                                -- LSL Instruction
+                                case stateIndexMain is
+                                    when 0 =>
+                                        Argument2 <= std_logic_vector(shift_left(unsigned(Argument1), to_integer(unsigned(Argument2(7 downto 0)))));
+                                        stateIndexMain <= 1;
+                                    when 1 =>
+                                        Registers(to_integer(unsigned(Argument3(4 downto 0))))(7 downto 0) <= Argument2(7 downto 0);
+                                        state <= IDLE;
+                                        stateIndexMain <= 0;
+                                    when others =>
+                                end case;
+
+                            when "0000010001" =>
+                                -- AND Instruction
+                                case stateIndexMain is
+                                    when 0 =>
+                                        Argument2 <= Argument1 and Argument2;
+                                        stateIndexMain <= 1;
+                                    when 1 =>
+                                        Registers(to_integer(unsigned(Argument3(4 downto 0))))(7 downto 0) <= Argument2(7 downto 0);
+                                        state <= IDLE;
+                                        stateIndexMain <= 0;
+                                    when others =>
+                                end case;
+
+                            when "0000010010" =>
+                                -- NOT Instruction
+                                case stateIndexMain is
+                                    when 0 =>
+                                        Argument2 <= not Argument1;
+                                        stateIndexMain <= 1;
+                                    when 1 =>
+                                        Registers(to_integer(unsigned(Argument3(4 downto 0))))(7 downto 0) <= Argument2(7 downto 0);
+                                        state <= IDLE;
+                                        stateIndexMain <= 0;
+                                    when others =>
+                                end case;
+
+                            when "0000010011" =>
+                                -- OR Instruction
+                                case stateIndexMain is
+                                    when 0 =>
+                                        Argument2 <= Argument1 or Argument2;
+                                        stateIndexMain <= 1;
+                                    when 1 =>
+                                        Registers(to_integer(unsigned(Argument3(4 downto 0))))(7 downto 0) <= Argument2(7 downto 0);
+                                        state <= IDLE;
+                                        stateIndexMain <= 0;
+                                    when others =>
+                                end case;
+
+                            when "0000010100" =>
+                                -- XOR Instruction
+                                case stateIndexMain is
+                                    when 0 =>
+                                        Argument2 <= Argument1 xor Argument2;
+                                        stateIndexMain <= 1;
+                                    when 1 =>
+                                        Registers(to_integer(unsigned(Argument3(4 downto 0))))(7 downto 0) <= Argument2(7 downto 0);
+                                        state <= IDLE;
+                                        stateIndexMain <= 0;
+                                    when others =>
+                                end case;
+                            
                             when others =>
                                 state <= IDLE;
                                 -- THROW ERR

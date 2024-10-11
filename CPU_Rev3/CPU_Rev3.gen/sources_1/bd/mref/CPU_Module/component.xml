@@ -72,12 +72,12 @@
         <spirit:name>xilinx_anylanguagesynthesis</spirit:name>
         <spirit:displayName>Synthesis</spirit:displayName>
         <spirit:envIdentifier>:vivado.xilinx.com:synthesis</spirit:envIdentifier>
-        <spirit:language>VHDL</spirit:language>
+        <spirit:language>VHDL-2019</spirit:language>
         <spirit:modelName>CPU_Module</spirit:modelName>
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>d6c33ab8</spirit:value>
+            <spirit:value>0e63a98a</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -85,12 +85,12 @@
         <spirit:name>xilinx_anylanguagebehavioralsimulation</spirit:name>
         <spirit:displayName>Simulation</spirit:displayName>
         <spirit:envIdentifier>:vivado.xilinx.com:simulation</spirit:envIdentifier>
-        <spirit:language>VHDL</spirit:language>
+        <spirit:language>VHDL-2019</spirit:language>
         <spirit:modelName>CPU_Module</spirit:modelName>
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>d6c33ab8</spirit:value>
+            <spirit:value>0e63a98a</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -354,7 +354,7 @@
         <xilinx:designToolContext>IPI</xilinx:designToolContext>
       </xilinx:designToolContexts>
       <xilinx:coreRevision>1</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2024-10-11T12:20:08Z</xilinx:coreCreationDateTime>
+      <xilinx:coreCreationDateTime>2024-10-11T17:44:42Z</xilinx:coreCreationDateTime>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2024.1.2</xilinx:xilinxVersion>

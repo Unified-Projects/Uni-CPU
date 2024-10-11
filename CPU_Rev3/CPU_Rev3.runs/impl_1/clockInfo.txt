@@ -1,8 +1,8 @@
 -------------------------------------
 | Tool Version : Vivado v.2024.1.2
-| Date         : Fri Oct 11 13:23:59 2024
+| Date         : Fri Oct 11 18:48:06 2024
 | Host         : DESKTOP-PSI4IU2
-| Design       : checkpoint_CPU_wrapper
+| Design       : design_1
 | Device       : xc7z020-clg484-1--
 -------------------------------------
 

@@ -57,7 +57,6 @@ if {$::dispatch::connected} {
 
 OPTRACE "CPU_CPU_Module_0_1_synth_1" START { ROLLUP_AUTO }
 set_param chipscope.maxJobs 4
-set_msg_config -id {Common 17-41} -limit 10000000
 set_param project.vivado.isBlockSynthRun true
 OPTRACE "Creating in-memory project" START { }
 set_param ips.modRefOverrideMrefDirPath y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/mref
@@ -77,8 +76,8 @@ set_property ip_output_repo y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.cache/ip [current_p
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-read_vhdl -library xil_defaultlib Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/new/CPU_MODULE.vhd
-read_ip -quiet y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/bd/CPU/ip/CPU_CPU_Module_0_1/CPU_CPU_Module_0_1.xci
+read_vhdl -vhdl2019 -library xil_defaultlib Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/new/CPU_MODULE.vhd
+read_ip -quiet Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/bd/CPU/ip/CPU_CPU_Module_0_1/CPU_CPU_Module_0_1.xci
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being

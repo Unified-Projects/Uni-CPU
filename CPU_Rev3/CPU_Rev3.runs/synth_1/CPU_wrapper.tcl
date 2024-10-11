@@ -57,7 +57,6 @@ if {$::dispatch::connected} {
 
 OPTRACE "synth_1" START { ROLLUP_AUTO }
 set_param chipscope.maxJobs 4
-set_msg_config -id {Common 17-41} -limit 10000000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7z020clg484-1
 
@@ -74,7 +73,7 @@ set_property ip_output_repo y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.cache/ip [current_p
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-add_files y:/C++/Uni-CPU/BRAM64.coe
+add_files Y:/C++/Uni-CPU/BRAM64.coe
 read_vhdl -library xil_defaultlib Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/hdl/CPU_wrapper.vhd
 add_files Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/bd/CPU/CPU.bd
 set_property used_in_implementation false [get_files -all y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_processing_system7_0_0/CPU_processing_system7_0_0.xdc]
