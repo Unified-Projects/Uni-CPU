@@ -277,6 +277,42 @@ int main(int argc, char* argv[]) {
                 LineOffset = 8;
                 BitOpAllowed = true;
             }
+            else if(l.content.find("incr") == 4){
+                Instruction = INSTRUCTION_INCR;
+                OperandCount = 1;
+                LineOffset = 9;
+                BitOpAllowed = false;
+            }
+            else if(l.content.find("decr") == 4){
+                Instruction = INSTRUCTION_DECR;
+                OperandCount = 1;
+                LineOffset = 9;
+                BitOpAllowed = false;
+            }
+            else if(l.content.find("inc") == 4){
+                Instruction = INSTRUCTION_INC;
+                OperandCount = 2;
+                LineOffset = 8;
+                BitOpAllowed = false;
+            }
+            else if(l.content.find("dec") == 4){
+                Instruction = INSTRUCTION_DEC;
+                OperandCount = 2;
+                LineOffset = 8;
+                BitOpAllowed = false;
+            }
+            else if(l.content.find("iow") == 4){
+                Instruction = INSTRUCTION_IOW;
+                OperandCount = 2;
+                LineOffset = 8;
+                BitOpAllowed = false;
+            }
+            else if(l.content.find("ior") == 4){
+                Instruction = INSTRUCTION_IOR;
+                OperandCount = 2;
+                LineOffset = 8;
+                BitOpAllowed = false;
+            }
             else if (l.content.find("resb") == 4) {
                 std::string valueStr = l.content.substr(9);
                 long long value = std::atoll(valueStr.c_str());

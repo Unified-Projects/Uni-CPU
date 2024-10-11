@@ -33,5 +33,11 @@
 #define INSTRUCTION_NOT     0b0000010010 // NOT B R, [X], [Y]
 #define INSTRUCTION_OR      0b0000010011 // OR B R, [X], [Y]
 #define INSTRUCTION_XOR     0b0000010100 // XOR B R, [X], [Y]
+#define INSTRUCTION_INCR    0b0000010101 // INC R, [X]
+#define INSTRUCTION_DECR    0b0000010110 // DEC R, [X]
+#define INSTRUCTION_INC     0b0000010111 // INCR R
+#define INSTRUCTION_DEC     0b0000011000 // DECR R
+#define INSTRUCTION_IOW     0b0000011001 // IOW T, [Y] (IO Device) (Data)
+#define INSTRUCTION_IOR     0b0000011010 // IOR R, T, [Y] (Register) (IO Device)
 
 #define GenCode(inst, addr1, addr2, bitmode) ((inst << 6) + (bitmode << 4) + (addr1 << 2) + addr2)
