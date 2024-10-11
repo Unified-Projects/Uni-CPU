@@ -1260,6 +1260,63 @@ begin
 
                                 state <= IDLE;
 
+                            when "0000001001" =>
+                                -- RET Instruction
+                                case stateIndexMain is
+                                    when 0 =>
+                                        -- Decrement RSP
+                                        Registers(13) <= Registers(13) - 8;
+                                        stateIndexMain <= 0;
+                                        state <= EXEC_64;
+                                        
+                                        
+                                    when 2 =>
+                                        -- Read from RSP
+                                        Argument1 <= Registers(13);
+                                        state <= BRAM_READ;
+                                        state <= EXEC_64;
+                                        stateIndexMain <= 3;
+                                        
+                                    when 3 =>
+                                        Registers(14) <= Result;
+                                    
+                                    when others =>
+                                        -- Throw ERR
+                                end case;  
+                                
+                            when "0000001010" =>
+                                -- INT Instruction
+                                Registers(15) <= Registers(15) AND "10"; -- Load Interrupt Flag
+                                Registers(17) <= Argument1;
+                                
+                            when "0000001011" =>
+                                -- CALL Instruction
+                                case stateIndexMain is
+                                    when 0 =>
+                                        Argument2 <= Registers(14);
+                                        Argument3 <= Argument1; -- Save Call Address
+
+                                        stateIndexMain <= 2; 
+
+                                    when 2 =>
+                                        -- Write to RSP Position
+                                        Argument1 <= Registers(13);
+                                        state <= BRAM_WRITE;
+                                        stateIndexMain <= 3;
+                                        nextState <= EXEC_64;
+                                    
+                                    when 3 =>
+                                        -- Increment RSP and Alter RIP
+                                        Registers(13) <= Registers(13) + 8;
+                                        Registers(14) <= Argument3;
+                                        
+                                        stateIndexMain <= 0;
+                                        state <= IDLE; -- state <= SAVE_RIP;
+                                    
+                                    when others =>
+                                        -- Throw ERR
+                                end case;
+                                
                             when others =>
                                 state <= IDLE;
                                 -- THROW ERR
