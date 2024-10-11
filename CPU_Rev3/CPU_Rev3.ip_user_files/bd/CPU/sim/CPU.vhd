@@ -1,9 +1,9 @@
 --Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 --Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
---Tool Version: Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
---Date        : Thu Oct 10 15:26:44 2024
---Host        : PopTop running 64-bit major release  (build 9200)
+--Tool Version: Vivado v.2024.1.2 (win64) Build 5164865 Thu Sep  5 14:37:11 MDT 2024
+--Date        : Thu Oct 10 22:20:36 2024
+--Host        : DESKTOP-PSI4IU2 running 64-bit major release  (build 9200)
 --Command     : generate_target CPU.bd
 --Design      : CPU
 --Purpose     : IP block netlist
@@ -47,12 +47,15 @@ entity CPU is
     RGMII_0_txc : out STD_LOGIC;
     UART_0_0_rxd : in STD_LOGIC;
     UART_0_0_txd : out STD_LOGIC;
-    led : inout STD_LOGIC
+    btn_0 : in STD_LOGIC;
+    btn_1 : in STD_LOGIC;
+    led_0 : out STD_LOGIC;
+    led_1 : out STD_LOGIC
   );
-  attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of CPU : entity is "CPU,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=CPU,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=5,numReposBlks=5,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=1,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=2,da_board_cnt=1,da_clkrst_cnt=1,da_ps7_cnt=1,synth_mode=Hierarchical}";
-  attribute HW_HANDOFF : string;
-  attribute HW_HANDOFF of CPU : entity is "CPU.hwdef";
+  attribute core_generation_info : string;
+  attribute core_generation_info of CPU : entity is "CPU,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=CPU,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=6,numReposBlks=6,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=2,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=2,da_board_cnt=1,da_clkrst_cnt=1,da_ps7_cnt=1,synth_mode=Hierarchical}";
+  attribute hw_handoff : string;
+  attribute hw_handoff of CPU : entity is "CPU.hwdef";
 end CPU;
 
 architecture STRUCTURE of CPU is
@@ -163,14 +166,41 @@ architecture STRUCTURE of CPU is
     peripheral_aresetn : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component CPU_proc_sys_reset_0_0;
-  component CPU_ClockDivider_0_0 is
+  component CPU_IO_Controller_Debugg_0_0 is
   port (
+    io_data_in : in STD_LOGIC;
+    io_data_out : out STD_LOGIC;
     clk : in STD_LOGIC;
     reset : in STD_LOGIC;
-    clk_div : inout STD_LOGIC
+    io_sel : out STD_LOGIC_VECTOR ( 4 downto 0 );
+    io_ena : out STD_LOGIC;
+    io_done : in STD_LOGIC;
+    debug_led : out STD_LOGIC
   );
-  end component CPU_ClockDivider_0_0;
-  signal Net : STD_LOGIC;
+  end component CPU_IO_Controller_Debugg_0_0;
+  component CPU_IO_Controller_0_0 is
+  port (
+    clk : in STD_LOGIC;
+    ena : in STD_LOGIC;
+    sel : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    data_in : in STD_LOGIC;
+    data_out : in STD_LOGIC;
+    reset : in STD_LOGIC;
+    led_0 : out STD_LOGIC;
+    led_1 : out STD_LOGIC;
+    btn_0 : in STD_LOGIC;
+    btn_1 : in STD_LOGIC;
+    done : out STD_LOGIC
+  );
+  end component CPU_IO_Controller_0_0;
+  signal IO_Controller_0_done : STD_LOGIC;
+  signal IO_Controller_0_led_0 : STD_LOGIC;
+  signal IO_Controller_Debugg_0_debug_led : STD_LOGIC;
+  signal IO_Controller_Debugg_0_io_data_out : STD_LOGIC;
+  signal IO_Controller_Debugg_0_io_ena : STD_LOGIC;
+  signal IO_Controller_Debugg_0_io_sel : STD_LOGIC_VECTOR ( 4 downto 0 );
+  signal btn_0_1 : STD_LOGIC;
+  signal btn_1_0_1 : STD_LOGIC;
   signal gmii_to_rgmii_0_MDIO_PHY_MDC : STD_LOGIC;
   signal gmii_to_rgmii_0_MDIO_PHY_MDIO_I : STD_LOGIC;
   signal gmii_to_rgmii_0_MDIO_PHY_MDIO_O : STD_LOGIC;
@@ -222,6 +252,9 @@ architecture STRUCTURE of CPU is
   signal processing_system7_0_UART_0_RxD : STD_LOGIC;
   signal processing_system7_0_UART_0_TxD : STD_LOGIC;
   signal util_vector_logic_0_Res : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal NLW_IO_Controller_0_data_out_UNCONNECTED : STD_LOGIC;
+  signal NLW_IO_Controller_0_led_1_UNCONNECTED : STD_LOGIC;
+  signal NLW_IO_Controller_Debugg_0_io_data_in_UNCONNECTED : STD_LOGIC;
   signal NLW_gmii_to_rgmii_0_duplex_status_UNCONNECTED : STD_LOGIC;
   signal NLW_gmii_to_rgmii_0_gmii_clk_125m_out_UNCONNECTED : STD_LOGIC;
   signal NLW_gmii_to_rgmii_0_gmii_clk_25m_out_UNCONNECTED : STD_LOGIC;
@@ -237,44 +270,44 @@ architecture STRUCTURE of CPU is
   signal NLW_proc_sys_reset_0_peripheral_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_processing_system7_0_USB0_VBUS_PWRSELECT_UNCONNECTED : STD_LOGIC;
   signal NLW_processing_system7_0_USB0_PORT_INDCTL_UNCONNECTED : STD_LOGIC_VECTOR ( 1 downto 0 );
-  attribute X_INTERFACE_INFO : string;
-  attribute X_INTERFACE_INFO of DDR_cas_n : signal is "xilinx.com:interface:ddrx:1.0 DDR CAS_N";
-  attribute X_INTERFACE_INFO of DDR_ck_n : signal is "xilinx.com:interface:ddrx:1.0 DDR CK_N";
-  attribute X_INTERFACE_INFO of DDR_ck_p : signal is "xilinx.com:interface:ddrx:1.0 DDR CK_P";
-  attribute X_INTERFACE_INFO of DDR_cke : signal is "xilinx.com:interface:ddrx:1.0 DDR CKE";
-  attribute X_INTERFACE_INFO of DDR_cs_n : signal is "xilinx.com:interface:ddrx:1.0 DDR CS_N";
-  attribute X_INTERFACE_INFO of DDR_odt : signal is "xilinx.com:interface:ddrx:1.0 DDR ODT";
-  attribute X_INTERFACE_INFO of DDR_ras_n : signal is "xilinx.com:interface:ddrx:1.0 DDR RAS_N";
-  attribute X_INTERFACE_INFO of DDR_reset_n : signal is "xilinx.com:interface:ddrx:1.0 DDR RESET_N";
-  attribute X_INTERFACE_INFO of DDR_we_n : signal is "xilinx.com:interface:ddrx:1.0 DDR WE_N";
-  attribute X_INTERFACE_INFO of FIXED_IO_ddr_vrn : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO DDR_VRN";
-  attribute X_INTERFACE_PARAMETER : string;
-  attribute X_INTERFACE_PARAMETER of FIXED_IO_ddr_vrn : signal is "XIL_INTERFACENAME FIXED_IO, CAN_DEBUG false";
-  attribute X_INTERFACE_INFO of FIXED_IO_ddr_vrp : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO DDR_VRP";
-  attribute X_INTERFACE_INFO of FIXED_IO_ps_clk : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_CLK";
-  attribute X_INTERFACE_INFO of FIXED_IO_ps_porb : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_PORB";
-  attribute X_INTERFACE_INFO of FIXED_IO_ps_srstb : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_SRSTB";
-  attribute X_INTERFACE_INFO of MDIO_PHY_0_mdc : signal is "xilinx.com:interface:mdio:1.0 MDIO_PHY_0 MDC";
-  attribute X_INTERFACE_PARAMETER of MDIO_PHY_0_mdc : signal is "XIL_INTERFACENAME MDIO_PHY_0, CAN_DEBUG false";
-  attribute X_INTERFACE_INFO of MDIO_PHY_0_mdio_i : signal is "xilinx.com:interface:mdio:1.0 MDIO_PHY_0 MDIO_I";
-  attribute X_INTERFACE_INFO of MDIO_PHY_0_mdio_o : signal is "xilinx.com:interface:mdio:1.0 MDIO_PHY_0 MDIO_O";
-  attribute X_INTERFACE_INFO of MDIO_PHY_0_mdio_t : signal is "xilinx.com:interface:mdio:1.0 MDIO_PHY_0 MDIO_T";
-  attribute X_INTERFACE_INFO of RGMII_0_rx_ctl : signal is "xilinx.com:interface:rgmii:1.0 RGMII_0 RX_CTL";
-  attribute X_INTERFACE_INFO of RGMII_0_rxc : signal is "xilinx.com:interface:rgmii:1.0 RGMII_0 RXC";
-  attribute X_INTERFACE_INFO of RGMII_0_tx_ctl : signal is "xilinx.com:interface:rgmii:1.0 RGMII_0 TX_CTL";
-  attribute X_INTERFACE_INFO of RGMII_0_txc : signal is "xilinx.com:interface:rgmii:1.0 RGMII_0 TXC";
-  attribute X_INTERFACE_INFO of UART_0_0_rxd : signal is "xilinx.com:interface:uart:1.0 UART_0_0 RxD";
-  attribute X_INTERFACE_INFO of UART_0_0_txd : signal is "xilinx.com:interface:uart:1.0 UART_0_0 TxD";
-  attribute X_INTERFACE_INFO of DDR_addr : signal is "xilinx.com:interface:ddrx:1.0 DDR ADDR";
-  attribute X_INTERFACE_PARAMETER of DDR_addr : signal is "XIL_INTERFACENAME DDR, AXI_ARBITRATION_SCHEME TDM, BURST_LENGTH 8, CAN_DEBUG false, CAS_LATENCY 11, CAS_WRITE_LATENCY 11, CS_ENABLED true, DATA_MASK_ENABLED true, DATA_WIDTH 8, MEMORY_TYPE COMPONENTS, MEM_ADDR_MAP ROW_COLUMN_BANK, SLOT Single, TIMEPERIOD_PS 1250";
-  attribute X_INTERFACE_INFO of DDR_ba : signal is "xilinx.com:interface:ddrx:1.0 DDR BA";
-  attribute X_INTERFACE_INFO of DDR_dm : signal is "xilinx.com:interface:ddrx:1.0 DDR DM";
-  attribute X_INTERFACE_INFO of DDR_dq : signal is "xilinx.com:interface:ddrx:1.0 DDR DQ";
-  attribute X_INTERFACE_INFO of DDR_dqs_n : signal is "xilinx.com:interface:ddrx:1.0 DDR DQS_N";
-  attribute X_INTERFACE_INFO of DDR_dqs_p : signal is "xilinx.com:interface:ddrx:1.0 DDR DQS_P";
-  attribute X_INTERFACE_INFO of FIXED_IO_mio : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO MIO";
-  attribute X_INTERFACE_INFO of RGMII_0_rd : signal is "xilinx.com:interface:rgmii:1.0 RGMII_0 RD";
-  attribute X_INTERFACE_INFO of RGMII_0_td : signal is "xilinx.com:interface:rgmii:1.0 RGMII_0 TD";
+  attribute x_interface_info : string;
+  attribute x_interface_info of DDR_cas_n : signal is "xilinx.com:interface:ddrx:1.0 DDR CAS_N";
+  attribute x_interface_info of DDR_ck_n : signal is "xilinx.com:interface:ddrx:1.0 DDR CK_N";
+  attribute x_interface_info of DDR_ck_p : signal is "xilinx.com:interface:ddrx:1.0 DDR CK_P";
+  attribute x_interface_info of DDR_cke : signal is "xilinx.com:interface:ddrx:1.0 DDR CKE";
+  attribute x_interface_info of DDR_cs_n : signal is "xilinx.com:interface:ddrx:1.0 DDR CS_N";
+  attribute x_interface_info of DDR_odt : signal is "xilinx.com:interface:ddrx:1.0 DDR ODT";
+  attribute x_interface_info of DDR_ras_n : signal is "xilinx.com:interface:ddrx:1.0 DDR RAS_N";
+  attribute x_interface_info of DDR_reset_n : signal is "xilinx.com:interface:ddrx:1.0 DDR RESET_N";
+  attribute x_interface_info of DDR_we_n : signal is "xilinx.com:interface:ddrx:1.0 DDR WE_N";
+  attribute x_interface_info of FIXED_IO_ddr_vrn : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO DDR_VRN";
+  attribute x_interface_parameter : string;
+  attribute x_interface_parameter of FIXED_IO_ddr_vrn : signal is "XIL_INTERFACENAME FIXED_IO, CAN_DEBUG false";
+  attribute x_interface_info of FIXED_IO_ddr_vrp : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO DDR_VRP";
+  attribute x_interface_info of FIXED_IO_ps_clk : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_CLK";
+  attribute x_interface_info of FIXED_IO_ps_porb : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_PORB";
+  attribute x_interface_info of FIXED_IO_ps_srstb : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_SRSTB";
+  attribute x_interface_info of MDIO_PHY_0_mdc : signal is "xilinx.com:interface:mdio:1.0 MDIO_PHY_0 MDC";
+  attribute x_interface_parameter of MDIO_PHY_0_mdc : signal is "XIL_INTERFACENAME MDIO_PHY_0, CAN_DEBUG false";
+  attribute x_interface_info of MDIO_PHY_0_mdio_i : signal is "xilinx.com:interface:mdio:1.0 MDIO_PHY_0 MDIO_I";
+  attribute x_interface_info of MDIO_PHY_0_mdio_o : signal is "xilinx.com:interface:mdio:1.0 MDIO_PHY_0 MDIO_O";
+  attribute x_interface_info of MDIO_PHY_0_mdio_t : signal is "xilinx.com:interface:mdio:1.0 MDIO_PHY_0 MDIO_T";
+  attribute x_interface_info of RGMII_0_rx_ctl : signal is "xilinx.com:interface:rgmii:1.0 RGMII_0 RX_CTL";
+  attribute x_interface_info of RGMII_0_rxc : signal is "xilinx.com:interface:rgmii:1.0 RGMII_0 RXC";
+  attribute x_interface_info of RGMII_0_tx_ctl : signal is "xilinx.com:interface:rgmii:1.0 RGMII_0 TX_CTL";
+  attribute x_interface_info of RGMII_0_txc : signal is "xilinx.com:interface:rgmii:1.0 RGMII_0 TXC";
+  attribute x_interface_info of UART_0_0_rxd : signal is "xilinx.com:interface:uart:1.0 UART_0_0 RxD";
+  attribute x_interface_info of UART_0_0_txd : signal is "xilinx.com:interface:uart:1.0 UART_0_0 TxD";
+  attribute x_interface_info of DDR_addr : signal is "xilinx.com:interface:ddrx:1.0 DDR ADDR";
+  attribute x_interface_parameter of DDR_addr : signal is "XIL_INTERFACENAME DDR, AXI_ARBITRATION_SCHEME TDM, BURST_LENGTH 8, CAN_DEBUG false, CAS_LATENCY 11, CAS_WRITE_LATENCY 11, CS_ENABLED true, DATA_MASK_ENABLED true, DATA_WIDTH 8, MEMORY_TYPE COMPONENTS, MEM_ADDR_MAP ROW_COLUMN_BANK, SLOT Single, TIMEPERIOD_PS 1250";
+  attribute x_interface_info of DDR_ba : signal is "xilinx.com:interface:ddrx:1.0 DDR BA";
+  attribute x_interface_info of DDR_dm : signal is "xilinx.com:interface:ddrx:1.0 DDR DM";
+  attribute x_interface_info of DDR_dq : signal is "xilinx.com:interface:ddrx:1.0 DDR DQ";
+  attribute x_interface_info of DDR_dqs_n : signal is "xilinx.com:interface:ddrx:1.0 DDR DQS_N";
+  attribute x_interface_info of DDR_dqs_p : signal is "xilinx.com:interface:ddrx:1.0 DDR DQS_P";
+  attribute x_interface_info of FIXED_IO_mio : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO MIO";
+  attribute x_interface_info of RGMII_0_rd : signal is "xilinx.com:interface:rgmii:1.0 RGMII_0 RD";
+  attribute x_interface_info of RGMII_0_td : signal is "xilinx.com:interface:rgmii:1.0 RGMII_0 TD";
 begin
   MDIO_PHY_0_mdc <= gmii_to_rgmii_0_MDIO_PHY_MDC;
   MDIO_PHY_0_mdio_o <= gmii_to_rgmii_0_MDIO_PHY_MDIO_O;
@@ -283,15 +316,38 @@ begin
   RGMII_0_tx_ctl <= gmii_to_rgmii_0_RGMII_TX_CTL;
   RGMII_0_txc <= gmii_to_rgmii_0_RGMII_TXC;
   UART_0_0_txd <= processing_system7_0_UART_0_TxD;
+  btn_0_1 <= btn_0;
+  btn_1_0_1 <= btn_1;
   gmii_to_rgmii_0_MDIO_PHY_MDIO_I <= MDIO_PHY_0_mdio_i;
   gmii_to_rgmii_0_RGMII_RD(3 downto 0) <= RGMII_0_rd(3 downto 0);
   gmii_to_rgmii_0_RGMII_RXC <= RGMII_0_rxc;
   gmii_to_rgmii_0_RGMII_RX_CTL <= RGMII_0_rx_ctl;
+  led_0 <= IO_Controller_0_led_0;
+  led_1 <= IO_Controller_Debugg_0_debug_led;
   processing_system7_0_UART_0_RxD <= UART_0_0_rxd;
-ClockDivider_0: component CPU_ClockDivider_0_0
+IO_Controller_0: component CPU_IO_Controller_0_0
+     port map (
+      btn_0 => btn_0_1,
+      btn_1 => btn_1_0_1,
+      clk => processing_system7_0_FCLK_CLK0,
+      data_in => IO_Controller_Debugg_0_io_data_out,
+      data_out => NLW_IO_Controller_0_data_out_UNCONNECTED,
+      done => IO_Controller_0_done,
+      ena => IO_Controller_Debugg_0_io_ena,
+      led_0 => IO_Controller_0_led_0,
+      led_1 => NLW_IO_Controller_0_led_1_UNCONNECTED,
+      reset => proc_sys_reset_0_mb_reset,
+      sel(4 downto 0) => IO_Controller_Debugg_0_io_sel(4 downto 0)
+    );
+IO_Controller_Debugg_0: component CPU_IO_Controller_Debugg_0_0
      port map (
       clk => processing_system7_0_FCLK_CLK0,
-      clk_div => led,
+      debug_led => IO_Controller_Debugg_0_debug_led,
+      io_data_in => NLW_IO_Controller_Debugg_0_io_data_in_UNCONNECTED,
+      io_data_out => IO_Controller_Debugg_0_io_data_out,
+      io_done => IO_Controller_0_done,
+      io_ena => IO_Controller_Debugg_0_io_ena,
+      io_sel(4 downto 0) => IO_Controller_Debugg_0_io_sel(4 downto 0),
       reset => proc_sys_reset_0_mb_reset
     );
 gmii_to_rgmii_0: component CPU_gmii_to_rgmii_0_0

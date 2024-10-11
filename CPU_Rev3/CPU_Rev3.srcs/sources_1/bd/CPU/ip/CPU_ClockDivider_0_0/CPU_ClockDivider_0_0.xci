@@ -31,7 +31,7 @@
         "OUTPUTDIR": [ { "value": "../../../../../../CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_ClockDivider_0_0" } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],
         "SHAREDDIR": [ { "value": "../../ipshared" } ],
-        "SWVERSION": [ { "value": "2024.1" } ],
+        "SWVERSION": [ { "value": "2024.1.2" } ],
         "SYNTHESISFLOW": [ { "value": "OOC_HIERARCHICAL" } ]
       }
     },
@@ -39,7 +39,7 @@
       "ports": {
         "clk": [ { "direction": "in" } ],
         "reset": [ { "direction": "in" } ],
-        "clk_div": [ { "direction": "inout" } ]
+        "clk_div": [ { "direction": "out" } ]
       },
       "interfaces": {
         "reset": {

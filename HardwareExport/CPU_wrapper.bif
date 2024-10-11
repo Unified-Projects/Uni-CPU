@@ -1,5 +1,6 @@
+//arch = zynq; split = false; format = BIN
 the_ROM_image:
 {
-    [bootloader] fsbl.elf
-    CPU_wrapper.bit
+	[bootloader]ZYNQ-Board\export\ZYNQ-Board\sw\boot\fsbl.elf
+	../CPU_Rev3/CPU_Rev3.runs/impl_1/CPU_wrapper.bit
 }

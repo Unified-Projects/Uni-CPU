@@ -1,0 +1,16 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2024.1.2 (win64) Build 5164865 Thu Sep  5 14:37:11 MDT 2024
+| Date         : Thu Oct 10 18:21:24 2024
+| Host         : DESKTOP-PSI4IU2 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'CPU_gmii_to_rgmii_0_0'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of CPU_gmii_to_rgmii_0_0 (xilinx.com:ip:gmii_to_rgmii:4.1) from (Rev. 14) to (Rev. 16)
+

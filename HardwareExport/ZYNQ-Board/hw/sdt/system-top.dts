@@ -1,5 +1,6 @@
 /dts-v1/;
 #include "zynq-7000.dtsi"
+#include "pl.dtsi"
 #include "pcw.dtsi"
 / {
 	device_id = "7z020";
@@ -31,6 +32,7 @@
 	aliases {
 		serial0 = &uart0;
 		serial1 = &coresight;
+		ethernet0 = &gem0;
 	};
 	cpus_a9: cpus-a9@0 {
 		compatible = "cpus,cluster";
@@ -47,7 +49,9 @@
 			      <0xf8007000 &devcfg 0xf8007000 0x100>, 
 			      <0xf8004000 &ps7_dma_ns 0xf8004000 0x1000>, 
 			      <0xf8003000 &dmac_s 0xf8003000 0x1000>, 
+			      <0xe000b000 &gem0 0xe000b000 0x1000>, 
 			      <0xf8f00200 &global_timer 0xf8f00200 0x100>, 
+			      <0xe000a000 &gpio0 0xe000a000 0x1000>, 
 			      <0xf8900000 &ps7_gpv_0 0xf8900000 0x100000>, 
 			      <0xf8f01000 &intc 0xf8f01000 0x1000>, 
 			      <0xe0200000 &ps7_iop_bus_config_0 0xe0200000 0x1000>, 
@@ -57,8 +61,10 @@
 			      <0xf8f00000 &ps7_scuc_0 0xf8f00000 0xfd>, 
 			      <0xf8f00600 &scutimer 0xf8f00600 0x20>, 
 			      <0xf8f00620 &scuwdt 0xf8f00620 0xe0>, 
+			      <0xe0100000 &sdhci0 0xe0100000 0x1000>, 
 			      <0xf8000000 &slcr 0xf8000000 0x1000>, 
 			      <0xe0000000 &uart0 0xe0000000 0x1000>, 
+			      <0xe0002000 &usb0 0xe0002000 0x1000>, 
 			      <0xf8007100 &adc 0xf8007100 0x21>;
 		#ranges-address-cells = <0x1>;
 		#ranges-size-cells = <0x1>;

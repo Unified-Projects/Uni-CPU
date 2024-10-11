@@ -1,5 +1,5 @@
-set_property SRC_FILE_INFO {cfile:c:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_gmii_to_rgmii_0_0/synth/CPU_gmii_to_rgmii_0_0.xdc rfile:../../../CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_gmii_to_rgmii_0_0/synth/CPU_gmii_to_rgmii_0_0.xdc id:1 order:EARLY scoped_inst:U0} [current_design]
-set_property SRC_FILE_INFO {cfile:c:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_gmii_to_rgmii_0_0/synth/CPU_gmii_to_rgmii_0_0_clocks.xdc rfile:../../../CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_gmii_to_rgmii_0_0/synth/CPU_gmii_to_rgmii_0_0_clocks.xdc id:2 order:LATE scoped_inst:U0} [current_design]
+set_property SRC_FILE_INFO {cfile:y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_gmii_to_rgmii_0_0/synth/CPU_gmii_to_rgmii_0_0.xdc rfile:../../../CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_gmii_to_rgmii_0_0/synth/CPU_gmii_to_rgmii_0_0.xdc id:1 order:EARLY scoped_inst:U0} [current_design]
+set_property SRC_FILE_INFO {cfile:y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_gmii_to_rgmii_0_0/synth/CPU_gmii_to_rgmii_0_0_clocks.xdc rfile:../../../CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_gmii_to_rgmii_0_0/synth/CPU_gmii_to_rgmii_0_0_clocks.xdc id:2 order:LATE scoped_inst:U0} [current_design]
 set_property src_info {type:SCOPED_XDC file:1 line:3 export:INPUT save:INPUT read:READ} [current_design]
 set_case_analysis 0 [get_pins U0/i_gmii_to_rgmii_block/i_bufgmux_gmii_clk/CE0]
 set_property src_info {type:SCOPED_XDC file:1 line:4 export:INPUT save:INPUT read:READ} [current_design]

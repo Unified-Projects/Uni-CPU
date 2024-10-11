@@ -1,4 +1,4 @@
-# Install script for directory: C:/Git/Uni-CPU/HardwareExport/ZYNQ-Board/zynq_fsbl/zynq_fsbl_bsp/libsrc/devcfg/src
+# Install script for directory: Y:/C++/Uni-CPU/HardwareExport/ZYNQ-Board/zynq_fsbl/zynq_fsbl_bsp/libsrc/devcfg/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

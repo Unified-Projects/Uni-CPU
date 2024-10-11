@@ -1,11 +1,11 @@
 // Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
-// Tool Version: Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
-// Date        : Thu Oct 10 15:28:07 2024
-// Host        : PopTop running 64-bit major release  (build 9200)
+// Tool Version: Vivado v.2024.1.2 (win64) Build 5164865 Thu Sep  5 14:37:11 MDT 2024
+// Date        : Fri Oct 11 11:36:51 2024
+// Host        : DESKTOP-PSI4IU2 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
-//               c:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_ClockDivider_0_0/CPU_ClockDivider_0_0_sim_netlist.v
+//               y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_ClockDivider_0_0/CPU_ClockDivider_0_0_sim_netlist.v
 // Design      : CPU_ClockDivider_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -14,7 +14,7 @@
 `timescale 1 ps / 1 ps
 
 (* CHECK_LICENSE_TYPE = "CPU_ClockDivider_0_0,ClockDivider,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* ip_definition_source = "module_ref" *) 
-(* x_core_info = "ClockDivider,Vivado 2024.1" *) 
+(* x_core_info = "ClockDivider,Vivado 2024.1.2" *) 
 (* NotValidForBitStream *)
 module CPU_ClockDivider_0_0
    (clk,
@@ -22,7 +22,7 @@ module CPU_ClockDivider_0_0
     clk_div);
   (* x_interface_info = "xilinx.com:signal:clock:1.0 clk CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME clk, ASSOCIATED_RESET reset, FREQ_HZ 200000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN CPU_processing_system7_0_0_FCLK_CLK0, INSERT_VIP 0" *) input clk;
   (* x_interface_info = "xilinx.com:signal:reset:1.0 reset RST" *) (* x_interface_parameter = "XIL_INTERFACENAME reset, POLARITY ACTIVE_HIGH, INSERT_VIP 0" *) input reset;
-  inout clk_div;
+  output clk_div;
 
   wire clk;
   wire clk_div;
@@ -39,7 +39,7 @@ module CPU_ClockDivider_0_0_ClockDivider
    (clk_div,
     clk,
     reset);
-  inout clk_div;
+  output clk_div;
   input clk;
   input reset;
 
@@ -54,119 +54,122 @@ module CPU_ClockDivider_0_0_ClockDivider
   wire clk_div_i_7_n_0;
   wire clk_div_i_8_n_0;
   wire clk_div_i_9_n_0;
+  wire clock;
+  wire clock_i_1_n_0;
   wire [31:0]counter;
-  wire counter0_carry__0_n_0;
-  wire counter0_carry__0_n_1;
-  wire counter0_carry__0_n_2;
-  wire counter0_carry__0_n_3;
-  wire counter0_carry__1_n_0;
-  wire counter0_carry__1_n_1;
-  wire counter0_carry__1_n_2;
-  wire counter0_carry__1_n_3;
-  wire counter0_carry__2_n_0;
-  wire counter0_carry__2_n_1;
-  wire counter0_carry__2_n_2;
-  wire counter0_carry__2_n_3;
-  wire counter0_carry__3_n_0;
-  wire counter0_carry__3_n_1;
-  wire counter0_carry__3_n_2;
-  wire counter0_carry__3_n_3;
-  wire counter0_carry__4_n_0;
-  wire counter0_carry__4_n_1;
-  wire counter0_carry__4_n_2;
-  wire counter0_carry__4_n_3;
-  wire counter0_carry__5_n_0;
-  wire counter0_carry__5_n_1;
-  wire counter0_carry__5_n_2;
-  wire counter0_carry__5_n_3;
-  wire counter0_carry__6_n_2;
-  wire counter0_carry__6_n_3;
-  wire counter0_carry_n_0;
-  wire counter0_carry_n_1;
-  wire counter0_carry_n_2;
-  wire counter0_carry_n_3;
   wire [31:0]counter_0;
+  wire \counter_reg[12]_i_2_n_0 ;
+  wire \counter_reg[12]_i_2_n_1 ;
+  wire \counter_reg[12]_i_2_n_2 ;
+  wire \counter_reg[12]_i_2_n_3 ;
+  wire \counter_reg[16]_i_2_n_0 ;
+  wire \counter_reg[16]_i_2_n_1 ;
+  wire \counter_reg[16]_i_2_n_2 ;
+  wire \counter_reg[16]_i_2_n_3 ;
+  wire \counter_reg[20]_i_2_n_0 ;
+  wire \counter_reg[20]_i_2_n_1 ;
+  wire \counter_reg[20]_i_2_n_2 ;
+  wire \counter_reg[20]_i_2_n_3 ;
+  wire \counter_reg[24]_i_2_n_0 ;
+  wire \counter_reg[24]_i_2_n_1 ;
+  wire \counter_reg[24]_i_2_n_2 ;
+  wire \counter_reg[24]_i_2_n_3 ;
+  wire \counter_reg[28]_i_2_n_0 ;
+  wire \counter_reg[28]_i_2_n_1 ;
+  wire \counter_reg[28]_i_2_n_2 ;
+  wire \counter_reg[28]_i_2_n_3 ;
+  wire \counter_reg[31]_i_2_n_2 ;
+  wire \counter_reg[31]_i_2_n_3 ;
+  wire \counter_reg[4]_i_2_n_0 ;
+  wire \counter_reg[4]_i_2_n_1 ;
+  wire \counter_reg[4]_i_2_n_2 ;
+  wire \counter_reg[4]_i_2_n_3 ;
+  wire \counter_reg[8]_i_2_n_0 ;
+  wire \counter_reg[8]_i_2_n_1 ;
+  wire \counter_reg[8]_i_2_n_2 ;
+  wire \counter_reg[8]_i_2_n_3 ;
   wire [31:1]data0;
   wire reset;
-  wire [3:2]NLW_counter0_carry__6_CO_UNCONNECTED;
-  wire [3:3]NLW_counter0_carry__6_O_UNCONNECTED;
+  wire [3:2]\NLW_counter_reg[31]_i_2_CO_UNCONNECTED ;
+  wire [3:3]\NLW_counter_reg[31]_i_2_O_UNCONNECTED ;
 
-  LUT5 #(
-    .INIT(32'hFFFE0001)) 
+  LUT6 #(
+    .INIT(64'hFFFFFFFE00000002)) 
     clk_div_i_1
-       (.I0(clk_div_i_2_n_0),
-        .I1(clk_div_i_3_n_0),
-        .I2(clk_div_i_4_n_0),
-        .I3(clk_div_i_5_n_0),
-        .I4(clk_div),
+       (.I0(clock),
+        .I1(clk_div_i_2_n_0),
+        .I2(clk_div_i_3_n_0),
+        .I3(clk_div_i_4_n_0),
+        .I4(clk_div_i_5_n_0),
+        .I5(clk_div),
         .O(clk_div_i_1_n_0));
   LUT5 #(
-    .INIT(32'hFFFFFFFE)) 
+    .INIT(32'hFFFFFFF7)) 
     clk_div_i_2
-       (.I0(counter[10]),
-        .I1(counter[11]),
-        .I2(counter[8]),
-        .I3(counter[9]),
-        .I4(clk_div_i_6_n_0),
-        .O(clk_div_i_2_n_0));
-  LUT5 #(
-    .INIT(32'hFFFF7FFF)) 
-    clk_div_i_3
-       (.I0(counter[2]),
-        .I1(counter[3]),
-        .I2(counter[0]),
-        .I3(counter[1]),
-        .I4(clk_div_i_7_n_0),
-        .O(clk_div_i_3_n_0));
-  LUT5 #(
-    .INIT(32'hFFFFFEFF)) 
-    clk_div_i_4
-       (.I0(counter[26]),
-        .I1(counter[27]),
-        .I2(counter[24]),
-        .I3(counter[25]),
-        .I4(clk_div_i_8_n_0),
-        .O(clk_div_i_4_n_0));
-  LUT5 #(
-    .INIT(32'hFFFFFBFF)) 
-    clk_div_i_5
        (.I0(counter[18]),
         .I1(counter[19]),
         .I2(counter[16]),
         .I3(counter[17]),
+        .I4(clk_div_i_6_n_0),
+        .O(clk_div_i_2_n_0));
+  LUT5 #(
+    .INIT(32'hFFFFFFFE)) 
+    clk_div_i_3
+       (.I0(counter[26]),
+        .I1(counter[27]),
+        .I2(counter[24]),
+        .I3(counter[25]),
+        .I4(clk_div_i_7_n_0),
+        .O(clk_div_i_3_n_0));
+  LUT5 #(
+    .INIT(32'hFFFF7FFF)) 
+    clk_div_i_4
+       (.I0(counter[2]),
+        .I1(counter[3]),
+        .I2(counter[0]),
+        .I3(counter[1]),
+        .I4(clk_div_i_8_n_0),
+        .O(clk_div_i_4_n_0));
+  LUT5 #(
+    .INIT(32'hFFFFBFFF)) 
+    clk_div_i_5
+       (.I0(counter[10]),
+        .I1(counter[11]),
+        .I2(counter[8]),
+        .I3(counter[9]),
         .I4(clk_div_i_9_n_0),
         .O(clk_div_i_5_n_0));
   LUT4 #(
-    .INIT(16'h7FFF)) 
+    .INIT(16'hFFEF)) 
     clk_div_i_6
-       (.I0(counter[13]),
-        .I1(counter[12]),
-        .I2(counter[15]),
-        .I3(counter[14]),
+       (.I0(counter[21]),
+        .I1(counter[20]),
+        .I2(counter[22]),
+        .I3(counter[23]),
         .O(clk_div_i_6_n_0));
   LUT4 #(
-    .INIT(16'hFF7F)) 
-    clk_div_i_7
-       (.I0(counter[5]),
-        .I1(counter[4]),
-        .I2(counter[6]),
-        .I3(counter[7]),
-        .O(clk_div_i_7_n_0));
-  LUT4 #(
     .INIT(16'hFFFE)) 
-    clk_div_i_8
+    clk_div_i_7
        (.I0(counter[29]),
         .I1(counter[28]),
         .I2(counter[31]),
         .I3(counter[30]),
+        .O(clk_div_i_7_n_0));
+  LUT4 #(
+    .INIT(16'hFFF7)) 
+    clk_div_i_8
+       (.I0(counter[5]),
+        .I1(counter[4]),
+        .I2(counter[7]),
+        .I3(counter[6]),
         .O(clk_div_i_8_n_0));
   LUT4 #(
-    .INIT(16'h7FFF)) 
+    .INIT(16'hFFEF)) 
     clk_div_i_9
-       (.I0(counter[21]),
-        .I1(counter[20]),
-        .I2(counter[23]),
-        .I3(counter[22]),
+       (.I0(counter[13]),
+        .I1(counter[12]),
+        .I2(counter[14]),
+        .I3(counter[15]),
         .O(clk_div_i_9_n_0));
   FDCE clk_div_reg
        (.C(clk),
@@ -174,70 +177,23 @@ module CPU_ClockDivider_0_0_ClockDivider
         .CLR(reset),
         .D(clk_div_i_1_n_0),
         .Q(clk_div));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY4 counter0_carry
-       (.CI(1'b0),
-        .CO({counter0_carry_n_0,counter0_carry_n_1,counter0_carry_n_2,counter0_carry_n_3}),
-        .CYINIT(counter[0]),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(data0[4:1]),
-        .S(counter[4:1]));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY4 counter0_carry__0
-       (.CI(counter0_carry_n_0),
-        .CO({counter0_carry__0_n_0,counter0_carry__0_n_1,counter0_carry__0_n_2,counter0_carry__0_n_3}),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(data0[8:5]),
-        .S(counter[8:5]));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY4 counter0_carry__1
-       (.CI(counter0_carry__0_n_0),
-        .CO({counter0_carry__1_n_0,counter0_carry__1_n_1,counter0_carry__1_n_2,counter0_carry__1_n_3}),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(data0[12:9]),
-        .S(counter[12:9]));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY4 counter0_carry__2
-       (.CI(counter0_carry__1_n_0),
-        .CO({counter0_carry__2_n_0,counter0_carry__2_n_1,counter0_carry__2_n_2,counter0_carry__2_n_3}),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(data0[16:13]),
-        .S(counter[16:13]));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY4 counter0_carry__3
-       (.CI(counter0_carry__2_n_0),
-        .CO({counter0_carry__3_n_0,counter0_carry__3_n_1,counter0_carry__3_n_2,counter0_carry__3_n_3}),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(data0[20:17]),
-        .S(counter[20:17]));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY4 counter0_carry__4
-       (.CI(counter0_carry__3_n_0),
-        .CO({counter0_carry__4_n_0,counter0_carry__4_n_1,counter0_carry__4_n_2,counter0_carry__4_n_3}),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(data0[24:21]),
-        .S(counter[24:21]));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY4 counter0_carry__5
-       (.CI(counter0_carry__4_n_0),
-        .CO({counter0_carry__5_n_0,counter0_carry__5_n_1,counter0_carry__5_n_2,counter0_carry__5_n_3}),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(data0[28:25]),
-        .S(counter[28:25]));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY4 counter0_carry__6
-       (.CI(counter0_carry__5_n_0),
-        .CO({NLW_counter0_carry__6_CO_UNCONNECTED[3:2],counter0_carry__6_n_2,counter0_carry__6_n_3}),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({NLW_counter0_carry__6_O_UNCONNECTED[3],data0[31:29]}),
-        .S({1'b0,counter[31:29]}));
+  LUT5 #(
+    .INIT(32'hFFFE0001)) 
+    clock_i_1
+       (.I0(clk_div_i_5_n_0),
+        .I1(clk_div_i_4_n_0),
+        .I2(clk_div_i_3_n_0),
+        .I3(clk_div_i_2_n_0),
+        .I4(clock),
+        .O(clock_i_1_n_0));
+  FDCE #(
+    .INIT(1'b0)) 
+    clock_reg
+       (.C(clk),
+        .CE(1'b1),
+        .CLR(reset),
+        .D(clock_i_1_n_0),
+        .Q(clock));
   LUT1 #(
     .INIT(2'h1)) 
     \counter[0]_i_1 
@@ -246,280 +202,280 @@ module CPU_ClockDivider_0_0_ClockDivider
   LUT5 #(
     .INIT(32'hFFFE0000)) 
     \counter[10]_i_1 
-       (.I0(clk_div_i_5_n_0),
-        .I1(clk_div_i_4_n_0),
-        .I2(clk_div_i_3_n_0),
-        .I3(clk_div_i_2_n_0),
+       (.I0(clk_div_i_2_n_0),
+        .I1(clk_div_i_3_n_0),
+        .I2(clk_div_i_4_n_0),
+        .I3(clk_div_i_5_n_0),
         .I4(data0[10]),
         .O(counter_0[10]));
   LUT5 #(
     .INIT(32'hFFFE0000)) 
     \counter[11]_i_1 
-       (.I0(clk_div_i_5_n_0),
-        .I1(clk_div_i_4_n_0),
-        .I2(clk_div_i_3_n_0),
-        .I3(clk_div_i_2_n_0),
+       (.I0(clk_div_i_2_n_0),
+        .I1(clk_div_i_3_n_0),
+        .I2(clk_div_i_4_n_0),
+        .I3(clk_div_i_5_n_0),
         .I4(data0[11]),
         .O(counter_0[11]));
   LUT5 #(
     .INIT(32'hFFFE0000)) 
     \counter[12]_i_1 
-       (.I0(clk_div_i_5_n_0),
-        .I1(clk_div_i_4_n_0),
-        .I2(clk_div_i_3_n_0),
-        .I3(clk_div_i_2_n_0),
+       (.I0(clk_div_i_2_n_0),
+        .I1(clk_div_i_3_n_0),
+        .I2(clk_div_i_4_n_0),
+        .I3(clk_div_i_5_n_0),
         .I4(data0[12]),
         .O(counter_0[12]));
   LUT5 #(
     .INIT(32'hFFFE0000)) 
     \counter[13]_i_1 
-       (.I0(clk_div_i_5_n_0),
-        .I1(clk_div_i_4_n_0),
-        .I2(clk_div_i_3_n_0),
-        .I3(clk_div_i_2_n_0),
+       (.I0(clk_div_i_2_n_0),
+        .I1(clk_div_i_3_n_0),
+        .I2(clk_div_i_4_n_0),
+        .I3(clk_div_i_5_n_0),
         .I4(data0[13]),
         .O(counter_0[13]));
   LUT5 #(
     .INIT(32'hFFFE0000)) 
     \counter[14]_i_1 
-       (.I0(clk_div_i_5_n_0),
-        .I1(clk_div_i_4_n_0),
-        .I2(clk_div_i_3_n_0),
-        .I3(clk_div_i_2_n_0),
+       (.I0(clk_div_i_2_n_0),
+        .I1(clk_div_i_3_n_0),
+        .I2(clk_div_i_4_n_0),
+        .I3(clk_div_i_5_n_0),
         .I4(data0[14]),
         .O(counter_0[14]));
   LUT5 #(
     .INIT(32'hFFFE0000)) 
     \counter[15]_i_1 
-       (.I0(clk_div_i_5_n_0),
-        .I1(clk_div_i_4_n_0),
-        .I2(clk_div_i_3_n_0),
-        .I3(clk_div_i_2_n_0),
+       (.I0(clk_div_i_2_n_0),
+        .I1(clk_div_i_3_n_0),
+        .I2(clk_div_i_4_n_0),
+        .I3(clk_div_i_5_n_0),
         .I4(data0[15]),
         .O(counter_0[15]));
   LUT5 #(
     .INIT(32'hFFFE0000)) 
     \counter[16]_i_1 
-       (.I0(clk_div_i_5_n_0),
-        .I1(clk_div_i_4_n_0),
-        .I2(clk_div_i_3_n_0),
-        .I3(clk_div_i_2_n_0),
+       (.I0(clk_div_i_2_n_0),
+        .I1(clk_div_i_3_n_0),
+        .I2(clk_div_i_4_n_0),
+        .I3(clk_div_i_5_n_0),
         .I4(data0[16]),
         .O(counter_0[16]));
   LUT5 #(
     .INIT(32'hFFFE0000)) 
     \counter[17]_i_1 
-       (.I0(clk_div_i_5_n_0),
-        .I1(clk_div_i_4_n_0),
-        .I2(clk_div_i_3_n_0),
-        .I3(clk_div_i_2_n_0),
+       (.I0(clk_div_i_2_n_0),
+        .I1(clk_div_i_3_n_0),
+        .I2(clk_div_i_4_n_0),
+        .I3(clk_div_i_5_n_0),
         .I4(data0[17]),
         .O(counter_0[17]));
   LUT5 #(
     .INIT(32'hFFFE0000)) 
     \counter[18]_i_1 
-       (.I0(clk_div_i_5_n_0),
-        .I1(clk_div_i_4_n_0),
-        .I2(clk_div_i_3_n_0),
-        .I3(clk_div_i_2_n_0),
+       (.I0(clk_div_i_2_n_0),
+        .I1(clk_div_i_3_n_0),
+        .I2(clk_div_i_4_n_0),
+        .I3(clk_div_i_5_n_0),
         .I4(data0[18]),
         .O(counter_0[18]));
   LUT5 #(
     .INIT(32'hFFFE0000)) 
     \counter[19]_i_1 
-       (.I0(clk_div_i_5_n_0),
-        .I1(clk_div_i_4_n_0),
-        .I2(clk_div_i_3_n_0),
-        .I3(clk_div_i_2_n_0),
+       (.I0(clk_div_i_2_n_0),
+        .I1(clk_div_i_3_n_0),
+        .I2(clk_div_i_4_n_0),
+        .I3(clk_div_i_5_n_0),
         .I4(data0[19]),
         .O(counter_0[19]));
   LUT5 #(
     .INIT(32'hFFFE0000)) 
     \counter[1]_i_1 
-       (.I0(clk_div_i_5_n_0),
-        .I1(clk_div_i_4_n_0),
-        .I2(clk_div_i_3_n_0),
-        .I3(clk_div_i_2_n_0),
+       (.I0(clk_div_i_2_n_0),
+        .I1(clk_div_i_3_n_0),
+        .I2(clk_div_i_4_n_0),
+        .I3(clk_div_i_5_n_0),
         .I4(data0[1]),
         .O(counter_0[1]));
   LUT5 #(
     .INIT(32'hFFFE0000)) 
     \counter[20]_i_1 
-       (.I0(clk_div_i_5_n_0),
-        .I1(clk_div_i_4_n_0),
-        .I2(clk_div_i_3_n_0),
-        .I3(clk_div_i_2_n_0),
+       (.I0(clk_div_i_2_n_0),
+        .I1(clk_div_i_3_n_0),
+        .I2(clk_div_i_4_n_0),
+        .I3(clk_div_i_5_n_0),
         .I4(data0[20]),
         .O(counter_0[20]));
   LUT5 #(
     .INIT(32'hFFFE0000)) 
     \counter[21]_i_1 
-       (.I0(clk_div_i_5_n_0),
-        .I1(clk_div_i_4_n_0),
-        .I2(clk_div_i_3_n_0),
-        .I3(clk_div_i_2_n_0),
+       (.I0(clk_div_i_2_n_0),
+        .I1(clk_div_i_3_n_0),
+        .I2(clk_div_i_4_n_0),
+        .I3(clk_div_i_5_n_0),
         .I4(data0[21]),
         .O(counter_0[21]));
   LUT5 #(
     .INIT(32'hFFFE0000)) 
     \counter[22]_i_1 
-       (.I0(clk_div_i_5_n_0),
-        .I1(clk_div_i_4_n_0),
-        .I2(clk_div_i_3_n_0),
-        .I3(clk_div_i_2_n_0),
+       (.I0(clk_div_i_2_n_0),
+        .I1(clk_div_i_3_n_0),
+        .I2(clk_div_i_4_n_0),
+        .I3(clk_div_i_5_n_0),
         .I4(data0[22]),
         .O(counter_0[22]));
   LUT5 #(
     .INIT(32'hFFFE0000)) 
     \counter[23]_i_1 
-       (.I0(clk_div_i_5_n_0),
-        .I1(clk_div_i_4_n_0),
-        .I2(clk_div_i_3_n_0),
-        .I3(clk_div_i_2_n_0),
+       (.I0(clk_div_i_2_n_0),
+        .I1(clk_div_i_3_n_0),
+        .I2(clk_div_i_4_n_0),
+        .I3(clk_div_i_5_n_0),
         .I4(data0[23]),
         .O(counter_0[23]));
   LUT5 #(
     .INIT(32'hFFFE0000)) 
     \counter[24]_i_1 
-       (.I0(clk_div_i_5_n_0),
-        .I1(clk_div_i_4_n_0),
-        .I2(clk_div_i_3_n_0),
-        .I3(clk_div_i_2_n_0),
+       (.I0(clk_div_i_2_n_0),
+        .I1(clk_div_i_3_n_0),
+        .I2(clk_div_i_4_n_0),
+        .I3(clk_div_i_5_n_0),
         .I4(data0[24]),
         .O(counter_0[24]));
   LUT5 #(
     .INIT(32'hFFFE0000)) 
     \counter[25]_i_1 
-       (.I0(clk_div_i_5_n_0),
-        .I1(clk_div_i_4_n_0),
-        .I2(clk_div_i_3_n_0),
-        .I3(clk_div_i_2_n_0),
+       (.I0(clk_div_i_2_n_0),
+        .I1(clk_div_i_3_n_0),
+        .I2(clk_div_i_4_n_0),
+        .I3(clk_div_i_5_n_0),
         .I4(data0[25]),
         .O(counter_0[25]));
   LUT5 #(
     .INIT(32'hFFFE0000)) 
     \counter[26]_i_1 
-       (.I0(clk_div_i_5_n_0),
-        .I1(clk_div_i_4_n_0),
-        .I2(clk_div_i_3_n_0),
-        .I3(clk_div_i_2_n_0),
+       (.I0(clk_div_i_2_n_0),
+        .I1(clk_div_i_3_n_0),
+        .I2(clk_div_i_4_n_0),
+        .I3(clk_div_i_5_n_0),
         .I4(data0[26]),
         .O(counter_0[26]));
   LUT5 #(
     .INIT(32'hFFFE0000)) 
     \counter[27]_i_1 
-       (.I0(clk_div_i_5_n_0),
-        .I1(clk_div_i_4_n_0),
-        .I2(clk_div_i_3_n_0),
-        .I3(clk_div_i_2_n_0),
+       (.I0(clk_div_i_2_n_0),
+        .I1(clk_div_i_3_n_0),
+        .I2(clk_div_i_4_n_0),
+        .I3(clk_div_i_5_n_0),
         .I4(data0[27]),
         .O(counter_0[27]));
   LUT5 #(
     .INIT(32'hFFFE0000)) 
     \counter[28]_i_1 
-       (.I0(clk_div_i_5_n_0),
-        .I1(clk_div_i_4_n_0),
-        .I2(clk_div_i_3_n_0),
-        .I3(clk_div_i_2_n_0),
+       (.I0(clk_div_i_2_n_0),
+        .I1(clk_div_i_3_n_0),
+        .I2(clk_div_i_4_n_0),
+        .I3(clk_div_i_5_n_0),
         .I4(data0[28]),
         .O(counter_0[28]));
   LUT5 #(
     .INIT(32'hFFFE0000)) 
     \counter[29]_i_1 
-       (.I0(clk_div_i_5_n_0),
-        .I1(clk_div_i_4_n_0),
-        .I2(clk_div_i_3_n_0),
-        .I3(clk_div_i_2_n_0),
+       (.I0(clk_div_i_2_n_0),
+        .I1(clk_div_i_3_n_0),
+        .I2(clk_div_i_4_n_0),
+        .I3(clk_div_i_5_n_0),
         .I4(data0[29]),
         .O(counter_0[29]));
   LUT5 #(
     .INIT(32'hFFFE0000)) 
     \counter[2]_i_1 
-       (.I0(clk_div_i_5_n_0),
-        .I1(clk_div_i_4_n_0),
-        .I2(clk_div_i_3_n_0),
-        .I3(clk_div_i_2_n_0),
+       (.I0(clk_div_i_2_n_0),
+        .I1(clk_div_i_3_n_0),
+        .I2(clk_div_i_4_n_0),
+        .I3(clk_div_i_5_n_0),
         .I4(data0[2]),
         .O(counter_0[2]));
   LUT5 #(
     .INIT(32'hFFFE0000)) 
     \counter[30]_i_1 
-       (.I0(clk_div_i_5_n_0),
-        .I1(clk_div_i_4_n_0),
-        .I2(clk_div_i_3_n_0),
-        .I3(clk_div_i_2_n_0),
+       (.I0(clk_div_i_2_n_0),
+        .I1(clk_div_i_3_n_0),
+        .I2(clk_div_i_4_n_0),
+        .I3(clk_div_i_5_n_0),
         .I4(data0[30]),
         .O(counter_0[30]));
   LUT5 #(
     .INIT(32'hFFFE0000)) 
     \counter[31]_i_1 
-       (.I0(clk_div_i_5_n_0),
-        .I1(clk_div_i_4_n_0),
-        .I2(clk_div_i_3_n_0),
-        .I3(clk_div_i_2_n_0),
+       (.I0(clk_div_i_2_n_0),
+        .I1(clk_div_i_3_n_0),
+        .I2(clk_div_i_4_n_0),
+        .I3(clk_div_i_5_n_0),
         .I4(data0[31]),
         .O(counter_0[31]));
   LUT5 #(
     .INIT(32'hFFFE0000)) 
     \counter[3]_i_1 
-       (.I0(clk_div_i_5_n_0),
-        .I1(clk_div_i_4_n_0),
-        .I2(clk_div_i_3_n_0),
-        .I3(clk_div_i_2_n_0),
+       (.I0(clk_div_i_2_n_0),
+        .I1(clk_div_i_3_n_0),
+        .I2(clk_div_i_4_n_0),
+        .I3(clk_div_i_5_n_0),
         .I4(data0[3]),
         .O(counter_0[3]));
   LUT5 #(
     .INIT(32'hFFFE0000)) 
     \counter[4]_i_1 
-       (.I0(clk_div_i_5_n_0),
-        .I1(clk_div_i_4_n_0),
-        .I2(clk_div_i_3_n_0),
-        .I3(clk_div_i_2_n_0),
+       (.I0(clk_div_i_2_n_0),
+        .I1(clk_div_i_3_n_0),
+        .I2(clk_div_i_4_n_0),
+        .I3(clk_div_i_5_n_0),
         .I4(data0[4]),
         .O(counter_0[4]));
   LUT5 #(
     .INIT(32'hFFFE0000)) 
     \counter[5]_i_1 
-       (.I0(clk_div_i_5_n_0),
-        .I1(clk_div_i_4_n_0),
-        .I2(clk_div_i_3_n_0),
-        .I3(clk_div_i_2_n_0),
+       (.I0(clk_div_i_2_n_0),
+        .I1(clk_div_i_3_n_0),
+        .I2(clk_div_i_4_n_0),
+        .I3(clk_div_i_5_n_0),
         .I4(data0[5]),
         .O(counter_0[5]));
   LUT5 #(
     .INIT(32'hFFFE0000)) 
     \counter[6]_i_1 
-       (.I0(clk_div_i_5_n_0),
-        .I1(clk_div_i_4_n_0),
-        .I2(clk_div_i_3_n_0),
-        .I3(clk_div_i_2_n_0),
+       (.I0(clk_div_i_2_n_0),
+        .I1(clk_div_i_3_n_0),
+        .I2(clk_div_i_4_n_0),
+        .I3(clk_div_i_5_n_0),
         .I4(data0[6]),
         .O(counter_0[6]));
   LUT5 #(
     .INIT(32'hFFFE0000)) 
     \counter[7]_i_1 
-       (.I0(clk_div_i_5_n_0),
-        .I1(clk_div_i_4_n_0),
-        .I2(clk_div_i_3_n_0),
-        .I3(clk_div_i_2_n_0),
+       (.I0(clk_div_i_2_n_0),
+        .I1(clk_div_i_3_n_0),
+        .I2(clk_div_i_4_n_0),
+        .I3(clk_div_i_5_n_0),
         .I4(data0[7]),
         .O(counter_0[7]));
   LUT5 #(
     .INIT(32'hFFFE0000)) 
     \counter[8]_i_1 
-       (.I0(clk_div_i_5_n_0),
-        .I1(clk_div_i_4_n_0),
-        .I2(clk_div_i_3_n_0),
-        .I3(clk_div_i_2_n_0),
+       (.I0(clk_div_i_2_n_0),
+        .I1(clk_div_i_3_n_0),
+        .I2(clk_div_i_4_n_0),
+        .I3(clk_div_i_5_n_0),
         .I4(data0[8]),
         .O(counter_0[8]));
   LUT5 #(
     .INIT(32'hFFFE0000)) 
     \counter[9]_i_1 
-       (.I0(clk_div_i_5_n_0),
-        .I1(clk_div_i_4_n_0),
-        .I2(clk_div_i_3_n_0),
-        .I3(clk_div_i_2_n_0),
+       (.I0(clk_div_i_2_n_0),
+        .I1(clk_div_i_3_n_0),
+        .I2(clk_div_i_4_n_0),
+        .I3(clk_div_i_5_n_0),
         .I4(data0[9]),
         .O(counter_0[9]));
   FDCE #(
@@ -554,6 +510,14 @@ module CPU_ClockDivider_0_0_ClockDivider
         .CLR(reset),
         .D(counter_0[12]),
         .Q(counter[12]));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY4 \counter_reg[12]_i_2 
+       (.CI(\counter_reg[8]_i_2_n_0 ),
+        .CO({\counter_reg[12]_i_2_n_0 ,\counter_reg[12]_i_2_n_1 ,\counter_reg[12]_i_2_n_2 ,\counter_reg[12]_i_2_n_3 }),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O(data0[12:9]),
+        .S(counter[12:9]));
   FDCE #(
     .INIT(1'b0)) 
     \counter_reg[13] 
@@ -586,6 +550,14 @@ module CPU_ClockDivider_0_0_ClockDivider
         .CLR(reset),
         .D(counter_0[16]),
         .Q(counter[16]));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY4 \counter_reg[16]_i_2 
+       (.CI(\counter_reg[12]_i_2_n_0 ),
+        .CO({\counter_reg[16]_i_2_n_0 ,\counter_reg[16]_i_2_n_1 ,\counter_reg[16]_i_2_n_2 ,\counter_reg[16]_i_2_n_3 }),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O(data0[16:13]),
+        .S(counter[16:13]));
   FDCE #(
     .INIT(1'b0)) 
     \counter_reg[17] 
@@ -626,6 +598,14 @@ module CPU_ClockDivider_0_0_ClockDivider
         .CLR(reset),
         .D(counter_0[20]),
         .Q(counter[20]));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY4 \counter_reg[20]_i_2 
+       (.CI(\counter_reg[16]_i_2_n_0 ),
+        .CO({\counter_reg[20]_i_2_n_0 ,\counter_reg[20]_i_2_n_1 ,\counter_reg[20]_i_2_n_2 ,\counter_reg[20]_i_2_n_3 }),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O(data0[20:17]),
+        .S(counter[20:17]));
   FDCE #(
     .INIT(1'b0)) 
     \counter_reg[21] 
@@ -658,6 +638,14 @@ module CPU_ClockDivider_0_0_ClockDivider
         .CLR(reset),
         .D(counter_0[24]),
         .Q(counter[24]));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY4 \counter_reg[24]_i_2 
+       (.CI(\counter_reg[20]_i_2_n_0 ),
+        .CO({\counter_reg[24]_i_2_n_0 ,\counter_reg[24]_i_2_n_1 ,\counter_reg[24]_i_2_n_2 ,\counter_reg[24]_i_2_n_3 }),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O(data0[24:21]),
+        .S(counter[24:21]));
   FDCE #(
     .INIT(1'b0)) 
     \counter_reg[25] 
@@ -690,6 +678,14 @@ module CPU_ClockDivider_0_0_ClockDivider
         .CLR(reset),
         .D(counter_0[28]),
         .Q(counter[28]));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY4 \counter_reg[28]_i_2 
+       (.CI(\counter_reg[24]_i_2_n_0 ),
+        .CO({\counter_reg[28]_i_2_n_0 ,\counter_reg[28]_i_2_n_1 ,\counter_reg[28]_i_2_n_2 ,\counter_reg[28]_i_2_n_3 }),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O(data0[28:25]),
+        .S(counter[28:25]));
   FDCE #(
     .INIT(1'b0)) 
     \counter_reg[29] 
@@ -722,6 +718,14 @@ module CPU_ClockDivider_0_0_ClockDivider
         .CLR(reset),
         .D(counter_0[31]),
         .Q(counter[31]));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY4 \counter_reg[31]_i_2 
+       (.CI(\counter_reg[28]_i_2_n_0 ),
+        .CO({\NLW_counter_reg[31]_i_2_CO_UNCONNECTED [3:2],\counter_reg[31]_i_2_n_2 ,\counter_reg[31]_i_2_n_3 }),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O({\NLW_counter_reg[31]_i_2_O_UNCONNECTED [3],data0[31:29]}),
+        .S({1'b0,counter[31:29]}));
   FDCE #(
     .INIT(1'b0)) 
     \counter_reg[3] 
@@ -738,6 +742,14 @@ module CPU_ClockDivider_0_0_ClockDivider
         .CLR(reset),
         .D(counter_0[4]),
         .Q(counter[4]));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY4 \counter_reg[4]_i_2 
+       (.CI(1'b0),
+        .CO({\counter_reg[4]_i_2_n_0 ,\counter_reg[4]_i_2_n_1 ,\counter_reg[4]_i_2_n_2 ,\counter_reg[4]_i_2_n_3 }),
+        .CYINIT(counter[0]),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O(data0[4:1]),
+        .S(counter[4:1]));
   FDCE #(
     .INIT(1'b0)) 
     \counter_reg[5] 
@@ -770,6 +782,14 @@ module CPU_ClockDivider_0_0_ClockDivider
         .CLR(reset),
         .D(counter_0[8]),
         .Q(counter[8]));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY4 \counter_reg[8]_i_2 
+       (.CI(\counter_reg[4]_i_2_n_0 ),
+        .CO({\counter_reg[8]_i_2_n_0 ,\counter_reg[8]_i_2_n_1 ,\counter_reg[8]_i_2_n_2 ,\counter_reg[8]_i_2_n_3 }),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O(data0[8:5]),
+        .S(counter[8:5]));
   FDCE #(
     .INIT(1'b0)) 
     \counter_reg[9] 

@@ -1,4 +1,4 @@
-# Install script for directory: C:/Git/Uni-CPU/HardwareExport/ZYNQ-Board/zynq_fsbl/zynq_fsbl_bsp/libsrc/standalone/src/arm/cortexa9
+# Install script for directory: Y:/C++/Uni-CPU/HardwareExport/ZYNQ-Board/zynq_fsbl/zynq_fsbl_bsp/libsrc/standalone/src/arm/cortexa9
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,6 +39,6 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Git/Uni-CPU/HardwareExport/ZYNQ-Board/zynq_fsbl/zynq_fsbl_bsp/libsrc/build_configs/gen_bsp/libsrc/standalone/src/arm/cortexa9/gcc/cmake_install.cmake")
+  include("Y:/C++/Uni-CPU/HardwareExport/ZYNQ-Board/zynq_fsbl/zynq_fsbl_bsp/libsrc/build_configs/gen_bsp/libsrc/standalone/src/arm/cortexa9/gcc/cmake_install.cmake")
 endif()
 

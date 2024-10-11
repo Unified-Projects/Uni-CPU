@@ -25,7 +25,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='C:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.runs/synth_1'
+HD_PWD='Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.runs/synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

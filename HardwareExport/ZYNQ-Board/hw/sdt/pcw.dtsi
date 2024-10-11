@@ -149,16 +149,6 @@
 			reg = <0xf800b000 0x1000>;
 			xlnx,name = "ps7_afi_3";
 		};
-		ps7_m_axi_gp0: ps7_m_axi_gp@40000000 {
-			xlnx,rable = <0>;
-			compatible = "xlnx,ps7-m-axi-gp-1.00.a";
-			status = "okay";
-			xlnx,interconnect-s-axi-masters = "ps7_cortexa9_0.M_AXI_DP , & , ps7_cortexa9_1.M_AXI_DP";
-			xlnx,ip-name = "ps7_m_axi_gp";
-			xlnx,is-hierarchy;
-			reg = <0x40000000 0x40000000>;
-			xlnx,name = "ps7_m_axi_gp0";
-		};
 	};
 	&uart0 {
 		xlnx,rable = <0>;
@@ -171,6 +161,68 @@
 		port-number = <0>;
 		xlnx,uart-clk-freq-hz = <100000000>;
 		xlnx,name = "ps7_uart_0";
+	};
+	&gem0 {
+		xlnx,has-mdio = <1>;
+		phy-handle = <&phy1>;
+		phy-mode = "gmii";
+		xlnx,enet-slcr-1000mbps-div0 = <1>;
+		xlnx,enet-slcr-10mbps-div0 = <1>;
+		xlnx,rable = <0>;
+		xlnx,enet-slcr-1000mbps-div1 = <1>;
+		xlnx,enet-slcr-10mbps-div1 = <50>;
+		xlnx,interconnect-s-axi-masters = "ps7_cortexa9_0.M_AXI_DP , & , ps7_cortexa9_1.M_AXI_DP";
+		xlnx,ip-name = "ps7_ethernet";
+		xlnx,eth-mode = <0>;
+		xlnx,enet-clk-freq-hz = <125000000>;
+		xlnx,enet-slcr-100mbps-div0 = <1>;
+		xlnx,ptp-enet-clock = <0x69f6bcb>;
+		local-mac-address = [ 00 0a 23 00 00 00 ];
+		status = "okay";
+		xlnx,enet-slcr-100mbps-div1 = <5>;
+		xlnx,name = "ps7_ethernet_0";
+		ps7_ethernet_0_mdio: mdio {
+			#address-cells = <1>;
+			#size-cells = <0>;
+			gmii_to_rgmii_0: gmii_to_rgmii_0@8 {
+				compatible = "xlnx,gmii-to-rgmii-1.0";
+				phy-handle = <&phy1>;
+				reg = <8>;
+			};
+		};
+	};
+	&usb0 {
+		xlnx,usb-reset = "MIO , 4";
+		xlnx,rable = <0>;
+		status = "okay";
+		xlnx,interconnect-s-axi-masters = "ps7_cortexa9_0.M_AXI_DP , & , ps7_cortexa9_1.M_AXI_DP";
+		xlnx,ip-name = "ps7_usb";
+		phy_type = "ulpi";
+		usb-reset = <&gpio0 4 0>;
+		xlnx,name = "ps7_usb_0";
+	};
+	&sdhci0 {
+		xlnx,rable = <0>;
+		xlnx,has-power = <0>;
+		status = "okay";
+		xlnx,interconnect-s-axi-masters = "ps7_cortexa9_0.M_AXI_DP , & , ps7_cortexa9_1.M_AXI_DP";
+		xlnx,ip-name = "ps7_sdio";
+		xlnx,sdio-clk-freq-hz = <100000000>;
+		xlnx,has-wp = <0>;
+		xlnx,has-cd = <0>;
+		xlnx,name = "ps7_sd_0";
+	};
+	&gpio0 {
+		xlnx,rable = <0>;
+		xlnx,mio-gpio-mask = <0x5600>;
+		status = "okay";
+		gpio-mask-high = <0>;
+		xlnx,interconnect-s-axi-masters = "ps7_cortexa9_0.M_AXI_DP , & , ps7_cortexa9_1.M_AXI_DP";
+		xlnx,emio-gpio-width = <64>;
+		xlnx,ip-name = "ps7_gpio";
+		gpio-mask-low = <22016>;
+		emio-gpio-width = <0x40>;
+		xlnx,name = "ps7_gpio_0";
 	};
 	&mc {
 		xlnx,rable = <0>;

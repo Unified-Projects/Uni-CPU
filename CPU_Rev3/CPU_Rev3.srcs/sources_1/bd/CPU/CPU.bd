@@ -1,13 +1,13 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0xD34671DCBFE458DB",
+      "boundary_crc": "0xEC5D5DA85C5A3E47",
       "device": "xc7z020clg484-1",
       "gen_directory": "../../../../CPU_Rev3.gen/sources_1/bd/CPU",
       "name": "CPU",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
       "synth_flow_mode": "Hierarchical",
-      "tool_version": "2024.1",
+      "tool_version": "2024.1.2",
       "validated": "true"
     },
     "design_tree": {
@@ -15,8 +15,11 @@
       "gmii_to_rgmii_0": "",
       "util_vector_logic_0": "",
       "proc_sys_reset_0": "",
+      "IO_Controller_0": "",
+      "ClockSplitter_0": "",
       "ClockDivider_0": "",
-      "Buttn_LED_Switch_0": ""
+      "blk_mem_gen_0": "",
+      "CPU_Module_0": ""
     },
     "interface_ports": {
       "DDR": {
@@ -268,17 +271,17 @@
       }
     },
     "ports": {
-      "led_0": {
-        "direction": "IO"
-      },
-      "led1": {
-        "direction": "O"
-      },
-      "btn_2": {
-        "direction": "I"
-      },
       "btn_0": {
         "direction": "I"
+      },
+      "led_0": {
+        "direction": "O"
+      },
+      "btn_1": {
+        "direction": "I"
+      },
+      "led_1": {
+        "direction": "O"
       }
     },
     "components": {
@@ -977,7 +980,7 @@
       },
       "gmii_to_rgmii_0": {
         "vlnv": "xilinx.com:ip:gmii_to_rgmii:4.1",
-        "ip_revision": "14",
+        "ip_revision": "16",
         "xci_name": "CPU_gmii_to_rgmii_0_0",
         "xci_path": "ip\\CPU_gmii_to_rgmii_0_0\\CPU_gmii_to_rgmii_0_0.xci",
         "inst_hier_path": "gmii_to_rgmii_0",
@@ -1008,6 +1011,113 @@
         "xci_name": "CPU_proc_sys_reset_0_0",
         "xci_path": "ip\\CPU_proc_sys_reset_0_0\\CPU_proc_sys_reset_0_0.xci",
         "inst_hier_path": "proc_sys_reset_0"
+      },
+      "IO_Controller_0": {
+        "vlnv": "xilinx.com:module_ref:IO_Controller:1.0",
+        "ip_revision": "1",
+        "xci_name": "CPU_IO_Controller_0_0",
+        "xci_path": "ip\\CPU_IO_Controller_0_0\\CPU_IO_Controller_0_0.xci",
+        "inst_hier_path": "IO_Controller_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "IO_Controller",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "reset",
+                "value_src": "constant"
+              }
+            }
+          },
+          "ena": {
+            "direction": "I"
+          },
+          "sel": {
+            "direction": "I",
+            "left": "4",
+            "right": "0"
+          },
+          "data_in": {
+            "direction": "I"
+          },
+          "data_out": {
+            "direction": "O"
+          },
+          "reset": {
+            "type": "rst",
+            "direction": "I",
+            "parameters": {
+              "POLARITY": {
+                "value": "ACTIVE_HIGH",
+                "value_src": "const_prop"
+              }
+            }
+          },
+          "led_0": {
+            "direction": "O"
+          },
+          "led_1": {
+            "direction": "O"
+          },
+          "btn_0": {
+            "direction": "I"
+          },
+          "btn_1": {
+            "direction": "I"
+          },
+          "done": {
+            "direction": "O"
+          }
+        }
+      },
+      "ClockSplitter_0": {
+        "vlnv": "xilinx.com:module_ref:ClockSplitter:1.0",
+        "ip_revision": "1",
+        "xci_name": "CPU_ClockSplitter_0_0",
+        "xci_path": "ip\\CPU_ClockSplitter_0_0\\CPU_ClockSplitter_0_0.xci",
+        "inst_hier_path": "ClockSplitter_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "ClockSplitter",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "reset",
+                "value_src": "constant"
+              },
+              "CLK_DOMAIN": {
+                "value": "CPU_processing_system7_0_0_FCLK_CLK0",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "reset": {
+            "type": "rst",
+            "direction": "I",
+            "parameters": {
+              "POLARITY": {
+                "value": "ACTIVE_HIGH",
+                "value_src": "const_prop"
+              }
+            }
+          },
+          "clk_0": {
+            "direction": "O"
+          },
+          "clk_1": {
+            "direction": "O"
+          }
+        }
       },
       "ClockDivider_0": {
         "vlnv": "xilinx.com:module_ref:ClockDivider:1.0",
@@ -1050,27 +1160,70 @@
             }
           },
           "clk_div": {
-            "direction": "IO"
+            "direction": "O"
           }
         }
       },
-      "Buttn_LED_Switch_0": {
-        "vlnv": "xilinx.com:module_ref:Buttn_LED_Switch:1.0",
+      "blk_mem_gen_0": {
+        "vlnv": "xilinx.com:ip:blk_mem_gen:8.4",
+        "ip_revision": "8",
+        "xci_name": "CPU_blk_mem_gen_0_0",
+        "xci_path": "ip\\CPU_blk_mem_gen_0_0\\CPU_blk_mem_gen_0_0.xci",
+        "inst_hier_path": "blk_mem_gen_0",
+        "parameters": {
+          "Byte_Size": {
+            "value": "8"
+          },
+          "Coe_File": {
+            "value": "../../../../../../../BRAM64.coe"
+          },
+          "Disable_Collision_Warnings": {
+            "value": "false"
+          },
+          "Enable_32bit_Address": {
+            "value": "false"
+          },
+          "Fill_Remaining_Memory_Locations": {
+            "value": "true"
+          },
+          "Load_Init_File": {
+            "value": "true"
+          },
+          "Use_Byte_Write_Enable": {
+            "value": "true"
+          },
+          "Write_Depth_A": {
+            "value": "8192"
+          },
+          "Write_Width_A": {
+            "value": "64"
+          },
+          "use_bram_block": {
+            "value": "Stand_Alone"
+          }
+        }
+      },
+      "CPU_Module_0": {
+        "vlnv": "xilinx.com:module_ref:CPU_Module:1.0",
         "ip_revision": "1",
-        "xci_name": "CPU_Buttn_LED_Switch_0_0",
-        "xci_path": "ip\\CPU_Buttn_LED_Switch_0_0\\CPU_Buttn_LED_Switch_0_0.xci",
-        "inst_hier_path": "Buttn_LED_Switch_0",
+        "xci_name": "CPU_CPU_Module_0_1",
+        "xci_path": "ip\\CPU_CPU_Module_0_1\\CPU_CPU_Module_0_1.xci",
+        "inst_hier_path": "CPU_Module_0",
         "reference_info": {
           "ref_type": "hdl",
-          "ref_name": "Buttn_LED_Switch",
+          "ref_name": "CPU_Module",
           "boundary_crc": "0x0"
         },
         "ports": {
-          "btn1": {
-            "direction": "I"
-          },
-          "btn2": {
-            "direction": "I"
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "reset",
+                "value_src": "constant"
+              }
+            }
           },
           "reset": {
             "type": "rst",
@@ -1082,26 +1235,60 @@
               }
             }
           },
-          "clk": {
-            "type": "clk",
+          "interrupt": {
+            "type": "intr",
             "direction": "I",
+            "left": "31",
+            "right": "0",
             "parameters": {
-              "ASSOCIATED_RESET": {
-                "value": "reset",
+              "SENSITIVITY": {
+                "value": "LEVEL_HIGH",
                 "value_src": "constant"
-              },
-              "FREQ_HZ": {
-                "value": "200000000",
-                "value_src": "user_prop"
-              },
-              "CLK_DOMAIN": {
-                "value": "CPU_processing_system7_0_0_FCLK_CLK0",
-                "value_src": "default_prop"
               }
             }
           },
-          "led2": {
+          "resetOut": {
             "direction": "O"
+          },
+          "bram_we": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "bram_en": {
+            "direction": "O"
+          },
+          "bram_din": {
+            "direction": "I",
+            "left": "63",
+            "right": "0"
+          },
+          "bram_dout": {
+            "direction": "O",
+            "left": "63",
+            "right": "0"
+          },
+          "bram_addr": {
+            "direction": "O",
+            "left": "12",
+            "right": "0"
+          },
+          "IO_Enable": {
+            "direction": "O"
+          },
+          "IO_DONE": {
+            "direction": "I"
+          },
+          "IO_In": {
+            "direction": "I"
+          },
+          "IO_Out": {
+            "direction": "O"
+          },
+          "IO_Select": {
+            "direction": "O",
+            "left": "4",
+            "right": "0"
           }
         }
       }
@@ -1151,44 +1338,130 @@
       }
     },
     "nets": {
-      "Buttn_LED_Switch_0_led2": {
+      "CPU_Module_0_IO_Enable": {
         "ports": [
-          "Buttn_LED_Switch_0/led2",
-          "led1"
+          "CPU_Module_0/IO_Enable",
+          "IO_Controller_0/ena"
         ]
       },
-      "Net": {
+      "CPU_Module_0_IO_Out": {
         "ports": [
-          "led_0",
-          "ClockDivider_0/clk_div"
+          "CPU_Module_0/IO_Out",
+          "IO_Controller_0/data_in"
         ]
       },
-      "btn1_0_1": {
+      "CPU_Module_0_IO_Select": {
+        "ports": [
+          "CPU_Module_0/IO_Select",
+          "IO_Controller_0/sel"
+        ]
+      },
+      "CPU_Module_0_bram_addr": {
+        "ports": [
+          "CPU_Module_0/bram_addr",
+          "blk_mem_gen_0/addra"
+        ]
+      },
+      "CPU_Module_0_bram_dout": {
+        "ports": [
+          "CPU_Module_0/bram_dout",
+          "blk_mem_gen_0/dina"
+        ]
+      },
+      "CPU_Module_0_bram_en": {
+        "ports": [
+          "CPU_Module_0/bram_en",
+          "blk_mem_gen_0/ena"
+        ]
+      },
+      "CPU_Module_0_bram_we": {
+        "ports": [
+          "CPU_Module_0/bram_we",
+          "blk_mem_gen_0/wea"
+        ]
+      },
+      "CPU_Module_0_resetOut": {
+        "ports": [
+          "CPU_Module_0/resetOut",
+          "proc_sys_reset_0/mb_debug_sys_rst"
+        ]
+      },
+      "ClockDivider_0_clk_div": {
+        "ports": [
+          "ClockDivider_0/clk_div",
+          "ClockSplitter_0/clk"
+        ]
+      },
+      "ClockSplitter_0_clk_0": {
+        "ports": [
+          "ClockSplitter_0/clk_0",
+          "CPU_Module_0/clk"
+        ]
+      },
+      "ClockSplitter_0_clk_1": {
+        "ports": [
+          "ClockSplitter_0/clk_1",
+          "blk_mem_gen_0/clka",
+          "IO_Controller_0/clk"
+        ]
+      },
+      "IO_Controller_0_data_out": {
+        "ports": [
+          "IO_Controller_0/data_out",
+          "CPU_Module_0/IO_In"
+        ]
+      },
+      "IO_Controller_0_done": {
+        "ports": [
+          "IO_Controller_0/done",
+          "CPU_Module_0/IO_DONE"
+        ]
+      },
+      "IO_Controller_0_led_0": {
+        "ports": [
+          "IO_Controller_0/led_0",
+          "led_0"
+        ]
+      },
+      "IO_Controller_0_led_1": {
+        "ports": [
+          "IO_Controller_0/led_1",
+          "led_1"
+        ]
+      },
+      "blk_mem_gen_0_douta": {
+        "ports": [
+          "blk_mem_gen_0/douta",
+          "CPU_Module_0/bram_din"
+        ]
+      },
+      "btn_0_1": {
         "ports": [
           "btn_0",
-          "Buttn_LED_Switch_0/btn1"
+          "IO_Controller_0/btn_0"
         ]
       },
-      "btn2_0_1": {
+      "btn_1_0_1": {
         "ports": [
-          "btn_2",
-          "Buttn_LED_Switch_0/btn2"
+          "btn_1",
+          "IO_Controller_0/btn_1"
         ]
       },
       "proc_sys_reset_0_mb_reset": {
         "ports": [
           "proc_sys_reset_0/mb_reset",
+          "ClockSplitter_0/reset",
           "ClockDivider_0/reset",
-          "Buttn_LED_Switch_0/reset"
+          "IO_Controller_0/reset",
+          "CPU_Module_0/reset"
         ]
       },
       "processing_system7_0_FCLK_CLK0": {
         "ports": [
           "processing_system7_0/FCLK_CLK0",
-          "gmii_to_rgmii_0/clkin",
           "proc_sys_reset_0/slowest_sync_clk",
-          "ClockDivider_0/clk",
-          "Buttn_LED_Switch_0/clk"
+          "gmii_to_rgmii_0/clkin",
+          "ClockDivider_0/clk"
         ]
       },
       "processing_system7_0_FCLK_RESET0_N": {

@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "C:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.runs/synth_1/CPU_wrapper.tcl"
+  variable script "Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.runs/synth_1/CPU_wrapper.tcl"
   variable category "vivado_synth"
 }
 
@@ -56,6 +56,8 @@ if {$::dispatch::connected} {
 }
 
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param chipscope.maxJobs 4
+set_msg_config -id {Common 17-41} -limit 10000000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7z020clg484-1
 
@@ -63,24 +65,27 @@ set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
 set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
-set_property webtalk.parent_dir C:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.cache/wt [current_project]
-set_property parent.project_path C:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.xpr [current_project]
+set_property webtalk.parent_dir Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.cache/wt [current_project]
+set_property parent.project_path Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.xpr [current_project]
+set_property XPM_LIBRARIES XPM_MEMORY [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
-set_property ip_output_repo c:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.cache/ip [current_project]
+set_property ip_output_repo y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-read_vhdl -library xil_defaultlib C:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/hdl/CPU_wrapper.vhd
-add_files C:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/bd/CPU/CPU.bd
-set_property used_in_implementation false [get_files -all c:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_processing_system7_0_0/CPU_processing_system7_0_0.xdc]
-set_property used_in_implementation false [get_files -all c:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_gmii_to_rgmii_0_0/synth/CPU_gmii_to_rgmii_0_0.xdc]
-set_property used_in_implementation false [get_files -all c:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_gmii_to_rgmii_0_0/synth/CPU_gmii_to_rgmii_0_0_clocks.xdc]
-set_property used_in_implementation false [get_files -all c:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_gmii_to_rgmii_0_0/synth/CPU_gmii_to_rgmii_0_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_proc_sys_reset_0_0/CPU_proc_sys_reset_0_0_board.xdc]
-set_property used_in_implementation false [get_files -all c:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_proc_sys_reset_0_0/CPU_proc_sys_reset_0_0.xdc]
-set_property used_in_implementation false [get_files -all c:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_proc_sys_reset_0_0/CPU_proc_sys_reset_0_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/CPU_ooc.xdc]
+add_files y:/C++/Uni-CPU/BRAM64.coe
+read_vhdl -library xil_defaultlib Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/hdl/CPU_wrapper.vhd
+add_files Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/bd/CPU/CPU.bd
+set_property used_in_implementation false [get_files -all y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_processing_system7_0_0/CPU_processing_system7_0_0.xdc]
+set_property used_in_implementation false [get_files -all y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_gmii_to_rgmii_0_0/synth/CPU_gmii_to_rgmii_0_0.xdc]
+set_property used_in_implementation false [get_files -all y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_gmii_to_rgmii_0_0/synth/CPU_gmii_to_rgmii_0_0_clocks.xdc]
+set_property used_in_implementation false [get_files -all y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_gmii_to_rgmii_0_0/synth/CPU_gmii_to_rgmii_0_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_proc_sys_reset_0_0/CPU_proc_sys_reset_0_0_board.xdc]
+set_property used_in_implementation false [get_files -all y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_proc_sys_reset_0_0/CPU_proc_sys_reset_0_0.xdc]
+set_property used_in_implementation false [get_files -all y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_proc_sys_reset_0_0/CPU_proc_sys_reset_0_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_blk_mem_gen_0_0/CPU_blk_mem_gen_0_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/CPU_ooc.xdc]
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -91,14 +96,14 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc C:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/constrs_1/new/ZYNQ.xdc
-set_property used_in_implementation false [get_files C:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/constrs_1/new/ZYNQ.xdc]
+read_xdc Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/constrs_1/new/ZYNQ.xdc
+set_property used_in_implementation false [get_files Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/constrs_1/new/ZYNQ.xdc]
 
 read_xdc dont_touch.xdc
 set_property used_in_implementation false [get_files dont_touch.xdc]
 set_param ips.enableIPCacheLiteLoad 1
 
-read_checkpoint -auto_incremental -incremental C:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/utils_1/imports/synth_1/CPU_wrapper.dcp
+read_checkpoint -auto_incremental -incremental Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/utils_1/imports/synth_1/CPU_wrapper.dcp
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }

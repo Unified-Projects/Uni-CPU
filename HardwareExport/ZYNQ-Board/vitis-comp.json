@@ -3,8 +3,8 @@
   "type": "PLATFORM",
   "configuration": {
     "description": "",
-    "xsa": "C:\\Git\\Uni-CPU\\HardwareExport\\Setup_wrapper.xsa",
-    "xsaPathInPlatform": "ZYNQ-Board\\hw\\Setup_wrapper.xsa",
+    "xsa": "Y:\\C++\\Uni-CPU\\CPU_Rev3\\CPU_wrapper.xsa",
+    "xsaPathInPlatform": "ZYNQ-Board\\hw\\CPU_wrapper.xsa",
     "emulationXsa": "",
     "emulationXsaPathInPlatform": "",
     "isCustomFSBL": false,

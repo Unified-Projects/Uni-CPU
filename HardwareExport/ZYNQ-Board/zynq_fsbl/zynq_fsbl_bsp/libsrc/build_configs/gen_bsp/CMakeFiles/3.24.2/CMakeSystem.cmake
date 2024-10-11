@@ -3,7 +3,7 @@ set(CMAKE_HOST_SYSTEM_NAME "Windows")
 set(CMAKE_HOST_SYSTEM_VERSION "10.0.22631")
 set(CMAKE_HOST_SYSTEM_PROCESSOR "AMD64")
 
-include("C:/Git/Uni-CPU/HardwareExport/ZYNQ-Board/zynq_fsbl/zynq_fsbl_bsp/cortexa9_toolchain.cmake")
+include("Y:/C++/Uni-CPU/HardwareExport/ZYNQ-Board/zynq_fsbl/zynq_fsbl_bsp/cortexa9_toolchain.cmake")
 
 set(CMAKE_SYSTEM "Generic")
 set(CMAKE_SYSTEM_NAME "Generic")

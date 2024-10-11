@@ -57,7 +57,7 @@ ENTITY CPU_ClockDivider_0_0 IS
   PORT (
     clk : IN STD_LOGIC;
     reset : IN STD_LOGIC;
-    clk_div : INOUT STD_LOGIC
+    clk_div : OUT STD_LOGIC
   );
 END CPU_ClockDivider_0_0;
 
@@ -68,7 +68,7 @@ ARCHITECTURE CPU_ClockDivider_0_0_arch OF CPU_ClockDivider_0_0 IS
     PORT (
       clk : IN STD_LOGIC;
       reset : IN STD_LOGIC;
-      clk_div : INOUT STD_LOGIC
+      clk_div : OUT STD_LOGIC
     );
   END COMPONENT ClockDivider;
   ATTRIBUTE X_INTERFACE_INFO : STRING;

@@ -1,4 +1,4 @@
-# Install script for directory: C:/Git/Uni-CPU/HardwareExport/ZYNQ-Board/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/common/intr
+# Install script for directory: Y:/C++/Uni-CPU/HardwareExport/ZYNQ-Board/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/libsrc/standalone/src/common/intr
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

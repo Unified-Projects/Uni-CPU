@@ -25,7 +25,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='C:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.runs/impl_1'
+HD_PWD='Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.runs/impl_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log
@@ -42,7 +42,7 @@ EAStep()
 }
 
 # pre-commands:
-/bin/touch .init_design.begin.rst
+/bin/touch .write_bitstream.begin.rst
 EAStep vivado -log CPU_wrapper.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source CPU_wrapper.tcl -notrace
 
 

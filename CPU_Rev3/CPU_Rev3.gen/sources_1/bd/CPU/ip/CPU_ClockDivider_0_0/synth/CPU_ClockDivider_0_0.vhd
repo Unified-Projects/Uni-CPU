@@ -57,7 +57,7 @@ ENTITY CPU_ClockDivider_0_0 IS
   PORT (
     clk : IN STD_LOGIC;
     reset : IN STD_LOGIC;
-    clk_div : INOUT STD_LOGIC
+    clk_div : OUT STD_LOGIC
   );
 END CPU_ClockDivider_0_0;
 
@@ -68,15 +68,15 @@ ARCHITECTURE CPU_ClockDivider_0_0_arch OF CPU_ClockDivider_0_0 IS
     PORT (
       clk : IN STD_LOGIC;
       reset : IN STD_LOGIC;
-      clk_div : INOUT STD_LOGIC
+      clk_div : OUT STD_LOGIC
     );
   END COMPONENT ClockDivider;
   ATTRIBUTE X_CORE_INFO : STRING;
-  ATTRIBUTE X_CORE_INFO OF CPU_ClockDivider_0_0_arch: ARCHITECTURE IS "ClockDivider,Vivado 2024.1";
+  ATTRIBUTE X_CORE_INFO OF CPU_ClockDivider_0_0_arch: ARCHITECTURE IS "ClockDivider,Vivado 2024.1.2";
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF CPU_ClockDivider_0_0_arch : ARCHITECTURE IS "CPU_ClockDivider_0_0,ClockDivider,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF CPU_ClockDivider_0_0_arch: ARCHITECTURE IS "CPU_ClockDivider_0_0,ClockDivider,{x_ipProduct=Vivado 2024.1,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=ClockDivider,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED}";
+  ATTRIBUTE CORE_GENERATION_INFO OF CPU_ClockDivider_0_0_arch: ARCHITECTURE IS "CPU_ClockDivider_0_0,ClockDivider,{x_ipProduct=Vivado 2024.1.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=ClockDivider,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED}";
   ATTRIBUTE IP_DEFINITION_SOURCE : STRING;
   ATTRIBUTE IP_DEFINITION_SOURCE OF CPU_ClockDivider_0_0_arch: ARCHITECTURE IS "module_ref";
   ATTRIBUTE X_INTERFACE_INFO : STRING;

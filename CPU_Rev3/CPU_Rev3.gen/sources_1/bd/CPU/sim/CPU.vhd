@@ -1,9 +1,9 @@
 --Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 --Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
---Tool Version: Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
---Date        : Thu Oct 10 16:39:03 2024
---Host        : PopTop running 64-bit major release  (build 9200)
+--Tool Version: Vivado v.2024.1.2 (win64) Build 5164865 Thu Sep  5 14:37:11 MDT 2024
+--Date        : Fri Oct 11 13:20:51 2024
+--Host        : DESKTOP-PSI4IU2 running 64-bit major release  (build 9200)
 --Command     : generate_target CPU.bd
 --Design      : CPU
 --Purpose     : IP block netlist
@@ -48,12 +48,12 @@ entity CPU is
     UART_0_0_rxd : in STD_LOGIC;
     UART_0_0_txd : out STD_LOGIC;
     btn_0 : in STD_LOGIC;
-    btn_2 : in STD_LOGIC;
-    led1 : out STD_LOGIC;
-    led_0 : inout STD_LOGIC
+    btn_1 : in STD_LOGIC;
+    led_0 : out STD_LOGIC;
+    led_1 : out STD_LOGIC
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of CPU : entity is "CPU,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=CPU,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=6,numReposBlks=6,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=2,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=2,da_board_cnt=1,da_clkrst_cnt=1,da_ps7_cnt=1,synth_mode=Hierarchical}";
+  attribute CORE_GENERATION_INFO of CPU : entity is "CPU,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=CPU,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=9,numReposBlks=9,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=4,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=2,da_board_cnt=1,da_clkrst_cnt=2,da_ps7_cnt=1,synth_mode=Hierarchical}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of CPU : entity is "CPU.hwdef";
 end CPU;
@@ -166,26 +166,82 @@ architecture STRUCTURE of CPU is
     peripheral_aresetn : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component CPU_proc_sys_reset_0_0;
+  component CPU_IO_Controller_0_0 is
+  port (
+    clk : in STD_LOGIC;
+    ena : in STD_LOGIC;
+    sel : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    data_in : in STD_LOGIC;
+    data_out : out STD_LOGIC;
+    reset : in STD_LOGIC;
+    led_0 : out STD_LOGIC;
+    led_1 : out STD_LOGIC;
+    btn_0 : in STD_LOGIC;
+    btn_1 : in STD_LOGIC;
+    done : out STD_LOGIC
+  );
+  end component CPU_IO_Controller_0_0;
+  component CPU_ClockSplitter_0_0 is
+  port (
+    clk : in STD_LOGIC;
+    reset : in STD_LOGIC;
+    clk_0 : out STD_LOGIC;
+    clk_1 : out STD_LOGIC
+  );
+  end component CPU_ClockSplitter_0_0;
   component CPU_ClockDivider_0_0 is
   port (
     clk : in STD_LOGIC;
     reset : in STD_LOGIC;
-    clk_div : inout STD_LOGIC
+    clk_div : out STD_LOGIC
   );
   end component CPU_ClockDivider_0_0;
-  component CPU_Buttn_LED_Switch_0_0 is
+  component CPU_blk_mem_gen_0_0 is
   port (
-    btn1 : in STD_LOGIC;
-    btn2 : in STD_LOGIC;
-    reset : in STD_LOGIC;
-    clk : in STD_LOGIC;
-    led2 : out STD_LOGIC
+    clka : in STD_LOGIC;
+    ena : in STD_LOGIC;
+    wea : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    addra : in STD_LOGIC_VECTOR ( 12 downto 0 );
+    dina : in STD_LOGIC_VECTOR ( 63 downto 0 );
+    douta : out STD_LOGIC_VECTOR ( 63 downto 0 )
   );
-  end component CPU_Buttn_LED_Switch_0_0;
-  signal Buttn_LED_Switch_0_led2 : STD_LOGIC;
-  signal Net : STD_LOGIC;
-  signal btn1_0_1 : STD_LOGIC;
-  signal btn2_0_1 : STD_LOGIC;
+  end component CPU_blk_mem_gen_0_0;
+  component CPU_CPU_Module_0_1 is
+  port (
+    clk : in STD_LOGIC;
+    reset : in STD_LOGIC;
+    interrupt : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    resetOut : out STD_LOGIC;
+    bram_we : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    bram_en : out STD_LOGIC;
+    bram_din : in STD_LOGIC_VECTOR ( 63 downto 0 );
+    bram_dout : out STD_LOGIC_VECTOR ( 63 downto 0 );
+    bram_addr : out STD_LOGIC_VECTOR ( 12 downto 0 );
+    IO_Enable : out STD_LOGIC;
+    IO_DONE : in STD_LOGIC;
+    IO_In : in STD_LOGIC;
+    IO_Out : out STD_LOGIC;
+    IO_Select : out STD_LOGIC_VECTOR ( 4 downto 0 )
+  );
+  end component CPU_CPU_Module_0_1;
+  signal CPU_Module_0_IO_Enable : STD_LOGIC;
+  signal CPU_Module_0_IO_Out : STD_LOGIC;
+  signal CPU_Module_0_IO_Select : STD_LOGIC_VECTOR ( 4 downto 0 );
+  signal CPU_Module_0_bram_addr : STD_LOGIC_VECTOR ( 12 downto 0 );
+  signal CPU_Module_0_bram_dout : STD_LOGIC_VECTOR ( 63 downto 0 );
+  signal CPU_Module_0_bram_en : STD_LOGIC;
+  signal CPU_Module_0_bram_we : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal CPU_Module_0_resetOut : STD_LOGIC;
+  signal ClockDivider_0_clk_div : STD_LOGIC;
+  signal ClockSplitter_0_clk_0 : STD_LOGIC;
+  signal ClockSplitter_0_clk_1 : STD_LOGIC;
+  signal IO_Controller_0_data_out : STD_LOGIC;
+  signal IO_Controller_0_done : STD_LOGIC;
+  signal IO_Controller_0_led_0 : STD_LOGIC;
+  signal IO_Controller_0_led_1 : STD_LOGIC;
+  signal blk_mem_gen_0_douta : STD_LOGIC_VECTOR ( 63 downto 0 );
+  signal btn_0_1 : STD_LOGIC;
+  signal btn_1_0_1 : STD_LOGIC;
   signal gmii_to_rgmii_0_MDIO_PHY_MDC : STD_LOGIC;
   signal gmii_to_rgmii_0_MDIO_PHY_MDIO_I : STD_LOGIC;
   signal gmii_to_rgmii_0_MDIO_PHY_MDIO_O : STD_LOGIC;
@@ -298,27 +354,67 @@ begin
   RGMII_0_tx_ctl <= gmii_to_rgmii_0_RGMII_TX_CTL;
   RGMII_0_txc <= gmii_to_rgmii_0_RGMII_TXC;
   UART_0_0_txd <= processing_system7_0_UART_0_TxD;
-  btn1_0_1 <= btn_0;
-  btn2_0_1 <= btn_2;
+  btn_0_1 <= btn_0;
+  btn_1_0_1 <= btn_1;
   gmii_to_rgmii_0_MDIO_PHY_MDIO_I <= MDIO_PHY_0_mdio_i;
   gmii_to_rgmii_0_RGMII_RD(3 downto 0) <= RGMII_0_rd(3 downto 0);
   gmii_to_rgmii_0_RGMII_RXC <= RGMII_0_rxc;
   gmii_to_rgmii_0_RGMII_RX_CTL <= RGMII_0_rx_ctl;
-  led1 <= Buttn_LED_Switch_0_led2;
+  led_0 <= IO_Controller_0_led_0;
+  led_1 <= IO_Controller_0_led_1;
   processing_system7_0_UART_0_RxD <= UART_0_0_rxd;
-Buttn_LED_Switch_0: component CPU_Buttn_LED_Switch_0_0
+CPU_Module_0: component CPU_CPU_Module_0_1
      port map (
-      btn1 => btn1_0_1,
-      btn2 => btn2_0_1,
-      clk => processing_system7_0_FCLK_CLK0,
-      led2 => Buttn_LED_Switch_0_led2,
-      reset => proc_sys_reset_0_mb_reset
+      IO_DONE => IO_Controller_0_done,
+      IO_Enable => CPU_Module_0_IO_Enable,
+      IO_In => IO_Controller_0_data_out,
+      IO_Out => CPU_Module_0_IO_Out,
+      IO_Select(4 downto 0) => CPU_Module_0_IO_Select(4 downto 0),
+      bram_addr(12 downto 0) => CPU_Module_0_bram_addr(12 downto 0),
+      bram_din(63 downto 0) => blk_mem_gen_0_douta(63 downto 0),
+      bram_dout(63 downto 0) => CPU_Module_0_bram_dout(63 downto 0),
+      bram_en => CPU_Module_0_bram_en,
+      bram_we(7 downto 0) => CPU_Module_0_bram_we(7 downto 0),
+      clk => ClockSplitter_0_clk_0,
+      interrupt(31 downto 0) => B"00000000000000000000000000000000",
+      reset => proc_sys_reset_0_mb_reset,
+      resetOut => CPU_Module_0_resetOut
     );
 ClockDivider_0: component CPU_ClockDivider_0_0
      port map (
       clk => processing_system7_0_FCLK_CLK0,
-      clk_div => led_0,
+      clk_div => ClockDivider_0_clk_div,
       reset => proc_sys_reset_0_mb_reset
+    );
+ClockSplitter_0: component CPU_ClockSplitter_0_0
+     port map (
+      clk => ClockDivider_0_clk_div,
+      clk_0 => ClockSplitter_0_clk_0,
+      clk_1 => ClockSplitter_0_clk_1,
+      reset => proc_sys_reset_0_mb_reset
+    );
+IO_Controller_0: component CPU_IO_Controller_0_0
+     port map (
+      btn_0 => btn_0_1,
+      btn_1 => btn_1_0_1,
+      clk => ClockSplitter_0_clk_1,
+      data_in => CPU_Module_0_IO_Out,
+      data_out => IO_Controller_0_data_out,
+      done => IO_Controller_0_done,
+      ena => CPU_Module_0_IO_Enable,
+      led_0 => IO_Controller_0_led_0,
+      led_1 => IO_Controller_0_led_1,
+      reset => proc_sys_reset_0_mb_reset,
+      sel(4 downto 0) => CPU_Module_0_IO_Select(4 downto 0)
+    );
+blk_mem_gen_0: component CPU_blk_mem_gen_0_0
+     port map (
+      addra(12 downto 0) => CPU_Module_0_bram_addr(12 downto 0),
+      clka => ClockSplitter_0_clk_1,
+      dina(63 downto 0) => CPU_Module_0_bram_dout(63 downto 0),
+      douta(63 downto 0) => blk_mem_gen_0_douta(63 downto 0),
+      ena => CPU_Module_0_bram_en,
+      wea(7 downto 0) => CPU_Module_0_bram_we(7 downto 0)
     );
 gmii_to_rgmii_0: component CPU_gmii_to_rgmii_0_0
      port map (
@@ -366,7 +462,7 @@ proc_sys_reset_0: component CPU_proc_sys_reset_0_0
       dcm_locked => '1',
       ext_reset_in => processing_system7_0_FCLK_RESET0_N,
       interconnect_aresetn(0) => NLW_proc_sys_reset_0_interconnect_aresetn_UNCONNECTED(0),
-      mb_debug_sys_rst => '0',
+      mb_debug_sys_rst => CPU_Module_0_resetOut,
       mb_reset => proc_sys_reset_0_mb_reset,
       peripheral_aresetn(0) => NLW_proc_sys_reset_0_peripheral_aresetn_UNCONNECTED(0),
       peripheral_reset(0) => NLW_proc_sys_reset_0_peripheral_reset_UNCONNECTED(0),

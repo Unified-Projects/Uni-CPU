@@ -6,8 +6,9 @@ vhdl xil_defaultlib  \
 "../../../bd/CPU/ip/CPU_gmii_to_rgmii_0_0/synth/CPU_gmii_to_rgmii_0_0_block.vhd" \
 "../../../bd/CPU/ip/CPU_gmii_to_rgmii_0_0/CPU_gmii_to_rgmii_0_0/simulation/demo_tb.vhd" \
 "../../../bd/CPU/ip/CPU_gmii_to_rgmii_0_0/synth/CPU_gmii_to_rgmii_0_0.vhd" \
-"../../../bd/CPU/ip/CPU_ClockDivider_0_0/sim/CPU_ClockDivider_0_0.vhd" \
 "../../../bd/CPU/ip/CPU_proc_sys_reset_0_0/sim/CPU_proc_sys_reset_0_0.vhd" \
+"../../../bd/CPU/ip/CPU_IO_Controller_Debugg_0_0/sim/CPU_IO_Controller_Debugg_0_0.vhd" \
+"../../../bd/CPU/ip/CPU_IO_Controller_0_0/sim/CPU_IO_Controller_0_0.vhd" \
 "../../../bd/CPU/sim/CPU.vhd" \
 
 # Do not sort compile order

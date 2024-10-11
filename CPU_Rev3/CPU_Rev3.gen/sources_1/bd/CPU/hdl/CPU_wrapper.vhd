@@ -1,9 +1,9 @@
 --Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 --Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
---Tool Version: Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
---Date        : Thu Oct 10 16:39:03 2024
---Host        : PopTop running 64-bit major release  (build 9200)
+--Tool Version: Vivado v.2024.1.2 (win64) Build 5164865 Thu Sep  5 14:37:11 MDT 2024
+--Date        : Fri Oct 11 13:20:51 2024
+--Host        : DESKTOP-PSI4IU2 running 64-bit major release  (build 9200)
 --Command     : generate_target CPU_wrapper.bd
 --Design      : CPU_wrapper
 --Purpose     : IP block netlist
@@ -46,9 +46,9 @@ entity CPU_wrapper is
     UART_0_0_rxd : in STD_LOGIC;
     UART_0_0_txd : out STD_LOGIC;
     btn_0 : in STD_LOGIC;
-    btn_2 : in STD_LOGIC;
-    led1 : out STD_LOGIC;
-    led_0 : inout STD_LOGIC
+    btn_1 : in STD_LOGIC;
+    led_0 : out STD_LOGIC;
+    led_1 : out STD_LOGIC
   );
 end CPU_wrapper;
 
@@ -88,10 +88,10 @@ architecture STRUCTURE of CPU_wrapper is
     RGMII_0_txc : out STD_LOGIC;
     UART_0_0_txd : out STD_LOGIC;
     UART_0_0_rxd : in STD_LOGIC;
-    led_0 : inout STD_LOGIC;
-    led1 : out STD_LOGIC;
-    btn_2 : in STD_LOGIC;
-    btn_0 : in STD_LOGIC
+    btn_0 : in STD_LOGIC;
+    led_0 : out STD_LOGIC;
+    btn_1 : in STD_LOGIC;
+    led_1 : out STD_LOGIC
   );
   end component CPU;
   component IOBUF is
@@ -142,9 +142,9 @@ CPU_i: component CPU
       UART_0_0_rxd => UART_0_0_rxd,
       UART_0_0_txd => UART_0_0_txd,
       btn_0 => btn_0,
-      btn_2 => btn_2,
-      led1 => led1,
-      led_0 => led_0
+      btn_1 => btn_1,
+      led_0 => led_0,
+      led_1 => led_1
     );
 MDIO_PHY_0_mdio_iobuf: component IOBUF
      port map (
