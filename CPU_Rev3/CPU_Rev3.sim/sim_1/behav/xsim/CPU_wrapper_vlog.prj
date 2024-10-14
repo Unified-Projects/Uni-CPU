@@ -1,7 +1,15 @@
 # compile verilog/system verilog design source files
+sv axi_vip_v1_1_17  --include "../../../../CPU_Rev3.gen/sources_1/bd/CPU/ipshared/ec67/hdl" --include "../../../../CPU_Rev3.gen/sources_1/bd/CPU/ipshared/b28c/hdl" --include "C:/Xilinx/Vivado/2024.1/data/xilinx_vip/include" \
+"../../../../CPU_Rev3.gen/sources_1/bd/CPU/ipshared/4d04/hdl/axi_vip_v1_1_vl_rfs.sv" \
+
+sv processing_system7_vip_v1_0_19  --include "../../../../CPU_Rev3.gen/sources_1/bd/CPU/ipshared/ec67/hdl" --include "../../../../CPU_Rev3.gen/sources_1/bd/CPU/ipshared/b28c/hdl" --include "C:/Xilinx/Vivado/2024.1/data/xilinx_vip/include" \
+"../../../../CPU_Rev3.gen/sources_1/bd/CPU/ipshared/b28c/hdl/processing_system7_vip_v1_0_vl_rfs.sv" \
+
 verilog xil_defaultlib  --include "../../../../CPU_Rev3.gen/sources_1/bd/CPU/ipshared/ec67/hdl" --include "../../../../CPU_Rev3.gen/sources_1/bd/CPU/ipshared/b28c/hdl" --include "C:/Xilinx/Vivado/2024.1/data/xilinx_vip/include" \
 "../../../../CPU_Rev3.ip_user_files/bd/CPU/ip/CPU_processing_system7_0_0/sim/CPU_processing_system7_0_0.v" \
 "../../../../CPU_Rev3.ip_user_files/bd/CPU/ip/CPU_util_vector_logic_0_0/sim/CPU_util_vector_logic_0_0.v" \
+"../../../../CPU_Rev3.ip_user_files/bd/CPU/ip/CPU_blk_mem_gen_0_0/sim/CPU_blk_mem_gen_0_0.v" \
+"../../../../CPU_Rev3.ip_user_files/bd/CPU/ip/CPU_sim_clk_gen_0_0/sim/CPU_sim_clk_gen_0_0.v" \
 
 # compile glbl module
 verilog xil_defaultlib "glbl.v"

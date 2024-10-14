@@ -1,0 +1,258 @@
+#-----------------------------------------------------------
+# Vivado v2024.1.2 (64-bit)
+# SW Build 5164865 on Thu Sep  5 14:37:11 MDT 2024
+# IP Build 5164407 on Fri Sep  6 08:18:11 MDT 2024
+# SharedData Build 5164864 on Thu Sep 05 13:09:09 MDT 2024
+# Start of session at: Sat Oct 12 17:48:02 2024
+# Process ID: 964
+# Current directory: Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.runs/CPU_LCD_Controller_0_0_synth_1
+# Command line: vivado.exe -log CPU_LCD_Controller_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source CPU_LCD_Controller_0_0.tcl
+# Log file: Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.runs/CPU_LCD_Controller_0_0_synth_1/CPU_LCD_Controller_0_0.vds
+# Journal file: Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.runs/CPU_LCD_Controller_0_0_synth_1\vivado.jou
+# Running On        :DESKTOP-PSI4IU2
+# Platform          :Windows Server 2016 or Windows 10
+# Operating System  :22631
+# Processor Detail  :13th Gen Intel(R) Core(TM) i7-13700K
+# CPU Frequency     :3418 MHz
+# CPU Physical cores:16
+# CPU Logical cores :16
+# Host memory       :34340 MB
+# Swap memory       :2147 MB
+# Total Virtual     :36487 MB
+# Available Virtual :25305 MB
+#-----------------------------------------------------------
+source CPU_LCD_Controller_0_0.tcl -notrace
+create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 534.125 ; gain = 137.586
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2024.1/data/ip'.
+Command: synth_design -top CPU_LCD_Controller_0_0 -part xc7z020clg484-1 -incremental_mode off -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Device 21-403] Loading part xc7z020clg484-1
+INFO: [Device 21-9227] Part: xc7z020clg484-1 does not have CEAM library.
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 3324
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1425.457 ; gain = 447.691
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'CPU_LCD_Controller_0_0' [y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_LCD_Controller_0_0/synth/CPU_LCD_Controller_0_0.vhd:74]
+INFO: [Synth 8-3491] module 'LCD_Controller' declared at 'Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/new/LCD_Controller.vhd:5' bound to instance 'U0' of component 'LCD_Controller' [y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_LCD_Controller_0_0/synth/CPU_LCD_Controller_0_0.vhd:109]
+INFO: [Synth 8-638] synthesizing module 'LCD_Controller' [Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/new/LCD_Controller.vhd:29]
+INFO: [Synth 8-256] done synthesizing module 'LCD_Controller' (0#1) [Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/new/LCD_Controller.vhd:29]
+INFO: [Synth 8-256] done synthesizing module 'CPU_LCD_Controller_0_0' (0#1) [y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_LCD_Controller_0_0/synth/CPU_LCD_Controller_0_0.vhd:74]
+WARNING: [Synth 8-7129] Port clk in module LCD_Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[15] in module LCD_Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[14] in module LCD_Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[13] in module LCD_Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[12] in module LCD_Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[11] in module LCD_Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[10] in module LCD_Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[9] in module LCD_Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[8] in module LCD_Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[7] in module LCD_Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[6] in module LCD_Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[5] in module LCD_Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[4] in module LCD_Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[3] in module LCD_Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[2] in module LCD_Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[1] in module LCD_Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[0] in module LCD_Controller is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1539.871 ; gain = 562.105
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1539.871 ; gain = 562.105
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1539.871 ; gain = 562.105
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1539.871 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1563.449 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.016 . Memory (MB): peak = 1563.715 ; gain = 0.266
+INFO: [Designutils 20-5008] Incremental synthesis strategy off
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1563.715 ; gain = 585.949
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg484-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1563.715 ; gain = 585.949
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1563.715 ; gain = 585.949
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-327] inferring latch for variable 'scl_reg' [Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/new/LCD_Controller.vhd:37]
+WARNING: [Synth 8-327] inferring latch for variable 'cs_reg' [Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/new/LCD_Controller.vhd:38]
+WARNING: [Synth 8-327] inferring latch for variable 'fb_we_reg' [Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/new/LCD_Controller.vhd:45]
+WARNING: [Synth 8-327] inferring latch for variable 'fb_dout_reg' [Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/new/LCD_Controller.vhd:47]
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1563.715 ; gain = 585.949
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-7129] Port clk in module CPU_LCD_Controller_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[15] in module CPU_LCD_Controller_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[14] in module CPU_LCD_Controller_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[13] in module CPU_LCD_Controller_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[12] in module CPU_LCD_Controller_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[11] in module CPU_LCD_Controller_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[10] in module CPU_LCD_Controller_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[9] in module CPU_LCD_Controller_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[8] in module CPU_LCD_Controller_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[7] in module CPU_LCD_Controller_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[6] in module CPU_LCD_Controller_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[5] in module CPU_LCD_Controller_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[4] in module CPU_LCD_Controller_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[3] in module CPU_LCD_Controller_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[2] in module CPU_LCD_Controller_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[1] in module CPU_LCD_Controller_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[0] in module CPU_LCD_Controller_0_0 is either unconnected or has no load
+INFO: [Synth 8-3332] Sequential element (U0/scl_reg) is unused and will be removed from module CPU_LCD_Controller_0_0.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 1563.715 ; gain = 585.949
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1563.715 ; gain = 585.949
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1563.715 ; gain = 585.949
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1563.715 ; gain = 585.949
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1563.715 ; gain = 585.949
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1563.715 ; gain = 585.949
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1563.715 ; gain = 585.949
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1563.715 ; gain = 585.949
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1563.715 ; gain = 585.949
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1563.715 ; gain = 585.949
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-----+------+
+|      |Cell |Count |
++------+-----+------+
+|1     |LD   |     1|
++------+-----+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1563.715 ; gain = 585.949
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 22 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:13 ; elapsed = 00:00:20 . Memory (MB): peak = 1563.715 ; gain = 562.105
+Synthesis Optimization Complete : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1563.715 ; gain = 585.949
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1563.715 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 1 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1563.715 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 1 instances were transformed.
+  LD => LDCE: 1 instance 
+
+Synth Design complete | Checksum: bd34484
+INFO: [Common 17-83] Releasing license: Synthesis
+25 Infos, 39 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 1563.715 ; gain = 1016.012
+INFO: [Common 17-1381] The checkpoint 'Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.runs/CPU_LCD_Controller_0_0_synth_1/CPU_LCD_Controller_0_0.dcp' has been generated.
+INFO: [Vivado 12-24828] Executing command : report_utilization -file CPU_LCD_Controller_0_0_utilization_synth.rpt -pb CPU_LCD_Controller_0_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Sat Oct 12 17:48:37 2024...

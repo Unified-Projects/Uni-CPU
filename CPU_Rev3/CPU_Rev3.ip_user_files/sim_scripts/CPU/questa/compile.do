@@ -2,6 +2,7 @@ vlib questa_lib/work
 vlib questa_lib/msim
 
 vlib questa_lib/msim/xilinx_vip
+vlib questa_lib/msim/xpm
 vlib questa_lib/msim/axi_infrastructure_v1_1_0
 vlib questa_lib/msim/axi_vip_v1_1_17
 vlib questa_lib/msim/processing_system7_vip_v1_0_19
@@ -10,8 +11,10 @@ vlib questa_lib/msim/gmii_to_rgmii_v4_1_16
 vlib questa_lib/msim/util_vector_logic_v2_0_4
 vlib questa_lib/msim/lib_cdc_v1_0_3
 vlib questa_lib/msim/proc_sys_reset_v5_0_15
+vlib questa_lib/msim/blk_mem_gen_v8_4_8
 
 vmap xilinx_vip questa_lib/msim/xilinx_vip
+vmap xpm questa_lib/msim/xpm
 vmap axi_infrastructure_v1_1_0 questa_lib/msim/axi_infrastructure_v1_1_0
 vmap axi_vip_v1_1_17 questa_lib/msim/axi_vip_v1_1_17
 vmap processing_system7_vip_v1_0_19 questa_lib/msim/processing_system7_vip_v1_0_19
@@ -20,6 +23,7 @@ vmap gmii_to_rgmii_v4_1_16 questa_lib/msim/gmii_to_rgmii_v4_1_16
 vmap util_vector_logic_v2_0_4 questa_lib/msim/util_vector_logic_v2_0_4
 vmap lib_cdc_v1_0_3 questa_lib/msim/lib_cdc_v1_0_3
 vmap proc_sys_reset_v5_0_15 questa_lib/msim/proc_sys_reset_v5_0_15
+vmap blk_mem_gen_v8_4_8 questa_lib/msim/blk_mem_gen_v8_4_8
 
 vlog -work xilinx_vip  -incr -mfcu  -sv -L axi_vip_v1_1_18 -L processing_system7_vip_v1_0_20 -L axi_vip_v1_1_17 -L processing_system7_vip_v1_0_19 -L xilinx_vip "+incdir+C:/Xilinx/Vivado/2024.1/data/xilinx_vip/include" \
 "C:/Xilinx/Vivado/2024.1/data/xilinx_vip/hdl/axi4stream_vip_axi4streampc.sv" \
@@ -31,6 +35,12 @@ vlog -work xilinx_vip  -incr -mfcu  -sv -L axi_vip_v1_1_18 -L processing_system7
 "C:/Xilinx/Vivado/2024.1/data/xilinx_vip/hdl/axi_vip_if.sv" \
 "C:/Xilinx/Vivado/2024.1/data/xilinx_vip/hdl/clk_vip_if.sv" \
 "C:/Xilinx/Vivado/2024.1/data/xilinx_vip/hdl/rst_vip_if.sv" \
+
+vlog -work xpm  -incr -mfcu  -sv -L axi_vip_v1_1_18 -L processing_system7_vip_v1_0_20 -L axi_vip_v1_1_17 -L processing_system7_vip_v1_0_19 -L xilinx_vip "+incdir+../../../../CPU_Rev3.gen/sources_1/bd/CPU/ipshared/ec67/hdl" "+incdir+../../../../CPU_Rev3.gen/sources_1/bd/CPU/ipshared/b28c/hdl" "+incdir+C:/Xilinx/Vivado/2024.1/data/xilinx_vip/include" \
+"C:/Xilinx/Vivado/2024.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv" \
+
+vcom -work xpm  -93  \
+"C:/Xilinx/Vivado/2024.1/data/ip/xpm/xpm_VCOMP.vhd" \
 
 vlog -work axi_infrastructure_v1_1_0  -incr -mfcu  "+incdir+../../../../CPU_Rev3.gen/sources_1/bd/CPU/ipshared/ec67/hdl" "+incdir+../../../../CPU_Rev3.gen/sources_1/bd/CPU/ipshared/b28c/hdl" "+incdir+C:/Xilinx/Vivado/2024.1/data/xilinx_vip/include" \
 "../../../../CPU_Rev3.gen/sources_1/bd/CPU/ipshared/ec67/hdl/axi_infrastructure_v1_1_vl_rfs.v" \
@@ -72,8 +82,19 @@ vcom -work proc_sys_reset_v5_0_15  -93  \
 
 vcom -work xil_defaultlib  -93  \
 "../../../bd/CPU/ip/CPU_proc_sys_reset_0_0/sim/CPU_proc_sys_reset_0_0.vhd" \
-"../../../bd/CPU/ip/CPU_IO_Controller_Debugg_0_0/sim/CPU_IO_Controller_Debugg_0_0.vhd" \
 "../../../bd/CPU/ip/CPU_IO_Controller_0_0/sim/CPU_IO_Controller_0_0.vhd" \
+"../../../bd/CPU/ip/CPU_ClockSplitter_0_0/sim/CPU_ClockSplitter_0_0.vhd" \
+"../../../bd/CPU/ip/CPU_ClockDivider_0_0/sim/CPU_ClockDivider_0_0.vhd" \
+
+vlog -work blk_mem_gen_v8_4_8  -incr -mfcu  "+incdir+../../../../CPU_Rev3.gen/sources_1/bd/CPU/ipshared/ec67/hdl" "+incdir+../../../../CPU_Rev3.gen/sources_1/bd/CPU/ipshared/b28c/hdl" "+incdir+C:/Xilinx/Vivado/2024.1/data/xilinx_vip/include" \
+"../../../../CPU_Rev3.gen/sources_1/bd/CPU/ipshared/09bd/simulation/blk_mem_gen_v8_4.v" \
+
+vlog -work xil_defaultlib  -incr -mfcu  "+incdir+../../../../CPU_Rev3.gen/sources_1/bd/CPU/ipshared/ec67/hdl" "+incdir+../../../../CPU_Rev3.gen/sources_1/bd/CPU/ipshared/b28c/hdl" "+incdir+C:/Xilinx/Vivado/2024.1/data/xilinx_vip/include" \
+"../../../bd/CPU/ip/CPU_blk_mem_gen_0_0/sim/CPU_blk_mem_gen_0_0.v" \
+
+vcom -work xil_defaultlib  -93  \
+"../../../bd/CPU/ip/CPU_CPU_Module_0_1/sim/CPU_CPU_Module_0_1.vhd" \
+"../../../bd/CPU/ip/CPU_LCD_Controller_0_0/sim/CPU_LCD_Controller_0_0.vhd" \
 "../../../bd/CPU/sim/CPU.vhd" \
 
 vlog -work xil_defaultlib \

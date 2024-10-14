@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.1.2 (win64) Build 5164865 Thu Sep  5 14:37:11 MDT 2024
-| Date         : Fri Oct 11 18:46:51 2024
+| Date         : Sat Oct 12 17:55:17 2024
 | Host         : DESKTOP-PSI4IU2 running 64-bit major release  (build 9200)
 | Command      : report_utilization -file CPU_wrapper_utilization_synth.rpt -pb CPU_wrapper_utilization_synth.pb
 | Design       : CPU_wrapper
@@ -93,7 +93,7 @@ Warning! For any ECO changes, please run place_design if there are unplaced inst
 +-----------------------------+------+-------+------------+-----------+-------+
 |          Site Type          | Used | Fixed | Prohibited | Available | Util% |
 +-----------------------------+------+-------+------------+-----------+-------+
-| Bonded IOB                  |    8 |     0 |          0 |       200 |  4.00 |
+| Bonded IOB                  |   14 |     0 |          0 |       200 |  7.00 |
 | Bonded IPADs                |    0 |     0 |          0 |         2 |  0.00 |
 | Bonded IOPADs               |    0 |     0 |          0 |       130 |  0.00 |
 | PHY_CONTROL                 |    0 |     0 |          0 |         4 |  0.00 |
@@ -149,7 +149,7 @@ Warning! For any ECO changes, please run place_design if there are unplaced inst
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| OBUF     |    4 |                  IO |
+| OBUF     |   10 |                  IO |
 | IBUF     |    4 |                  IO |
 | OBUFT    |    1 |                  IO |
 +----------+------+---------------------+
@@ -165,9 +165,11 @@ Warning! For any ECO changes, please run place_design if there are unplaced inst
 | CPU_processing_system7_0_0 |    1 |
 | CPU_proc_sys_reset_0_0     |    1 |
 | CPU_gmii_to_rgmii_0_0      |    1 |
+| CPU_blk_mem_gen_1_0        |    1 |
 | CPU_blk_mem_gen_0_0        |    1 |
+| CPU_LCD_Controller_0_0     |    1 |
 | CPU_IO_Controller_0_0      |    1 |
-| CPU_ClockSplitter_0_0      |    1 |
+| CPU_ClockSplitter_1_0      |    1 |
 | CPU_ClockDivider_0_0       |    1 |
 | CPU_CPU_Module_0_1         |    1 |
 +----------------------------+------+

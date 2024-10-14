@@ -69,6 +69,7 @@ set_param synth.vivado.isSynthRun true
 set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
 set_property webtalk.parent_dir Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.cache/wt [current_project]
 set_property parent.project_path Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.xpr [current_project]
+set_property XPM_LIBRARIES XPM_MEMORY [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
 update_ip_catalog
@@ -77,7 +78,7 @@ set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_vhdl -library xil_defaultlib Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/new/clock_divide.vhd
-read_ip -quiet y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/bd/CPU/ip/CPU_ClockDivider_0_0/CPU_ClockDivider_0_0.xci
+read_ip -quiet Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/bd/CPU/ip/CPU_ClockDivider_0_0/CPU_ClockDivider_0_0.xci
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being

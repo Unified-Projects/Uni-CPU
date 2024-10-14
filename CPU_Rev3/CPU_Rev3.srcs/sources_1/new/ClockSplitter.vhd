@@ -5,6 +5,7 @@ use IEEE.NUMERIC_STD.ALL;
 entity ClockSplitter is
     Port ( clk : in STD_LOGIC;
            reset : in STD_LOGIC;
+           reset_through : out STD_LOGIC;
            clk_0 : out STD_LOGIC;
            clk_1 : out STD_LOGIC);
 end ClockSplitter;
@@ -12,6 +13,8 @@ end ClockSplitter;
 architecture Behavioral of ClockSplitter is
     signal counter : STD_LOGIC;
 begin
+    reset_through <= reset;
+
     process(clk, reset)
     begin
         if reset = '1' then

@@ -58,8 +58,8 @@ ENTITY CPU_IO_Controller_0_0 IS
     clk : IN STD_LOGIC;
     ena : IN STD_LOGIC;
     sel : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
-    data_in : IN STD_LOGIC;
-    data_out : OUT STD_LOGIC;
+    data_in : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
+    data_out : OUT STD_LOGIC_VECTOR(63 DOWNTO 0);
     reset : IN STD_LOGIC;
     led_0 : OUT STD_LOGIC;
     led_1 : OUT STD_LOGIC;
@@ -77,8 +77,8 @@ ARCHITECTURE CPU_IO_Controller_0_0_arch OF CPU_IO_Controller_0_0 IS
       clk : IN STD_LOGIC;
       ena : IN STD_LOGIC;
       sel : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
-      data_in : IN STD_LOGIC;
-      data_out : OUT STD_LOGIC;
+      data_in : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
+      data_out : OUT STD_LOGIC_VECTOR(63 DOWNTO 0);
       reset : IN STD_LOGIC;
       led_0 : OUT STD_LOGIC;
       led_1 : OUT STD_LOGIC;

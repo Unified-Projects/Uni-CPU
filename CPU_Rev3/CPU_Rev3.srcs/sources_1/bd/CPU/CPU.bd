@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0xEC5D5DA85C5A3E47",
+      "boundary_crc": "0xA0856B5D2C55AC67",
       "device": "xc7z020clg484-1",
       "gen_directory": "../../../../CPU_Rev3.gen/sources_1/bd/CPU",
       "name": "CPU",
@@ -16,9 +16,11 @@
       "util_vector_logic_0": "",
       "proc_sys_reset_0": "",
       "IO_Controller_0": "",
-      "ClockSplitter_0": "",
-      "ClockDivider_0": "",
-      "blk_mem_gen_0": "",
+      "CPU_Clock_Control": "",
+      "ram": "",
+      "LCD_Controller_0": "",
+      "framebuffer": "",
+      "ClockSplitter": "",
       "CPU_Module_0": ""
     },
     "interface_ports": {
@@ -281,6 +283,24 @@
         "direction": "I"
       },
       "led_1": {
+        "direction": "O"
+      },
+      "LCD_SCL": {
+        "direction": "O"
+      },
+      "LCD_SDA": {
+        "direction": "O"
+      },
+      "LCD_CS": {
+        "direction": "O"
+      },
+      "LCD_DC": {
+        "direction": "O"
+      },
+      "LCD_BLK": {
+        "direction": "O"
+      },
+      "LCD_RES": {
         "direction": "O"
       }
     },
@@ -1043,18 +1063,22 @@
             "right": "0"
           },
           "data_in": {
-            "direction": "I"
+            "direction": "I",
+            "left": "63",
+            "right": "0"
           },
           "data_out": {
-            "direction": "O"
+            "direction": "O",
+            "left": "63",
+            "right": "0"
           },
           "reset": {
             "type": "rst",
             "direction": "I",
             "parameters": {
               "POLARITY": {
-                "value": "ACTIVE_HIGH",
-                "value_src": "const_prop"
+                "value": "ACTIVE_LOW",
+                "value_src": "default_prop"
               }
             }
           },
@@ -1075,15 +1099,15 @@
           }
         }
       },
-      "ClockSplitter_0": {
-        "vlnv": "xilinx.com:module_ref:ClockSplitter:1.0",
+      "CPU_Clock_Control": {
+        "vlnv": "xilinx.com:module_ref:ClockDivider:1.0",
         "ip_revision": "1",
-        "xci_name": "CPU_ClockSplitter_0_0",
-        "xci_path": "ip\\CPU_ClockSplitter_0_0\\CPU_ClockSplitter_0_0.xci",
-        "inst_hier_path": "ClockSplitter_0",
+        "xci_name": "CPU_ClockDivider_0_0",
+        "xci_path": "ip\\CPU_ClockDivider_0_0\\CPU_ClockDivider_0_0.xci",
+        "inst_hier_path": "CPU_Clock_Control",
         "reference_info": {
           "ref_type": "hdl",
-          "ref_name": "ClockSplitter",
+          "ref_name": "ClockDivider",
           "boundary_crc": "0x0"
         },
         "ports": {
@@ -1094,10 +1118,6 @@
               "ASSOCIATED_RESET": {
                 "value": "reset",
                 "value_src": "constant"
-              },
-              "CLK_DOMAIN": {
-                "value": "CPU_processing_system7_0_0_FCLK_CLK0",
-                "value_src": "default_prop"
               }
             }
           },
@@ -1111,23 +1131,169 @@
               }
             }
           },
-          "clk_0": {
-            "direction": "O"
-          },
-          "clk_1": {
+          "clk_div": {
             "direction": "O"
           }
         }
       },
-      "ClockDivider_0": {
-        "vlnv": "xilinx.com:module_ref:ClockDivider:1.0",
+      "ram": {
+        "vlnv": "xilinx.com:ip:blk_mem_gen:8.4",
+        "ip_revision": "8",
+        "xci_name": "CPU_blk_mem_gen_0_0",
+        "xci_path": "ip\\CPU_blk_mem_gen_0_0\\CPU_blk_mem_gen_0_0.xci",
+        "inst_hier_path": "ram",
+        "parameters": {
+          "Byte_Size": {
+            "value": "8"
+          },
+          "Coe_File": {
+            "value": "../../../../../../../output.coe"
+          },
+          "Disable_Collision_Warnings": {
+            "value": "false"
+          },
+          "Enable_32bit_Address": {
+            "value": "false"
+          },
+          "Fill_Remaining_Memory_Locations": {
+            "value": "true"
+          },
+          "Load_Init_File": {
+            "value": "true"
+          },
+          "Use_Byte_Write_Enable": {
+            "value": "true"
+          },
+          "Write_Depth_A": {
+            "value": "65536"
+          },
+          "Write_Width_A": {
+            "value": "64"
+          },
+          "use_bram_block": {
+            "value": "Stand_Alone"
+          }
+        }
+      },
+      "LCD_Controller_0": {
+        "vlnv": "xilinx.com:module_ref:LCD_Controller:1.0",
         "ip_revision": "1",
-        "xci_name": "CPU_ClockDivider_0_0",
-        "xci_path": "ip\\CPU_ClockDivider_0_0\\CPU_ClockDivider_0_0.xci",
-        "inst_hier_path": "ClockDivider_0",
+        "xci_name": "CPU_LCD_Controller_0_0",
+        "xci_path": "ip\\CPU_LCD_Controller_0_0\\CPU_LCD_Controller_0_0.xci",
+        "inst_hier_path": "LCD_Controller_0",
         "reference_info": {
           "ref_type": "hdl",
-          "ref_name": "ClockDivider",
+          "ref_name": "LCD_Controller",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "reset": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "reset",
+                "value_src": "constant"
+              },
+              "FREQ_HZ": {
+                "value": "200000000",
+                "value_src": "user_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "CPU_processing_system7_0_0_FCLK_CLK0",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "scl": {
+            "direction": "O"
+          },
+          "sda": {
+            "direction": "O"
+          },
+          "cs": {
+            "direction": "O"
+          },
+          "dc": {
+            "direction": "O"
+          },
+          "blk": {
+            "direction": "O"
+          },
+          "res": {
+            "direction": "O"
+          },
+          "fb_we": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "fb_en": {
+            "direction": "O"
+          },
+          "fb_din": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "fb_dout": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "fb_addr": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          }
+        }
+      },
+      "framebuffer": {
+        "vlnv": "xilinx.com:ip:blk_mem_gen:8.4",
+        "ip_revision": "8",
+        "xci_name": "CPU_blk_mem_gen_1_0",
+        "xci_path": "ip\\CPU_blk_mem_gen_1_0\\CPU_blk_mem_gen_1_0.xci",
+        "inst_hier_path": "framebuffer",
+        "parameters": {
+          "Assume_Synchronous_Clk": {
+            "value": "true"
+          },
+          "Coe_File": {
+            "value": "../../../../../../../image.coe"
+          },
+          "Fill_Remaining_Memory_Locations": {
+            "value": "true"
+          },
+          "Load_Init_File": {
+            "value": "true"
+          },
+          "Memory_Type": {
+            "value": "True_Dual_Port_RAM"
+          },
+          "Use_Byte_Write_Enable": {
+            "value": "false"
+          },
+          "Write_Depth_A": {
+            "value": "55040"
+          },
+          "use_bram_block": {
+            "value": "Stand_Alone"
+          }
+        }
+      },
+      "ClockSplitter": {
+        "vlnv": "xilinx.com:module_ref:ClockSplitter:1.0",
+        "ip_revision": "1",
+        "xci_name": "CPU_ClockSplitter_1_0",
+        "xci_path": "ip\\CPU_ClockSplitter_1_0\\CPU_ClockSplitter_1_0.xci",
+        "inst_hier_path": "ClockSplitter",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "ClockSplitter",
           "boundary_crc": "0x0"
         },
         "ports": {
@@ -1151,55 +1317,17 @@
           },
           "reset": {
             "type": "rst",
-            "direction": "I",
-            "parameters": {
-              "POLARITY": {
-                "value": "ACTIVE_HIGH",
-                "value_src": "const_prop"
-              }
-            }
+            "direction": "I"
           },
-          "clk_div": {
+          "reset_through": {
+            "type": "rst",
             "direction": "O"
-          }
-        }
-      },
-      "blk_mem_gen_0": {
-        "vlnv": "xilinx.com:ip:blk_mem_gen:8.4",
-        "ip_revision": "8",
-        "xci_name": "CPU_blk_mem_gen_0_0",
-        "xci_path": "ip\\CPU_blk_mem_gen_0_0\\CPU_blk_mem_gen_0_0.xci",
-        "inst_hier_path": "blk_mem_gen_0",
-        "parameters": {
-          "Byte_Size": {
-            "value": "8"
           },
-          "Coe_File": {
-            "value": "../../../../../../../BRAM64.coe"
+          "clk_0": {
+            "direction": "O"
           },
-          "Disable_Collision_Warnings": {
-            "value": "false"
-          },
-          "Enable_32bit_Address": {
-            "value": "false"
-          },
-          "Fill_Remaining_Memory_Locations": {
-            "value": "true"
-          },
-          "Load_Init_File": {
-            "value": "true"
-          },
-          "Use_Byte_Write_Enable": {
-            "value": "true"
-          },
-          "Write_Depth_A": {
-            "value": "8192"
-          },
-          "Write_Width_A": {
-            "value": "64"
-          },
-          "use_bram_block": {
-            "value": "Stand_Alone"
+          "clk_1": {
+            "direction": "O"
           }
         }
       },
@@ -1227,13 +1355,7 @@
           },
           "reset": {
             "type": "rst",
-            "direction": "I",
-            "parameters": {
-              "POLARITY": {
-                "value": "ACTIVE_HIGH",
-                "value_src": "const_prop"
-              }
-            }
+            "direction": "I"
           },
           "interrupt": {
             "type": "intr",
@@ -1270,7 +1392,15 @@
           },
           "bram_addr": {
             "direction": "O",
-            "left": "12",
+            "left": "15",
+            "right": "0"
+          },
+          "framebuffer_en": {
+            "direction": "O"
+          },
+          "fb_din": {
+            "direction": "I",
+            "left": "15",
             "right": "0"
           },
           "IO_Enable": {
@@ -1280,10 +1410,14 @@
             "direction": "I"
           },
           "IO_In": {
-            "direction": "I"
+            "direction": "I",
+            "left": "63",
+            "right": "0"
           },
           "IO_Out": {
-            "direction": "O"
+            "direction": "O",
+            "left": "63",
+            "right": "0"
           },
           "IO_Select": {
             "direction": "O",
@@ -1338,6 +1472,12 @@
       }
     },
     "nets": {
+      "CPU_Clock_Control_clk_div": {
+        "ports": [
+          "CPU_Clock_Control/clk_div",
+          "CPU_Module_0/clk"
+        ]
+      },
       "CPU_Module_0_IO_Enable": {
         "ports": [
           "CPU_Module_0/IO_Enable",
@@ -1359,25 +1499,34 @@
       "CPU_Module_0_bram_addr": {
         "ports": [
           "CPU_Module_0/bram_addr",
-          "blk_mem_gen_0/addra"
+          "ram/addra",
+          "framebuffer/addra"
         ]
       },
       "CPU_Module_0_bram_dout": {
         "ports": [
           "CPU_Module_0/bram_dout",
-          "blk_mem_gen_0/dina"
+          "ram/dina",
+          "framebuffer/dina"
         ]
       },
       "CPU_Module_0_bram_en": {
         "ports": [
           "CPU_Module_0/bram_en",
-          "blk_mem_gen_0/ena"
+          "ram/ena"
         ]
       },
       "CPU_Module_0_bram_we": {
         "ports": [
           "CPU_Module_0/bram_we",
-          "blk_mem_gen_0/wea"
+          "ram/wea",
+          "framebuffer/wea"
+        ]
+      },
+      "CPU_Module_0_framebuffer_en": {
+        "ports": [
+          "CPU_Module_0/framebuffer_en",
+          "framebuffer/ena"
         ]
       },
       "CPU_Module_0_resetOut": {
@@ -1386,23 +1535,27 @@
           "proc_sys_reset_0/mb_debug_sys_rst"
         ]
       },
-      "ClockDivider_0_clk_div": {
-        "ports": [
-          "ClockDivider_0/clk_div",
-          "ClockSplitter_0/clk"
-        ]
-      },
-      "ClockSplitter_0_clk_0": {
-        "ports": [
-          "ClockSplitter_0/clk_0",
-          "CPU_Module_0/clk"
-        ]
-      },
       "ClockSplitter_0_clk_1": {
         "ports": [
-          "ClockSplitter_0/clk_1",
-          "blk_mem_gen_0/clka",
-          "IO_Controller_0/clk"
+          "ClockSplitter/clk_1",
+          "ram/clka",
+          "IO_Controller_0/clk",
+          "framebuffer/clka",
+          "framebuffer/clkb"
+        ]
+      },
+      "ClockSplitter_clk_0": {
+        "ports": [
+          "ClockSplitter/clk_0",
+          "CPU_Clock_Control/clk"
+        ]
+      },
+      "ClockSplitter_reset_through": {
+        "ports": [
+          "ClockSplitter/reset_through",
+          "IO_Controller_0/reset",
+          "CPU_Module_0/reset",
+          "LCD_Controller_0/reset"
         ]
       },
       "IO_Controller_0_data_out": {
@@ -1429,9 +1582,69 @@
           "led_1"
         ]
       },
+      "LCD_Controller_0_blk": {
+        "ports": [
+          "LCD_Controller_0/blk",
+          "LCD_BLK"
+        ]
+      },
+      "LCD_Controller_0_cs": {
+        "ports": [
+          "LCD_Controller_0/cs",
+          "LCD_CS"
+        ]
+      },
+      "LCD_Controller_0_dc": {
+        "ports": [
+          "LCD_Controller_0/dc",
+          "LCD_DC"
+        ]
+      },
+      "LCD_Controller_0_fb_addr": {
+        "ports": [
+          "LCD_Controller_0/fb_addr",
+          "framebuffer/addrb"
+        ]
+      },
+      "LCD_Controller_0_fb_dout": {
+        "ports": [
+          "LCD_Controller_0/fb_dout",
+          "framebuffer/dinb"
+        ]
+      },
+      "LCD_Controller_0_fb_en": {
+        "ports": [
+          "LCD_Controller_0/fb_en",
+          "framebuffer/enb"
+        ]
+      },
+      "LCD_Controller_0_fb_we": {
+        "ports": [
+          "LCD_Controller_0/fb_we",
+          "framebuffer/web"
+        ]
+      },
+      "LCD_Controller_0_res": {
+        "ports": [
+          "LCD_Controller_0/res",
+          "LCD_RES"
+        ]
+      },
+      "LCD_Controller_0_scl": {
+        "ports": [
+          "LCD_Controller_0/scl",
+          "LCD_SCL"
+        ]
+      },
+      "LCD_Controller_0_sda": {
+        "ports": [
+          "LCD_Controller_0/sda",
+          "LCD_SDA"
+        ]
+      },
       "blk_mem_gen_0_douta": {
         "ports": [
-          "blk_mem_gen_0/douta",
+          "ram/douta",
           "CPU_Module_0/bram_din"
         ]
       },
@@ -1447,13 +1660,22 @@
           "IO_Controller_0/btn_1"
         ]
       },
+      "framebuffer_douta": {
+        "ports": [
+          "framebuffer/douta",
+          "CPU_Module_0/fb_din"
+        ]
+      },
+      "framebuffer_doutb": {
+        "ports": [
+          "framebuffer/doutb",
+          "LCD_Controller_0/fb_din"
+        ]
+      },
       "proc_sys_reset_0_mb_reset": {
         "ports": [
           "proc_sys_reset_0/mb_reset",
-          "ClockSplitter_0/reset",
-          "ClockDivider_0/reset",
-          "IO_Controller_0/reset",
-          "CPU_Module_0/reset"
+          "CPU_Clock_Control/reset"
         ]
       },
       "processing_system7_0_FCLK_CLK0": {
@@ -1461,7 +1683,8 @@
           "processing_system7_0/FCLK_CLK0",
           "proc_sys_reset_0/slowest_sync_clk",
           "gmii_to_rgmii_0/clkin",
-          "ClockDivider_0/clk"
+          "ClockSplitter/clk",
+          "LCD_Controller_0/clk"
         ]
       },
       "processing_system7_0_FCLK_RESET0_N": {

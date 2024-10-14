@@ -21,14 +21,20 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==CPU_proc_sy
 # IP: bd/CPU/ip/CPU_IO_Controller_0_0/CPU_IO_Controller_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==CPU_IO_Controller_0_0 || ORIG_REF_NAME==CPU_IO_Controller_0_0} -quiet] -quiet
 
-# IP: bd/CPU/ip/CPU_ClockSplitter_0_0/CPU_ClockSplitter_0_0.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==CPU_ClockSplitter_0_0 || ORIG_REF_NAME==CPU_ClockSplitter_0_0} -quiet] -quiet
-
 # IP: bd/CPU/ip/CPU_ClockDivider_0_0/CPU_ClockDivider_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==CPU_ClockDivider_0_0 || ORIG_REF_NAME==CPU_ClockDivider_0_0} -quiet] -quiet
 
 # IP: bd/CPU/ip/CPU_blk_mem_gen_0_0/CPU_blk_mem_gen_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==CPU_blk_mem_gen_0_0 || ORIG_REF_NAME==CPU_blk_mem_gen_0_0} -quiet] -quiet
+
+# IP: bd/CPU/ip/CPU_LCD_Controller_0_0/CPU_LCD_Controller_0_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==CPU_LCD_Controller_0_0 || ORIG_REF_NAME==CPU_LCD_Controller_0_0} -quiet] -quiet
+
+# IP: bd/CPU/ip/CPU_blk_mem_gen_1_0/CPU_blk_mem_gen_1_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==CPU_blk_mem_gen_1_0 || ORIG_REF_NAME==CPU_blk_mem_gen_1_0} -quiet] -quiet
+
+# IP: bd/CPU/ip/CPU_ClockSplitter_1_0/CPU_ClockSplitter_1_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==CPU_ClockSplitter_1_0 || ORIG_REF_NAME==CPU_ClockSplitter_1_0} -quiet] -quiet
 
 # IP: bd/CPU/ip/CPU_CPU_Module_0_1/CPU_CPU_Module_0_1.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==CPU_CPU_Module_0_1 || ORIG_REF_NAME==CPU_CPU_Module_0_1} -quiet] -quiet

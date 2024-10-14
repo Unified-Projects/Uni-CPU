@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7z020clg484-1" LaunchTime="1728668837">
+<GenRun Id="impl_1" LaunchPart="xc7z020clg484-1" LaunchTime="1728752022">
   <File Type="ROUTE-PWR" Name="CPU_wrapper_power_routed.rpt"/>
   <File Type="PA-TCL" Name="CPU_wrapper.tcl"/>
   <File Type="ROUTE-PWR-SUM" Name="CPU_wrapper_power_summary_routed.pb"/>
@@ -92,13 +92,19 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/ClockSplitter.vhd">
+    <File Path="$PSRCDIR/sources_1/new/clock_divide.vhd">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/clock_divide.vhd">
+    <File Path="$PSRCDIR/sources_1/new/LCD_Controller.vhd">
+      <FileInfo SFType="VHDL2019">
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/ClockSplitter.vhd">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -138,6 +144,18 @@
       </FileInfo>
     </File>
     <File Path="$PPRDIR/../BRAM64.coe">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../output.coe">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../image.coe">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -192,8 +210,9 @@
   <BlockFileSet Type="BlockSrcs" Name="CPU_processing_system7_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="CPU_util_vector_logic_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="CPU_IO_Controller_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="CPU_ClockSplitter_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="CPU_gmii_to_rgmii_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="CPU_LCD_Controller_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="CPU_ClockSplitter_1_0"/>
   <BlockFileSet Type="BlockSrcs" Name="CPU_ClockDivider_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="CPU_blk_mem_gen_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="CPU_blk_mem_gen_1_0"/>
 </GenRun>

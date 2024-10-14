@@ -8,12 +8,12 @@
   **** SW Build 5164865 on Thu Sep  5 14:37:11 MDT 2024
   **** IP Build 5164407 on Fri Sep  6 08:18:11 MDT 2024
   **** SharedData Build 5164864 on Thu Sep 05 13:09:09 MDT 2024
-  **** Start of session at: Fri Oct 11 18:44:51 2024
+  **** Start of session at: Sat Oct 12 17:48:02 2024
     ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
     ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 
 source CPU_CPU_Module_0_1.tcl -notrace
-create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 533.824 ; gain = 141.551
+create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 533.770 ; gain = 137.332
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2024.1/data/ip'.
@@ -25,73 +25,90 @@ INFO: [Device 21-403] Loading part xc7z020clg484-1
 INFO: [Device 21-9227] Part: xc7z020clg484-1 does not have CEAM library.
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 2672
+INFO: [Synth 8-7075] Helper process launched with PID 5720
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1425.121 ; gain = 447.750
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1423.621 ; gain = 446.434
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-638] synthesizing module 'CPU_CPU_Module_0_1' [y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_CPU_Module_0_1/synth/CPU_CPU_Module_0_1.vhd:75]
-INFO: [Synth 8-3491] module 'CPU_Module' declared at 'Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/new/CPU_MODULE.vhd:8' bound to instance 'U0' of component 'CPU_Module' [y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_CPU_Module_0_1/synth/CPU_CPU_Module_0_1.vhd:113]
-INFO: [Synth 8-638] synthesizing module 'CPU_Module' [Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/new/CPU_MODULE.vhd:39]
-INFO: [Synth 8-226] default block is never used [Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/new/CPU_MODULE.vhd:512]
-INFO: [Synth 8-226] default block is never used [Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/new/CPU_MODULE.vhd:542]
-INFO: [Synth 8-226] default block is never used [Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/new/CPU_MODULE.vhd:613]
-INFO: [Synth 8-226] default block is never used [Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/new/CPU_MODULE.vhd:680]
-INFO: [Synth 8-226] default block is never used [Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/new/CPU_MODULE.vhd:719]
-INFO: [Synth 8-226] default block is never used [Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/new/CPU_MODULE.vhd:742]
-INFO: [Synth 8-226] default block is never used [Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/new/CPU_MODULE.vhd:805]
-INFO: [Synth 8-226] default block is never used [Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/new/CPU_MODULE.vhd:835]
-INFO: [Synth 8-226] default block is never used [Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/new/CPU_MODULE.vhd:902]
-INFO: [Synth 8-226] default block is never used [Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/new/CPU_MODULE.vhd:942]
-INFO: [Synth 8-226] default block is never used [Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/new/CPU_MODULE.vhd:1095]
-INFO: [Synth 8-226] default block is never used [Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/new/CPU_MODULE.vhd:1482]
-INFO: [Synth 8-256] done synthesizing module 'CPU_Module' (0#1) [Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/new/CPU_MODULE.vhd:39]
-INFO: [Synth 8-256] done synthesizing module 'CPU_CPU_Module_0_1' (0#1) [y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_CPU_Module_0_1/synth/CPU_CPU_Module_0_1.vhd:75]
+INFO: [Synth 8-638] synthesizing module 'CPU_CPU_Module_0_1' [y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_CPU_Module_0_1/synth/CPU_CPU_Module_0_1.vhd:77]
+INFO: [Synth 8-3491] module 'CPU_Module' declared at 'Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/new/CPU_MODULE.vhd:8' bound to instance 'U0' of component 'CPU_Module' [y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_CPU_Module_0_1/synth/CPU_CPU_Module_0_1.vhd:117]
+INFO: [Synth 8-638] synthesizing module 'CPU_Module' [Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/new/CPU_MODULE.vhd:42]
+INFO: [Synth 8-226] default block is never used [Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/new/CPU_MODULE.vhd:516]
+INFO: [Synth 8-226] default block is never used [Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/new/CPU_MODULE.vhd:546]
+INFO: [Synth 8-226] default block is never used [Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/new/CPU_MODULE.vhd:617]
+INFO: [Synth 8-226] default block is never used [Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/new/CPU_MODULE.vhd:687]
+INFO: [Synth 8-226] default block is never used [Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/new/CPU_MODULE.vhd:726]
+INFO: [Synth 8-226] default block is never used [Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/new/CPU_MODULE.vhd:749]
+INFO: [Synth 8-226] default block is never used [Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/new/CPU_MODULE.vhd:812]
+INFO: [Synth 8-226] default block is never used [Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/new/CPU_MODULE.vhd:842]
+INFO: [Synth 8-226] default block is never used [Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/new/CPU_MODULE.vhd:909]
+INFO: [Synth 8-226] default block is never used [Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/new/CPU_MODULE.vhd:949]
+INFO: [Synth 8-226] default block is never used [Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/new/CPU_MODULE.vhd:1135]
+INFO: [Synth 8-226] default block is never used [Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/new/CPU_MODULE.vhd:1571]
+INFO: [Synth 8-256] done synthesizing module 'CPU_Module' (0#1) [Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/new/CPU_MODULE.vhd:42]
+INFO: [Synth 8-256] done synthesizing module 'CPU_CPU_Module_0_1' (0#1) [y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_CPU_Module_0_1/synth/CPU_CPU_Module_0_1.vhd:77]
 WARNING: [Synth 8-3848] Net resetOut in module/entity CPU_Module does not have driver. [Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/new/CPU_MODULE.vhd:15]
+WARNING: [Synth 8-3848] Net framebuffer_en in module/entity CPU_Module does not have driver. [Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/new/CPU_MODULE.vhd:31]
 WARNING: [Synth 8-7129] Port resetOut in module CPU_Module is either unconnected or has no load
-WARNING: [Synth 8-7129] Port IO_In in module CPU_Module is either unconnected or has no load
+WARNING: [Synth 8-7129] Port framebuffer_en in module CPU_Module is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[15] in module CPU_Module is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[14] in module CPU_Module is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[13] in module CPU_Module is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[12] in module CPU_Module is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[11] in module CPU_Module is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[10] in module CPU_Module is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[9] in module CPU_Module is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[8] in module CPU_Module is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[7] in module CPU_Module is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[6] in module CPU_Module is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[5] in module CPU_Module is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[4] in module CPU_Module is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[3] in module CPU_Module is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[2] in module CPU_Module is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[1] in module CPU_Module is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[0] in module CPU_Module is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1595.027 ; gain = 617.656
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 1601.340 ; gain = 624.152
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1595.027 ; gain = 617.656
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 1601.340 ; gain = 624.152
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1595.027 ; gain = 617.656
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 1601.340 ; gain = 624.152
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.118 . Memory (MB): peak = 1595.027 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.150 . Memory (MB): peak = 1601.340 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1701.207 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1699.438 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.086 . Memory (MB): peak = 1708.949 ; gain = 7.742
+Constraint Validation Runtime : Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.076 . Memory (MB): peak = 1704.406 ; gain = 4.969
 INFO: [Designutils 20-5008] Incremental synthesis strategy off
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1708.949 ; gain = 731.578
+Finished Constraint Validation : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1704.406 ; gain = 727.219
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z020clg484-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1708.949 ; gain = 731.578
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1704.406 ; gain = 727.219
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1708.949 ; gain = 731.578
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1704.406 ; gain = 727.219
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1708.949 ; gain = 731.578
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 1704.406 ; gain = 727.219
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -99,16 +116,15 @@ Start RTL Component Statistics
 Detailed RTL Component Info : 
 +---Adders : 
 	   4 Input  128 Bit       Adders := 1     
-	   2 Input   64 Bit       Adders := 10    
-	   3 Input   64 Bit       Adders := 1     
-	   2 Input   13 Bit       Adders := 1     
+	   2 Input   64 Bit       Adders := 13    
+	   3 Input   64 Bit       Adders := 2     
+	   2 Input   16 Bit       Adders := 1     
 	   2 Input    4 Bit       Adders := 1     
 +---XORs : 
 	   2 Input     64 Bit         XORs := 1     
 +---Registers : 
-	               64 Bit    Registers := 25    
-	               16 Bit    Registers := 1     
-	               13 Bit    Registers := 2     
+	               64 Bit    Registers := 26    
+	               16 Bit    Registers := 3     
 	                8 Bit    Registers := 1     
 	                5 Bit    Registers := 4     
 	                4 Bit    Registers := 2     
@@ -118,53 +134,53 @@ Detailed RTL Component Info :
 	  18 Input   64 Bit        Muxes := 19    
 	   2 Input   64 Bit        Muxes := 54    
 	   4 Input   64 Bit        Muxes := 9     
+	  14 Input   64 Bit        Muxes := 6     
+	   3 Input   64 Bit        Muxes := 3     
 	   8 Input   64 Bit        Muxes := 1     
 	   7 Input   64 Bit        Muxes := 4     
-	  14 Input   64 Bit        Muxes := 6     
-	  21 Input   64 Bit        Muxes := 1     
 	   5 Input   64 Bit        Muxes := 2     
-	   3 Input   64 Bit        Muxes := 2     
+	  27 Input   64 Bit        Muxes := 1     
 	   4 Input   56 Bit        Muxes := 2     
 	   2 Input   56 Bit        Muxes := 1     
 	   4 Input   48 Bit        Muxes := 2     
 	   2 Input   48 Bit        Muxes := 1     
-	   2 Input   32 Bit        Muxes := 80    
 	   4 Input   32 Bit        Muxes := 22    
-	   2 Input   16 Bit        Muxes := 79    
-	   4 Input   16 Bit        Muxes := 20    
-	   2 Input   13 Bit        Muxes := 2     
-	   4 Input   13 Bit        Muxes := 2     
+	   2 Input   32 Bit        Muxes := 80    
+	   2 Input   16 Bit        Muxes := 81    
+	   4 Input   16 Bit        Muxes := 22    
 	   2 Input    8 Bit        Muxes := 80    
 	   4 Input    8 Bit        Muxes := 21    
 	  18 Input    8 Bit        Muxes := 1     
 	   8 Input    8 Bit        Muxes := 1     
+	  18 Input    5 Bit        Muxes := 1     
 	   2 Input    5 Bit        Muxes := 14    
-	  21 Input    5 Bit        Muxes := 2     
+	  27 Input    5 Bit        Muxes := 1     
 	   4 Input    5 Bit        Muxes := 13    
 	   3 Input    5 Bit        Muxes := 1     
 	   7 Input    5 Bit        Muxes := 1     
 	   5 Input    5 Bit        Muxes := 2     
 	  14 Input    5 Bit        Muxes := 2     
-	   2 Input    4 Bit        Muxes := 6     
+	   2 Input    4 Bit        Muxes := 7     
 	   4 Input    4 Bit        Muxes := 4     
+	  27 Input    4 Bit        Muxes := 1     
 	   5 Input    4 Bit        Muxes := 1     
 	   2 Input    3 Bit        Muxes := 1     
 	   7 Input    3 Bit        Muxes := 1     
 	   5 Input    3 Bit        Muxes := 1     
 	   4 Input    3 Bit        Muxes := 1     
 	   3 Input    3 Bit        Muxes := 1     
+	   3 Input    2 Bit        Muxes := 2     
 	   2 Input    2 Bit        Muxes := 3     
 	   4 Input    2 Bit        Muxes := 2     
-	   3 Input    2 Bit        Muxes := 2     
-	   2 Input    1 Bit        Muxes := 164   
-	   4 Input    1 Bit        Muxes := 93    
-	   7 Input    1 Bit        Muxes := 7     
 	   3 Input    1 Bit        Muxes := 8     
+	   4 Input    1 Bit        Muxes := 94    
 	   5 Input    1 Bit        Muxes := 5     
+	   2 Input    1 Bit        Muxes := 171   
 	  14 Input    1 Bit        Muxes := 5     
-	  21 Input    1 Bit        Muxes := 2     
-	  18 Input    1 Bit        Muxes := 10    
+	   7 Input    1 Bit        Muxes := 7     
 	   8 Input    1 Bit        Muxes := 2     
+	  27 Input    1 Bit        Muxes := 6     
+	  18 Input    1 Bit        Muxes := 7     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -230,9 +246,25 @@ DSP Report: Generating DSP ARG, operation Mode is: (PCIN>>17)+A*B.
 DSP Report: operator ARG is absorbed into DSP ARG.
 DSP Report: operator ARG is absorbed into DSP ARG.
 WARNING: [Synth 8-7129] Port resetOut in module CPU_CPU_Module_0_1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port IO_In in module CPU_CPU_Module_0_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port framebuffer_en in module CPU_CPU_Module_0_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[15] in module CPU_CPU_Module_0_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[14] in module CPU_CPU_Module_0_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[13] in module CPU_CPU_Module_0_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[12] in module CPU_CPU_Module_0_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[11] in module CPU_CPU_Module_0_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[10] in module CPU_CPU_Module_0_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[9] in module CPU_CPU_Module_0_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[8] in module CPU_CPU_Module_0_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[7] in module CPU_CPU_Module_0_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[6] in module CPU_CPU_Module_0_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[5] in module CPU_CPU_Module_0_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[4] in module CPU_CPU_Module_0_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[3] in module CPU_CPU_Module_0_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[2] in module CPU_CPU_Module_0_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[1] in module CPU_CPU_Module_0_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fb_din[0] in module CPU_CPU_Module_0_1 is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:45 ; elapsed = 00:00:48 . Memory (MB): peak = 1719.648 ; gain = 742.277
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:52 ; elapsed = 00:00:54 . Memory (MB): peak = 1792.254 ; gain = 815.066
 ---------------------------------------------------------------------------------
  Sort Area is CPU_Module__GB1 ARG_0 : 0 0 : 2701 10833 : Used 1 time 0
  Sort Area is CPU_Module__GB1 ARG_0 : 0 1 : 2710 10833 : Used 1 time 0
@@ -284,19 +316,19 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:51 ; elapsed = 00:00:54 . Memory (MB): peak = 1719.648 ; gain = 742.277
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:58 ; elapsed = 00:01:00 . Memory (MB): peak = 1792.254 ; gain = 815.066
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:51 ; elapsed = 00:00:54 . Memory (MB): peak = 1719.648 ; gain = 742.277
+Finished Timing Optimization : Time (s): cpu = 00:00:58 ; elapsed = 00:01:00 . Memory (MB): peak = 1792.254 ; gain = 815.066
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:53 ; elapsed = 00:00:55 . Memory (MB): peak = 1719.648 ; gain = 742.277
+Finished Technology Mapping : Time (s): cpu = 00:01:00 ; elapsed = 00:01:02 . Memory (MB): peak = 1792.254 ; gain = 815.066
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -314,37 +346,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:56 ; elapsed = 00:00:59 . Memory (MB): peak = 1719.648 ; gain = 742.277
+Finished IO Insertion : Time (s): cpu = 00:01:03 ; elapsed = 00:01:05 . Memory (MB): peak = 1792.254 ; gain = 815.066
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:56 ; elapsed = 00:00:59 . Memory (MB): peak = 1719.648 ; gain = 742.277
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:03 ; elapsed = 00:01:05 . Memory (MB): peak = 1792.254 ; gain = 815.066
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:57 ; elapsed = 00:00:59 . Memory (MB): peak = 1719.648 ; gain = 742.277
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:03 ; elapsed = 00:01:05 . Memory (MB): peak = 1792.254 ; gain = 815.066
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:57 ; elapsed = 00:00:59 . Memory (MB): peak = 1719.648 ; gain = 742.277
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:03 ; elapsed = 00:01:05 . Memory (MB): peak = 1792.254 ; gain = 815.066
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:57 ; elapsed = 00:01:00 . Memory (MB): peak = 1719.648 ; gain = 742.277
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:04 ; elapsed = 00:01:06 . Memory (MB): peak = 1792.254 ; gain = 815.066
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:57 ; elapsed = 00:01:00 . Memory (MB): peak = 1719.648 ; gain = 742.277
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:04 ; elapsed = 00:01:06 . Memory (MB): peak = 1792.254 ; gain = 815.066
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -383,42 +415,42 @@ Report Cell Usage:
 +------+--------+------+
 |      |Cell    |Count |
 +------+--------+------+
-|1     |CARRY4  |  1380|
+|1     |CARRY4  |  1445|
 |2     |DSP48E1 |    16|
-|3     |LUT1    |   320|
-|4     |LUT2    |   378|
-|5     |LUT3    |   590|
-|6     |LUT4    |   864|
-|7     |LUT5    |  5677|
-|8     |LUT6    |  3987|
-|9     |MUXF7   |   714|
-|10    |FDCE    |  1721|
-|11    |FDRE    |   147|
+|3     |LUT1    |   386|
+|4     |LUT2    |   570|
+|5     |LUT3    |   777|
+|6     |LUT4    |   969|
+|7     |LUT5    |  5277|
+|8     |LUT6    |  4292|
+|9     |MUXF7   |   534|
+|10    |MUXF8   |    16|
+|11    |FDCE    |  1731|
+|12    |FDRE    |   219|
 +------+--------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:57 ; elapsed = 00:01:00 . Memory (MB): peak = 1719.648 ; gain = 742.277
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:04 ; elapsed = 00:01:06 . Memory (MB): peak = 1792.254 ; gain = 815.066
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 3 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:51 ; elapsed = 00:00:58 . Memory (MB): peak = 1719.648 ; gain = 628.355
-Synthesis Optimization Complete : Time (s): cpu = 00:00:58 ; elapsed = 00:01:00 . Memory (MB): peak = 1719.648 ; gain = 742.277
+Synthesis finished with 0 errors, 0 critical warnings and 19 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:55 ; elapsed = 00:01:04 . Memory (MB): peak = 1792.254 ; gain = 712.000
+Synthesis Optimization Complete : Time (s): cpu = 00:01:04 ; elapsed = 00:01:06 . Memory (MB): peak = 1792.254 ; gain = 815.066
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.137 . Memory (MB): peak = 1719.648 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 2110 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.098 . Memory (MB): peak = 1792.254 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 2011 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 WARNING: [Netlist 29-101] Netlist 'CPU_CPU_Module_0_1' is not ideal for floorplanning, since the cellview 'CPU_Module' contains a large number of primitives.  Please consider enabling hierarchy in synthesis if you want to do floorplanning.
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1719.648 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1792.254 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Synth Design complete | Checksum: c077a0d3
+Synth Design complete | Checksum: 900a7ecf
 INFO: [Common 17-83] Releasing license: Synthesis
-36 Infos, 7 Warnings, 0 Critical Warnings and 0 Errors encountered.
+36 Infos, 40 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:04 ; elapsed = 00:01:07 . Memory (MB): peak = 1719.648 ; gain = 1171.672
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.035 . Memory (MB): peak = 1719.648 ; gain = 0.000
+synth_design: Time (s): cpu = 00:01:09 ; elapsed = 00:01:12 . Memory (MB): peak = 1792.254 ; gain = 1243.641
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.041 . Memory (MB): peak = 1792.254 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.runs/CPU_CPU_Module_0_1_synth_1/CPU_CPU_Module_0_1.dcp' has been generated.
 INFO: [Vivado 12-24828] Executing command : report_utilization -file CPU_CPU_Module_0_1_utilization_synth.rpt -pb CPU_CPU_Module_0_1_utilization_synth.pb
-write_verilog: Time (s): cpu = 00:00:00 ; elapsed = 00:00:07 . Memory (MB): peak = 1719.648 ; gain = 0.000
-INFO: [Common 17-206] Exiting Vivado at Fri Oct 11 18:46:15 2024...
+INFO: [Common 17-206] Exiting Vivado at Sat Oct 12 17:49:25 2024...

@@ -26,12 +26,15 @@ entity CPU_Module is
         bram_en : out std_logic;
         bram_din : in std_logic_vector(63 downto 0);
         bram_dout : out std_logic_vector(63 downto 0);
-        bram_addr : out std_logic_vector(12 downto 0);
+        bram_addr : out std_logic_vector(15 downto 0);
         
+        framebuffer_en : out std_logic;
+        fb_din : in std_logic_vector(15 downto 0);
+
         IO_Enable : out std_logic;
         IO_DONE : in std_logic;
-        IO_In : in std_logic;
-        IO_Out : out std_logic;
+        IO_In : in std_logic_vector(63 downto 0);
+        IO_Out : out std_logic_vector(63 downto 0);
         IO_Select : out std_logic_vector(4 downto 0)
     );
 end CPU_Module;
@@ -60,9 +63,9 @@ architecture Behavioral of CPU_Module is
     signal CIR : STD_LOGIC_VECTOR(15 downto 0) := (others => '0');
     
     signal IO_Enable_Buffer : STD_LOGIC;
-    signal IO_Out_Buffer : STD_LOGIC;
+    signal IO_Out_Buffer : STD_LOGIC_VECTOR(63 downto 0);
 
-    signal DivisionRegister : STD_LOGIC_VECTOR(128 downto 0);
+    signal DivisionRegister : STD_LOGIC_VECTOR(8 downto 0);
     
     function reverse_bytes(data_in: std_logic_vector(63 downto 0)) return std_logic_vector is
         variable data_out: std_logic_vector(63 downto 0);
@@ -99,7 +102,7 @@ begin
     -- Main control process
     process(clk, reset)
         -- Variable declarations
-        variable aligned_address : std_logic_vector(12 downto 0);
+        variable aligned_address : std_logic_vector(15 downto 0);
         variable alignedDDR_address : std_logic_vector(31 downto 0);
         variable byte_offset     : std_logic_vector(2 downto 0); -- 3-bit offset within 64-bit word
         variable byteDDR_offset     : std_logic_vector(1 downto 0); -- 2-bit offset within 32-bit word
@@ -153,19 +156,20 @@ begin
                                 IO_Enable_Buffer <= '0';
                             end if;
                         else 
-                            if IO_Out_Buffer = '1' then
-                                IO_Out <= '0';
-                                IO_Out_Buffer <= '0';
+                            if IO_Out_Buffer = "0000000000000000000000000000000000000000000000000000000000000001" then
+                                IO_Out <= "0000000000000000000000000000000000000000000000000000000000000000";
+                                IO_Out_Buffer <= "0000000000000000000000000000000000000000000000000000000000000000";
                                 IO_Enable <= '1';
                                 IO_Enable_Buffer <= '1';
                             else
-                                if Argument1 = "000000000000000000000000000000000000000000000000000000000000000" then
+                                if Argument1 = "0000000000000000000000000000000000000000000000000000000000000000" then
                                     state <= nextState;
+                                    cycle_count <= 2; -- Build delay into Debugger
                                 else
                                     Argument1 <= Argument1 - 1;
                                     IO_Select <= "00010"; -- SELECT LED_0
-                                    IO_Out <= '1';
-                                    IO_Out_Buffer <= '1';
+                                    IO_Out <= "0000000000000000000000000000000000000000000000000000000000000001";
+                                    IO_Out_Buffer <= "0000000000000000000000000000000000000000000000000000000000000001";
                                     IO_Enable <= '1';
                                 end if;
                             end if;
@@ -190,7 +194,7 @@ begin
                         case stateIndex is
                             when 0 =>
                                 -- Calculate the aligned address and byte offset within the 64-bit block
-                                aligned_address := Argument1(15 downto 3);
+                                aligned_address := Argument1(18 downto 3);
                                 byte_offset := Argument1(2 downto 0); -- Extract the 3 LSBs for the offset
                                 
                                 -- Initiate read from the aligned address
@@ -264,7 +268,7 @@ begin
                                 write_data := reverse_bytes(Argument2);
                             
                                 -- Calculate the aligned address and byte offset within the 64-bit block
-                                aligned_address := Argument1(15 downto 3);
+                                aligned_address := Argument1(18 downto 3);
                                 byte_offset := Argument1(2 downto 0); -- Extract the 3 LSBs for the offset
                                 
                                 -- Read the first 64-bit block at the aligned address to modify it with the incoming data
@@ -592,7 +596,7 @@ begin
                                         -- REG
                                         Registers(14) <= Registers(14) + 1;
                                         
-                                        Argument3 <= Registers(to_integer(unsigned(Result(20 downto 16))));
+                                        Argument3 <= "00000000000000000000000000000000000000000000000000000000000" & Result(20 downto 16);
                                         stateIndexMain <= 3;
                                     
                                     when "11" =>
@@ -600,7 +604,7 @@ begin
                                         Registers(14) <= Registers(14) + 1;
                                             
                                         Argument3 <= Registers(to_integer(unsigned(Result(20 downto 16))));
-                                        stateIndexMain <= 2;
+                                        stateIndexMain <= 1;
 
                                     when others=>
                                         Argument1 <= Registers(14);
@@ -623,11 +627,14 @@ begin
                                         
                                     when "10" =>
                                         -- IMM
-                                        -- Thow Error
-                                        
+                                        Registers(14) <= Registers(14) + 8;
+                                        Argument3 <= Result;
+                                        stateIndexMain <= 3;
+
                                     when "11" =>
                                         -- RDI
-                                        -- THROW ERR
+                                        Argument3 <= Result;
+                                        stateIndexMain <= 3;
                                         
                                                                                     
                                     when others =>
@@ -995,7 +1002,10 @@ begin
                         case CIR(15 downto 6) is
                             when "0000000001" =>
                                 -- HALT Instruction
-                                state <= HALT;
+                                -- state <= HALT;
+                                Argument1 <= "0000000000000000000000000000000000000000000000000000000000000010";
+                                state <= DEBUG_LED;
+                                nextState <= HALT;
                                 
                             when "0000000010" =>
                                 -- MOV Instruction
@@ -1083,6 +1093,36 @@ begin
                             when "0000010100" =>
                                 -- XOR Instruction
                                 state <= GET_3_ARG;
+                                nextNextState <= EXEC;
+
+                            when "0000010101" =>
+                                -- INCR Instruction
+                                state <= GET_1_ALT;
+                                nextNextState <= EXEC;
+                                
+                            when "0000010110" =>
+                                -- DECR Instruction
+                                state <= GET_1_ALT;
+                                nextNextState <= EXEC;
+                                
+                            when "0000010111" =>
+                                -- INC Instruction
+                                state <= GET_2_ARG;
+                                nextNextState <= EXEC;
+                                
+                            when "0000011000" =>
+                                -- DEC Instruction
+                                state <= GET_2_ARG;
+                                nextNextState <= EXEC;
+
+                            when "0000011001" =>
+                                -- IOW Instruction
+                                state <= GET_2_ARG;
+                                nextNextState <= EXEC;
+
+                            when "0000011010" =>
+                                -- IOR Instruction
+                                state <= GET_2_ARG;
                                 nextNextState <= EXEC;
                             
                             when others =>
@@ -1465,6 +1505,55 @@ begin
                                     when others =>
                                 end case;
                                 
+                            when "0000010101" =>
+                                -- INC Instruction
+                                Registers(to_integer(unsigned(Argument3(4 downto 0)))) <= std_logic_vector(signed(Registers(to_integer(unsigned(Argument3(4 downto 0))))) + 1);
+                                state <= IDLE;
+                                
+                                when "0000010110" =>
+                                -- DEC Instruction
+                                Registers(to_integer(unsigned(Argument3(4 downto 0)))) <= std_logic_vector(signed(Registers(to_integer(unsigned(Argument3(4 downto 0))))) - 1);
+                                state <= IDLE;
+                                
+                                when "0000010111" =>
+                                -- INCR Instruction
+                                Registers(to_integer(unsigned(Argument3(4 downto 0)))) <= std_logic_vector(signed(Registers(to_integer(unsigned(Argument3(4 downto 0))))) + signed(Argument2));
+                                state <= IDLE;
+                                
+                                when "0000011000" =>
+                                -- DECR Instruction
+                                Registers(to_integer(unsigned(Argument3(4 downto 0)))) <= std_logic_vector(signed(Registers(to_integer(unsigned(Argument3(4 downto 0))))) - signed(Argument2));
+                                state <= IDLE;
+                            
+                            when "0000011001" =>
+                                -- IOW
+                                if IO_Enable_Buffer = '1' then
+                                    if IO_DONE = '1' then
+                                        IO_Enable <= '0';
+                                        IO_Enable_Buffer <= '0';
+                                        state <= IDLE;
+                                    end if;
+                                else 
+                                    IO_Select <= Argument3(4 downto 0);
+                                    IO_Out <= Argument2;
+                                    IO_Enable <= '1';
+                                    IO_Enable_Buffer <= '1';
+                                end if;
+                                
+                            when "0000011010" =>
+                                -- IOR
+                                if IO_Enable_Buffer = '1' then
+                                    if IO_DONE = '1' then
+                                        IO_Enable <= '0';
+                                        IO_Enable_Buffer <= '0';
+                                        Registers(to_integer(unsigned(Argument3(4 downto 0)))) <= IO_In;
+                                        state <= IDLE;
+                                    end if;
+                                else 
+                                    IO_Select <= Argument2(4 downto 0);
+                                    IO_Enable <= '1';
+                                    IO_Enable_Buffer <= '1';
+                                end if;
                             
                             when others =>
                                 state <= IDLE;

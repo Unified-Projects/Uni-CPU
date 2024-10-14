@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.1.2 (win64) Build 5164865 Thu Sep  5 14:37:11 MDT 2024
-| Date         : Fri Oct 11 18:46:07 2024
+| Date         : Sat Oct 12 17:49:24 2024
 | Host         : DESKTOP-PSI4IU2 running 64-bit major release  (build 9200)
 | Command      : report_utilization -file CPU_CPU_Module_0_1_utilization_synth.rpt -pb CPU_CPU_Module_0_1_utilization_synth.pb
 | Design       : CPU_CPU_Module_0_1
@@ -31,14 +31,14 @@ Table of Contents
 +-------------------------+-------+-------+------------+-----------+-------+
 |        Site Type        |  Used | Fixed | Prohibited | Available | Util% |
 +-------------------------+-------+-------+------------+-----------+-------+
-| Slice LUTs*             | 11038 |     0 |          0 |     53200 | 20.75 |
-|   LUT as Logic          | 11038 |     0 |          0 |     53200 | 20.75 |
+| Slice LUTs*             | 11308 |     0 |          0 |     53200 | 21.26 |
+|   LUT as Logic          | 11308 |     0 |          0 |     53200 | 21.26 |
 |   LUT as Memory         |     0 |     0 |          0 |     17400 |  0.00 |
-| Slice Registers         |  1868 |     0 |          0 |    106400 |  1.76 |
-|   Register as Flip Flop |  1868 |     0 |          0 |    106400 |  1.76 |
+| Slice Registers         |  1950 |     0 |          0 |    106400 |  1.83 |
+|   Register as Flip Flop |  1950 |     0 |          0 |    106400 |  1.83 |
 |   Register as Latch     |     0 |     0 |          0 |    106400 |  0.00 |
-| F7 Muxes                |   714 |     0 |          0 |     26600 |  2.68 |
-| F8 Muxes                |     0 |     0 |          0 |     13300 |  0.00 |
+| F7 Muxes                |   534 |     0 |          0 |     26600 |  2.01 |
+| F8 Muxes                |    16 |     0 |          0 |     13300 |  0.12 |
 +-------------------------+-------+-------+------------+-----------+-------+
 * Warning! The Final LUT count, after physical optimizations and full implementation, is typically lower. Run opt_design after synthesis, if not already completed, for a more realistic count.
 Warning! LUT value is adjusted to account for LUT combining.
@@ -58,9 +58,9 @@ Warning! For any ECO changes, please run place_design if there are unplaced inst
 | 0     |            _ |       Reset |            - |
 | 0     |          Yes |           - |            - |
 | 0     |          Yes |           - |          Set |
-| 1721  |          Yes |           - |        Reset |
+| 1731  |          Yes |           - |        Reset |
 | 0     |          Yes |         Set |            - |
-| 147   |          Yes |       Reset |            - |
+| 219   |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
@@ -150,16 +150,17 @@ Warning! For any ECO changes, please run place_design if there are unplaced inst
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| LUT5     | 5677 |                 LUT |
-| LUT6     | 3987 |                 LUT |
-| FDCE     | 1721 |        Flop & Latch |
-| CARRY4   | 1380 |          CarryLogic |
-| LUT4     |  864 |                 LUT |
-| MUXF7    |  714 |               MuxFx |
-| LUT3     |  590 |                 LUT |
-| LUT2     |  378 |                 LUT |
-| LUT1     |  320 |                 LUT |
-| FDRE     |  147 |        Flop & Latch |
+| LUT5     | 5277 |                 LUT |
+| LUT6     | 4292 |                 LUT |
+| FDCE     | 1731 |        Flop & Latch |
+| CARRY4   | 1445 |          CarryLogic |
+| LUT4     |  969 |                 LUT |
+| LUT3     |  777 |                 LUT |
+| LUT2     |  570 |                 LUT |
+| MUXF7    |  534 |               MuxFx |
+| LUT1     |  386 |                 LUT |
+| FDRE     |  219 |        Flop & Latch |
+| MUXF8    |   16 |               MuxFx |
 | DSP48E1  |   16 |    Block Arithmetic |
 +----------+------+---------------------+
 

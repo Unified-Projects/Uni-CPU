@@ -1,6 +1,37 @@
-INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.ip_user_files/bd/CPU/ip/CPU_processing_system7_0_0/sim/CPU_processing_system7_0_0.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ipshared/4d04/hdl/axi_vip_v1_1_vl_rfs.sv" into library axi_vip_v1_1_17
+INFO: [VRFC 10-311] analyzing module axi_vip_v1_1_17_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ipshared/b28c/hdl/processing_system7_vip_v1_0_vl_rfs.sv" into library processing_system7_vip_v1_0_19
+INFO: [VRFC 10-311] analyzing module processing_system7_vip_v1_0_19_arb_wr
+INFO: [VRFC 10-311] analyzing module processing_system7_vip_v1_0_19_arb_rd
+INFO: [VRFC 10-311] analyzing module processing_system7_vip_v1_0_19_arb_wr_4
+INFO: [VRFC 10-311] analyzing module processing_system7_vip_v1_0_19_arb_rd_4
+INFO: [VRFC 10-311] analyzing module processing_system7_vip_v1_0_19_arb_hp2_3
+INFO: [VRFC 10-311] analyzing module processing_system7_vip_v1_0_19_arb_hp0_1
+INFO: [VRFC 10-311] analyzing module processing_system7_vip_v1_0_19_ssw_hp
+INFO: [VRFC 10-311] analyzing module processing_system7_vip_v1_0_19_sparse_mem
+INFO: [VRFC 10-311] analyzing module processing_system7_vip_v1_0_19_reg_map
+INFO: [VRFC 10-311] analyzing module processing_system7_vip_v1_0_19_ocm_mem
+INFO: [VRFC 10-311] analyzing module processing_system7_vip_v1_0_19_intr_wr_mem
+INFO: [VRFC 10-311] analyzing module processing_system7_vip_v1_0_19_intr_rd_mem
+INFO: [VRFC 10-311] analyzing module processing_system7_vip_v1_0_19_fmsw_gp
+INFO: [VRFC 10-311] analyzing module processing_system7_vip_v1_0_19_regc
+INFO: [VRFC 10-311] analyzing module processing_system7_vip_v1_0_19_ocmc
+INFO: [VRFC 10-311] analyzing module processing_system7_vip_v1_0_19_interconnect_model
+INFO: [VRFC 10-311] analyzing module processing_system7_vip_v1_0_19_gen_reset
+INFO: [VRFC 10-311] analyzing module processing_system7_vip_v1_0_19_gen_clock
+INFO: [VRFC 10-311] analyzing module processing_system7_vip_v1_0_19_ddrc
+INFO: [VRFC 10-311] analyzing module processing_system7_vip_v1_0_19_axi_slave
+INFO: [VRFC 10-311] analyzing module processing_system7_vip_v1_0_19_axi_slave_acp
+INFO: [VRFC 10-311] analyzing module processing_system7_vip_v1_0_19_axi_master
+INFO: [VRFC 10-311] analyzing module processing_system7_vip_v1_0_19_afi_slave
+INFO: [VRFC 10-311] analyzing module processing_system7_vip_v1_0_19
+INFO: [VRFC 10-2263] Analyzing Verilog file "Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.ip_user_files/bd/CPU/ip/CPU_processing_system7_0_0/sim/CPU_processing_system7_0_0.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module CPU_processing_system7_0_0
-INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.ip_user_files/bd/CPU/ip/CPU_util_vector_logic_0_0/sim/CPU_util_vector_logic_0_0.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.ip_user_files/bd/CPU/ip/CPU_util_vector_logic_0_0/sim/CPU_util_vector_logic_0_0.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module CPU_util_vector_logic_0_0
-INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Git/Uni-CPU/CPU_Rev3/CPU_Rev3.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.ip_user_files/bd/CPU/ip/CPU_blk_mem_gen_0_0/sim/CPU_blk_mem_gen_0_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module CPU_blk_mem_gen_0_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.ip_user_files/bd/CPU/ip/CPU_sim_clk_gen_0_0/sim/CPU_sim_clk_gen_0_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module CPU_sim_clk_gen_0_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module glbl

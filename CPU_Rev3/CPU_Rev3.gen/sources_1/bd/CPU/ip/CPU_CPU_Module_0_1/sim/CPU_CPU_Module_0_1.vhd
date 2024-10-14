@@ -63,11 +63,13 @@ ENTITY CPU_CPU_Module_0_1 IS
     bram_en : OUT STD_LOGIC;
     bram_din : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
     bram_dout : OUT STD_LOGIC_VECTOR(63 DOWNTO 0);
-    bram_addr : OUT STD_LOGIC_VECTOR(12 DOWNTO 0);
+    bram_addr : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+    framebuffer_en : OUT STD_LOGIC;
+    fb_din : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
     IO_Enable : OUT STD_LOGIC;
     IO_DONE : IN STD_LOGIC;
-    IO_In : IN STD_LOGIC;
-    IO_Out : OUT STD_LOGIC;
+    IO_In : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
+    IO_Out : OUT STD_LOGIC_VECTOR(63 DOWNTO 0);
     IO_Select : OUT STD_LOGIC_VECTOR(4 DOWNTO 0)
   );
 END CPU_CPU_Module_0_1;
@@ -85,11 +87,13 @@ ARCHITECTURE CPU_CPU_Module_0_1_arch OF CPU_CPU_Module_0_1 IS
       bram_en : OUT STD_LOGIC;
       bram_din : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
       bram_dout : OUT STD_LOGIC_VECTOR(63 DOWNTO 0);
-      bram_addr : OUT STD_LOGIC_VECTOR(12 DOWNTO 0);
+      bram_addr : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+      framebuffer_en : OUT STD_LOGIC;
+      fb_din : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
       IO_Enable : OUT STD_LOGIC;
       IO_DONE : IN STD_LOGIC;
-      IO_In : IN STD_LOGIC;
-      IO_Out : OUT STD_LOGIC;
+      IO_In : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
+      IO_Out : OUT STD_LOGIC_VECTOR(63 DOWNTO 0);
       IO_Select : OUT STD_LOGIC_VECTOR(4 DOWNTO 0)
     );
   END COMPONENT CPU_Module;
@@ -99,7 +103,7 @@ ARCHITECTURE CPU_CPU_Module_0_1_arch OF CPU_CPU_Module_0_1 IS
   ATTRIBUTE X_INTERFACE_INFO OF clk: SIGNAL IS "xilinx.com:signal:clock:1.0 clk CLK";
   ATTRIBUTE X_INTERFACE_PARAMETER OF interrupt: SIGNAL IS "XIL_INTERFACENAME interrupt, SENSITIVITY LEVEL_HIGH, PortWidth 1";
   ATTRIBUTE X_INTERFACE_INFO OF interrupt: SIGNAL IS "xilinx.com:signal:interrupt:1.0 interrupt INTERRUPT";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF reset: SIGNAL IS "XIL_INTERFACENAME reset, POLARITY ACTIVE_HIGH, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF reset: SIGNAL IS "XIL_INTERFACENAME reset, POLARITY ACTIVE_LOW, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF reset: SIGNAL IS "xilinx.com:signal:reset:1.0 reset RST";
 BEGIN
   U0 : CPU_Module
@@ -113,6 +117,8 @@ BEGIN
       bram_din => bram_din,
       bram_dout => bram_dout,
       bram_addr => bram_addr,
+      framebuffer_en => framebuffer_en,
+      fb_din => fb_din,
       IO_Enable => IO_Enable,
       IO_DONE => IO_DONE,
       IO_In => IO_In,

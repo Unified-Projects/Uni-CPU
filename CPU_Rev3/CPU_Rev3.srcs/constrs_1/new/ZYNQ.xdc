@@ -51,3 +51,18 @@ set_property IOSTANDARD LVCMOS33 [get_ports btn_0]
 
 set_property PACKAGE_PIN J20 [get_ports btn_1]    
 set_property IOSTANDARD LVCMOS33 [get_ports btn_1]
+
+
+set_property PACKAGE_PIN N15 [get_ports LCD_SCL]
+set_property PACKAGE_PIN M15 [get_ports LCD_SDA]
+set_property PACKAGE_PIN T16 [get_ports LCD_BLK]
+set_property PACKAGE_PIN P15 [get_ports LCD_CS]
+set_property PACKAGE_PIN R15 [get_ports LCD_DC]
+set_property PACKAGE_PIN L16 [get_ports LCD_RES]
+
+set_property IOSTANDARD LVCMOS33 [get_ports LCD_DC]
+set_property IOSTANDARD LVCMOS33 [get_ports LCD_RES]
+set_property IOSTANDARD LVCMOS33 [get_ports LCD_BLK]
+set_property IOSTANDARD LVCMOS33 [get_ports LCD_SDA]
+set_property IOSTANDARD LVCMOS33 [get_ports LCD_SCL]
+set_property IOSTANDARD LVCMOS33 [get_ports LCD_CS]

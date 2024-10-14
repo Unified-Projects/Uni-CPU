@@ -57,7 +57,6 @@ if {$::dispatch::connected} {
 
 OPTRACE "CPU_IO_Controller_0_0_synth_1" START { ROLLUP_AUTO }
 set_param chipscope.maxJobs 4
-set_msg_config -id {Common 17-41} -limit 10000000
 set_param project.vivado.isBlockSynthRun true
 OPTRACE "Creating in-memory project" START { }
 set_param ips.modRefOverrideMrefDirPath y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/mref

@@ -2,7 +2,7 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2024.1.2 (win64) Build 5164865 Thu Sep  5 14:37:11 MDT 2024
-// Date        : Fri Oct 11 18:46:07 2024
+// Date        : Sat Oct 12 17:49:24 2024
 // Host        : DESKTOP-PSI4IU2 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub
 //               y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_CPU_Module_0_1/CPU_CPU_Module_0_1_stub.v
@@ -16,8 +16,9 @@
 // Please paste the declaration into a Verilog source file or add the file as an additional source.
 (* x_core_info = "CPU_Module,Vivado 2024.1.2" *)
 module CPU_CPU_Module_0_1(clk, reset, interrupt, resetOut, bram_we, bram_en, 
-  bram_din, bram_dout, bram_addr, IO_Enable, IO_DONE, IO_In, IO_Out, IO_Select)
-/* synthesis syn_black_box black_box_pad_pin="reset,interrupt[31:0],resetOut,bram_we[7:0],bram_en,bram_din[63:0],bram_dout[63:0],bram_addr[12:0],IO_Enable,IO_DONE,IO_In,IO_Out,IO_Select[4:0]" */
+  bram_din, bram_dout, bram_addr, framebuffer_en, fb_din, IO_Enable, IO_DONE, IO_In, IO_Out, 
+  IO_Select)
+/* synthesis syn_black_box black_box_pad_pin="reset,interrupt[31:0],resetOut,bram_we[7:0],bram_en,bram_din[63:0],bram_dout[63:0],bram_addr[15:0],framebuffer_en,fb_din[15:0],IO_Enable,IO_DONE,IO_In[63:0],IO_Out[63:0],IO_Select[4:0]" */
 /* synthesis syn_force_seq_prim="clk" */;
   input clk /* synthesis syn_isclock = 1 */;
   input reset;
@@ -27,10 +28,12 @@ module CPU_CPU_Module_0_1(clk, reset, interrupt, resetOut, bram_we, bram_en,
   output bram_en;
   input [63:0]bram_din;
   output [63:0]bram_dout;
-  output [12:0]bram_addr;
+  output [15:0]bram_addr;
+  output framebuffer_en;
+  input [15:0]fb_din;
   output IO_Enable;
   input IO_DONE;
-  input IO_In;
-  output IO_Out;
+  input [63:0]IO_In;
+  output [63:0]IO_Out;
   output [4:0]IO_Select;
 endmodule
