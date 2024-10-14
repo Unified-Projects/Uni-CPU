@@ -171,6 +171,8 @@ void Lcd_Init(void){
 	LCD_WR_DATA8(0x29);
 	LCD_WR_DATA8(0x32);
 
+	//
+
 	LCD_WR_REG(0x21);
 
 	LCD_WR_REG(0x11);

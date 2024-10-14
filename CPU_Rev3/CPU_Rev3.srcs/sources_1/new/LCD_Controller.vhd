@@ -201,6 +201,984 @@ begin
                             -- Load next stage
                             initStage <= initStage + 1;
 
+                        when 7 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_REG;
+                            backState <= INIT;
+                            Data <= x"B2";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 8 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_DATA;
+                            backState <= INIT;
+                            Data <= x"0C";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+                            
+                        when 9 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_DATA;
+                            backState <= INIT;
+                            Data <= x"0C";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+                            
+                        when 10 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_DATA;
+                            backState <= INIT;
+                            Data <= x"00";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+                            
+                        when 11 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_DATA;
+                            backState <= INIT;
+                            Data <= x"33";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+                            
+                        when 12 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_DATA;
+                            backState <= INIT;
+                            Data <= x"33";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 13 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_REG;
+                            backState <= INIT;
+                            Data <= x"B7";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 14 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_DATA;
+                            backState <= INIT;
+                            Data <= x"35";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 15 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_REG;
+                            backState <= INIT;
+                            Data <= x"BB";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 16 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_DATA;
+                            backState <= INIT;
+                            Data <= x"35";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 17 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_REG;
+                            backState <= INIT;
+                            Data <= x"C0";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 18 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_DATA;
+                            backState <= INIT;
+                            Data <= x"2C";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 19 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_REG;
+                            backState <= INIT;
+                            Data <= x"C2";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 20 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_DATA;
+                            backState <= INIT;
+                            Data <= x"01";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 21 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_REG;
+                            backState <= INIT;
+                            Data <= x"C3";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 22 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_DATA;
+                            backState <= INIT;
+                            Data <= x"13";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 23 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_REG;
+                            backState <= INIT;
+                            Data <= x"C4";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 24 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_DATA;
+                            backState <= INIT;
+                            Data <= x"20";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 25 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_REG;
+                            backState <= INIT;
+                            Data <= x"C6";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 26 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_DATA;
+                            backState <= INIT;
+                            Data <= x"0F";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 27 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_REG;
+                            backState <= INIT;
+                            Data <= x"D0";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 28 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_DATA;
+                            backState <= INIT;
+                            Data <= x"A4";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 29 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_DATA;
+                            backState <= INIT;
+                            Data <= x"A1";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 30 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_REG;
+                            backState <= INIT;
+                            Data <= x"D6";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 31 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_DATA;
+                            backState <= INIT;
+                            Data <= x"A1";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+                        
+                        when 32 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_REG;
+                            backState <= INIT;
+                            Data <= x"E0";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 33 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_DATA;
+                            backState <= INIT;
+                            Data <= x"F0";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 34 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_DATA;
+                            backState <= INIT;
+                            Data <= x"00";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 35 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_DATA;
+                            backState <= INIT;
+                            Data <= x"04";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 36 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_DATA;
+                            backState <= INIT;
+                            Data <= x"04";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 37 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_DATA;
+                            backState <= INIT;
+                            Data <= x"04";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 38 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_DATA;
+                            backState <= INIT;
+                            Data <= x"05";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 39 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_DATA;
+                            backState <= INIT;
+                            Data <= x"29";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 40 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_DATA;
+                            backState <= INIT;
+                            Data <= x"33";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 41 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_DATA;
+                            backState <= INIT;
+                            Data <= x"3E";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 42 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_DATA;
+                            backState <= INIT;
+                            Data <= x"38";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 43 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_DATA;
+                            backState <= INIT;
+                            Data <= x"12";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 44 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_DATA;
+                            backState <= INIT;
+                            Data <= x"12";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 45 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_DATA;
+                            backState <= INIT;
+                            Data <= x"28";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 46 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_DATA;
+                            backState <= INIT;
+                            Data <= x"30";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+                        
+                        when 47 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_REG;
+                            backState <= INIT;
+                            Data <= x"E1";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 48 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_DATA;
+                            backState <= INIT;
+                            Data <= x"F0";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 49 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_DATA;
+                            backState <= INIT;
+                            Data <= x"07";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 50 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_DATA;
+                            backState <= INIT;
+                            Data <= x"0A";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 51 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_DATA;
+                            backState <= INIT;
+                            Data <= x"0D";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 52 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_DATA;
+                            backState <= INIT;
+                            Data <= x"0B";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 53 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_DATA;
+                            backState <= INIT;
+                            Data <= x"07";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 54 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_DATA;
+                            backState <= INIT;
+                            Data <= x"28";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 55 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_DATA;
+                            backState <= INIT;
+                            Data <= x"33";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 56 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_DATA;
+                            backState <= INIT;
+                            Data <= x"3E";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 57 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_DATA;
+                            backState <= INIT;
+                            Data <= x"36";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 58 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_DATA;
+                            backState <= INIT;
+                            Data <= x"14";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 59 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_DATA;
+                            backState <= INIT;
+                            Data <= x"14";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 60 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_DATA;
+                            backState <= INIT;
+                            Data <= x"29";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 51 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_DATA;
+                            backState <= INIT;
+                            Data <= x"32";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 52 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_REG;
+                            backState <= INIT;
+                            Data <= x"21";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 53 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_REG;
+                            backState <= INIT;
+                            Data <= x"11";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 54 =>
+                            -- Write data
+                            -- writeStage <= 0;
+                            -- state <= WRITE_;
+                            -- backState <= INIT;
+                            -- Data <= x"";
+
+                            -- Delay
+                            DelayStarted <= '0';
+                            DelayCount <= 150;
+                            backState <= INIT;
+                            state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 53 =>
+                            -- Write data
+                            writeStage <= 0;
+                            state <= WRITE_REG;
+                            backState <= INIT;
+                            Data <= x"29";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 53 =>
+                            -- Write data
+                            -- writeStage <= 0;
+                            -- state <= WRITE_;
+                            -- backState <= INIT;
+                            -- Data <= x"";
+
+                            -- Delay
+                            DelayStarted <= '0';
+                            DelayCount <= 150;
+                            backState <= INIT;
+                            state <= DELAY;
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
+                        when 53 =>
+                            -- Write data
+                            -- writeStage <= 0;
+                            -- state <= WRITE_;
+                            -- backState <= INIT;
+                            -- Data <= x"";
+
+                            -- Delay
+                            -- DelayStarted <= '0';
+                            -- DelayCount <= 0;
+                            -- backState <= INIT;
+                            -- state <= DELAY;
+
+                            blk <= '1';
+
+                            -- Load next stage
+                            initStage <= initStage + 1;
+
                         when others =>
                             initStage <= 0;
                     end case;
