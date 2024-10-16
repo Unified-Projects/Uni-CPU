@@ -64,6 +64,8 @@ ENTITY CPU_CPU_Module_0_1 IS
     bram_din : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
     bram_dout : OUT STD_LOGIC_VECTOR(63 DOWNTO 0);
     bram_addr : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+    framebuffer_en : OUT STD_LOGIC;
+    fb_din : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
     IO_Enable : OUT STD_LOGIC;
     IO_DONE : IN STD_LOGIC;
     IO_In : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
@@ -86,6 +88,8 @@ ARCHITECTURE CPU_CPU_Module_0_1_arch OF CPU_CPU_Module_0_1 IS
       bram_din : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
       bram_dout : OUT STD_LOGIC_VECTOR(63 DOWNTO 0);
       bram_addr : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+      framebuffer_en : OUT STD_LOGIC;
+      fb_din : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
       IO_Enable : OUT STD_LOGIC;
       IO_DONE : IN STD_LOGIC;
       IO_In : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
@@ -113,6 +117,8 @@ BEGIN
       bram_din => bram_din,
       bram_dout => bram_dout,
       bram_addr => bram_addr,
+      framebuffer_en => framebuffer_en,
+      fb_din => fb_din,
       IO_Enable => IO_Enable,
       IO_DONE => IO_DONE,
       IO_In => IO_In,

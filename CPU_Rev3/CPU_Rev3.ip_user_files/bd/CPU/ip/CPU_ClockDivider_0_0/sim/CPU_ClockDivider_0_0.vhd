@@ -57,8 +57,7 @@ ENTITY CPU_ClockDivider_0_0 IS
   PORT (
     clk : IN STD_LOGIC;
     reset : IN STD_LOGIC;
-    clk_div : OUT STD_LOGIC;
-    reset_forward : OUT STD_LOGIC
+    clk_div : OUT STD_LOGIC
   );
 END CPU_ClockDivider_0_0;
 
@@ -69,24 +68,20 @@ ARCHITECTURE CPU_ClockDivider_0_0_arch OF CPU_ClockDivider_0_0 IS
     PORT (
       clk : IN STD_LOGIC;
       reset : IN STD_LOGIC;
-      clk_div : OUT STD_LOGIC;
-      reset_forward : OUT STD_LOGIC
+      clk_div : OUT STD_LOGIC
     );
   END COMPONENT ClockDivider;
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
-  ATTRIBUTE X_INTERFACE_PARAMETER OF clk: SIGNAL IS "XIL_INTERFACENAME clk, ASSOCIATED_RESET reset, FREQ_HZ 400000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN CPU_sim_clk_gen_0_0_clk, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF clk: SIGNAL IS "XIL_INTERFACENAME clk, ASSOCIATED_RESET reset, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF clk: SIGNAL IS "xilinx.com:signal:clock:1.0 clk CLK";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF reset: SIGNAL IS "XIL_INTERFACENAME reset, POLARITY ACTIVE_LOW, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF reset: SIGNAL IS "XIL_INTERFACENAME reset, POLARITY ACTIVE_HIGH, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF reset: SIGNAL IS "xilinx.com:signal:reset:1.0 reset RST";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF reset_forward: SIGNAL IS "XIL_INTERFACENAME reset_forward, POLARITY ACTIVE_LOW, INSERT_VIP 0";
-  ATTRIBUTE X_INTERFACE_INFO OF reset_forward: SIGNAL IS "xilinx.com:signal:reset:1.0 reset_forward RST";
 BEGIN
   U0 : ClockDivider
     PORT MAP (
       clk => clk,
       reset => reset,
-      clk_div => clk_div,
-      reset_forward => reset_forward
+      clk_div => clk_div
     );
 END CPU_ClockDivider_0_0_arch;

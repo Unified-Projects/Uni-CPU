@@ -2,7 +2,7 @@
 --Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2024.1.2 (win64) Build 5164865 Thu Sep  5 14:37:11 MDT 2024
---Date        : Sat Oct 12 17:53:36 2024
+--Date        : Wed Oct 16 17:44:40 2024
 --Host        : DESKTOP-PSI4IU2 running 64-bit major release  (build 9200)
 --Command     : generate_target CPU.bd
 --Design      : CPU
@@ -36,8 +36,8 @@ entity CPU is
     FIXED_IO_ps_porb : inout STD_LOGIC;
     FIXED_IO_ps_srstb : inout STD_LOGIC;
     LCD_BLK : out STD_LOGIC;
+    LCD_CD : out STD_LOGIC;
     LCD_CS : out STD_LOGIC;
-    LCD_DC : out STD_LOGIC;
     LCD_RES : out STD_LOGIC;
     LCD_SCL : out STD_LOGIC;
     LCD_SDA : out STD_LOGIC;
@@ -59,7 +59,7 @@ entity CPU is
     led_1 : out STD_LOGIC
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of CPU : entity is "CPU,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=CPU,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=11,numReposBlks=11,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=5,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=2,da_board_cnt=1,da_clkrst_cnt=2,da_ps7_cnt=1,synth_mode=Hierarchical}";
+  attribute CORE_GENERATION_INFO of CPU : entity is "CPU,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=CPU,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=12,numReposBlks=12,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=6,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=2,da_board_cnt=1,da_clkrst_cnt=2,da_ps7_cnt=1,synth_mode=Hierarchical}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of CPU : entity is "CPU.hwdef";
 end CPU;
@@ -199,7 +199,7 @@ architecture STRUCTURE of CPU is
     clka : in STD_LOGIC;
     ena : in STD_LOGIC;
     wea : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    addra : in STD_LOGIC_VECTOR ( 14 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 63 downto 0 );
     douta : out STD_LOGIC_VECTOR ( 63 downto 0 )
   );
@@ -211,13 +211,12 @@ architecture STRUCTURE of CPU is
     scl : out STD_LOGIC;
     sda : out STD_LOGIC;
     cs : out STD_LOGIC;
-    dc : out STD_LOGIC;
+    cd : out STD_LOGIC;
     blk : out STD_LOGIC;
     res : out STD_LOGIC;
     fb_we : out STD_LOGIC_VECTOR ( 7 downto 0 );
     fb_en : out STD_LOGIC;
     fb_din : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    fb_dout : out STD_LOGIC_VECTOR ( 15 downto 0 );
     fb_addr : out STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component CPU_LCD_Controller_0_0;
@@ -266,7 +265,14 @@ architecture STRUCTURE of CPU is
     IO_Select : out STD_LOGIC_VECTOR ( 4 downto 0 )
   );
   end component CPU_CPU_Module_0_1;
-  signal CPU_Clock_Control_clk_div : STD_LOGIC;
+  component CPU_CPUClockDivider_0_0 is
+  port (
+    clk : in STD_LOGIC;
+    reset : in STD_LOGIC;
+    clk_div : out STD_LOGIC
+  );
+  end component CPU_CPUClockDivider_0_0;
+  signal CPUClockDivider_0_clk_div : STD_LOGIC;
   signal CPU_Module_0_IO_Enable : STD_LOGIC;
   signal CPU_Module_0_IO_Out : STD_LOGIC_VECTOR ( 63 downto 0 );
   signal CPU_Module_0_IO_Select : STD_LOGIC_VECTOR ( 4 downto 0 );
@@ -283,11 +289,11 @@ architecture STRUCTURE of CPU is
   signal IO_Controller_0_done : STD_LOGIC;
   signal IO_Controller_0_led_0 : STD_LOGIC;
   signal IO_Controller_0_led_1 : STD_LOGIC;
+  signal LCD_CLOCK_clk_div : STD_LOGIC;
   signal LCD_Controller_0_blk : STD_LOGIC;
+  signal LCD_Controller_0_cd : STD_LOGIC;
   signal LCD_Controller_0_cs : STD_LOGIC;
-  signal LCD_Controller_0_dc : STD_LOGIC;
   signal LCD_Controller_0_fb_addr : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal LCD_Controller_0_fb_dout : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal LCD_Controller_0_fb_en : STD_LOGIC;
   signal LCD_Controller_0_fb_we : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal LCD_Controller_0_res : STD_LOGIC;
@@ -404,8 +410,8 @@ architecture STRUCTURE of CPU is
   attribute X_INTERFACE_INFO of RGMII_0_td : signal is "xilinx.com:interface:rgmii:1.0 RGMII_0 TD";
 begin
   LCD_BLK <= LCD_Controller_0_blk;
+  LCD_CD <= LCD_Controller_0_cd;
   LCD_CS <= LCD_Controller_0_cs;
-  LCD_DC <= LCD_Controller_0_dc;
   LCD_RES <= LCD_Controller_0_res;
   LCD_SCL <= LCD_Controller_0_scl;
   LCD_SDA <= LCD_Controller_0_sda;
@@ -425,10 +431,10 @@ begin
   led_0 <= IO_Controller_0_led_0;
   led_1 <= IO_Controller_0_led_1;
   processing_system7_0_UART_0_RxD <= UART_0_0_rxd;
-CPU_Clock_Control: component CPU_ClockDivider_0_0
+CPUClockDivider_0: component CPU_CPUClockDivider_0_0
      port map (
       clk => ClockSplitter_clk_0,
-      clk_div => CPU_Clock_Control_clk_div,
+      clk_div => CPUClockDivider_0_clk_div,
       reset => proc_sys_reset_0_mb_reset
     );
 CPU_Module_0: component CPU_CPU_Module_0_1
@@ -443,7 +449,7 @@ CPU_Module_0: component CPU_CPU_Module_0_1
       bram_dout(63 downto 0) => CPU_Module_0_bram_dout(63 downto 0),
       bram_en => CPU_Module_0_bram_en,
       bram_we(7 downto 0) => CPU_Module_0_bram_we(7 downto 0),
-      clk => CPU_Clock_Control_clk_div,
+      clk => CPUClockDivider_0_clk_div,
       fb_din(15 downto 0) => framebuffer_douta(15 downto 0),
       framebuffer_en => CPU_Module_0_framebuffer_en,
       interrupt(31 downto 0) => B"00000000000000000000000000000000",
@@ -455,7 +461,7 @@ ClockSplitter: component CPU_ClockSplitter_1_0
       clk => processing_system7_0_FCLK_CLK0,
       clk_0 => ClockSplitter_clk_0,
       clk_1 => ClockSplitter_0_clk_1,
-      reset => '0',
+      reset => proc_sys_reset_0_mb_reset,
       reset_through => ClockSplitter_reset_through
     );
 IO_Controller_0: component CPU_IO_Controller_0_0
@@ -472,15 +478,20 @@ IO_Controller_0: component CPU_IO_Controller_0_0
       reset => ClockSplitter_reset_through,
       sel(4 downto 0) => CPU_Module_0_IO_Select(4 downto 0)
     );
+LCD_CLOCK: component CPU_ClockDivider_0_0
+     port map (
+      clk => ClockSplitter_0_clk_1,
+      clk_div => LCD_CLOCK_clk_div,
+      reset => ClockSplitter_reset_through
+    );
 LCD_Controller_0: component CPU_LCD_Controller_0_0
      port map (
       blk => LCD_Controller_0_blk,
-      clk => processing_system7_0_FCLK_CLK0,
+      cd => LCD_Controller_0_cd,
+      clk => LCD_CLOCK_clk_div,
       cs => LCD_Controller_0_cs,
-      dc => LCD_Controller_0_dc,
       fb_addr(15 downto 0) => LCD_Controller_0_fb_addr(15 downto 0),
       fb_din(15 downto 0) => framebuffer_doutb(15 downto 0),
-      fb_dout(15 downto 0) => LCD_Controller_0_fb_dout(15 downto 0),
       fb_en => LCD_Controller_0_fb_en,
       fb_we(7 downto 0) => LCD_Controller_0_fb_we(7 downto 0),
       res => LCD_Controller_0_res,
@@ -495,7 +506,7 @@ framebuffer: component CPU_blk_mem_gen_1_0
       clka => ClockSplitter_0_clk_1,
       clkb => ClockSplitter_0_clk_1,
       dina(15 downto 0) => CPU_Module_0_bram_dout(15 downto 0),
-      dinb(15 downto 0) => LCD_Controller_0_fb_dout(15 downto 0),
+      dinb(15 downto 0) => B"0000000000001000",
       douta(15 downto 0) => framebuffer_douta(15 downto 0),
       doutb(15 downto 0) => framebuffer_doutb(15 downto 0),
       ena => CPU_Module_0_framebuffer_en,
@@ -603,7 +614,7 @@ processing_system7_0: component CPU_processing_system7_0_0
     );
 ram: component CPU_blk_mem_gen_0_0
      port map (
-      addra(15 downto 0) => CPU_Module_0_bram_addr(15 downto 0),
+      addra(14 downto 0) => CPU_Module_0_bram_addr(14 downto 0),
       clka => ClockSplitter_0_clk_1,
       dina(63 downto 0) => CPU_Module_0_bram_dout(63 downto 0),
       douta(63 downto 0) => blk_mem_gen_0_douta(63 downto 0),

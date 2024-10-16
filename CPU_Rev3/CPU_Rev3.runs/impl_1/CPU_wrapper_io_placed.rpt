@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version              : Vivado v.2024.1.2 (win64) Build 5164865 Thu Sep  5 14:37:11 MDT 2024
-| Date                      : Sat Oct 12 17:56:23 2024
+| Date                      : Wed Oct 16 17:47:48 2024
 | Host                      : DESKTOP-PSI4IU2 running 64-bit major release  (build 9200)
 | Command                   : report_io -file CPU_wrapper_io_placed.rpt
 | Design                    : CPU_wrapper
@@ -401,7 +401,7 @@ Table of Contents
 | R12        |                    | Dedicated  | VCCO_0                  | VCCO        |                   |       0 |            |      |                     |                      |   any** |            |           |          |      |                  |              |                   |              |
 | R13        |                    |            | GND                     | GND         |                   |         |            |      |                     |                      |     0.0 |            |           |          |      |                  |              |                   |              |
 | R14        |                    |            | VCCINT                  | VCCINT      |                   |         |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
-| R15        | LCD_DC             | High Range | IO_25_34                | OUTPUT      | LVCMOS33          |      34 |         12 | SLOW |                     |            FP_VTT_50 |         | FIXED      |           |          |      | NONE             |              |                   |              |
+| R15        | LCD_CD             | High Range | IO_25_34                | OUTPUT      | LVCMOS33          |      34 |         12 | SLOW |                     |            FP_VTT_50 |         | FIXED      |           |          |      | NONE             |              |                   |              |
 | R16        |                    | High Range | IO_L24N_T3_34           | User IO     |                   |      34 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
 | R17        |                    |            | GND                     | GND         |                   |         |            |      |                     |                      |     0.0 |            |           |          |      |                  |              |                   |              |
 | R18        |                    | High Range | IO_L23P_T3_34           | User IO     |                   |      34 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |

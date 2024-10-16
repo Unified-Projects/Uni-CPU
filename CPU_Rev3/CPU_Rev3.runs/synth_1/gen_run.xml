@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7z020clg484-1" LaunchTime="1728752021" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/CPU_wrapper.dcp">
+<GenRun Id="synth_1" LaunchPart="xc7z020clg484-1" LaunchTime="1729097086" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/CPU_wrapper.dcp">
   <File Type="PA-TCL" Name="CPU_wrapper.tcl"/>
   <File Type="RDS-PROPCONSTRS" Name="CPU_wrapper_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="CPU_wrapper_reports.tcl"/>
@@ -122,14 +122,16 @@
     <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2024"/>
     <Step Id="synth_design"/>
   </Strategy>
-  <BlockFileSet Type="BlockSrcs" Name="CPU_CPU_Module_0_1"/>
   <BlockFileSet Type="BlockSrcs" Name="CPU_proc_sys_reset_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="CPU_processing_system7_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="CPU_util_vector_logic_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="CPU_IO_Controller_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="CPU_gmii_to_rgmii_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="CPU_LCD_Controller_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="CPU_ClockSplitter_1_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="CPU_ClockDivider_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="CPU_blk_mem_gen_1_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="CPU_blk_mem_gen_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="CPU_LCD_Controller_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="CPU_CPU_Module_0_1"/>
+  <BlockFileSet Type="BlockSrcs" Name="CPU_CPUClockDivider_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="CPU_ClockDivider_0_0"/>
 </GenRun>

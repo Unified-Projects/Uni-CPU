@@ -60,13 +60,12 @@ ENTITY CPU_LCD_Controller_0_0 IS
     scl : OUT STD_LOGIC;
     sda : OUT STD_LOGIC;
     cs : OUT STD_LOGIC;
-    dc : OUT STD_LOGIC;
+    cd : OUT STD_LOGIC;
     blk : OUT STD_LOGIC;
     res : OUT STD_LOGIC;
     fb_we : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
     fb_en : OUT STD_LOGIC;
     fb_din : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
-    fb_dout : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
     fb_addr : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
   );
 END CPU_LCD_Controller_0_0;
@@ -81,19 +80,18 @@ ARCHITECTURE CPU_LCD_Controller_0_0_arch OF CPU_LCD_Controller_0_0 IS
       scl : OUT STD_LOGIC;
       sda : OUT STD_LOGIC;
       cs : OUT STD_LOGIC;
-      dc : OUT STD_LOGIC;
+      cd : OUT STD_LOGIC;
       blk : OUT STD_LOGIC;
       res : OUT STD_LOGIC;
       fb_we : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
       fb_en : OUT STD_LOGIC;
       fb_din : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
-      fb_dout : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
       fb_addr : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
     );
   END COMPONENT LCD_Controller;
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
-  ATTRIBUTE X_INTERFACE_PARAMETER OF clk: SIGNAL IS "XIL_INTERFACENAME clk, ASSOCIATED_RESET reset, FREQ_HZ 200000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN CPU_processing_system7_0_0_FCLK_CLK0, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF clk: SIGNAL IS "XIL_INTERFACENAME clk, ASSOCIATED_RESET reset, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF clk: SIGNAL IS "xilinx.com:signal:clock:1.0 clk CLK";
   ATTRIBUTE X_INTERFACE_PARAMETER OF reset: SIGNAL IS "XIL_INTERFACENAME reset, POLARITY ACTIVE_LOW, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF reset: SIGNAL IS "xilinx.com:signal:reset:1.0 reset RST";
@@ -105,13 +103,12 @@ BEGIN
       scl => scl,
       sda => sda,
       cs => cs,
-      dc => dc,
+      cd => cd,
       blk => blk,
       res => res,
       fb_we => fb_we,
       fb_en => fb_en,
       fb_din => fb_din,
-      fb_dout => fb_dout,
       fb_addr => fb_addr
     );
 END CPU_LCD_Controller_0_0_arch;

@@ -2,7 +2,7 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2024.1.2 (win64) Build 5164865 Thu Sep  5 14:37:11 MDT 2024
--- Date        : Sat Oct 12 17:54:14 2024
+-- Date        : Wed Oct 16 17:45:24 2024
 -- Host        : DESKTOP-PSI4IU2 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_ClockDivider_0_0/CPU_ClockDivider_0_0_sim_netlist.vhdl
@@ -99,7 +99,7 @@ clk_div_i_1: unisim.vcomponents.LUT6
     );
 clk_div_i_2: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"FFFFFFF7"
+      INIT => X"FFFFFFFE"
     )
         port map (
       I0 => counter(18),
@@ -123,11 +123,11 @@ clk_div_i_3: unisim.vcomponents.LUT5
     );
 clk_div_i_4: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"FFFF7FFF"
+      INIT => X"FFFFBFFF"
     )
         port map (
-      I0 => counter(2),
-      I1 => counter(3),
+      I0 => counter(3),
+      I1 => counter(2),
       I2 => counter(0),
       I3 => counter(1),
       I4 => clk_div_i_8_n_0,
@@ -135,7 +135,7 @@ clk_div_i_4: unisim.vcomponents.LUT5
     );
 clk_div_i_5: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"FFFFBFFF"
+      INIT => X"FFFFEFFF"
     )
         port map (
       I0 => counter(10),
@@ -147,13 +147,13 @@ clk_div_i_5: unisim.vcomponents.LUT5
     );
 clk_div_i_6: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"FFEF"
+      INIT => X"FFFE"
     )
         port map (
       I0 => counter(21),
       I1 => counter(20),
-      I2 => counter(22),
-      I3 => counter(23),
+      I2 => counter(23),
+      I3 => counter(22),
       O => clk_div_i_6_n_0
     );
 clk_div_i_7: unisim.vcomponents.LUT4
@@ -169,7 +169,7 @@ clk_div_i_7: unisim.vcomponents.LUT4
     );
 clk_div_i_8: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"FFF7"
+      INIT => X"DFFF"
     )
         port map (
       I0 => counter(5),
@@ -180,13 +180,13 @@ clk_div_i_8: unisim.vcomponents.LUT4
     );
 clk_div_i_9: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"FFEF"
+      INIT => X"FFFE"
     )
         port map (
       I0 => counter(13),
       I1 => counter(12),
-      I2 => counter(14),
-      I3 => counter(15),
+      I2 => counter(15),
+      I3 => counter(14),
       O => clk_div_i_9_n_0
     );
 clk_div_reg: unisim.vcomponents.FDCE
@@ -1078,7 +1078,7 @@ architecture STRUCTURE of CPU_ClockDivider_0_0 is
   attribute x_interface_parameter : string;
   attribute x_interface_parameter of clk : signal is "XIL_INTERFACENAME clk, ASSOCIATED_RESET reset, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, INSERT_VIP 0";
   attribute x_interface_info of reset : signal is "xilinx.com:signal:reset:1.0 reset RST";
-  attribute x_interface_parameter of reset : signal is "XIL_INTERFACENAME reset, POLARITY ACTIVE_HIGH, INSERT_VIP 0";
+  attribute x_interface_parameter of reset : signal is "XIL_INTERFACENAME reset, POLARITY ACTIVE_LOW, INSERT_VIP 0";
 begin
 U0: entity work.CPU_ClockDivider_0_0_ClockDivider
      port map (

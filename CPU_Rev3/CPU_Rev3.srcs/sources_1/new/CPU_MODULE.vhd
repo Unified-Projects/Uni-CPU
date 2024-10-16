@@ -184,10 +184,10 @@ begin
                             state <= IDLE;
                             -- HANDLE INTERNAL INTERRUPT
                         else
-                            -- state <= FETCH_RIP;
-                            Argument1 <= "0000000000000000000000000000000000000000000000000000000000000001";
-                            state <= DEBUG_LED;
-                            nextState <= FETCH_INSTRUCTION;
+                            state <= FETCH_INSTRUCTION;
+                            -- Argument1 <= "0000000000000000000000000000000000000000000000000000000000000001";
+                            -- state <= DEBUG_LED;
+                            -- nextState <= FETCH_INSTRUCTION;
                         end if;
                     
                     when BRAM_READ =>
@@ -1252,42 +1252,46 @@ begin
                                     when "00000000" =>
                                         -- EQU
                                         if Argument2 = Argument1 then
-                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 01000
+                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 0100
+                                            Argument1 <= x"0000000000000002";
                                         end if;
 
-                                        state <= IDLE;
+                                        state <= DEBUG_LED;
+                                        nextState <= IDLE;
+
+                                        -- state <= IDLE;
                                     when "00000001" =>
                                         -- NEQ
                                         if Argument2 /= Argument1 then
-                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 01000
+                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 0100
                                         end if;
 
                                         state <= IDLE;
                                     when "00000010" =>
                                         -- LEQ
                                         if Argument2 <= Argument1 then
-                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 01000
+                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 0100
                                         end if;
 
                                         state <= IDLE;
                                     when "00000011" =>
                                         -- GEQ
                                         if Argument2 >= Argument1 then
-                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 01000
+                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 0100
                                         end if;
 
                                         state <= IDLE;
                                     when "00000100" =>
                                         -- LT
                                         if Argument2 < Argument1 then
-                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 01000
+                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 0100
                                         end if;
 
                                         state <= IDLE;
                                     when "00000101" =>
                                         -- GT
                                         if Argument2 > Argument1 then
-                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 01000
+                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 0100
                                         end if;
 
                                         state <= IDLE;
@@ -1298,7 +1302,7 @@ begin
                                 
                             when "0000001000" =>
                                 -- JC
-                                if Registers(15)(2 downto 2) = "1" then
+                                if workingStatus(2) = '1' then
                                     Registers(14) <= Argument1;
                                 end if;
 
@@ -1649,42 +1653,42 @@ begin
                                     when "00000000" =>
                                         -- EQU
                                         if Argument2(31 downto 0) = Argument1(31 downto 0) then
-                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 01000
+                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 0100
                                         end if;
 
                                         state <= IDLE;
                                     when "00000001" =>
                                         -- NEQ
                                         if Argument2(31 downto 0) /= Argument1(31 downto 0) then
-                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 01000
+                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 0100
                                         end if;
 
                                         state <= IDLE;
                                     when "00000010" =>
                                         -- LEQ
                                         if Argument2(31 downto 0) <= Argument1(31 downto 0) then
-                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 01000
+                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 0100
                                         end if;
 
                                         state <= IDLE;
                                     when "00000011" =>
                                         -- GEQ
                                         if Argument2(31 downto 0) >= Argument1(31 downto 0) then
-                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 01000
+                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 0100
                                         end if;
 
                                         state <= IDLE;
                                     when "00000100" =>
                                         -- LT
                                         if Argument2(31 downto 0) < Argument1(31 downto 0) then
-                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 01000
+                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 0100
                                         end if;
 
                                         state <= IDLE;
                                     when "00000101" =>
                                         -- GT
                                         if Argument2(31 downto 0) > Argument1(31 downto 0) then
-                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 01000
+                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 0100
                                         end if;
 
                                         state <= IDLE;
@@ -1901,42 +1905,42 @@ begin
                                     when "00000000" =>
                                         -- EQU
                                         if Argument2(15 downto 0) = Argument1(15 downto 0) then
-                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 01000
+                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 0100
                                         end if;
 
                                         state <= IDLE;
                                     when "00000001" =>
                                         -- NEQ
                                         if Argument2(15 downto 0) /= Argument1(15 downto 0) then
-                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 01000
+                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 0100
                                         end if;
 
                                         state <= IDLE;
                                     when "00000010" =>
                                         -- LEQ
                                         if Argument2(15 downto 0) <= Argument1(15 downto 0) then
-                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 01000
+                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 0100
                                         end if;
 
                                         state <= IDLE;
                                     when "00000011" =>
                                         -- GEQ
                                         if Argument2(15 downto 0) >= Argument1(15 downto 0) then
-                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 01000
+                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 0100
                                         end if;
 
                                         state <= IDLE;
                                     when "00000100" =>
                                         -- LT
                                         if Argument2(15 downto 0) < Argument1(15 downto 0) then
-                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 01000
+                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 0100
                                         end if;
 
                                         state <= IDLE;
                                     when "00000101" =>
                                         -- GT
                                         if Argument2(15 downto 0) > Argument1(15 downto 0) then
-                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 01000
+                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 0100
                                         end if;
 
                                         state <= IDLE;
@@ -2154,42 +2158,42 @@ begin
                                     when "00000000" =>
                                         -- EQU
                                         if Argument2(7 downto 0) = Argument1(7 downto 0) then
-                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 01000
+                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 0100
                                         end if;
 
                                         state <= IDLE;
                                     when "00000001" =>
                                         -- NEQ
                                         if Argument2(7 downto 0) /= Argument1(7 downto 0) then
-                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 01000
+                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 0100
                                         end if;
 
                                         state <= IDLE;
                                     when "00000010" =>
                                         -- LEQ
                                         if Argument2(7 downto 0) <= Argument1(7 downto 0) then
-                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 01000
+                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 0100
                                         end if;
 
                                         state <= IDLE;
                                     when "00000011" =>
                                         -- GEQ
                                         if Argument2(7 downto 0) >= Argument1(7 downto 0) then
-                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 01000
+                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 0100
                                         end if;
 
                                         state <= IDLE;
                                     when "00000100" =>
                                         -- LT
                                         if Argument2(7 downto 0) < Argument1(7 downto 0) then
-                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 01000
+                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 0100
                                         end if;
 
                                         state <= IDLE;
                                     when "00000101" =>
                                         -- GT
                                         if Argument2(7 downto 0) > Argument1(7 downto 0) then
-                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 01000
+                                            Registers(15) <= Registers(15) or x"0000000000000004"; -- ... 0100
                                         end if;
 
                                         state <= IDLE;

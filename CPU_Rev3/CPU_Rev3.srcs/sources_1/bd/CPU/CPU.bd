@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0xA0856B5D2C55AC67",
+      "boundary_crc": "0x2FD2AF38407BF801",
       "device": "xc7z020clg484-1",
       "gen_directory": "../../../../CPU_Rev3.gen/sources_1/bd/CPU",
       "name": "CPU",
@@ -16,12 +16,13 @@
       "util_vector_logic_0": "",
       "proc_sys_reset_0": "",
       "IO_Controller_0": "",
-      "CPU_Clock_Control": "",
+      "LCD_CLOCK": "",
       "ram": "",
       "LCD_Controller_0": "",
       "framebuffer": "",
       "ClockSplitter": "",
-      "CPU_Module_0": ""
+      "CPU_Module_0": "",
+      "CPUClockDivider_0": ""
     },
     "interface_ports": {
       "DDR": {
@@ -294,13 +295,13 @@
       "LCD_CS": {
         "direction": "O"
       },
-      "LCD_DC": {
-        "direction": "O"
-      },
       "LCD_BLK": {
         "direction": "O"
       },
       "LCD_RES": {
+        "direction": "O"
+      },
+      "LCD_CD": {
         "direction": "O"
       }
     },
@@ -1099,12 +1100,12 @@
           }
         }
       },
-      "CPU_Clock_Control": {
+      "LCD_CLOCK": {
         "vlnv": "xilinx.com:module_ref:ClockDivider:1.0",
         "ip_revision": "1",
         "xci_name": "CPU_ClockDivider_0_0",
         "xci_path": "ip\\CPU_ClockDivider_0_0\\CPU_ClockDivider_0_0.xci",
-        "inst_hier_path": "CPU_Clock_Control",
+        "inst_hier_path": "LCD_CLOCK",
         "reference_info": {
           "ref_type": "hdl",
           "ref_name": "ClockDivider",
@@ -1123,13 +1124,7 @@
           },
           "reset": {
             "type": "rst",
-            "direction": "I",
-            "parameters": {
-              "POLARITY": {
-                "value": "ACTIVE_HIGH",
-                "value_src": "const_prop"
-              }
-            }
+            "direction": "I"
           },
           "clk_div": {
             "direction": "O"
@@ -1165,7 +1160,7 @@
             "value": "true"
           },
           "Write_Depth_A": {
-            "value": "65536"
+            "value": "32768"
           },
           "Write_Width_A": {
             "value": "64"
@@ -1198,14 +1193,6 @@
               "ASSOCIATED_RESET": {
                 "value": "reset",
                 "value_src": "constant"
-              },
-              "FREQ_HZ": {
-                "value": "200000000",
-                "value_src": "user_prop"
-              },
-              "CLK_DOMAIN": {
-                "value": "CPU_processing_system7_0_0_FCLK_CLK0",
-                "value_src": "default_prop"
               }
             }
           },
@@ -1218,7 +1205,7 @@
           "cs": {
             "direction": "O"
           },
-          "dc": {
+          "cd": {
             "direction": "O"
           },
           "blk": {
@@ -1237,11 +1224,6 @@
           },
           "fb_din": {
             "direction": "I",
-            "left": "15",
-            "right": "0"
-          },
-          "fb_dout": {
-            "direction": "O",
             "left": "15",
             "right": "0"
           },
@@ -1317,7 +1299,13 @@
           },
           "reset": {
             "type": "rst",
-            "direction": "I"
+            "direction": "I",
+            "parameters": {
+              "POLARITY": {
+                "value": "ACTIVE_HIGH",
+                "value_src": "const_prop"
+              }
+            }
           },
           "reset_through": {
             "type": "rst",
@@ -1425,6 +1413,43 @@
             "right": "0"
           }
         }
+      },
+      "CPUClockDivider_0": {
+        "vlnv": "xilinx.com:module_ref:CPUClockDivider:1.0",
+        "ip_revision": "1",
+        "xci_name": "CPU_CPUClockDivider_0_0",
+        "xci_path": "ip\\CPU_CPUClockDivider_0_0\\CPU_CPUClockDivider_0_0.xci",
+        "inst_hier_path": "CPUClockDivider_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "CPUClockDivider",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "reset",
+                "value_src": "constant"
+              }
+            }
+          },
+          "reset": {
+            "type": "rst",
+            "direction": "I",
+            "parameters": {
+              "POLARITY": {
+                "value": "ACTIVE_HIGH",
+                "value_src": "const_prop"
+              }
+            }
+          },
+          "clk_div": {
+            "direction": "O"
+          }
+        }
       }
     },
     "interface_nets": {
@@ -1472,9 +1497,9 @@
       }
     },
     "nets": {
-      "CPU_Clock_Control_clk_div": {
+      "CPUClockDivider_0_clk_div": {
         "ports": [
-          "CPU_Clock_Control/clk_div",
+          "CPUClockDivider_0/clk_div",
           "CPU_Module_0/clk"
         ]
       },
@@ -1541,21 +1566,23 @@
           "ram/clka",
           "IO_Controller_0/clk",
           "framebuffer/clka",
-          "framebuffer/clkb"
+          "framebuffer/clkb",
+          "LCD_CLOCK/clk"
         ]
       },
       "ClockSplitter_clk_0": {
         "ports": [
           "ClockSplitter/clk_0",
-          "CPU_Clock_Control/clk"
+          "CPUClockDivider_0/clk"
         ]
       },
       "ClockSplitter_reset_through": {
         "ports": [
           "ClockSplitter/reset_through",
           "IO_Controller_0/reset",
+          "LCD_Controller_0/reset",
           "CPU_Module_0/reset",
-          "LCD_Controller_0/reset"
+          "LCD_CLOCK/reset"
         ]
       },
       "IO_Controller_0_data_out": {
@@ -1582,10 +1609,22 @@
           "led_1"
         ]
       },
+      "LCD_CLOCK_clk_div": {
+        "ports": [
+          "LCD_CLOCK/clk_div",
+          "LCD_Controller_0/clk"
+        ]
+      },
       "LCD_Controller_0_blk": {
         "ports": [
           "LCD_Controller_0/blk",
           "LCD_BLK"
+        ]
+      },
+      "LCD_Controller_0_cd": {
+        "ports": [
+          "LCD_Controller_0/cd",
+          "LCD_CD"
         ]
       },
       "LCD_Controller_0_cs": {
@@ -1594,22 +1633,10 @@
           "LCD_CS"
         ]
       },
-      "LCD_Controller_0_dc": {
-        "ports": [
-          "LCD_Controller_0/dc",
-          "LCD_DC"
-        ]
-      },
       "LCD_Controller_0_fb_addr": {
         "ports": [
           "LCD_Controller_0/fb_addr",
           "framebuffer/addrb"
-        ]
-      },
-      "LCD_Controller_0_fb_dout": {
-        "ports": [
-          "LCD_Controller_0/fb_dout",
-          "framebuffer/dinb"
         ]
       },
       "LCD_Controller_0_fb_en": {
@@ -1675,7 +1702,8 @@
       "proc_sys_reset_0_mb_reset": {
         "ports": [
           "proc_sys_reset_0/mb_reset",
-          "CPU_Clock_Control/reset"
+          "ClockSplitter/reset",
+          "CPUClockDivider_0/reset"
         ]
       },
       "processing_system7_0_FCLK_CLK0": {
@@ -1683,8 +1711,7 @@
           "processing_system7_0/FCLK_CLK0",
           "proc_sys_reset_0/slowest_sync_clk",
           "gmii_to_rgmii_0/clkin",
-          "ClockSplitter/clk",
-          "LCD_Controller_0/clk"
+          "ClockSplitter/clk"
         ]
       },
       "processing_system7_0_FCLK_RESET0_N": {

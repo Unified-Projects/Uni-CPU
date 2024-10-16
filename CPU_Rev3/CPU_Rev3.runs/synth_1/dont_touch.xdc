@@ -39,4 +39,7 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==CPU_ClockSp
 # IP: bd/CPU/ip/CPU_CPU_Module_0_1/CPU_CPU_Module_0_1.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==CPU_CPU_Module_0_1 || ORIG_REF_NAME==CPU_CPU_Module_0_1} -quiet] -quiet
 
+# IP: bd/CPU/ip/CPU_CPUClockDivider_0_0/CPU_CPUClockDivider_0_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==CPU_CPUClockDivider_0_0 || ORIG_REF_NAME==CPU_CPUClockDivider_0_0} -quiet] -quiet
+
 # XDC: y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/CPU_ooc.xdc

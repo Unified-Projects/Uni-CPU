@@ -86,7 +86,6 @@ vcom -work proc_sys_reset_v5_0_15 -93  -incr \
 vcom -work xil_defaultlib -93  -incr \
 "../../../bd/CPU/ip/CPU_proc_sys_reset_0_0/sim/CPU_proc_sys_reset_0_0.vhd" \
 "../../../bd/CPU/ip/CPU_IO_Controller_0_0/sim/CPU_IO_Controller_0_0.vhd" \
-"../../../bd/CPU/ip/CPU_ClockSplitter_0_0/sim/CPU_ClockSplitter_0_0.vhd" \
 "../../../bd/CPU/ip/CPU_ClockDivider_0_0/sim/CPU_ClockDivider_0_0.vhd" \
 
 vlog -work blk_mem_gen_v8_4_8  -incr -v2k5 "+incdir+../../../../CPU_Rev3.gen/sources_1/bd/CPU/ipshared/ec67/hdl" "+incdir+../../../../CPU_Rev3.gen/sources_1/bd/CPU/ipshared/b28c/hdl" "+incdir+C:/Xilinx/Vivado/2024.1/data/xilinx_vip/include" -l xilinx_vip -l xpm -l axi_infrastructure_v1_1_0 -l axi_vip_v1_1_17 -l processing_system7_vip_v1_0_19 -l xil_defaultlib -l gmii_to_rgmii_v4_1_16 -l util_vector_logic_v2_0_4 -l lib_cdc_v1_0_3 -l proc_sys_reset_v5_0_15 -l blk_mem_gen_v8_4_8 \
@@ -96,8 +95,15 @@ vlog -work xil_defaultlib  -incr -v2k5 "+incdir+../../../../CPU_Rev3.gen/sources
 "../../../bd/CPU/ip/CPU_blk_mem_gen_0_0/sim/CPU_blk_mem_gen_0_0.v" \
 
 vcom -work xil_defaultlib -93  -incr \
-"../../../bd/CPU/ip/CPU_CPU_Module_0_1/sim/CPU_CPU_Module_0_1.vhd" \
 "../../../bd/CPU/ip/CPU_LCD_Controller_0_0/sim/CPU_LCD_Controller_0_0.vhd" \
+
+vlog -work xil_defaultlib  -incr -v2k5 "+incdir+../../../../CPU_Rev3.gen/sources_1/bd/CPU/ipshared/ec67/hdl" "+incdir+../../../../CPU_Rev3.gen/sources_1/bd/CPU/ipshared/b28c/hdl" "+incdir+C:/Xilinx/Vivado/2024.1/data/xilinx_vip/include" -l xilinx_vip -l xpm -l axi_infrastructure_v1_1_0 -l axi_vip_v1_1_17 -l processing_system7_vip_v1_0_19 -l xil_defaultlib -l gmii_to_rgmii_v4_1_16 -l util_vector_logic_v2_0_4 -l lib_cdc_v1_0_3 -l proc_sys_reset_v5_0_15 -l blk_mem_gen_v8_4_8 \
+"../../../bd/CPU/ip/CPU_blk_mem_gen_1_0/sim/CPU_blk_mem_gen_1_0.v" \
+
+vcom -work xil_defaultlib -93  -incr \
+"../../../bd/CPU/ip/CPU_ClockSplitter_1_0/sim/CPU_ClockSplitter_1_0.vhd" \
+"../../../bd/CPU/ip/CPU_CPU_Module_0_1/sim/CPU_CPU_Module_0_1.vhd" \
+"../../../bd/CPU/ip/CPU_CPUClockDivider_0_0/sim/CPU_CPUClockDivider_0_0.vhd" \
 "../../../bd/CPU/sim/CPU.vhd" \
 
 vlog -work xil_defaultlib \

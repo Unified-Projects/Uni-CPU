@@ -76,7 +76,7 @@ OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 add_files Y:/C++/Uni-CPU/BRAM64.coe
 add_files Y:/C++/Uni-CPU/output.coe
-add_files y:/C++/Uni-CPU/image.coe
+add_files Y:/C++/Uni-CPU/image.coe
 read_vhdl -library xil_defaultlib Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/hdl/CPU_wrapper.vhd
 add_files Y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.srcs/sources_1/bd/CPU/CPU.bd
 set_property used_in_implementation false [get_files -all y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_processing_system7_0_0/CPU_processing_system7_0_0.xdc]

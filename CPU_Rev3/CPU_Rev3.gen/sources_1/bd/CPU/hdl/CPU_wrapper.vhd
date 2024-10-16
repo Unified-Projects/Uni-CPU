@@ -2,7 +2,7 @@
 --Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2024.1.2 (win64) Build 5164865 Thu Sep  5 14:37:11 MDT 2024
---Date        : Sat Oct 12 17:53:36 2024
+--Date        : Wed Oct 16 17:44:40 2024
 --Host        : DESKTOP-PSI4IU2 running 64-bit major release  (build 9200)
 --Command     : generate_target CPU_wrapper.bd
 --Design      : CPU_wrapper
@@ -36,8 +36,8 @@ entity CPU_wrapper is
     FIXED_IO_ps_porb : inout STD_LOGIC;
     FIXED_IO_ps_srstb : inout STD_LOGIC;
     LCD_BLK : out STD_LOGIC;
+    LCD_CD : out STD_LOGIC;
     LCD_CS : out STD_LOGIC;
-    LCD_DC : out STD_LOGIC;
     LCD_RES : out STD_LOGIC;
     LCD_SCL : out STD_LOGIC;
     LCD_SDA : out STD_LOGIC;
@@ -101,9 +101,9 @@ architecture STRUCTURE of CPU_wrapper is
     LCD_SCL : out STD_LOGIC;
     LCD_SDA : out STD_LOGIC;
     LCD_CS : out STD_LOGIC;
-    LCD_DC : out STD_LOGIC;
     LCD_BLK : out STD_LOGIC;
-    LCD_RES : out STD_LOGIC
+    LCD_RES : out STD_LOGIC;
+    LCD_CD : out STD_LOGIC
   );
   end component CPU;
   component IOBUF is
@@ -142,8 +142,8 @@ CPU_i: component CPU
       FIXED_IO_ps_porb => FIXED_IO_ps_porb,
       FIXED_IO_ps_srstb => FIXED_IO_ps_srstb,
       LCD_BLK => LCD_BLK,
+      LCD_CD => LCD_CD,
       LCD_CS => LCD_CS,
-      LCD_DC => LCD_DC,
       LCD_RES => LCD_RES,
       LCD_SCL => LCD_SCL,
       LCD_SDA => LCD_SDA,

@@ -2,10 +2,10 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2024.1.2 (win64) Build 5164865 Thu Sep  5 14:37:11 MDT 2024
--- Date        : Sat Oct 12 17:00:26 2024
+-- Date        : Wed Oct 16 17:45:56 2024
 -- Host        : DESKTOP-PSI4IU2 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode synth_stub -rename_top CPU_blk_mem_gen_0_0 -prefix
---               CPU_blk_mem_gen_0_0_ CPU_blk_mem_gen_0_0_stub.vhdl
+-- Command     : write_vhdl -force -mode synth_stub
+--               y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_blk_mem_gen_0_0/CPU_blk_mem_gen_0_0_stub.vhdl
 -- Design      : CPU_blk_mem_gen_0_0
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7z020clg484-1
@@ -18,7 +18,7 @@ entity CPU_blk_mem_gen_0_0 is
     clka : in STD_LOGIC;
     ena : in STD_LOGIC;
     wea : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    addra : in STD_LOGIC_VECTOR ( 14 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 63 downto 0 );
     douta : out STD_LOGIC_VECTOR ( 63 downto 0 )
   );
@@ -29,7 +29,7 @@ architecture stub of CPU_blk_mem_gen_0_0 is
 attribute syn_black_box : boolean;
 attribute black_box_pad_pin : string;
 attribute syn_black_box of stub : architecture is true;
-attribute black_box_pad_pin of stub : architecture is "clka,ena,wea[7:0],addra[15:0],dina[63:0],douta[63:0]";
+attribute black_box_pad_pin of stub : architecture is "clka,ena,wea[7:0],addra[14:0],dina[63:0],douta[63:0]";
 attribute x_core_info : string;
 attribute x_core_info of stub : architecture is "blk_mem_gen_v8_4_8,Vivado 2024.1.2";
 begin

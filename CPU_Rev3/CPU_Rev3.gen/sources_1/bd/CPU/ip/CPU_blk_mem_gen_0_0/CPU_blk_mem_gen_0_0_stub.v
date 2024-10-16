@@ -2,10 +2,10 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2024.1.2 (win64) Build 5164865 Thu Sep  5 14:37:11 MDT 2024
-// Date        : Sat Oct 12 17:00:26 2024
+// Date        : Wed Oct 16 17:45:56 2024
 // Host        : DESKTOP-PSI4IU2 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode synth_stub -rename_top CPU_blk_mem_gen_0_0 -prefix
-//               CPU_blk_mem_gen_0_0_ CPU_blk_mem_gen_0_0_stub.v
+// Command     : write_verilog -force -mode synth_stub
+//               y:/C++/Uni-CPU/CPU_Rev3/CPU_Rev3.gen/sources_1/bd/CPU/ip/CPU_blk_mem_gen_0_0/CPU_blk_mem_gen_0_0_stub.v
 // Design      : CPU_blk_mem_gen_0_0
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7z020clg484-1
@@ -16,12 +16,12 @@
 // Please paste the declaration into a Verilog source file or add the file as an additional source.
 (* x_core_info = "blk_mem_gen_v8_4_8,Vivado 2024.1.2" *)
 module CPU_blk_mem_gen_0_0(clka, ena, wea, addra, dina, douta)
-/* synthesis syn_black_box black_box_pad_pin="ena,wea[7:0],addra[15:0],dina[63:0],douta[63:0]" */
+/* synthesis syn_black_box black_box_pad_pin="ena,wea[7:0],addra[14:0],dina[63:0],douta[63:0]" */
 /* synthesis syn_force_seq_prim="clka" */;
   input clka /* synthesis syn_isclock = 1 */;
   input ena;
   input [7:0]wea;
-  input [15:0]addra;
+  input [14:0]addra;
   input [63:0]dina;
   output [63:0]douta;
 endmodule

@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.1.2 (win64) Build 5164865 Thu Sep  5 14:37:11 MDT 2024
-| Date         : Sat Oct 12 17:55:17 2024
+| Date         : Wed Oct 16 17:46:34 2024
 | Host         : DESKTOP-PSI4IU2 running 64-bit major release  (build 9200)
 | Command      : report_utilization -file CPU_wrapper_utilization_synth.rpt -pb CPU_wrapper_utilization_synth.pb
 | Design       : CPU_wrapper
@@ -172,6 +172,7 @@ Warning! For any ECO changes, please run place_design if there are unplaced inst
 | CPU_ClockSplitter_1_0      |    1 |
 | CPU_ClockDivider_0_0       |    1 |
 | CPU_CPU_Module_0_1         |    1 |
+| CPU_CPUClockDivider_0_0    |    1 |
 +----------------------------+------+
 
 

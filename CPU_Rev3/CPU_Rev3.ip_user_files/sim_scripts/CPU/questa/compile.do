@@ -83,7 +83,6 @@ vcom -work proc_sys_reset_v5_0_15  -93  \
 vcom -work xil_defaultlib  -93  \
 "../../../bd/CPU/ip/CPU_proc_sys_reset_0_0/sim/CPU_proc_sys_reset_0_0.vhd" \
 "../../../bd/CPU/ip/CPU_IO_Controller_0_0/sim/CPU_IO_Controller_0_0.vhd" \
-"../../../bd/CPU/ip/CPU_ClockSplitter_0_0/sim/CPU_ClockSplitter_0_0.vhd" \
 "../../../bd/CPU/ip/CPU_ClockDivider_0_0/sim/CPU_ClockDivider_0_0.vhd" \
 
 vlog -work blk_mem_gen_v8_4_8  -incr -mfcu  "+incdir+../../../../CPU_Rev3.gen/sources_1/bd/CPU/ipshared/ec67/hdl" "+incdir+../../../../CPU_Rev3.gen/sources_1/bd/CPU/ipshared/b28c/hdl" "+incdir+C:/Xilinx/Vivado/2024.1/data/xilinx_vip/include" \
@@ -93,8 +92,15 @@ vlog -work xil_defaultlib  -incr -mfcu  "+incdir+../../../../CPU_Rev3.gen/source
 "../../../bd/CPU/ip/CPU_blk_mem_gen_0_0/sim/CPU_blk_mem_gen_0_0.v" \
 
 vcom -work xil_defaultlib  -93  \
-"../../../bd/CPU/ip/CPU_CPU_Module_0_1/sim/CPU_CPU_Module_0_1.vhd" \
 "../../../bd/CPU/ip/CPU_LCD_Controller_0_0/sim/CPU_LCD_Controller_0_0.vhd" \
+
+vlog -work xil_defaultlib  -incr -mfcu  "+incdir+../../../../CPU_Rev3.gen/sources_1/bd/CPU/ipshared/ec67/hdl" "+incdir+../../../../CPU_Rev3.gen/sources_1/bd/CPU/ipshared/b28c/hdl" "+incdir+C:/Xilinx/Vivado/2024.1/data/xilinx_vip/include" \
+"../../../bd/CPU/ip/CPU_blk_mem_gen_1_0/sim/CPU_blk_mem_gen_1_0.v" \
+
+vcom -work xil_defaultlib  -93  \
+"../../../bd/CPU/ip/CPU_ClockSplitter_1_0/sim/CPU_ClockSplitter_1_0.vhd" \
+"../../../bd/CPU/ip/CPU_CPU_Module_0_1/sim/CPU_CPU_Module_0_1.vhd" \
+"../../../bd/CPU/ip/CPU_CPUClockDivider_0_0/sim/CPU_CPUClockDivider_0_0.vhd" \
 "../../../bd/CPU/sim/CPU.vhd" \
 
 vlog -work xil_defaultlib \

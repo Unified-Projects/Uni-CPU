@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7z020clg484-1" LaunchTime="1728752022">
+<GenRun Id="impl_1" LaunchPart="xc7z020clg484-1" LaunchTime="1729097089">
   <File Type="ROUTE-PWR" Name="CPU_wrapper_power_routed.rpt"/>
   <File Type="PA-TCL" Name="CPU_wrapper.tcl"/>
   <File Type="ROUTE-PWR-SUM" Name="CPU_wrapper_power_summary_routed.pb"/>
@@ -205,14 +205,16 @@
     <Step Id="post_route_phys_opt_design"/>
     <Step Id="write_bitstream"/>
   </Strategy>
-  <BlockFileSet Type="BlockSrcs" Name="CPU_CPU_Module_0_1"/>
   <BlockFileSet Type="BlockSrcs" Name="CPU_proc_sys_reset_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="CPU_processing_system7_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="CPU_util_vector_logic_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="CPU_IO_Controller_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="CPU_gmii_to_rgmii_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="CPU_LCD_Controller_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="CPU_ClockSplitter_1_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="CPU_ClockDivider_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="CPU_blk_mem_gen_1_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="CPU_blk_mem_gen_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="CPU_LCD_Controller_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="CPU_CPU_Module_0_1"/>
+  <BlockFileSet Type="BlockSrcs" Name="CPU_CPUClockDivider_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="CPU_ClockDivider_0_0"/>
 </GenRun>
